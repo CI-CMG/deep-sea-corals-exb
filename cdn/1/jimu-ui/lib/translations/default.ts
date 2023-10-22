@@ -2,10 +2,14 @@ export default {
   // common
   col: 'Column',
   row: 'Row',
+  tab: 'Tab',
+  gridRow: 'Grid row',
+  gridCol: 'Grid column',
   iconSize: 'Icon size',
   showIcon: 'Show icon',
   vertical: 'Vertical',
   horizontal: 'Horizontal',
+  foldable: 'Foldable',
   expand: 'Expand',
   collapse: 'Collapse',
   expandAll: 'Expand all',
@@ -24,10 +28,12 @@ export default {
   background: 'Background',
   foregroundColor: 'Foreground color',
   backgroundColor: 'Background color',
+  line: 'Line',
   border: 'Border',
   borderWidth: 'Border width',
   borderColor: 'Border color',
   borderRadius: 'Border radius',
+  borderStyle: 'Border style',
   boxShadow: 'Box shadow',
   corner: 'Corner',
   shadow: 'Shadow',
@@ -100,15 +106,23 @@ export default {
   engineering: 'Engineering',
   to: 'to',
   lineStyle: 'Line style',
+  lineHeight: 'Line height',
   columnOutline: 'Outline',
   sumOfValue: 'Sum of value',
   selection: 'Selection',
   existing: 'Existing',
   min: 'Min',
   max: 'Max',
+  sum: 'Sum',
   count: 'Count',
   mean: 'Mean',
   median: 'Median',
+  noAgregation: 'No aggregation',
+  sumOfField: 'Sum of {field}',
+  meanOfField: 'Mean of {field}',
+  minOfField: 'Minimum of {field}',
+  maxOfField: 'Maximum of {field}',
+  medianOfField: 'Median of {field}',
   normalDistribution: 'Normal distribution',
   standardDeviation: 'Standard deviation',
   noLimit: 'No limit',
@@ -130,8 +144,14 @@ export default {
   slow: 'Slow',
   slower: 'Slower',
   slowest: 'Slowest',
+  dateStyle: 'Date style',
+  timeStyle: 'Time style',
+  // menu
+  submenu: 'Submenu',
+  menu: 'Menu',
   //nav
   currentView: 'Current view',
+  slide: 'Slide',
   slider: 'Slider',
   sliderColor: 'Slider color',
   thumb: 'Thumb',
@@ -238,6 +258,8 @@ export default {
   dateOperatorIsBetween: 'is between',
   dateOperatorIsInTheLast: 'is in the last',
   dateOperatorIsNotInTheLast: 'is not in the last',
+  dateOperatorIsInTheNext: 'is in the next',
+  dateOperatorIsNotInTheNext: 'is not in the next',
   dateOperatorIsNotBetween: 'is not between',
   dateOperatorIsBlank: 'is blank',
   dateOperatorIsNotBlank: 'is not blank',
@@ -294,6 +316,8 @@ export default {
   isAtOrAfterForDisplaySQL: '{fieldAlias} is at or after {value}',
   isInTheLastForDisplaySQL: '{fieldAlias} is in the last {value} (Amount) {endValue} (Unit)',
   isNotInTheLastForDisplaySQL: '{fieldAlias} is not in the last {value} (Amount) {endValue} (Unit)',
+  isInTheNextForDisplaySQL: '{fieldAlias} is in the next {value} (Amount) {endValue} (Unit)',
+  isNotInTheNextForDisplaySQL: '{fieldAlias} is not in the next {value} (Amount) {endValue} (Unit)',
   amount: 'Amount',
   widgetIsNotAvailable: '{widgetName} is not available.',
 
@@ -312,6 +336,7 @@ export default {
   data: 'Data',
   // style-setting-component
   fill: 'Fill',
+  marker: 'Marker',
   image: 'Image',
   color: 'Color',
   browse: 'Browse',
@@ -368,6 +393,7 @@ export default {
   down: 'Down',
   justify: 'Justify',
   font: 'Font',
+  fontFamily: 'Font family',
   fontSize: 'Font size',
   convert: 'Convert',
   convertToRem: 'Convert to rem',
@@ -486,18 +512,6 @@ export default {
   deleteOption: 'Delete',
 
   // data-source-selector
-  featureLayer: 'Feature Layer',
-  featureSet: 'Feature Set',
-  featureService: 'Feature Service',
-  mapService: 'Map Service',
-  groupLayer: 'Group Layer',
-  map: 'Map',
-  simpleLocal: 'Simple Local',
-  webMap: 'Web Map',
-  webScene: 'Web Scene',
-  csv: 'CSV',
-  sceneService: 'Scene Service',
-  sceneLayer: 'Scene Layer',
   filter: 'Filter',
   records: 'Records',
   pageSize: 'Page size',
@@ -565,6 +579,7 @@ export default {
   addData: 'Add data',
   serviceType: 'Service type',
   url: 'URL',
+  file: 'File',
   add: 'Add',
   done: 'Done',
   undone: 'Undone',
@@ -590,11 +605,15 @@ export default {
   modified: 'Modified',
   title: 'Title',
   numViews: 'View numbers',
+  esriDefault: 'Esri default',
+  organizationDefault: 'Organization default',
   myContent: 'My content',
   myOrganization: 'My organization',
   myGroup: 'My groups',
   public: 'ArcGIS Online',
   livingAtlas: 'Living Atlas',
+  curated: 'Curated',
+  curatedFilter: 'Curated filter',
   noItemFoundWarning: "We couldn't find what you were looking for. Please try another one.",
   ownerIs: 'Owner: {ownerName}',
   updatedOn: 'Updated: {updatedDate}',
@@ -634,6 +653,7 @@ export default {
 
   // theme-components
   padding: 'Padding',
+  paddingColor: 'Padding color',
   waitForThemeList: 'Getting themes list...',
   themeSectionColor: 'Color',
   themeSectionFont: 'Font',
@@ -723,6 +743,7 @@ export default {
   selectIcon: 'Select icon',
   iconViewerModalTitle: 'Select an icon',
   removeIcon: 'Remove icon',
+  deleteIcon: 'Delete icon',
   myIcons: 'My icons',
   iconGroup_general: 'General',
   iconGroup_arrows: 'Arrows',
@@ -750,6 +771,13 @@ export default {
   star: 'Star',
   star2: 'Star 2',
 
+  pill: 'Pill',
+  rhombus: 'Rhombus',
+  hollowCircle: 'Hollow circle',
+  filledDoubleCircle: 'Filled double circle',
+  arrowLeft12: 'Custom left arrow 1',
+  arrowRight12: 'Custom right arrow 2',
+
   // color-picker
   themeColor: 'Theme colors',
   customColor: 'Custom colors',
@@ -766,6 +794,7 @@ export default {
   recentColorTip: 'Set a specific color to use by clicking More below. Recent 8 customized colors will be saved. Also, custom colors won’t change if you alter theme.',
   select: 'Select',
   clearColor: 'Clear color',
+  colorSet: 'Color set',
   // qr-code
   qrCodeSaveBtnLabel: 'Save as image',
 
@@ -797,6 +826,11 @@ export default {
   pinterest: 'Pinterest',
   linkedin: 'LinkedIn',
   copiedToClipboard: 'Copied to clipboard',
+  share5: 'Share 5',
+  share6: 'Share 6',
+  share7: 'Share 7',
+  share8: 'Share 8',
+  share9: 'Share 9',
   // fly
   select3DMapHint: 'Please select a map with 3D data.',
   tilt: 'Tilt',
@@ -828,6 +862,9 @@ export default {
   LayersLabelLayer: 'Layer',
   LayersLabelLegend: 'Legend',
   LegendLabel: 'Legend',
+  ExtentNavigateLabel: 'Extent navigate',
+  prevExtent: 'Previous extent',
+  nextExtent: 'Next extent',
   SelectLabel: 'Select',
   SelectionTool: 'Selection tool',
   SelectionToolRectangle: 'Rectangle',
@@ -850,6 +887,7 @@ export default {
   SelectionByPoint: 'Select by point',
   SelectionByCircle: 'Select by circle',
   SelectionByPolygon: 'Select by polygon',
+  SwitchMap: 'Switch Map',
 
   // draw component
   drawToolPreview: 'Preview',
@@ -874,6 +912,8 @@ export default {
   drawModePolygon: 'Polygon',
   drawModeRectangle: 'Rectangle',
   drawModeCircle: 'Circle',
+  // decimal places
+  decimalPlaces: 'Decimal places',
   // additional button in draw
   drawToolClearBtn: 'Clear all',
   // measurements in draw component
@@ -887,6 +927,7 @@ export default {
   drawToolLengthTip: 'Length',
   drawToolAreaTip: 'Area',
   // units in draw
+  drawUnits: 'Units',
   // points
   unitsNameDD: 'DD',
   unitsLabelDD: 'DD',
@@ -1017,6 +1058,7 @@ export default {
 
   // animation
   animation: 'Animation',
+  animationSetting: 'Animation settings',
   maskColor: 'Mask color',
   trigger: 'Trigger',
   help: 'Help',
@@ -1122,6 +1164,7 @@ export default {
   webPageTemplate: 'Web page',
   websiteTemplate: 'Website',
   lastCreated: 'Last created',
+  selectTemplate: 'Select template',
 
   fileSizeTips: 'The file size exceeds the maximum limit of {maxSize}.',
 
@@ -1153,6 +1196,8 @@ export default {
   align: 'Align',
   print: 'Print',
 
+  enableSearchFilter: 'Enable filtering for layer source search',
+
   // utility service mananger
   selectUtility: 'Select utility',
   addUtility: 'Add utility',
@@ -1160,6 +1205,7 @@ export default {
   geometryService: 'Geometry Service',
   geocodingService: 'Geocoding Service',
   geoprocessingService: 'Geoprocessing Service',
+  geoprocessingTask: 'Geoprocessing Task',
   networkAnalysisService: 'Network Analysis Service',
   geoenrichmentService: 'Geoenrichment Service',
   printingService: 'Printing Service',
@@ -1171,6 +1217,8 @@ export default {
   supportedServices: 'Supported utility service types include Printing, Routing, Geocoding, GeoEnrichment and Geometry.',
   items: 'Items',
   utility: 'Utility',
+  visible: 'Visible',
+  invisible: 'Invisible',
 
   // element selector, layout placeholder and some widgets
   enterpriseRequired: 'ArcGIS Enterprise subscription required',
@@ -1191,6 +1239,7 @@ export default {
   weather: 'Weather',
   shadowcast: 'Shadow cast',
   lineofsight: 'Line of sight',
+  slice: 'Slice',
   listMode: 'List',
   iconMode: 'Icon',
   autoPlay: 'Autoplay',
@@ -1263,10 +1312,34 @@ export default {
   gridItems: 'Grid items',
   allowResize: 'Allow resize',
   allowExpansion: 'Allow expansion',
+  maximize: 'Maximize',
+  restore: 'Restore',
+  distributeSpaceH: 'Distribute space horizontally',
+  distributeSpaceV: 'Distribute space vertically',
 
   experienceHigherVersion: 'This experience is in higher version',
   experienceHigherVersionRemind: 'This experience is built with a higher version of ArcGIS Experience Builder. Incompatible contents may not work.',
 
   templateHigherVersion: 'This template is in higher version',
-  templateHigherVersionRemind: ' This template is built with a higher version of ArcGIS Experience Builder. Incompatible contents may not work.'
+  templateHigherVersionRemind: ' This template is built with a higher version of ArcGIS Experience Builder. Incompatible contents may not work.',
+  noConfigNeeded: 'No configuration needed',
+
+  // quick style
+  backgroundStyle1: 'Background style 1',
+  backgroundStyle2: 'Background style 2',
+  backgroundStyle3: 'Background style 3',
+  backgroundStyle4: 'Background style 4',
+  backgroundStyle5: 'Background style 5',
+  backgroundStyle6: 'Background style 6',
+  backgroundStyle7: 'Background style 7',
+  borderStyle1: 'Border style 1',
+  borderStyle2: 'Border style 2',
+  borderStyle3: 'Border style 3',
+  borderStyle4: 'Border style 4',
+  borderStyle5: 'Border style 5',
+  borderStyle6: 'Border style 6',
+  borderStyle7: 'Border style 7',
+  perPage: 'per page',
+
+  invalidWKID: 'Invalid WKID'
 }

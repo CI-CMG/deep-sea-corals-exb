@@ -6,7 +6,7 @@
   ],
   "type": "widget",
   "version": "1.0.0",
-  "exbVersion": "1.9.0",
+  "exbVersion": "1.12.0",
   "author": "John Cartwright",
   "description": "facilitates toggling the visibility of the DSC model layers",
   "copyright": "",

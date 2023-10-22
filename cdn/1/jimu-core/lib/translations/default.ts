@@ -26,6 +26,7 @@ export default {
   message_DataSourceFilterChange: 'Data filtering changes',
   message_DataRecordsSelectionChange: 'Record selection changes',
   message_DataRecordSetChange: 'Records created',
+  message_DataSourcesChange: 'Data added',
   message_SelectDataRecord: 'Select data record',
   message_LocationChange: 'Location change',
 
@@ -42,15 +43,20 @@ export default {
   dataAction_ExportCSV: 'Export to CSV',
   dataAction_ExportGeoJson: 'Export to GeoJSON',
   dataAction_ExportItem: 'Export to Item',
+  dataAction_SetFilter: 'Set filter',
   messageAction_SelectDataRecord: 'Select data records',
   messageAction_FilterDataRecord: 'Filter data records',
+  action_addedData: 'Added: {label}',
 
   icon: 'Icon',
   small: 'Small',
   low: 'Low',
-  medium: 'Medium',
   high: 'High',
   large: 'Large',
+  short: 'Short',
+  medium: 'Medium',
+  long: 'Long',
+  full: 'Full',
 
   // concepts
   experience: 'Experience',
@@ -81,6 +87,7 @@ export default {
   invalidResourceExperience: 'This is not a supported item.',
   invalidResourceItem: 'Item does not exist or is inaccessible.',
   invalidResourcePermission: 'Sorry, you do not have permissions to access this application.',
+  invalidResourcePermissionForReadOnly: 'Sorry, you only have view permission to this application.',
   dataSourceCreateError: 'Data is inaccessible.',
   blockedByAdminErrorForApp: 'Your organization has blocked access to this application. Please contact your administrator for details.',
   blockedByAdminErrorForBuilder: 'Your organization has blocked access to Experience Builder. Please contact your administrator for details.',
@@ -91,6 +98,9 @@ export default {
   signInErrorDefault: 'Sorry, you do not have permission to access this resource.',
   signInErrorEnterCredential: 'Sorry, you do not have permission to access this resource. Click to enter credential.',
   signInErrorTryAgain: 'Sorry, you do not have permission to access this resource. Please try again.',
+  signInBannerListWarning: 'Sorry, you don’t have access to the resources from the following servers or organizations. Click Sign in to provide credential. Click Ignore to avoid loading the resource until you refresh the app.',
+  signInBannerIgnore: 'Ignore',
+  signInBannerIgnoreAll: 'Ignore all',
 
   //in upgrade
   upgradedFrom: 'Upgraded from previous config',
@@ -110,4 +120,26 @@ export default {
   publishedTemplateVersionRemind: 'The published version of this template is in higher version. Incompatible contents may not work.',
   draftTemplateVersionRemind: 'The draft version of this template is in higher version. Incompatible contents may not work.',
   draftExperienceVersionRemind: 'The draft version of this experience is in higher version. Incompatible contents may not work.',
+
+  // data source types
+  featureLayer: 'Feature Layer',
+  featureSet: 'Feature Set',
+  featureService: 'Feature Service',
+  mapService: 'Map Service',
+  groupLayer: 'Group Layer',
+  map: 'Map',
+  simpleLocal: 'Simple Local',
+  webMap: 'Web Map',
+  webScene: 'Web Scene',
+  csv: 'CSV',
+  sceneService: 'Scene Service',
+  sceneLayer: 'Scene Layer',
+  imageService: 'Image Service',
+  vectorTileService: 'Vector Tile Service',
+  wfsLayer: 'WFS Layer',
+  wmsLayer: 'WMS Layer',
+  wmtsLayer: 'WMTS Layer',
+  kml: 'KML',
+  geojson: 'GeoJSON',
+  outputView: '{dataSourceLabel} output view'
 }

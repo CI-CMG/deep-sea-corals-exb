@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"يعرض التنقل",tabStyle:"النقر فوق النمط",navBtnStyle:"نمط زر التنقل",stepTips:"يعمل فقط عند تعيين حركة الانتقال لعنصر واجهة مستخدم القسم المقابل."})}}}));
+System.register([],(function(t){return{execute:function(){t({_widgetLabel:"يعرض التنقل",tabStyle:"النقر فوق النمط",navBtnStyle:"نمط زر التنقل",stepTips:"يعمل فقط عند تعيين حركة الانتقال لعنصر واجهة مستخدم القسم المقابل.",paginationStyle:"نمط الحدود الفاصلة للصفحات"})}}}));

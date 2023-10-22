@@ -3,7 +3,7 @@
   "label": "Scientific Name Selection",
   "type": "widget",
   "version": "1.0.0",
-  "exbVersion": "1.9.0",
+  "exbVersion": "1.12.0",
   "author": "John Cartwright",
   "description": "select the scientific name from values in DataSource using MUI autocomplete widget",
   "copyright": "",

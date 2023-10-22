@@ -2,15 +2,17 @@
   "name": "navigator",
   "label": "Views Navigation",
   "type": "widget",
-  "version": "1.10.0",
-  "exbVersion": "1.10.0",
+  "version": "1.12.0",
+  "exbVersion": "1.12.0",
   "author": "Esri R&D Center Beijing",
   "description": "This is the widget used in developer guide",
   "copyright": "",
   "license": "http://www.apache.org/licenses/LICENSE-2.0",
   "defaultSize": {
     "height": 60,
-    "width": 380
+    "width": 380,
+    "autoHeight": true,
+    "autoWidth": true
   },
   "properties": {
     "hasSettingPage": true,
