@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { React, jsx, ActionSettingProps, ImmutableObject } from 'jimu-core'
+import { React, jsx, type ActionSettingProps, type ImmutableObject } from 'jimu-core'
 
 interface States {}
 interface Config {}

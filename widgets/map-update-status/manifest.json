@@ -4,7 +4,7 @@
   "type": "widget",
   "dependency": "jimu-arcgis",
   "version": "1.0.0",
-  "exbVersion": "1.6.0",
+  "exbVersion": "1.12.0",
   "author": "John Cartwright",
   "description": "reports when the map is in the process of updating",
   "copyright": "",

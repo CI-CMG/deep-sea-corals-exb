@@ -1,18 +1,18 @@
 /** @jsx jsx */
 import {
   React,
-  AllWidgetProps,
+  type AllWidgetProps,
   jsx,
-  QueriableDataSource,
+  type QueriableDataSource,
   DataSourceComponent,
-  SqlQueryParams,
+  type SqlQueryParams,
   MessageManager,
   DataSourceFilterChangeMessage
 } from 'jimu-core'
 import { useState, useEffect } from 'react'
 import TextField from '@mui/material/TextField'
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete'
-import { IMConfig } from '../config'
+import { type IMConfig } from '../config'
 
 /**
  * construct SQL clause based on name selection

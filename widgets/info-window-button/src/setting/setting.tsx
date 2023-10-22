@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { React, jsx } from 'jimu-core'
-import { AllWidgetSettingProps } from 'jimu-for-builder'
+import { type AllWidgetSettingProps } from 'jimu-for-builder'
 import { SettingSection, SettingRow } from 'jimu-ui/advanced/setting-components'
 import { TextInput } from 'jimu-ui'
-import { IMConfig } from '../config'
+import { type IMConfig } from '../config'
 
 export default function Setting (props: AllWidgetSettingProps<IMConfig>) {
   const onDialogIdChange = (evt: React.ChangeEvent<HTMLInputElement>) => {

@@ -2,8 +2,8 @@
 
 import { useEffect, useRef } from 'react'
 import { React, jsx } from 'jimu-core'
-import * as Plot from "@observablehq/plot"
-import { DSVRowArray } from 'd3'
+// import * as Plot from "@observablehq/plot"
+import { type DSVRowArray } from 'd3'
 import PieChart from './PieChart'
 import './PhylumChart.css'
 

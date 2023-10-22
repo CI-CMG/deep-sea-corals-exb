@@ -1,15 +1,15 @@
 import {
   AbstractMessageAction,
   MessageType,
-  Message,
+  type Message,
   getAppStore,
   appActions,
-  DataSourceFilterChangeMessage,
-  ExtentChangeMessage,
+  type DataSourceFilterChangeMessage,
+  type ExtentChangeMessage,
   DataSourceManager,
-  QueriableDataSource,
-  SqlQueryParams,
-  MessageDescription
+  type QueriableDataSource,
+  type SqlQueryParams,
+  type MessageDescription
 } from 'jimu-core'
 
 export default class FilterAction extends AbstractMessageAction {
@@ -39,7 +39,7 @@ export default class FilterAction extends AbstractMessageAction {
       case MessageType.DataSourceFilterChange:
         const dsFilterChangeMessage = message as DataSourceFilterChangeMessage
         // console.log('erddap-query: filter-change-action. got DataSourceFilterChangeMessage', dsFilterChangeMessage, actionConfig)
-        const ds = DataSourceManager.getInstance().getDataSource(dsFilterChangeMessage.dataSourceId) as QueriableDataSource
+        const ds = DataSourceManager.getInstance().getDataSource(dsFilterChangeMessage.dataSourceIds[0]) as QueriableDataSource
         const queryParams: SqlQueryParams = ds.getCurrentQueryParams()
         getAppStore().dispatch(appActions.widgetStatePropChange(this.widgetId, 'queryString', queryParams.where))
         break

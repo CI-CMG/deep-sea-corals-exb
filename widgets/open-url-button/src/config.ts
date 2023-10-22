@@ -1,6 +1,6 @@
-import { ImmutableObject } from 'jimu-core'
+import { type ImmutableObject } from 'jimu-core'
 
-export interface Config{
+export interface Config {
   url: string
   name: string
   tooltip: string

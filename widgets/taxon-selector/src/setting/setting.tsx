@@ -1,15 +1,12 @@
 /** @jsx jsx */
-import { React, jsx, DataSourceTypes, Immutable, UseDataSource } from 'jimu-core'
-import { AllWidgetSettingProps } from 'jimu-for-builder'
+import { React, jsx, DataSourceTypes, Immutable, type UseDataSource } from 'jimu-core'
+import { type AllWidgetSettingProps } from 'jimu-for-builder'
 import { DataSourceSelector } from 'jimu-ui/advanced/data-source-selector'
 // import {JimuMapViewSelector} from 'jimu-ui/advanced/setting-components'
-import {MapWidgetSelector} from 'jimu-ui/advanced/setting-components'
-import { SettingSection, SettingRow } from 'jimu-ui/advanced/setting-components'
-import { TextInput} from 'jimu-ui'
+import { MapWidgetSelector, SettingSection, SettingRow } from 'jimu-ui/advanced/setting-components'
+import { TextInput } from 'jimu-ui'
 
-
-
-export default function Setting (props: AllWidgetSettingProps<{}>) {
+export default function Setting (props: AllWidgetSettingProps<{ }>) {
   const supportedTypes = Immutable([DataSourceTypes.FeatureLayer])
 
   const onDataSourceChange = (useDataSources: UseDataSource[]) => {
@@ -18,23 +15,20 @@ export default function Setting (props: AllWidgetSettingProps<{}>) {
       useDataSources: useDataSources
     })
   }
-  
 
   const onMapSelected = (useMapWidgetIds: string[]) => {
     props.onSettingChange({
       id: props.id,
       useMapWidgetIds: useMapWidgetIds
-    });
+    })
   }
-  
 
-  const onServiceUrlChange = (value:string ) =>{
+  const onServiceUrlChange = (value: string) => {
     props.onSettingChange({
       id: props.id,
       config: props.config.set('pointLayerTitle', value)
-    });
+    })
   }
-
 
   return (
     <div className='widget-setting-demo p-3'>
@@ -52,13 +46,13 @@ export default function Setting (props: AllWidgetSettingProps<{}>) {
 
       <SettingSection title="Map to watch">
         <SettingRow>
-          <MapWidgetSelector onSelect={onMapSelected} useMapWidgetIds={props.useMapWidgetIds}/> 
+          <MapWidgetSelector onSelect={onMapSelected} useMapWidgetIds={props.useMapWidgetIds}/>
         </SettingRow>
       </SettingSection>
 
       <SettingSection title="FeatureService URL">
         <SettingRow>
-          <TextInput type="url" placeholder="service url" htmlSize={28} onAcceptValue={onServiceUrlChange}/> 
+          <TextInput type="url" placeholder="service url" htmlSize={28} onAcceptValue={onServiceUrlChange}/>
         </SettingRow>
       </SettingSection>
 

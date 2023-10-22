@@ -1,26 +1,19 @@
 /** @jsx jsx */
 import {
-  AllWidgetProps,
+  type AllWidgetProps,
   jsx,
-  IMState,
-  ReactRedux,
-  QueriableDataSource,
-  DataSource,
-  DataSourceComponent,
-  FeatureLayerQueryParams,
-  SqlQueryParams
+  type QueriableDataSource,
+  type DataSource,
+  DataSourceComponent
 } from 'jimu-core'
-import { JimuMapView, JimuMapViewComponent, FeatureLayerDataSource } from 'jimu-arcgis'
+import { type JimuMapView, JimuMapViewComponent, type FeatureLayerDataSource } from 'jimu-arcgis'
 import { useState, useEffect, useRef } from 'react'
 import webMercatorUtils from 'esri/geometry/support/webMercatorUtils'
 import Extent from 'esri/geometry/Extent'
-import { IMConfig } from '../config'
-import defaultMessages from './translations/default'
-import FeatureLayerView from 'esri/views/layers/FeatureLayerView'
-import FeatureLayer from 'esri/layers/FeatureLayer'
-import reactiveUtils, { watch } from 'esri/core/reactiveUtils'
-import MapView from 'esri/views/MapView'
-import LayerView from 'esri/views/layers/LayerView'
+import { type IMConfig } from '../config'
+import type FeatureLayerView from 'esri/views/layers/FeatureLayerView'
+import type FeatureLayer from 'esri/layers/FeatureLayer'
+import reactiveUtils from 'esri/core/reactiveUtils'
 import './widget.css'
 
 // const { useSelector } = ReactRedux
@@ -104,12 +97,12 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
         where: layer.definitionExpression
       },
       { signal: abortControllerRef.current.signal }).then(result => {
-        console.log(`serverSideFeatureCount complete in ${(new Date().getTime() - startTime.getTime()) / 1000} seconds`)
-        console.log('serverSideFeatureCount: ', result)
+        // console.log(`serverSideFeatureCount complete in ${(new Date().getTime() - startTime.getTime()) / 1000} seconds`)
+        // console.log('serverSideFeatureCount: ', result)
         setFilteredRecordCount(result)
       }).catch((reason) => {
         if (reason.name === 'AbortError') {
-          console.log('cancelled running request')
+          // console.log('cancelled running request')
         } else {
           console.error('serverSideFeatureCount failed: ', reason)
           setServerError(true)
@@ -128,8 +121,8 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
         geometry: mapView.extent
       }
       layerView.queryFeatureCount(q).then(count => {
-        console.log(`clientSideFeatureCount complete in ${(new Date().getTime() - startTime.getTime()) / 1000} seconds`)
-        console.log('clientSideFeatureCount: ', count)
+        // console.log(`clientSideFeatureCount complete in ${(new Date().getTime() - startTime.getTime()) / 1000} seconds`)
+        // console.log('clientSideFeatureCount: ', count)
         setFilteredRecordCount(count)
       }).catch((reason) => {
         console.log('clientSideFeatureCount error: ', reason)
@@ -169,7 +162,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
       serverSideFeatureCount()
       // dataSourceFeatureCount()
     } else {
-      // clientSideFeatureCount only produces results when scale threshold has 
+      // clientSideFeatureCount only produces results when scale threshold has
       // been crossed and points display
       clientSideFeatureCount()
     }
@@ -183,7 +176,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
   // console.log(`rendering filtered-record-count. extent: ${convertAndFormatCoordinates(widgetState?.extent)}, queryParams: ${widgetState?.queryParams}`)
 
   useEffect(() => {
-    if (!view) { return }
+    if (!view || !dataSource) { return }
     // used in server-side query
     mapLayerRef.current = view.view.map.layers.find(lyr => lyr.title === dataSource.layer.title) as FeatureLayer
 

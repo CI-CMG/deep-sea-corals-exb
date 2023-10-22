@@ -1,27 +1,30 @@
 import {
   AbstractMessageAction,
   MessageType,
-  Message,
+  type Message,
   getAppStore,
   appActions,
-  MessageDescription,
-  ExtentChangeMessage,
-  DataSourceFilterChangeMessage,
-  DataRecordsSelectionChangeMessage,
+  type MessageDescription,
+  // type ExtentChangeMessage,
+  type DataSourceFilterChangeMessage,
+  // type DataRecordsSelectionChangeMessage,
   DataSourceManager,
-  SqlQueryParams,
-  QueriableDataSource
+  type SqlQueryParams,
+  type QueriableDataSource
 } from 'jimu-core'
+
+// custom type guard to avoid TypeScript casting variable
+function isDataSourceFilterChangeMessageType (obj: Message): obj is DataSourceFilterChangeMessage {
+  return (obj as DataSourceFilterChangeMessage).type === 'DATA_SOURCE_FILTER_CHANGE'
+}
 
 export default class UpdateLayerAction extends AbstractMessageAction {
   filterMessageDescription (messageDescription: MessageDescription): boolean {
-    // TODO limit to DataSourceFilterChangeMessage, ExtentChangeMessage, DataRecordsSelectionChange
-    return true
+    return messageDescription.messageType === MessageType.DataSourceFilterChange
   }
 
   filterMessage (message: Message): boolean {
-    // TODO limit to DataSourceFilterChangeMessage, ExtentChangeMessage, DataRecordsSelectionChange
-    return true
+    return message.type === MessageType.DataSourceFilterChange
   }
 
   //set action setting uri
@@ -32,18 +35,18 @@ export default class UpdateLayerAction extends AbstractMessageAction {
   onExecute (message: Message, actionConfig?: any): Promise<boolean> | boolean {
     switch (message.type) {
       case MessageType.DataSourceFilterChange:
-        const dsFilterChangeMessage = message as DataSourceFilterChangeMessage
-        // console.log('MessageHandlerAction: got DataSourceFilterChangeMessage', message, actionConfig)
-
-        // construct DataSource and get the query parameters
-        const dataSource = DataSourceManager.getInstance().getDataSource(dsFilterChangeMessage.dataSourceId) as QueriableDataSource
+        const dsFilterChangeMessage = isDataSourceFilterChangeMessageType(message) ? message : undefined
+        const dataSource = DataSourceManager.getInstance().getDataSource(dsFilterChangeMessage.dataSourceIds[0]) as QueriableDataSource
         const queryParams: SqlQueryParams = dataSource.getCurrentQueryParams()
+        console.log('new: ', dataSource)
+        // triggers widget render by updating widget state
         getAppStore().dispatch(appActions.widgetStatePropChange(this.widgetId, 'queryParams', queryParams.where))
+        // getAppStore().dispatch(appActions.widgetStatePropChange(this.widgetId, 'filterChangeMessage', dsFilterChangeMessage))
         break
 
       case MessageType.ExtentChange:
         // console.log('MessageHandlerAction: got ExtentChangeMessage', message, actionConfig)
-        const extentChangeMessage = message as ExtentChangeMessage
+        // const extentChangeMessage = message as ExtentChangeMessage
         //
         // until we start drawing tiles just for the current view extent, no need to update and trigger a re-render
         //
@@ -64,7 +67,7 @@ export default class UpdateLayerAction extends AbstractMessageAction {
       // but currently return empty array for selected feature on client-side layer
       case MessageType.DataRecordsSelectionChange:
         // console.log('MessageHandlerAction: got DataRecordsSelectionChangeMessage', message, actionConfig)
-        const dataRecordsChangeMessage = message as DataRecordsSelectionChangeMessage
+        // const dataRecordsChangeMessage = message as DataRecordsSelectionChangeMessage
         break
     }
 

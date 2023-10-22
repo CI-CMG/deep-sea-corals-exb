@@ -1,9 +1,8 @@
-import { AllWidgetProps, React, jimuHistory } from 'jimu-core'
+import { type AllWidgetProps, React } from 'jimu-core'
 import { Tooltip } from 'jimu-ui'
 import { useRef } from 'react'
-import { IMConfig } from '../config'
-import defaultMessage from './translations/default'
-import { CalciteButton, CalciteIcon, CalciteTooltip } from 'calcite-components'
+import { type IMConfig } from '../config'
+import { CalciteButton } from 'calcite-components'
 import './widget.css'
 export default function Widget (props: AllWidgetProps<IMConfig>) {
   const buttonRef = useRef()

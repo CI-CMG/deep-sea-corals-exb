@@ -1,9 +1,14 @@
 /** @jsx jsx */
-import { AllWidgetProps, jsx, DataSourceComponent, SqlQueryParams, QueriableDataSource, DataSource, MessageManager, DataSourceFilterChangeMessage } from "jimu-core"
+import {
+  type AllWidgetProps,
+  jsx, DataSourceComponent,
+  type SqlQueryParams,
+  type QueriableDataSource, type DataSource, MessageManager, DataSourceFilterChangeMessage
+} from 'jimu-core'
 import React, { useState, useEffect } from 'react'
-import { JimuMapView, JimuMapViewComponent } from 'jimu-arcgis'
-import { Select, Option, Button, defaultMessages as jimuUIMessages } from 'jimu-ui'
-import { IMConfig } from '../config'
+import { type JimuMapView, JimuMapViewComponent } from 'jimu-arcgis'
+import { Select, Option, Button } from 'jimu-ui'
+import { type IMConfig } from '../config'
 
 export default function Widget (props: AllWidgetProps<IMConfig>) {
   const [dataSource, setDataSource] = useState(null)
@@ -242,7 +247,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
         onChange={phylumSelectHandler}
         placeholder="Select a Phylum..."
         style={{ padding: '10px', width: 200 }}
-        ariaLabel="Select a Phylum"
+        ariaLabel='Select a Phylum'
         menuRole="menu"
         menuItemCheckMode="singleCheck"
         disabled={!phylumList.length}

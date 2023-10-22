@@ -2,8 +2,8 @@
 import {
   React,
   jsx,
-  ActionSettingProps,
-  ImmutableObject
+  type ActionSettingProps,
+  type ImmutableObject
 } from 'jimu-core'
 
 interface States {}

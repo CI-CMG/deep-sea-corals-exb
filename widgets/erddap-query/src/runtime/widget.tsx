@@ -1,17 +1,16 @@
 /** @jsx jsx */
 import {
-  AllWidgetProps,
+  type AllWidgetProps,
   jsx,
-  IMState,
+  type IMState,
   ReactRedux
 } from 'jimu-core'
 import { Button, Icon, Tooltip } from 'jimu-ui'
 import Extent from 'esri/geometry/Extent'
 import SpatialReference from 'esri/geometry/SpatialReference'
 import webMercatorUtils from 'esri/geometry/support/webMercatorUtils'
-import defaultMessages from './translations/default'
 // import { Label, Radio, defaultMessages as jimuUIMessages } from 'jimu-ui'
-import { IMConfig } from '../config'
+import { type IMConfig } from '../config'
 
 const { useSelector } = ReactRedux
 

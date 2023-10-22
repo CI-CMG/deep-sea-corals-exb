@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import { React, jsx, DataSourceTypes, Immutable, UseDataSource } from 'jimu-core'
-import { AllWidgetSettingProps } from 'jimu-for-builder'
+import { React, jsx, DataSourceTypes, Immutable, type UseDataSource } from 'jimu-core'
+import { type AllWidgetSettingProps } from 'jimu-for-builder'
 import { DataSourceSelector } from 'jimu-ui/advanced/data-source-selector'
 import { SettingSection, SettingRow } from 'jimu-ui/advanced/setting-components'
 

@@ -18,26 +18,25 @@
  * to no longer be drawn
  */
 import {
-  AllWidgetProps,
+  type AllWidgetProps,
   jsx,
-  IMState,
+  type IMState,
   ReactRedux,
   appActions,
   getAppStore,
   jimuHistory
 } from 'jimu-core'
-import { JimuMapView, JimuMapViewComponent } from 'jimu-arcgis'
+import { type JimuMapView, JimuMapViewComponent } from 'jimu-arcgis'
 import GraphicsLayer from 'esri/layers/GraphicsLayer'
-import FeatureLayer from 'esri/layers/FeatureLayer'
-import Graphic from 'esri/Graphic'
-import MapView from 'esri/views/MapView'
+import type FeatureLayer from 'esri/layers/FeatureLayer'
+import type Graphic from 'esri/Graphic'
+import type MapView from 'esri/views/MapView'
 import PopupTemplate from 'esri/PopupTemplate'
 // import TileLayer from 'esri/layers/TileLayer'
-import * as reactiveUtils from 'esri/core/reactiveUtils'
+// import * as reactiveUtils from 'esri/core/reactiveUtils'
 import { useState, useEffect, useRef } from 'react'
 import PhylumChart from './PhylumChart'
-import { IMConfig } from '../config'
-import defaultMessages from './translations/default'
+import { type IMConfig } from '../config'
 import {
   getGraphics,
   getDepthRange,
@@ -85,8 +84,9 @@ interface SpeciesCount {
 }
 
 export default function H3Layer (props: AllWidgetProps<IMConfig>) {
+  // console.log('inside h3-layer')
   const graphicsLayerRef = useRef<GraphicsLayer>()
-  const [selectedGraphic, setSelectedGraphic] = useState<Graphic|null>(null)
+  const [selectedGraphic, setSelectedGraphic] = useState<Graphic | null>(null)
   const [hexbinSummary, setHexbinSummary] = useState<HexbinSummary>()
   const [serverError, setServerError] = useState(false)
   const queryParamsRef = useRef(null)
@@ -263,17 +263,17 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
       }
 
       jmv.view.on('click', (evt) => {
-        console.log('mapclick detected: ', evt)
+        // console.log('mapclick detected: ', evt)
         const startTimeForPopup = new Date()
         // TODO this is where flow stops when it fails to handle map click
         jmv.view
-        .hitTest(evt, hitTestOptions)
-        .then((response) => mapClickHandler(response))
-        .finally(() => {
-          const elapsedMillisecsForPopup = new Date().getTime() - startTimeForPopup.getTime()
-          console.log(`popup completed in ${elapsedMillisecsForPopup / 1000} seconds`)
-        })
-/*
+          .hitTest(evt, hitTestOptions)
+          .then((response) => { mapClickHandler(response) })
+          .finally(() => {
+            const elapsedMillisecsForPopup = new Date().getTime() - startTimeForPopup.getTime()
+            // console.log(`popup completed in ${elapsedMillisecsForPopup / 1000} seconds`)
+          })
+      /*
         // attempt to delay execution of hitTest on points, hexbin layers until webmap popup completes
         jmv.view.popup.fetchFeatures(evt).then((response) => {
           // default to empty array to keep TypeScript happy
@@ -295,7 +295,7 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
           .finally(() => console.log('end promisesPerLayerView'))
         })
         .finally(() => console.log('end popup.fetchFeatures')) // end popup.fetchFeatures
-  */
+      */
       }) // end view on click
     }) // end MapView#when
   } // end activeViewChangeHandler
@@ -398,7 +398,7 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
       )
     }
   }
-
+  // console.log('leaving h3-layer')
   return (
     <div>
       {h3 ? formatHexbinSummary() : <p>Please select a hexbin...</p>}

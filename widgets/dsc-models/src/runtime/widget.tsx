@@ -1,17 +1,17 @@
 /** @jsx jsx */
 
 import {
-  AllWidgetProps,
+  type AllWidgetProps,
   jsx
 } from 'jimu-core'
-import { JimuMapView, JimuMapViewComponent } from 'jimu-arcgis'
-import { CalciteSelect, CalciteOption, CalciteOptionGroup } from 'calcite-components'
+import { type JimuMapView, JimuMapViewComponent } from 'jimu-arcgis'
+// import { CalciteSelect, CalciteOption, CalciteOptionGroup } from 'calcite-components'
 // import defaultMessages from './translations/default'
 // import { defaultMessages as jimuUIMessages } from 'jimu-ui'
-import React, { useState, useEffect, useRef } from 'react'
-import { IMConfig } from '../config'
-import MapImageLayer from 'esri/layers/MapImageLayer'
-import GraphicsLayer from 'esri/layers/GraphicsLayer'
+import React, { useState, useEffect } from 'react'
+import { type IMConfig } from '../config'
+import type MapImageLayer from 'esri/layers/MapImageLayer'
+import type GraphicsLayer from 'esri/layers/GraphicsLayer'
 import { Button, Select, Option, Checkbox } from 'jimu-ui'
 
 interface ModelOption {
@@ -21,12 +21,13 @@ interface ModelOption {
 }
 
 export default function Widget (props: AllWidgetProps<IMConfig>) {
+  // console.log('inside dsc-models...')
   const [view, setView] = useState<JimuMapView>(null)
   const [checked, setChecked] = React.useState(true)
   const [optionsList, setOptionsList] = useState<ModelOption[]>([])
   const [selectedLayerId, setSelectedLayerId] = useState(null)
   const [mapLayer, setMapLayer] = useState<MapImageLayer>()
-  const graphicsLayerRef = useRef<GraphicsLayer>()
+  // const graphicsLayerRef = useRef<GraphicsLayer>()
 
   // TODO should sync of map w/ Select be in useEffect? if so, why doesn't the following work?
   // useEffect(() => {
@@ -52,30 +53,38 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
     }
   }, [view, selectedLayerId, checked])
 
-  // runs once
-  const activeViewChangeHandler = (jmv: JimuMapView) => {
-    if (!jmv) {
-      console.warn('no MapView')
-      return
-    }
-    setView(jmv)
-    const modelLayerView = jmv.view.layerViews.find(it => it.layer.title === props.config.modelsLayerName && it.layer.type === 'map-image')
-    if (!modelLayerView) { console.warn('DSC Model layer not found!') }
-    const modelLayer = modelLayerView.layer as MapImageLayer
-    setMapLayer(modelLayer)
-
+  // called once and used to initialize the models layer and build select list
+  function initModelsLayer (layer: MapImageLayer) {
     // hack to ensure all models layers are initially off
-    modelLayer.allSublayers.forEach(it => {
+    layer.allSublayers.forEach(it => {
       if (!it.sublayers) {
         it.visible = false
       }
     })
-
-    const alllayers = modelLayer.allSublayers.map(sublayer => {
+    const alllayers = layer.allSublayers.map(sublayer => {
       return { id: sublayer.id, label: sublayer.title, parent: !!sublayer.sublayers }
     })
     alllayers.sort((a, b) => a.id - b.id)
     setOptionsList(alllayers.toArray())
+  }
+
+  const activeViewChangeHandler = (jmv: JimuMapView) => {
+    if (!jmv) {
+      // console.warn('no MapView')
+      return
+    }
+    setView(jmv)
+    const modelLayer = jmv.view.map.layers.find(lyr => lyr.title === props.config.modelsLayerName && lyr.type === 'map-image') as MapImageLayer
+    setMapLayer(modelLayer)
+    if (!modelLayer) {
+      console.warn('DSC Model layer not found!')
+      return
+    }
+
+    jmv.view.whenLayerView(modelLayer).then(function (modelLayerView) {
+      // now we have access to the layerView, an object representing the layer in the view
+      initModelsLayer(modelLayer)
+    })
   }
 
   function hideAllButtonHandler (e: React.MouseEvent<HTMLElement>) {
@@ -87,8 +96,8 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
     setSelectedLayerId(null)
   }
 
+  // WARNING: for this to work the web map has to have all the group layers visible!
   function modelLayerChangeHandler (e: React.ChangeEvent<HTMLSelectElement>) {
-    console.log('inside modelLayerChangeHandler with ', e.target.value)
     const selectedId = parseInt(e.target.value)
     setSelectedLayerId(selectedId)
     mapLayer.allSublayers.forEach(it => {

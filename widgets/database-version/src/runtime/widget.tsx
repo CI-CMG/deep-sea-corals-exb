@@ -1,7 +1,7 @@
 /** @jsx jsx */
-import { AllWidgetProps, jsx } from 'jimu-core'
+import { React, type AllWidgetProps, jsx } from 'jimu-core'
+import { type IMConfig } from '../config'
 import { useState, useEffect } from 'react'
-import { IMConfig } from '../config'
 import './widget.css'
 
 export default function (props: AllWidgetProps<IMConfig>) {

@@ -1,9 +1,9 @@
 /** @jsx jsx */
-import { React, jsx, Immutable, DataSourceTypes, UseDataSource } from 'jimu-core'
-import { AllWidgetSettingProps } from 'jimu-for-builder'
+import { React, jsx, Immutable, DataSourceTypes, type UseDataSource } from 'jimu-core'
+import { type AllWidgetSettingProps } from 'jimu-for-builder'
 import { DataSourceSelector } from 'jimu-ui/advanced/data-source-selector'
 import { MapWidgetSelector, SettingSection, SettingRow } from 'jimu-ui/advanced/setting-components'
-import { IMConfig } from '../config'
+import { type IMConfig } from '../config'
 
 export default function Setting (props: AllWidgetSettingProps<IMConfig>) {
   const supportedTypes = Immutable([DataSourceTypes.FeatureLayer])

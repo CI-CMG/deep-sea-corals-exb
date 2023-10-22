@@ -1,14 +1,12 @@
 import {
   AbstractMessageAction,
   MessageType,
-  Message,
-  getAppStore,
-  appActions,
-  MessageDescription,
-  ExtentChangeMessage
+  type Message,
+  type MessageDescription
+  // type ExtentChangeMessage
 } from 'jimu-core'
-import Extent from 'esri/geometry/Extent'
-import webMercatorUtils from 'esri/geometry/support/webMercatorUtils'
+import type Extent from 'esri/geometry/Extent'
+// import webMercatorUtils from 'esri/geometry/support/webMercatorUtils'
 
 export default class ExtentChangeAction extends AbstractMessageAction {
   // new in v1.9, replaces filterMessageDescription. used in builder
@@ -29,7 +27,7 @@ export default class ExtentChangeAction extends AbstractMessageAction {
     switch (message.type) {
       case MessageType.ExtentChange:
         // console.log('ExtentChangeAction: got ExtentChangeMessage', message, actionConfig)
-        const extentChangeMessage = message as ExtentChangeMessage
+        // const extentChangeMessage = message as ExtentChangeMessage
         // trigger an update for the widget when Extent is different from previous. Must be a plain JavaScript Object (see https://developers.arcgis.com/experience-builder/guide/widget-communication/)
         // getAppStore().dispatch(appActions.widgetStatePropChange(this.widgetId, 'extent', this.formatExtent(extentChangeMessage.extent)))
 
