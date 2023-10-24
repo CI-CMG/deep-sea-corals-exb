@@ -1,43 +1,33 @@
 #!/bin/bash
-
 # "npm audit fix" returns a non-0 exit code if any vulnerability cannot be addressed automatically
 # "set -e" caused build to fail in this case 
-set -x
-
-# any value in BUILD_NUMBER triggers some problem in Esri's webpack such that the built custom widgets 
-# do not end up in /client/dist/widgets/ where they should
+#set -ex
+# BUILD_NUMBER variable causes Esri webpack problems
 export BUILD_NUMBER=
-
 # install Node.js
 DOWNLOAD_URL=https://nodejs.org/dist/${NODE_VERSION}/node-${NODE_VERSION}-linux-x64.tar.gz
 wget --quiet -O - ${DOWNLOAD_URL} | tar xz
 export PATH="${WORKSPACE}/node-${NODE_VERSION}-linux-x64/bin":${PATH}
 echo installed Node.js version `node --version`
-
 # download ArcGIS Experience Builder Developer Edition
 # ARCGIS_LIB_DOWNLOADER_USERNAME, ARCGIS_LIB_DOWNLOADER_PASSWORD env vars set via Jenkins credentials
 npx arcgis-lib-downloader@latest -p arcgis-experience-builder -v ${EXB_VERSION}
 unzip -q arcgis-experience-builder-${EXB_VERSION}.zip -d arcgis-experience-builder-${EXB_VERSION}
-
 # Copy Custom Widgets
 cp -r widgets/* arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/client/your-extensions/widgets
-
 # Create App directory
 mkdir -p arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/server/public/apps
 cp -r apps/* arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/server/public/apps
-  
-# NPM install client folder
+  # NPM install client folder
 cd arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/client
 npm ci
 npm audit fix
 cd $WORKSPACE
-
 # NPM install in server folder
 cd arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/server
 npm ci
 npm audit fix
 cd $WORKSPACE
-
 # install any widget dependencies
 cd arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/client/your-extensions/widgets
 for d in `find . -mindepth 1 -maxdepth 1 -type d`; do
@@ -70,4 +60,4 @@ if [ -f dist/app.zip ]; then
 else
   echo "ERROR: artifact app.zip not found"
   exit 1
-fi
+fi 
