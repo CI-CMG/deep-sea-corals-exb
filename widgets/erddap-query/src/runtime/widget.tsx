@@ -142,7 +142,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
   }
 
   function copyUrlBtn () {
-    navigator.clipboard.writeText(erddapUrl).then(() => console.debug('copied to clipboard'))
+    navigator.clipboard.writeText(erddapUrl).then(() => { console.debug('copied to clipboard') })
   }
 
   return (

@@ -1,8 +1,9 @@
+/* eslint-disable no-prototype-builtins */
 /** @jsx jsx */
 /**
   Licensing
 
-  Copyright 2021 Esri
+  Copyright 2022 Esri
 
   Licensed under the Apache License, Version 2.0 (the "License"); You
   may not use this file except in compliance with the License. You may
@@ -91,7 +92,7 @@ export default function (props: AllWidgetProps<IMConfig>) {
 
   return (
     <div className="widget-get-map-coordinates jimu-widget m-2">
-      { Object.prototype.hasOwnProperty.call(props, 'useMapWidgetIds') &&
+      {props.hasOwnProperty('useMapWidgetIds') &&
         props.useMapWidgetIds &&
         props.useMapWidgetIds.length === 1 && (
           <JimuMapViewComponent
