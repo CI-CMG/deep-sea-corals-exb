@@ -2,14 +2,18 @@ import {
   AbstractMessageAction,
   MessageType,
   type Message,
-  type MessageDescription
-  // type ExtentChangeMessage
+  getAppStore,
+  appActions,
+  type MessageDescription,
+  type ExtentChangeMessage
 } from 'jimu-core'
-import type Extent from 'esri/geometry/Extent'
-// import webMercatorUtils from 'esri/geometry/support/webMercatorUtils'
+
+// custom type guard to avoid TypeScript casting variable
+function isExtentChangeMessageType (obj: Message): obj is ExtentChangeMessage {
+  return (obj as ExtentChangeMessage).type === 'EXTENT_CHANGE'
+}
 
 export default class ExtentChangeAction extends AbstractMessageAction {
-  // new in v1.9, replaces filterMessageDescription. used in builder
   filterMessageDescription (messageDescription: MessageDescription): boolean {
     return messageDescription.messageType === MessageType.ExtentChange
   }
@@ -18,7 +22,6 @@ export default class ExtentChangeAction extends AbstractMessageAction {
     return message.type === MessageType.ExtentChange
   }
 
-  //set action setting uri
   getSettingComponentUri (messageType: MessageType, messageWidgetId?: string): string {
     return 'actions/extent-change-action-setting'
   }
@@ -27,32 +30,25 @@ export default class ExtentChangeAction extends AbstractMessageAction {
     switch (message.type) {
       case MessageType.ExtentChange:
         // console.log('ExtentChangeAction: got ExtentChangeMessage', message, actionConfig)
-        // const extentChangeMessage = message as ExtentChangeMessage
-        // trigger an update for the widget when Extent is different from previous. Must be a plain JavaScript Object (see https://developers.arcgis.com/experience-builder/guide/widget-communication/)
-        // getAppStore().dispatch(appActions.widgetStatePropChange(this.widgetId, 'extent', this.formatExtent(extentChangeMessage.extent)))
+        const extentChangeMessage = isExtentChangeMessageType(message) ? message : undefined
+        // trigger an update for the widget when Extent is different from previous.
+        // Must be a plain JavaScript Object (see https://developers.arcgis.com/experience-builder/guide/widget-communication/)
+        // e.g. Extent object nested in message does not get set as Extent object in widgetState
+        // getAppStore().dispatch(appActions.widgetStatePropChange(this.widgetId, 'extentChangeMessage', extentChangeMessage))
 
-        // getAppStore().dispatch(appActions.widgetStatePropChange(
-        //   this.widgetId,
-        //   'extent',
-        //   {
-        //     xmin: extentChangeMessage.extent.xmin,
-        //     ymin: extentChangeMessage.extent.ymin,
-        //     xmax: extentChangeMessage.extent.xmax,
-        //     ymax: extentChangeMessage.extent.ymax
-        //   })
-        // )
+        getAppStore().dispatch(appActions.widgetStatePropChange(
+          this.widgetId,
+          'extent',
+          {
+            xmin: extentChangeMessage.extent.xmin,
+            ymin: extentChangeMessage.extent.ymin,
+            xmax: extentChangeMessage.extent.xmax,
+            ymax: extentChangeMessage.extent.ymax
+          })
+        )
         break
     }
 
     return true
-  }
-
-  formatExtent (extent: Extent): string {
-    if (!extent) { return 'extent not available' }
-    // VSCode does not recognize isLinear argument is optional and defaults to false
-    // TODO calling webMercatorToGeographic() causing "Load module error. TypeError: window.require is not a function"
-    // const geoExtent = webMercatorUtils.webMercatorToGeographic(extent, false) as Extent
-    // return `${geoExtent.xmin}, ${geoExtent.ymin}, ${geoExtent.xmax}, ${geoExtent.ymax}`
-    return `${extent.xmin}, ${extent.ymin}, ${extent.xmax}, ${extent.ymax}`
   }
 }
