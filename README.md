@@ -6,7 +6,7 @@ This repo contains the configuration used by the Experience Builder platform as 
 
 Note that some of the custom widgets have their own dependencies that must be install via ```npm ci```.
 
-There is a [utils](utils) directory containing scripts used to prepare the DSCRTP database for use with the application
+There is a [utils](utils) directory containing scripts used to prepare the DSCRTP database for use with the application.
 
 ## CI/CD
 
