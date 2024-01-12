@@ -36,7 +36,8 @@ export default class UpdateLayerAction extends AbstractMessageAction {
     switch (message.type) {
       case MessageType.DataSourceFilterChange:
         const dsFilterChangeMessage = isDataSourceFilterChangeMessageType(message) ? message : undefined
-        const dataSource = DataSourceManager.getInstance().getDataSource(dsFilterChangeMessage.dataSourceIds[0]) as QueriableDataSource
+        console.log({dsFilterChangeMessage})
+        const dataSource = DataSourceManager.getInstance().getDataSource(dsFilterChangeMessage.dataSourceIds) as QueriableDataSource
         const queryParams: SqlQueryParams = dataSource.getCurrentQueryParams()
         console.log('new: ', dataSource)
         // triggers widget render by updating widget state

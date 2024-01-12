@@ -15,12 +15,13 @@ import {
 function isDataSourceFilterChangeMessageType (obj: Message): obj is DataSourceFilterChangeMessage {
   return (obj as DataSourceFilterChangeMessage).type === 'DATA_SOURCE_FILTER_CHANGE'
 }
+
 export default class FilterChangeAction extends AbstractMessageAction {
-  filterMessageDescription (messageDescription: MessageDescription): boolean {
+  filterMessageDescription (messageDescription: MessageDescription) {
     return messageDescription.messageType === MessageType.DataSourceFilterChange
   }
 
-  filterMessage (message: Message): boolean {
+  filterMessage (message: Message) {
     return message.type === MessageType.DataSourceFilterChange
   }
 
@@ -29,7 +30,7 @@ export default class FilterChangeAction extends AbstractMessageAction {
     return 'actions/filter-change-action-setting'
   }
 
-  onExecute (message: Message, actionConfig?: any): Promise<boolean> | boolean {
+  onExecute (message: Message, actionConfig?: unknown): Promise<boolean> | boolean {
     switch (message.type) {
       case MessageType.DataSourceFilterChange:
         const dsFilterChangeMessage = isDataSourceFilterChangeMessageType(message) ? message : undefined

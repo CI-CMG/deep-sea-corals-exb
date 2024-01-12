@@ -15,7 +15,7 @@ export default function Setting (props: AllWidgetSettingProps<{}>) {
   }
 
   return (
-    <div className='widget-setting-demo p-3'>
+    <div className='scientific-name-autocomplete p-3'>
       <SettingSection title="DataSource to filter">
         <SettingRow>
           <DataSourceSelector

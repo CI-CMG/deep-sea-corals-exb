@@ -28,8 +28,8 @@ function getQuery (selectedName): SqlQueryParams {
 
 export default function (props: AllWidgetProps<IMConfig>) {
   const [names, setNames] = useState<string[]>([])
-  const [selectedName, setSelectedName] = useState<string|null>(null)
-  const [dataSource, setDataSource] = useState<QueriableDataSource|null>(null)
+  const [selectedName, setSelectedName] = useState<string | null>(null)
+  const [dataSource, setDataSource] = useState<QueriableDataSource | null>(null)
 
   useEffect(() => {
     fetch(props.config.scientificNamesUrl).then()
@@ -63,7 +63,7 @@ export default function (props: AllWidgetProps<IMConfig>) {
     }
     const q = getQuery(selectedName)
     dataSource?.updateQueryParams(q, props.id)
-    MessageManager.getInstance().publishMessage(new DataSourceFilterChangeMessage(props.id, dataSource.id))
+    MessageManager.getInstance().publishMessage(new DataSourceFilterChangeMessage(props.id, [dataSource.id]))
   }, [selectedName, dataSource, props.id])
 
   function nameChangeHandler (evt: React.MouseEvent<HTMLButtonElement>, value: string) {

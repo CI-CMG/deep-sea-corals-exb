@@ -3,14 +3,28 @@ import {
   type AllWidgetProps,
   jsx,
   type IMState,
-  ReactRedux
+  ReactRedux,
+  type DataSource,
+  DataSourceComponent
 } from 'jimu-core'
+import {
+  type JimuMapView,
+  // type JimuFeatureLayerView,
+  JimuMapViewComponent,
+  type FeatureLayerDataSource
+  // type MapDataSource
+} from 'jimu-arcgis'
 import { Button, Icon, Tooltip } from 'jimu-ui'
-import Extent from 'esri/geometry/Extent'
-import SpatialReference from 'esri/geometry/SpatialReference'
+import type Extent from 'esri/geometry/Extent'
+import type MapView from '@arcgis/core/views/MapView'
+// import SpatialReference from 'esri/geometry/SpatialReference'
 import webMercatorUtils from 'esri/geometry/support/webMercatorUtils'
+import reactiveUtils from 'esri/core/reactiveUtils'
+import { useEffect, useState, useRef } from 'react'
+
 // import { Label, Radio, defaultMessages as jimuUIMessages } from 'jimu-ui'
 import { type IMConfig } from '../config'
+import { URLSearchParams } from 'url'
 
 const { useSelector } = ReactRedux
 
@@ -21,132 +35,195 @@ interface CoordsObject {
   ymax: number
 }
 
-export default function Widget (props: AllWidgetProps<IMConfig>) {
-  //TODO get URL from Settings panel
-  const CSVfileUrl = 'https://noaa.maps.arcgis.com/home/item.html?id=f465861aecac410980a7c601cfec7850'
+function findOceanNameByCode (code: string): string {
+  const values = {
+    0: 'Arctic',
+    1: 'Indian',
+    2: 'North Atlantic',
+    3: 'North Pacific',
+    4: 'South Atlantic',
+    5: 'South Pacific',
+    6: 'Southern'
+  }
+  return values[code] ? values[code] : ''
+}
 
-  // get state for this widget
+function findFisheryRegionByCode (code: string): string {
+  const values = {
+    0: 'NA',
+    1: 'Caribbean',
+    2: 'Gulf of Mexico',
+    3: 'Mid-Atlantic',
+    4: 'New England',
+    5: 'Nort Pacific',
+    6: 'Pacific',
+    7: 'South Atlantic',
+    8: 'Western Pacific'
+  }
+  return values[code] ? values[code] : ''
+}
+
+// user-defined type guard using type predicate
+function isFeatureLayerDataSourceType (obj: DataSource): obj is FeatureLayerDataSource {
+  return (obj as FeatureLayerDataSource).type === 'FEATURE_LAYER'
+}
+
+// mutates the provided array
+function convertSqlToErddapParams (sql: string, searchParams: string[]) {
+  // console.log('inside convertSqlToErddapParams with ', sql)
+
+  // manipulate SQL string into list of 3-element lists (field, operator, value)
+  const clauses = sql
+    .replace(/\(+?/g, '') // replace left parens
+    .replace(/\)+?/g, '') // replace right parens
+    .replace(/LOWER/g, '') // remove the LOWER() function
+    .split(/ and /i)
+    .map(elem => {
+      const t = elem.split(/\s+/)
+      // construct 3-element array with field, operator, value. Value may have multiple words which need
+      // to be rejoined and replace single quotes with double quotes
+      return t.slice(0, 2).concat(t.slice(2).join(' ').replace(/'/g, '"'))
+    })
+  // console.log(clauses)
+
+  // build key/value pairs for specified parameters
+  clauses.filter(elem => elem[0].toLowerCase() === 'vernacularnamecategory').forEach(elem => {
+    searchParams.push(`VernacularNameCategory=${elem[2]}`)
+  })
+
+  clauses.filter(elem => elem[0].toLowerCase() === 'imageurl').forEach(elem => {
+    searchParams.push('ImageURL!="NA"')
+  })
+
+  clauses.filter(elem => elem[0].toLowerCase() === 'depthinmeters').forEach(elem => {
+    searchParams.push(`DepthInMeters ${elem[1]} ${elem[2]}`)
+  })
+
+  clauses.filter(elem => elem[0].toLowerCase() === 'scientificname').forEach(elem => {
+    searchParams.push(`ScientificName=${elem[2]}`)
+  })
+
+  clauses.filter(elem => elem[0].toLowerCase() === 'observationyear').forEach(elem => {
+    searchParams.push(`ObservationYear ${elem[1]} ${elem[2]}`)
+  })
+
+  clauses.filter(elem => elem[0].toLowerCase() === 'fishcouncilregion').forEach(elem => {
+    searchParams.push(`FishCouncilRegion="${findFisheryRegionByCode(elem[2])}"`)
+  })
+
+  clauses.filter(elem => elem[0].toLowerCase() === 'ocean').forEach(elem => {
+    searchParams.push(`Ocean="${findOceanNameByCode(elem[2])}"`)
+  })
+
+  clauses.filter(elem => elem[0].toLowerCase() === 'phylum').forEach(elem => {
+    searchParams.push(`Phylum=${elem[2]}`)
+  })
+
+  clauses.filter(elem => elem[0].toLowerCase() === 'class').forEach(elem => {
+    searchParams.push(`Class=${elem[2]}`)
+  })
+
+  // Order is a reserved word and renamed in the hosted feature layer
+  clauses.filter(elem => elem[0].toLowerCase() === 'order_').forEach(elem => {
+    searchParams.push(`Order=${elem[2]}`)
+  })
+
+  clauses.filter(elem => elem[0].toLowerCase() === 'family').forEach(elem => {
+    searchParams.push(`Family=${elem[2]}`)
+  })
+
+  clauses.filter(elem => elem[0].toLowerCase() === 'genus').forEach(elem => {
+    searchParams.push(`Genus=${elem[2]}`)
+  })
+}
+
+function formatExtent (mercExtent: Extent) {
+  const geoExtent = webMercatorUtils.webMercatorToGeographic(mercExtent, false) as Extent
+  return `${geoExtent.xmin.toFixed(3)}, ${geoExtent.ymin.toFixed(3)}, ${geoExtent.xmax.toFixed(3)}, ${geoExtent.ymax.toFixed(3)}`
+}
+
+export default function Widget (props: AllWidgetProps<IMConfig>) {
+  console.log('rendering erddap-query...')
+  const [activeDs, setActiveDs] = useState<FeatureLayerDataSource>()
+  const [geographicMapExtent, setGeographicMapExtent] = useState<Extent>()
+  const [mapView, setMapView] = useState<MapView>()
+  const validBboxRef = useRef(false)
+
+  // get state for this widget.
   const widgetState = useSelector((state: IMState) => {
     return state.widgetsState[props.widgetId]
   })
 
-  const extent = convertExtentToGeographic(widgetState.extent)
-  // flag for antimeridian-crossing extent
-  const validBbox = extent && (extent.xmin < extent.xmax)
-  const queryString = widgetState.queryString ? widgetState?.queryString : '1=1'
-  const erddapUrl = buildErddapUrl()
+  // build ERDDAP Url. Note that uses a non-standard for for search parameters
+  const stdFields = 'ShallowFlag,DatasetID,CatalogNumber,SampleID,ImageURL,Repository,ScientificName,VernacularNameCategory,TaxonRank,IdentificationQualifier,Locality,latitude,longitude,DepthInMeters,DepthMethod,ObservationDate,SurveyID,Station,EventID,SamplingEquipment,LocationAccuracy,RecordType,DataProvider'
+  const searchParams: string[] = []
 
-  function convertExtentToGeographic (coords: CoordsObject) {
-    const webmercExtent = new Extent({
-      xmin: coords.xmin,
-      ymin: coords.ymin,
-      xmax: coords.xmax,
-      ymax: coords.ymax,
-      spatialReference: new SpatialReference({ wkid: 102100 })
-    })
-    return (webMercatorUtils.webMercatorToGeographic(webmercExtent, false) as Extent)
+  if (mapView && mapView.extent) {
+    const mapExtent = webMercatorUtils.webMercatorToGeographic(mapView.extent) as Extent
+    // flag for antimeridian-crossing extent
+    validBboxRef.current = (mapExtent.xmin < mapExtent.xmax)
+    searchParams.push(`latitude>=${mapExtent.ymin.toFixed(4)}`)
+    searchParams.push(`latitude<=${mapExtent.ymax.toFixed(4)}`)
+    searchParams.push(`longitude>=${mapExtent.xmin.toFixed(4)}`)
+    searchParams.push(`longitude<=${mapExtent.xmax.toFixed(4)}`)
   }
-
-  function buildErddapUrl () {
-    // console.log('inside buildErddapUrl. queryString = ', widgetState?.queryString)
-    const stdFields = 'ShallowFlag,DatasetID,CatalogNumber,SampleID,ImageURL,Repository,ScientificName,VernacularNameCategory,TaxonRank,IdentificationQualifier,Locality,latitude,longitude,DepthInMeters,DepthMethod,ObservationDate,SurveyID,Station,EventID,SamplingEquipment,LocationAccuracy,RecordType,DataProvider'
-    let url = `${props.config.erddapBaseUrl}.html?${stdFields}&latitude>=${extent.ymin.toFixed(4)}&latitude<=${extent.ymax.toFixed(4)}&longitude>=${extent.xmin.toFixed(4)}&longitude<=${extent.xmax.toFixed(4)}`
-    if (queryString !== '1=1') {
-      url += '&' + convertSqlToErddapParams(queryString)
-    }
-    return url
+  if (activeDs && activeDs.getCurrentQueryParams().where) {
+    // augments provided object w/ key/value pairs from SQL where clause
+    convertSqlToErddapParams(activeDs.getCurrentQueryParams().where, searchParams)
   }
-
-  function convertSqlToErddapParams (sql: string) {
-    // console.log('inside convertSqlToErddapParams with ', sql)
-    const params = []
-
-    // manipulate SQL string into list of 3-element lists (field, operator, value)
-    const clauses = sql
-      .replace(/\(+?/g, '') // replace left parens
-      .replace(/\)+?/g, '') // replace right parens
-      .replace(/LOWER/g, '') // remove the LOWER() function
-      .split(/ and /i)
-      .map(elem => {
-        const t = elem.split(/\s+/)
-        // construct 3-element array with field, operator, value. Value may have multiple words which need
-        // to be rejoined and replace single quotes with double quotes
-        return t.slice(0, 2).concat(t.slice(2).join(' ').replace(/'/g, '"'))
-      })
-    // console.log(clauses)
-
-    // build key/value pairs for specified parameters
-    clauses.filter(elem => elem[0].toLowerCase() === 'vernacularnamecategory').forEach(elem => {
-      params.push(`VernacularNameCategory=${elem[2]}`)
-    })
-
-    clauses.filter(elem => elem[0].toLowerCase() === 'imageurl').forEach(elem => {
-      params.push('ImageURL!="NA"')
-    })
-
-    clauses.filter(elem => elem[0].toLowerCase() === 'depthinmeters').forEach(elem => {
-      params.push(`DepthInMeters ${elem[1]} ${elem[2]}`)
-    })
-
-    clauses.filter(elem => elem[0].toLowerCase() === 'scientificname').forEach(elem => {
-      params.push(`ScientificName=${elem[2]}`)
-    })
-
-    clauses.filter(elem => elem[0].toLowerCase() === 'observationyear').forEach(elem => {
-      params.push(`ObservationYear ${elem[1]} ${elem[2]}`)
-    })
-
-    clauses.filter(elem => elem[0].toLowerCase() === 'fishcouncilregion').forEach(elem => {
-      params.push(`FishCouncilRegion=${elem[2]}`)
-    })
-
-    clauses.filter(elem => elem[0].toLowerCase() === 'ocean').forEach(elem => {
-      params.push(`Ocean="${findOceanNameByCode(elem[2])}"`)
-    })
-
-    clauses.filter(elem => elem[0].toLowerCase() === 'phylum').forEach(elem => {
-      params.push(`Phylum=${elem[2]}`)
-    })
-
-    clauses.filter(elem => elem[0].toLowerCase() === 'class').forEach(elem => {
-      params.push(`Class=${elem[2]}`)
-    })
-
-    // Order is a reserved word and renamed in the hosted feature layer
-    clauses.filter(elem => elem[0].toLowerCase() === 'order_').forEach(elem => {
-      params.push(`Order=${elem[2]}`)
-    })
-
-    clauses.filter(elem => elem[0].toLowerCase() === 'family').forEach(elem => {
-      params.push(`Family=${elem[2]}`)
-    })
-
-    clauses.filter(elem => elem[0].toLowerCase() === 'genus').forEach(elem => {
-      params.push(`Genus=${elem[2]}`)
-    })
-
-    return params.join('&')
-  }
-
-  function findOceanNameByCode (code: string): string {
-    const values = {
-      0: 'Arctic',
-      1: 'Indian',
-      2: 'North Atlantic',
-      3: 'North Pacific',
-      4: 'South Atlantic',
-      5: 'South Pacific',
-      6: 'Southern'
-    }
-    return values[code] ? values[code] : ''
-  }
+  const erddapUrl = `${props.config.erddapBaseUrl}.html?${stdFields}&${searchParams.join('&')}`
+  console.log({ erddapUrl })
 
   function copyUrlBtn () {
-    navigator.clipboard.writeText(erddapUrl).then(() => { console.debug('copied to clipboard') })
+    // TODO add message to toaster
+    navigator.clipboard.writeText(generateErddapUrl()).then(() => { console.debug('copied to clipboard') })
+  }
+
+  function generateErddapUrl (type = 'console') {
+    if (type === 'console') {
+      console.log(erddapUrl)
+      return erddapUrl
+    } else {
+      console.log(erddapUrl?.replace('deep_sea_corals.html', 'deep_sea_corals.csvp'))
+      return erddapUrl?.replace('deep_sea_corals.html', 'deep_sea_corals.csvp')
+    }
+  }
+
+  // runs once
+  function onDataSourceCreated (ds: DataSource) {
+    const featureLayerDataSource = isFeatureLayerDataSourceType(ds) ? ds : undefined
+    // const dsTitle = featureLayerDataSource.layer.title
+    setActiveDs(featureLayerDataSource)
+  }
+
+  // runs once
+  const activeViewChangeHandler = (jmv: JimuMapView) => {
+    setMapView(jmv.view as MapView)
+    // TODO why does this not fire when widget is in Window but works normally when directly in layout?
+    // 'updating' property fires multiple times during zoom/pan so using 'stationary' property reduces unnecessary re-renders
+    reactiveUtils.watch(
+      () => jmv.view.stationary,
+      (stationary) => {
+        if (stationary) {
+          // console.log('ERDDAP extent: ', formatExtent(jmv.view.extent))
+          const extent = webMercatorUtils.webMercatorToGeographic(jmv.view.extent) as Extent
+          setGeographicMapExtent(extent)
+        }
+      }
+    )
   }
 
   return (
-    <div className="widget-demo jimu-widget m-2">
+    <div className="erddap-query jimu-widget m-2">
+      <DataSourceComponent
+        useDataSource={props.useDataSources?.[0]}
+        widgetId={props.id}
+        onDataSourceCreated={onDataSourceCreated}
+      />
+      <JimuMapViewComponent
+        useMapWidgetId={props.useMapWidgetIds?.[0]}
+        onActiveViewChange={activeViewChangeHandler}
+      />
       {/* <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'right' }}>
         <TextArea style={{width:"85%"}} readOnly="true" value={erddapUrl} />
         <textarea value={erddapUrl} style={{ width: '85%', height: '250px', overflowY: 'scroll' }} readOnly={true}/>
@@ -165,23 +242,23 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
           </Button>
         </Tooltip>
       </div>
-      {validBbox
+      {validBboxRef.current
         ? <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Tooltip placement="top" title="open ERDDAP console to customize output">
-          <Button type="primary" tag="a" href={erddapUrl} target="_blank" style={{ marginRight: '20px' }}>Customize</Button>
+          <Button type="primary" tag="a" href={generateErddapUrl()} target="_blank" style={{ marginRight: '20px' }}>Customize</Button>
         </Tooltip>
         <Tooltip placement="top" title="Download standard CSV file with current filters applied">
-          <Button type="primary" tag="a" href={erddapUrl?.replace('deep_sea_corals.html', 'deep_sea_corals.csvp')} target="_blank" >Download</Button>
+          <Button type="primary" tag="a" href={generateErddapUrl('csv')} target="_blank" >Download</Button>
         </Tooltip>
       </div>
         : <div style={{ width: '80%', alignContent: 'center' }}>
             <p>Warning: missing or invalid spatial extent. Please ensure area of interest does not cross the antimeridian
               (i.e. international date line)</p>
           </div>
-    }
+      }
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Tooltip placement="top" title="Download the entire database in a CSV format">
-          <Button type="primary" tag="a" href={CSVfileUrl} target="_blank" style={{ width: '230px', marginTop: '20px' }}>Download Entire Database</Button>
+          <Button type="primary" tag="a" href={props.config.csvFileUrl} target="_blank" style={{ width: '230px', marginTop: '20px' }}>Download Entire Database</Button>
         </Tooltip>
       </div>
 

@@ -52,7 +52,9 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
   // console.log({ widgetState })
   const messageDataSourceId = widgetState?.filterChangeMessage?.dataSourceIds[0]
   if (activeDs && activeDs.id === messageDataSourceId) {
-    // react to the change in queryparams. WARNING: this is also called for each change in map extent!
+    const incomingMsg = widgetState?.filterChangeMessage
+    console.log({incomingMsg})
+    console.log('QueryParams: ', activeDs.getCurrentQueryParams())
     console.log('DataSourceFilterChangeMessage received for this datasource. QueryParams: ', activeDs.getCurrentQueryParams().where)
   }
 

@@ -12,21 +12,20 @@ import {
   type MessageDescription
 } from 'jimu-core'
 
+// custom type guard to avoid TypeScript casting variable
+function isDataSourceFilterChangeMessageType (obj: Message): obj is DataSourceFilterChangeMessage {
+  return (obj as DataSourceFilterChangeMessage).type === 'DATA_SOURCE_FILTER_CHANGE'
+}
+
 export default class FilterAction extends AbstractMessageAction {
-  filterMessageDescription (messageDescription: MessageDescription): boolean {
+  filterMessageDescription (messageDescription: MessageDescription) {
     return (
-      messageDescription.messageType === 'DATA_SOURCE_FILTER_CHANGE' ||
-      messageDescription.messageType === 'EXTENT_CHANGE'
+      messageDescription.messageType === MessageType.DataSourceFilterChange
     )
   }
 
-  // replaced by filterMessageDescription in v1.9
-  // filterMessageType (messageType: MessageType, messageWidgetId?: string): boolean {
-  //   return [MessageType.DataSourceFilterChange].includes(messageType)
-  // }
-
   filterMessage (message: Message): boolean {
-    return true
+    return message.type === MessageType.DataSourceFilterChange
   }
 
   //set action setting uri
@@ -34,35 +33,19 @@ export default class FilterAction extends AbstractMessageAction {
     return 'actions/filter-change-action-setting'
   }
 
-  onExecute (message: Message, actionConfig?: any): Promise<boolean> | boolean {
+  onExecute (message: Message) {
     switch (message.type) {
       case MessageType.DataSourceFilterChange:
-        const dsFilterChangeMessage = message as DataSourceFilterChangeMessage
-        // console.log('erddap-query: filter-change-action. got DataSourceFilterChangeMessage', dsFilterChangeMessage, actionConfig)
-        const ds = DataSourceManager.getInstance().getDataSource(dsFilterChangeMessage.dataSourceIds[0]) as QueriableDataSource
-        const queryParams: SqlQueryParams = ds.getCurrentQueryParams()
-        getAppStore().dispatch(appActions.widgetStatePropChange(this.widgetId, 'queryString', queryParams.where))
-        break
+        const dsFilterChangeMessage = isDataSourceFilterChangeMessageType(message) ? message : undefined
+        // const dataSource = DataSourceManager.getInstance().getDataSource(dsFilterChangeMessage.dataSourceIds[0]) as QueriableDataSource
+        // const queryParams: SqlQueryParams = dataSource.getCurrentQueryParams()
 
-      case MessageType.ExtentChange:
-        // console.log('MessageHandlerAction: got ExtentChangeMessage', message, actionConfig)
-        const extentChangeMessage = message as ExtentChangeMessage
-        // trigger an update for the widget when Extent is different from previous.
-        // Must be a plain JavaScript Object (see https://developers.arcgis.com/experience-builder/guide/widget-communication/)
-        // console.log('inside actionHandler. spatialReference: ', extentChangeMessage.extent.spatialReference)
-        getAppStore().dispatch(appActions.widgetStatePropChange(
-          this.widgetId,
-          'extent',
-          {
-            xmin: extentChangeMessage.extent.xmin,
-            ymin: extentChangeMessage.extent.ymin,
-            xmax: extentChangeMessage.extent.xmax,
-            ymax: extentChangeMessage.extent.ymax
-          })
-        )
+        // triggers widget render by updating widget state
+        getAppStore().dispatch(appActions.widgetStatePropChange(this.widgetId, 'filterChangeMessage', dsFilterChangeMessage))
+        // getAppStore().dispatch(appActions.widgetStatePropChange(this.widgetId, 'queryParams', queryParams.where))
+
         break
     }
-
     return true
   }
 }
