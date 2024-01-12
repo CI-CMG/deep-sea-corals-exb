@@ -17,9 +17,7 @@
       "settingUri": "actions/filter-change-action-setting"
     }
   ],
-  "properties": {
-    "hasSettingPage": false
-  },
+  "properties": {},
   "translatedLocales": [
     "en"
   ],

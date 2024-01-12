@@ -1,3 +1,5 @@
 {
-  "erddapBaseUrl": "https://www.ncei.noaa.gov/erddap/tabledap/deep_sea_corals"
+  "erddapBaseUrl": "https://www.ncei.noaa.gov/erddap/tabledap/deep_sea_corals",
+  "csvFileUrl": "https://noaa.maps.arcgis.com/home/item.html?id=f465861aecac410980a7c601cfec7850",
+  "standardFieldsList": "ShallowFlag,DatasetID,CatalogNumber,SampleID,ImageURL,Repository,ScientificName,VernacularNameCategory,TaxonRank,IdentificationQualifier,Locality,latitude,longitude,DepthInMeters,DepthMethod,ObservationDate,SurveyID,Station,EventID,SamplingEquipment,LocationAccuracy,RecordType,DataProvider"
 }
