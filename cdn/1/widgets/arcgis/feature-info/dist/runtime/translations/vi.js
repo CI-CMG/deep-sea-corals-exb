@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Thông tin Đối tượng",noDeataMessageDefaultText:"Không tìm thấy dữ liệu.",featureNumbers:"{index} / {count}",featureInfoDataActionLabel:"Lựa chọn thông tin đối tượng {layer}"})}}}));
+System.register([],(function(t){return{execute:function(){t({_widgetLabel:"Thông tin Đối tượng",noDeataMessageDefaultText:"Không tìm thấy dữ liệu.",featureNumbers:"{index} / {count}",featureInfoDataActionLabel:"Bản ghi hiện tại về thông tin đối tượng {layer}"})}}}));
