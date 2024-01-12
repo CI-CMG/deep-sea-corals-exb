@@ -1,28 +1,22 @@
 {
-  "created": 1674861375968,
+  "created": 1696450738415,
   "description": "",
   "id": "0",
-  "modified": 1678238136373,
+  "modified": 1705017446260,
   "owner": "ncei_noaa",
   "tags": [],
   "thumbnail": null,
-  "title": "Deep Sea Corals",
+  "title": "Deep Sea Corals 3.0.0",
   "type": "Web Experience",
-  "snippet": "Discover and access data from NOAA's National Database for Deep-sea Corals and Sponges",
+  "snippet": "",
   "typeKeywords": [
     "EXB Experience",
     "Ready To Use",
     "JavaScript",
     "status: Published",
-    "version:1.10.0",
-    "publishVersion:1.10.0"
+    "version:1.13.0"
   ],
   "portalUrl": "https://noaa.maps.arcgis.com",
   "username": "ncei_noaa",
-  "isLocalApp": true,
-  "userRole": "org_admin",
-  "success": true,
-  "text": "",
-  "clearEmptyFields": true,
   "url": null
 }
