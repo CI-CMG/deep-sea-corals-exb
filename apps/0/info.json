@@ -1,20 +1,21 @@
 {
-  "created": 1696450738415,
+  "created": 1705101220035,
   "description": "",
   "id": "0",
-  "modified": 1705017446260,
+  "modified": 1705105014824,
   "owner": "ncei_noaa",
-  "tags": [],
+  "tags": "",
   "thumbnail": null,
   "title": "Deep Sea Corals 3.0.0",
   "type": "Web Experience",
-  "snippet": "",
+  "snippet": null,
   "typeKeywords": [
-    "EXB Experience",
+    "Web Experience",
     "Ready To Use",
     "JavaScript",
     "status: Published",
-    "version:1.13.0"
+    "version:1.13.0",
+    "publishVersion:1.13.0"
   ],
   "portalUrl": "https://noaa.maps.arcgis.com",
   "username": "ncei_noaa",

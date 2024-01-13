@@ -1432,14 +1432,14 @@
         "initialMapState": {
           "viewPoint": {
             "rotation": 0,
-            "scale": 147914381.897889,
+            "scale": 73957190.948944,
             "targetGeometry": {
               "spatialReference": {
                 "latestWkid": 3857,
                 "wkid": 102100
               },
-              "x": -9992486.782416817,
-              "y": 3392829.816096101
+              "x": -11037992.455301167,
+              "y": 2658957.907530327
             }
           },
           "extent": {
@@ -1447,10 +1447,10 @@
               "latestWkid": 3857,
               "wkid": 102100
             },
-            "xmin": -21126610.070545845,
-            "ymin": -12261473.576703936,
-            "xmax": 1141636.5057122093,
-            "ymax": 19047133.208896138
+            "xmin": -15704931.65427965,
+            "ymin": -3896281.638204646,
+            "xmax": -6371053.256322687,
+            "ymax": 9214197.4532653
           },
           "rotation": 0,
           "viewType": "2d"
@@ -3403,7 +3403,7 @@
       "messageType": "EXTENT_CHANGE",
       "actions": [
         {
-          "actionId": "filter-data-record-action-1704930384435",
+          "actionId": "filter-data-record-action-1705101730598",
           "messageWidgetId": "widget_3",
           "actionName": "filter data record action",
           "description": null,
@@ -3477,5 +3477,5 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1705017443643
+  "timestamp": 1705105008491
 }
