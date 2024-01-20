@@ -470,6 +470,7 @@
         }
       },
       "order": [
+        "1",
         "0"
       ],
       "content": {
@@ -485,6 +486,23 @@
             "autoProps": {
               "height": "STRETCH"
             }
+          }
+        },
+        "1": {
+          "type": "WIDGET",
+          "widgetId": "widget_60",
+          "setting": {
+            "autoProps": {
+              "height": "AUTO"
+            },
+            "style": {
+              "alignSelf": "center"
+            }
+          },
+          "bbox": {
+            "left": 0,
+            "width": 2,
+            "height": "25px"
           }
         }
       }
@@ -3463,6 +3481,14 @@
         }
       },
       "id": "widget_59"
+    },
+    "widget_60": {
+      "uri": "widgets/database-version/",
+      "version": "1.0.0",
+      "config": {
+        "configUrl": "https://www.ncei.noaa.gov/waf/dsc-data/config/DeepSeaCorals/properties.json"
+      },
+      "id": "widget_60"
     }
   },
   "widgetsManifest": {},
@@ -3857,5 +3883,5 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1705531204905
+  "timestamp": 1705711114281
 }
