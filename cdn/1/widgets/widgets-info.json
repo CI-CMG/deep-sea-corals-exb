@@ -7782,9 +7782,7 @@
       "description": "display the DSCRTP database version",
       "copyright": "",
       "license": "http://www.apache.org/licenses/LICENSE-2.0",
-      "properties": {
-        "hasSettingPage": false
-      },
+      "properties": {},
       "translatedLocales": [
         "en"
       ],
