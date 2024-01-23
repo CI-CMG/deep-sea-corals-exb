@@ -3740,6 +3740,15 @@
           "description": null,
           "config": null,
           "version": "1.0.0"
+        },
+        {
+          "actionId": "widget_55-filter-change-1705968071644",
+          "widgetId": "widget_55",
+          "messageWidgetId": "widget_31",
+          "actionName": "filter-change",
+          "description": null,
+          "config": null,
+          "version": "1.0.0"
         }
       ]
     },
@@ -3824,6 +3833,40 @@
           "version": "1.0.0"
         }
       ]
+    },
+    "messageConfig_6": {
+      "id": "messageConfig_6",
+      "widgetId": "widget_33",
+      "messageType": "DATA_SOURCE_FILTER_CHANGE",
+      "actions": [
+        {
+          "actionId": "widget_29-filter-change-1705967626400",
+          "widgetId": "widget_29",
+          "messageWidgetId": "widget_33",
+          "actionName": "filter-change",
+          "description": null,
+          "config": null,
+          "version": "1.0.0"
+        },
+        {
+          "actionId": "widget_47-update-layer-1705967631968",
+          "widgetId": "widget_47",
+          "messageWidgetId": "widget_33",
+          "actionName": "update-layer",
+          "description": null,
+          "config": null,
+          "version": "1.0.0"
+        },
+        {
+          "actionId": "widget_55-filter-change-1705967637839",
+          "widgetId": "widget_55",
+          "messageWidgetId": "widget_33",
+          "actionName": "filter-change",
+          "description": null,
+          "config": null,
+          "version": "1.0.0"
+        }
+      ]
     }
   },
   "attributes": {
@@ -3872,5 +3915,5 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1705711114281
+  "timestamp": 1705968196117
 }
