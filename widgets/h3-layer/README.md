@@ -2,6 +2,8 @@
 
 ## widget which constructs a client-side layer based on H3 tiles
 
+Configuration includes map on which the layer is drawn, the Feature Layer name being queried, and identifiers for the sidebar and views being used by the widget
+
 Each tile has an attribute for the H3 index and a count of the points within that tile. Tiles are updated when the DataSource filter is changed
 by another widget. Each change triggers a query to the hosted feature layer which includes the filter definition and returns a CSV list of index
 id and count. These values update the client-side layer, populate the popup content, and are used in the symbology. Clicking on a tile triggers a
