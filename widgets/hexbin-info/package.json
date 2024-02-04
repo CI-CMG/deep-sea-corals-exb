@@ -1,0 +1,17 @@
+{
+  "name": "hexbin-info",
+  "version": "1.0.0",
+  "description": "display summary information about the specified h3 hexbin",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tanstack/react-query": "^5.18.0"
+  }
+}
