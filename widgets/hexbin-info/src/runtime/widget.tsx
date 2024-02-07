@@ -225,7 +225,7 @@ type HexbinInfoContainerProps = {
   children?: ReactNode
 }
 function HexbinInfoContainer({h3, url, where, pointCount}:HexbinInfoContainerProps) {
-  const timerRef = useRef()
+  const timerRef = useRef<Date>()
   if (!timerRef.current) { timerRef.current = new Date() }
 
   const queryClient = useQueryClient()  
@@ -350,6 +350,11 @@ function DepthRangeComponent({pointCount, data}) {
 }
 
 
+export interface ScientificNameCount {
+  Count: number
+  ScientificName: string
+}
+
 function ScientificNamesComponent({data}) {  
   const styles = {
     emphasis: {
@@ -367,7 +372,7 @@ function ScientificNamesComponent({data}) {
   }
 
   const totalNumberOfSpecies = data?.reduce(
-    (accumulator: number, currentValue: ScientificNameCount) => accumulator + currentValue.Count, 0
+    (accumulator:number, currentValue:ScientificNameCount) => accumulator + currentValue.Count, 0
   )
 
   const calcSpeciesPercentage = (count: number) => {
