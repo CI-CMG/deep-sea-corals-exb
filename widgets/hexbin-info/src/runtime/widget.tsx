@@ -249,15 +249,17 @@ function HexbinInfoContainer({h3, url, where, pointCount}:HexbinInfoContainerPro
       }
     ]
   }, queryClient)
-
   // console.log('Status: ', queries.map(query => { return query.status }))
   let data = null
+  let isError = false
   if (queries.every((query) => query.isSuccess)) {
     const queriesEndTime = new Date()
     console.log(`all queries complete for h3 ${h3} in ${(queriesEndTime.getTime() - timerRef.current.getTime())} milliseconds`)
     timerRef.current = null
     data = queries.map(query => { return query.data })
   }
+
+  if (queries.find((query) => query.isError)) { isError = true }
 
   return (
     <div>
@@ -270,7 +272,10 @@ function HexbinInfoContainer({h3, url, where, pointCount}:HexbinInfoContainerPro
       <ScientificNamesComponent data={data[2]} />
       <EnvironmentalDataComponent data={data[3]} />
       </div>
-    : ''}
+    : '' }
+    { isError ?
+      <h4 style={{color: 'red'}}>Error retrieving data from server<br/>Please try again</h4>
+    : '' }
     </div>
   )
 }
