@@ -1,0 +1,66 @@
+# are alma9 and centos7 the only options?
+image: artifacts.ncei.noaa.gov/ncei/base:alma9
+variables:
+  NODE_VERSION: "v18.20.2"
+
+stages:
+  - .pre
+  - test
+  - build
+  #- security      # Required for security scan jobs
+  - artifactory   # Required for deployments. The artifacts must be saved somewhere first.
+  - deploy        # Required for deployments.
+
+setup-job:
+  stage: .pre
+  script:
+    - curl -o node-$NODE_VERSION-linux-x64.tar.gz https://artifacts.ncei.noaa.gov:443/artifactory/node-dist/$NODE_VERSION/node-$NODE_VERSION-linux-x64.tar.gz
+    - tar -xzf node-$NODE_VERSION-linux-x64.tar.gz
+    - export PATH=$PATH:$PWD/node-$NODE_VERSION-linux-x64/bin
+    # set up npm registry and CA certs
+    - npm config set registry https://artifacts.ncei.noaa.gov/artifactory/api/npm/npm.upstream/
+    - export NODE_EXTRA_CA_CERTS=/etc/pki/tls/certs/ca-bundle.crt
+    - npm -d install
+  # pass along to the next stage
+  artifacts:
+    paths:
+      - node_modules
+      - node-$NODE_VERSION-linux-x64
+    expire_in: 2 week
+
+test-job:
+  stage: test
+  script:
+    # node and node_modules passed from previous stage but must set environment in every job
+    - export PATH=$PATH:$PWD/node-$NODE_VERSION-linux-x64/bin
+    - export NODE_EXTRA_CA_CERTS=/etc/pki/tls/certs/ca-bundle.crt
+    - export PATH=$PATH:$PWD/node-$NODE_VERSION-linux-x64/bin
+    - echo "Linting code..."
+    # - npm run lint
+    - echo "Running unit tests..."
+    # - npm run test
+    - echo "Running code coverage..."
+    # - npm run coverage
+  artifacts:
+    paths:
+      - node_modules
+      - node-$NODE_VERSION-linux-x64
+    expire_in: 2 week
+
+build-job:
+  stage: build
+  tags:
+    - build
+  script:
+    - export PATH=$PATH:$PWD/node-$NODE_VERSION-linux-x64/bin
+    - export NODE_EXTRA_CA_CERTS=/etc/pki/tls/certs/ca-bundle.crt
+    - export PATH=$PATH:$PWD/node-$NODE_VERSION-linux-x64/bin
+    - echo "Running build..."
+    # TODO
+    - echo "packaging..."
+    # TODO
+  # artifacts:
+  #   paths:
+  #     - imlgs.tar.gz
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH    
