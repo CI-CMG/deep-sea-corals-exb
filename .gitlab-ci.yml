@@ -5,7 +5,6 @@ variables:
 
 stages:
   - .pre
-  - test
   - build
   #- security      # Required for security scan jobs
   - artifactory   # Required for deployments. The artifacts must be saved somewhere first.
@@ -20,30 +19,10 @@ setup-job:
     # set up npm registry and CA certs
     - npm config set registry https://artifacts.ncei.noaa.gov/artifactory/api/npm/npm.upstream/
     - export NODE_EXTRA_CA_CERTS=/etc/pki/tls/certs/ca-bundle.crt
-    - npm -d install
+
   # pass along to the next stage
   artifacts:
     paths:
-      - node_modules
-      - node-$NODE_VERSION-linux-x64
-    expire_in: 2 week
-
-test-job:
-  stage: test
-  script:
-    # node and node_modules passed from previous stage but must set environment in every job
-    - export PATH=$PATH:$PWD/node-$NODE_VERSION-linux-x64/bin
-    - export NODE_EXTRA_CA_CERTS=/etc/pki/tls/certs/ca-bundle.crt
-    - export PATH=$PATH:$PWD/node-$NODE_VERSION-linux-x64/bin
-    - echo "Linting code..."
-    # - npm run lint
-    - echo "Running unit tests..."
-    # - npm run test
-    - echo "Running code coverage..."
-    # - npm run coverage
-  artifacts:
-    paths:
-      - node_modules
       - node-$NODE_VERSION-linux-x64
     expire_in: 2 week
 
@@ -56,6 +35,11 @@ build-job:
     - export NODE_EXTRA_CA_CERTS=/etc/pki/tls/certs/ca-bundle.crt
     - export PATH=$PATH:$PWD/node-$NODE_VERSION-linux-x64/bin
     - echo "Running build..."
+    # WARNING: this is not an officially supported method of downloading Experience Builder
+    # taken from https://github.com/gavinr-maps/experience-builder-devops-example/blob/master/.github/workflows/build-app.yml
+    - curl -o exb.zip "$(curl -s 'https://downloads.arcgis.com/dms/rest/download/secured/arcgis-experience-builder-1.13.zip?f=json&folder=software%2FExperienceBuilder%2F1.13' | jq -r '.url')"
+    - unzip -q exb.zip -d arcgis-experience-builder-1.13
+    - cp -r widgets/* arcgis-experience-builder-1.13/ArcGISExperienceBuilder/client/your-extensions/widgets
     # TODO
     - echo "packaging..."
     # TODO
