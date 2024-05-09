@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v4git
-      - name:
+        uses: actions/checkout@v4
+      - name: Install jq
         # simplify parsing the Esri http response below
         run: sudo sudo apt-get install jq
       - name: Download Experience Builder
