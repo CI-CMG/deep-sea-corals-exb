@@ -514,19 +514,10 @@
         "space": 0
       },
       "order": [
-        "0",
         "1",
         "2"
       ],
       "content": {
-        "0": {
-          "type": "WIDGET",
-          "bbox": {
-            "width": "200px",
-            "height": "36.00px"
-          },
-          "widgetId": "widget_29"
-        },
         "1": {
           "type": "WIDGET",
           "bbox": {
@@ -1651,18 +1642,57 @@
           }
         },
         "styleConfig": {
-          "themeStyle": {
-            "quickStyleType": "primary"
-          },
-          "useCustom": false,
+          "useCustom": true,
           "customStyle": {
             "regular": {
+              "background": {
+                "color": "#076fe5",
+                "fillType": "fill"
+              },
+              "border": {
+                "type": "solid",
+                "color": "#076fe5",
+                "width": "1px"
+              },
+              "text": {
+                "color": "#fff",
+                "size": "14px"
+              },
+              "borderRadius": {
+                "unit": "px",
+                "number": [
+                  2,
+                  2,
+                  2,
+                  2
+                ]
+              },
               "iconProps": {
                 "color": "#fff",
                 "size": 14
               }
             },
             "hover": {
+              "background": {
+                "color": "#005eca",
+                "fillType": "fill"
+              },
+              "border": {
+                "type": "solid",
+                "width": "0px"
+              },
+              "text": {
+                "size": "14px"
+              },
+              "borderRadius": {
+                "unit": "px",
+                "number": [
+                  2,
+                  2,
+                  2,
+                  2
+                ]
+              },
               "iconProps": {
                 "size": 14
               }
@@ -1690,18 +1720,57 @@
           }
         },
         "styleConfig": {
-          "themeStyle": {
-            "quickStyleType": "primary"
-          },
-          "useCustom": false,
+          "useCustom": true,
           "customStyle": {
             "regular": {
+              "background": {
+                "color": "#076fe5",
+                "fillType": "fill"
+              },
+              "border": {
+                "type": "solid",
+                "color": "#076fe5",
+                "width": "1px"
+              },
+              "text": {
+                "color": "#fff",
+                "size": "14px"
+              },
+              "borderRadius": {
+                "unit": "px",
+                "number": [
+                  2,
+                  2,
+                  2,
+                  2
+                ]
+              },
               "iconProps": {
                 "color": "#fff",
                 "size": 14
               }
             },
             "hover": {
+              "background": {
+                "color": "#005eca",
+                "fillType": "fill"
+              },
+              "border": {
+                "type": "solid",
+                "width": "0px"
+              },
+              "text": {
+                "size": "14px"
+              },
+              "borderRadius": {
+                "unit": "px",
+                "number": [
+                  2,
+                  2,
+                  2,
+                  2
+                ]
+              },
               "iconProps": {
                 "size": 14
               }
@@ -2247,25 +2316,6 @@
         }
       },
       "id": "widget_28"
-    },
-    "widget_29": {
-      "uri": "widgets/record-count/",
-      "version": "1.0.0",
-      "label": "Record Count",
-      "config": {
-        "featureLayerTitle": "Deep Sea Coral and Sponge Observations"
-      },
-      "id": "widget_29",
-      "useDataSources": [
-        {
-          "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
-          "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
-          "rootDataSourceId": "dataSource_1"
-        }
-      ],
-      "useMapWidgetIds": [
-        "widget_3"
-      ]
     },
     "widget_30": {
       "uri": "widgets/map-update-status/",
@@ -3137,6 +3187,13 @@
       "id": "widget_47",
       "useMapWidgetIds": [
         "widget_3"
+      ],
+      "useDataSources": [
+        {
+          "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
+          "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
+          "rootDataSourceId": "dataSource_1"
+        }
       ]
     },
     "widget_48": {
@@ -3733,15 +3790,6 @@
           "version": "1.0.0"
         },
         {
-          "actionId": "widget_29-filter-change-1698777613156",
-          "widgetId": "widget_29",
-          "messageWidgetId": "widget_31",
-          "actionName": "filter-change",
-          "description": null,
-          "config": null,
-          "version": "1.0.0"
-        },
-        {
           "actionId": "widget_55-filter-change-1705968071644",
           "widgetId": "widget_55",
           "messageWidgetId": "widget_31",
@@ -3822,15 +3870,6 @@
           "description": null,
           "config": null,
           "version": "1.0.0"
-        },
-        {
-          "actionId": "widget_29-filter-change-1705531135553",
-          "widgetId": "widget_29",
-          "messageWidgetId": "widget_32",
-          "actionName": "filter-change",
-          "description": null,
-          "config": null,
-          "version": "1.0.0"
         }
       ]
     },
@@ -3839,15 +3878,6 @@
       "widgetId": "widget_33",
       "messageType": "DATA_SOURCE_FILTER_CHANGE",
       "actions": [
-        {
-          "actionId": "widget_29-filter-change-1705967626400",
-          "widgetId": "widget_29",
-          "messageWidgetId": "widget_33",
-          "actionName": "filter-change",
-          "description": null,
-          "config": null,
-          "version": "1.0.0"
-        },
         {
           "actionId": "widget_47-update-layer-1705967631968",
           "widgetId": "widget_47",
@@ -3915,5 +3945,5 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1705968196117
+  "timestamp": 1715633146515
 }
