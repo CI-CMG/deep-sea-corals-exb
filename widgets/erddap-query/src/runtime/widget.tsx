@@ -25,6 +25,7 @@ import { useEffect, useState, useRef } from 'react'
 // import { Label, Radio, defaultMessages as jimuUIMessages } from 'jimu-ui'
 import { type IMConfig } from '../config'
 import { URLSearchParams } from 'url'
+import './widget.css'
 
 const { useSelector } = ReactRedux
 
@@ -179,8 +180,9 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
     navigator.clipboard.writeText(generateErddapUrl()).then(() => { console.debug('copied to clipboard') })
   }
 
-  function generateErddapUrl (type = 'console') {
-    if (type === 'console') {
+  function generateErddapUrl (type = 'html') {
+    console.log(type)
+    if (type === 'html') {
       console.log(erddapUrl)
       return erddapUrl
     } else {
@@ -245,10 +247,10 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
       {validBboxRef.current
         ? <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Tooltip placement="top" title="open ERDDAP console to customize output">
-          <Button type="primary" tag="a" href={generateErddapUrl()} target="_blank" style={{ marginRight: '20px' }}>Customize</Button>
+          <Button type="primary" tag="a" href={generateErddapUrl('html')} target="_blank" style={{ marginRight: '20px', textDecoration: 'none', color:'white' }}>Customize</Button>
         </Tooltip>
         <Tooltip placement="top" title="Download standard CSV file with current filters applied">
-          <Button type="primary" tag="a" href={generateErddapUrl('csv')} target="_blank" >Download</Button>
+          <Button type="primary" tag="a" href={generateErddapUrl('csvp')} target="_blank" style={{ textDecoration: 'none', color:'white' }}>Download</Button>
         </Tooltip>
       </div>
         : <div style={{ width: '80%', alignContent: 'center' }}>
@@ -258,7 +260,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
       }
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Tooltip placement="top" title="Download the entire database in a CSV format">
-          <Button type="primary" tag="a" href={props.config.csvFileUrl} target="_blank" style={{ width: '230px', marginTop: '20px' }}>Download Entire Database</Button>
+          <Button type="primary" tag="a" href={props.config.csvFileUrl} target="_blank" style={{ width: '230px', marginTop: '20px', textDecoration: 'none', color:'white' }}>Download Entire Database</Button>
         </Tooltip>
       </div>
 
