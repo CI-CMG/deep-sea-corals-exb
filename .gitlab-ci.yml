@@ -36,6 +36,7 @@ build-job:
     - export NODE_EXTRA_CA_CERTS=/etc/pki/tls/certs/ca-bundle.crt
     - export PATH=$PATH:$PWD/node-$NODE_VERSION-linux-x64/bin
     - echo "Running build..."
+    - dnf -y -q install unzip
     - curl -o arcgis-experience-builder-${EXB_VERSION}.zip https://artifacts.ncei.noaa.gov/artifactory/arcgis/experience-builder/${EXB_VERSION}/arcgis-experience-builder-${EXB_VERSION}.zip
     - unzip -q arcgis-experience-builder-${EXB_VERSION}.zip -d arcgis-experience-builder-1.13
     - ls -l
