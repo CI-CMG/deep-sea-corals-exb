@@ -2,6 +2,7 @@
 image: artifacts.ncei.noaa.gov/ncei/base:alma9
 variables:
   NODE_VERSION: "v18.20.2"
+  EXB_VERSION: "1.13"
 
 stages:
   - .pre
@@ -35,12 +36,9 @@ build-job:
     - export NODE_EXTRA_CA_CERTS=/etc/pki/tls/certs/ca-bundle.crt
     - export PATH=$PATH:$PWD/node-$NODE_VERSION-linux-x64/bin
     - echo "Running build..."
-    # dependent on OS image 
-    - dnf -q -y install jq
-    # WARNING: this is not an officially supported method of downloading Experience Builder
-    # taken from https://github.com/gavinr-maps/experience-builder-devops-example/blob/master/.github/workflows/build-app.yml
-    - curl -o exb.zip "$(curl -s 'https://downloads.arcgis.com/dms/rest/download/secured/arcgis-experience-builder-1.13.zip?f=json&folder=software%2FExperienceBuilder%2F1.13' | jq -r '.url')"
-    - unzip -q exb.zip -d arcgis-experience-builder-1.13
+    - curl -o arcgis-experience-builder-${EXB_VERSION}.zip https://artifacts.ncei.noaa.gov/artifactory/arcgis/experience-builder/${EXB_VERSION}/arcgis-experience-builder-${EXB_VERSION}.zip
+    - unzip -q arcgis-experience-builder-${EXB_VERSION}.zip -d arcgis-experience-builder-1.13
+    - ls -l
     - cp -r widgets/* arcgis-experience-builder-1.13/ArcGISExperienceBuilder/client/your-extensions/widgets
     # TODO
     - echo "packaging..."
