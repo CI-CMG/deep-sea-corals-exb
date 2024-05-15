@@ -47,9 +47,9 @@ build-job:
     - echo "installing NPM dependencies for Experience Builder server..."
     - cd arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/server && npm ci
     - cd ../../..
-    - pwd
     - echo "installing NPM dependencies for Experience Builder client..."
     - cd arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/client && npm ci
+    - npm audit fix
     - echo "installing NPM dependencies for custom widgets..."
     - cd your-extensions/widgets
     - |
@@ -63,9 +63,9 @@ build-job:
         cd ..
         done
     - cd ../..
-    - pwd
-    - pwd
-    # TODO
+    - npm run build:prod
+    - cd ..
+    - node -e "require('./server/src/middlewares/dev/apps/app-download.js').zipApp('0', 'app.zip')"
     - echo "packaging..."
     # TODO
   # artifacts:
