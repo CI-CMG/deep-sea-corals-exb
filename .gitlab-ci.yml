@@ -41,12 +41,12 @@ build-job:
     - unzip -q arcgis-experience-builder-${EXB_VERSION}.zip -d arcgis-experience-builder-${EXB_VERSION}
     - ls -l
     - cp -r widgets/* arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/client/your-extensions/widgets
-    - cd arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/server
-    - mkdir -p public/apps
+    - mkdir -p arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/server/public/apps
     - cp -r apps/* arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/server/public/apps
     - echo "installing NPM dependencies for Experience Builder server..."
     - cd arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/server && npm ci
     - cd ../../..
+    - pwd
     - echo "installing NPM dependencies for Experience Builder client..."
     - cd arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/client && npm ci
     - echo "installing NPM dependencies for custom widgets..."
@@ -61,6 +61,7 @@ build-job:
         cd ..
         done
     - cd ../..
+    - pwd
     - pwd
     # TODO
     - echo "packaging..."
