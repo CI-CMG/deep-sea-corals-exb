@@ -35,6 +35,8 @@ build-job:
     - export PATH=$PATH:$PWD/node-$NODE_VERSION-linux-x64/bin
     - export NODE_EXTRA_CA_CERTS=/etc/pki/tls/certs/ca-bundle.crt
     - export PATH=$PATH:$PWD/node-$NODE_VERSION-linux-x64/bin
+    - npm config set registry https://artifacts.ncei.noaa.gov/artifactory/api/npm/npm.upstream/
+    - export NODE_EXTRA_CA_CERTS=/etc/pki/tls/certs/ca-bundle.crt
     - echo "setting up Experience Builder..."
     - dnf -y -q install unzip
     - curl -o arcgis-experience-builder-${EXB_VERSION}.zip https://artifacts.ncei.noaa.gov/artifactory/arcgis/experience-builder/${EXB_VERSION}/arcgis-experience-builder-${EXB_VERSION}.zip
