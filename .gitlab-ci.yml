@@ -42,11 +42,26 @@ build-job:
     - ls -l
     - cp -r widgets/* arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/client/your-extensions/widgets
     - cd arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/server
-    - mkdir -p public/apps && cd public/apps
+    - mkdir -p public/apps
+    - cp -r apps/* arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/server/public/apps
+    - echo "installing NPM dependencies for Experience Builder server..."
+    - cd arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/server && npm ci
+    - cd ../../..
+    - echo "installing NPM dependencies for Experience Builder client..."
+    - cd arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/client && npm ci
+    - echo "installing NPM dependencies for custom widgets..."
+    - cd your-extensions/widgets
+    - for d in `find . -mindepth 1 -maxdepth 1 -type d`; do
+        echo $d
+        cd $d
+        if test -f package.json; then
+        echo "installing dependencies for `pwd`..."
+        npm i
+        fi
+        cd ..
+        done
+    - cd ../..
     - pwd
-    # - cp -r apps/* arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/server/public/apps
-    # - cd arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/client && npm ci
-    # - cd arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/server && npm ci
     # TODO
     - echo "packaging..."
     # TODO
