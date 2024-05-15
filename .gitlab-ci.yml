@@ -66,10 +66,8 @@ build-job:
     - npm run build:prod
     - cd ..
     - node -e "require('./server/src/middlewares/dev/apps/app-download.js').zipApp('0', 'app.zip')"
-    - echo "packaging..."
-    # TODO
-  # artifacts:
-  #   paths:
-  #     - imlgs.tar.gz
+  artifacts:
+    paths:
+      - app.zip
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH    
