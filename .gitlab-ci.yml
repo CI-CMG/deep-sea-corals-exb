@@ -35,12 +35,18 @@ build-job:
     - export PATH=$PATH:$PWD/node-$NODE_VERSION-linux-x64/bin
     - export NODE_EXTRA_CA_CERTS=/etc/pki/tls/certs/ca-bundle.crt
     - export PATH=$PATH:$PWD/node-$NODE_VERSION-linux-x64/bin
-    - echo "Running build..."
+    - echo "setting up Experience Builder..."
     - dnf -y -q install unzip
     - curl -o arcgis-experience-builder-${EXB_VERSION}.zip https://artifacts.ncei.noaa.gov/artifactory/arcgis/experience-builder/${EXB_VERSION}/arcgis-experience-builder-${EXB_VERSION}.zip
-    - unzip -q arcgis-experience-builder-${EXB_VERSION}.zip -d arcgis-experience-builder-1.13
+    - unzip -q arcgis-experience-builder-${EXB_VERSION}.zip -d arcgis-experience-builder-${EXB_VERSION}
     - ls -l
-    - cp -r widgets/* arcgis-experience-builder-1.13/ArcGISExperienceBuilder/client/your-extensions/widgets
+    - cp -r widgets/* arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/client/your-extensions/widgets
+    - cd arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/server
+    - mkdir -p public/apps && cd public/apps
+    - pwd
+    # - cp -r apps/* arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/server/public/apps
+    # - cd arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/client && npm ci
+    # - cd arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/server && npm ci
     # TODO
     - echo "packaging..."
     # TODO
