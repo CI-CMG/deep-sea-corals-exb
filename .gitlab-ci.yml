@@ -14,6 +14,7 @@ stages:
 setup-job:
   stage: .pre
   script:
+    - echo "setup skipped in lieu of using node-builder image"
     # - curl -o node-$NODE_VERSION-linux-x64.tar.gz https://artifacts.ncei.noaa.gov:443/artifactory/node-dist/$NODE_VERSION/node-$NODE_VERSION-linux-x64.tar.gz
     # - tar -xzf node-$NODE_VERSION-linux-x64.tar.gz
     # - export PATH=$PATH:$PWD/node-$NODE_VERSION-linux-x64/bin
