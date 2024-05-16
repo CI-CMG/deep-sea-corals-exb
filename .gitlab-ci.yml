@@ -46,7 +46,11 @@ build-job:
     - cd arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/server && npm ci
     - cd ../../..
     - echo "installing NPM dependencies for Experience Builder client..."
-    - cd arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/client && npm ci
+    - cd arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/client
+    # attempted work around for node-sass failing to compile on NCEI
+    - npm uninstall node-sass
+    - npm install sass --save-dev
+    - npm ci
     - npm audit fix
     - echo "installing NPM dependencies for custom widgets..."
     - cd your-extensions/widgets
