@@ -5,7 +5,8 @@ variables:
   EXB_VERSION: "1.13"
 
 stages:
-  - .pre
+  # setup skipped in lieu of using node-builder image"
+  # - .pre
   - build
   #- security      # Required for security scan jobs
   - artifactory   # Required for deployments. The artifacts must be saved somewhere first.
@@ -14,18 +15,17 @@ stages:
 setup-job:
   stage: .pre
   script:
-    - echo "setup skipped in lieu of using node-builder image"
-    # - curl -o node-$NODE_VERSION-linux-x64.tar.gz https://artifacts.ncei.noaa.gov:443/artifactory/node-dist/$NODE_VERSION/node-$NODE_VERSION-linux-x64.tar.gz
-    # - tar -xzf node-$NODE_VERSION-linux-x64.tar.gz
-    # - export PATH=$PATH:$PWD/node-$NODE_VERSION-linux-x64/bin
+    - curl -o node-$NODE_VERSION-linux-x64.tar.gz https://artifacts.ncei.noaa.gov:443/artifactory/node-dist/$NODE_VERSION/node-$NODE_VERSION-linux-x64.tar.gz
+    - tar -xzf node-$NODE_VERSION-linux-x64.tar.gz
+    - export PATH=$PATH:$PWD/node-$NODE_VERSION-linux-x64/bin
     # set up npm registry and CA certs
-    # - npm config set registry https://artifacts.ncei.noaa.gov/artifactory/api/npm/npm.upstream/
-    # - export NODE_EXTRA_CA_CERTS=/etc/pki/tls/certs/ca-bundle.crt
+    - npm config set registry https://artifacts.ncei.noaa.gov/artifactory/api/npm/npm.upstream/
+    - export NODE_EXTRA_CA_CERTS=/etc/pki/tls/certs/ca-bundle.crt
 
   # pass along to the next stage
   artifacts:
     paths:
-      # - node-$NODE_VERSION-linux-x64
+      - node-$NODE_VERSION-linux-x64
     expire_in: 2 week
 
 build-job:
@@ -75,12 +75,33 @@ build-job:
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
-artifactory:
-    stage: artifactory
-    script:
-        - echo "uploading to Artifactory..."
+#-----------------------------------------------------------------------------
+# Push artifact to artifactory dev repository
+#-----------------------------------------------------------------------------
+include:
+  # The utilities for uploading to Artifactory.
+  - component: git.ncei.noaa.gov/pipeline-components/artifactory/upload_artifact_dev_repo@main
+    inputs:
+      job_name: artifactory-upload-deep-sea-corals-exb
+      artifact_path: './arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder'
+      artifact_name: 'app.zip'
+artifactory-upload-imlgs:
+  needs:
+    - build-job
 
-deploy:
+#-----------------------------------------------------------------------------
+# Deployments
+#-----------------------------------------------------------------------------
+deploy-deep-sea-corals-exb-to-test:
+    variables:
+      BUILD_REF: ${CI_COMMIT_SHA}
+      PROJECT_NAME: ${CI_PROJECT_NAME}
+      PROJECT_PATH_SLUG: ${CI_PROJECT_PATH_SLUG}
+      TIER: "test"
     stage: deploy
-    script:
-        - echo "deploying to server..."
+    needs:
+      - artifactory-upload-deep-sea-corals-exb
+    trigger:
+      project: deployers/deployer
+      strategy: depend
+  #  when: manual
