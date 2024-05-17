@@ -85,7 +85,7 @@ include:
       job_name: artifactory-upload-deep-sea-corals-exb
       artifact_path: './arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder'
       artifact_name: 'app.zip'
-artifactory-upload-imlgs:
+artifactory-upload-deep-sea-corals-exb:
   needs:
     - build-job
 
