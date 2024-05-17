@@ -48,7 +48,7 @@ build-job:
     - cd ../../..
     - echo "installing NPM dependencies for Experience Builder client..."
     - cd arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/client
-    # attempted work around for node-sass failing to compile on NCEI
+    # work around for node-sass failing to compile on NCEI
     - npm uninstall node-sass
     - npm install sass --save-dev
     - npm ci
@@ -66,17 +66,21 @@ build-job:
         cd ..
         done
     - cd ../..
-    - pwd
-    - ls
     - npm run build:dev
     - cd ..
-    - pwd
-    - ls
     - node -e "require('./server/src/middlewares/dev/apps/app-download.js').zipApp('0', 'app.zip')"
-    - pwd
-    - ls
   artifacts:
     paths:
       - arcgis-experience-builder-${EXB_VERSION}/ArcGISExperienceBuilder/app.zip
   rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH    
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+artifactory:
+    stage: artifactory
+    script:
+        - echo "uploading to Artifactory..."
+
+deploy:
+    stage: deploy
+    script:
+        - echo "deploying to server..."
