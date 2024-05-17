@@ -42,7 +42,7 @@ jobs:
           done
         working-directory: arcgis-experience-builder-1.13/ArcGISExperienceBuilder/client/your-extensions/widgets
       - name: Build widgets
-        run: npm run build:prod
+        run: npm run build:dev
         working-directory: arcgis-experience-builder-1.13/ArcGISExperienceBuilder/client
       - name: Run download script
         run: node -e "require('./server/src/middlewares/dev/apps/app-download.js').zipApp('0', 'app.zip')"
