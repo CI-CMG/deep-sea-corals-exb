@@ -8255,47 +8255,6 @@
     "group": 7
   },
   {
-    "name": "record-count",
-    "manifest": {
-      "name": "record-count",
-      "label": "Record Count",
-      "dependency": "jimu-arcgis",
-      "type": "widget",
-      "version": "1.0.0",
-      "exbVersion": "1.12.0",
-      "author": "John Cartwright",
-      "description": "display the total record count along with the count filtered by map extent and layer definitions",
-      "copyright": "",
-      "license": "http://www.apache.org/licenses/LICENSE-2.0",
-      "messageActions": [
-        {
-          "name": "filter-change",
-          "label": "Filter Change",
-          "uri": "actions/filter-change-action",
-          "settingUri": "actions/filter-change-action-setting"
-        }
-      ],
-      "properties": {},
-      "translatedLocales": [
-        "en"
-      ],
-      "defaultSize": {
-        "width": 200,
-        "height": 100
-      }
-    },
-    "i18nLabel": {
-      "en": "Record Count"
-    },
-    "i18nDescription": {
-      "en": null
-    },
-    "uri": "widgets/record-count/",
-    "icon": "widgets/record-count/icon.svg",
-    "order": 700,
-    "group": 7
-  },
-  {
     "name": "scientific-name-autocomplete",
     "manifest": {
       "name": "scientific-name-autocomplete",
