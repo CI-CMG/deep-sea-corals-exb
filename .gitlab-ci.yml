@@ -66,8 +66,12 @@ build-job:
         cd ..
         done
     - cd ../..
+    - pwd
+    - ls
     - npm run build:prod
     - cd ..
+    - pwd
+    - ls
     - node -e "require('./server/src/middlewares/dev/apps/app-download.js').zipApp('0', 'app.zip')"
   artifacts:
     paths:
