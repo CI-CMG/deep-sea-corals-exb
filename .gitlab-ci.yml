@@ -52,7 +52,7 @@ build-job:
     - npm uninstall node-sass
     - npm install sass --save-dev
     - npm ci
-    - npm.virtual audit fix
+    # - npm.virtual audit fix
     - echo "installing NPM dependencies for custom widgets..."
     - cd your-extensions/widgets
     - |
