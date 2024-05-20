@@ -9,6 +9,7 @@ import { h3ToGeoBoundary } from 'h3-js'
 import { Classification } from './Classification'
 import Polygon from 'esri/geometry/Polygon'
 import Color from 'esri/Color'
+import { type FeatureLayerDataSource } from 'jimu-arcgis'
 
 // TODO derive from settings.tsx
 const featureServiceUrl = 'https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB_FeatureLayer/FeatureServer/0/query'
@@ -18,6 +19,16 @@ const hexbinBoundaryWidth = 0
 
 // cache the h3 counts when there are no filters applied
 let noFiltersH3Counts = null
+
+let coralsDataSource: FeatureLayerDataSource
+
+export function setDataSource(dataSource: FeatureLayerDataSource) {
+  coralsDataSource = dataSource
+}
+
+export function getName() {
+  return coralsDataSource.layer.title
+}
 
 function getHighlightedGraphic (graphicsLayer: GraphicsLayer) {
   if (!graphicsLayer) {
@@ -265,6 +276,18 @@ async function getScientificNameCounts (h3, whereClause = '1=1') {
   return data.features.map(it => it.attributes)
 }
 
+interface EnvironmentalVariables {
+  oxygen?: number
+  min_oxygen?: number
+  max_oxygen?: number
+  salinity?: number
+  min_salinity?: number
+  max_salinity?: number
+  temperature?: number
+  min_temperature?: number
+  max_temperature?: number
+}
+
 // does not consider filter criteria
 // uses hardcoded URL different from points layer
 async function getEnvironmentalVariables(h3) {
@@ -284,7 +307,7 @@ async function getEnvironmentalVariables(h3) {
   }
   const data = await response.json()
   const endTime = new Date()
-  const environmentalVariables = {}
+  const environmentalVariables = {} as EnvironmentalVariables
   // should always be exactly 1 feature returned
   const attributes = data.features[0].attributes
   if (attributes.oxygen) {

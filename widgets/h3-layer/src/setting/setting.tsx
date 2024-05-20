@@ -1,16 +1,27 @@
 /** @jsx jsx */
-import { React, jsx } from 'jimu-core'
+import { React, jsx, Immutable, DataSourceTypes, type UseDataSource } from 'jimu-core'
 import { type AllWidgetSettingProps } from 'jimu-for-builder'
 // import {JimuMapViewSelector} from 'jimu-ui/advanced/setting-components'
+import { DataSourceSelector } from 'jimu-ui/advanced/data-source-selector'
 import { MapWidgetSelector, SettingSection, SettingRow } from 'jimu-ui/advanced/setting-components'
 import { TextInput } from 'jimu-ui'
 import { type IMConfig } from '../config'
 
 export default function Setting (props: AllWidgetSettingProps<IMConfig>) {
+  const supportedTypes = Immutable([DataSourceTypes.FeatureLayer])
+
   const onMapSelected = (useMapWidgetIds: string[]) => {
     props.onSettingChange({
       id: props.id,
       useMapWidgetIds: useMapWidgetIds
+    })
+  }
+
+  const onDataSourceChange = (useDataSources: UseDataSource[]) => {
+    console.log({useDataSources})
+    props.onSettingChange({
+      id: props.id,
+      useDataSources: useDataSources
     })
   }
 
@@ -58,6 +69,17 @@ export default function Setting (props: AllWidgetSettingProps<IMConfig>) {
       </SettingRow>
     </SettingSection>
 
+    <SettingSection title="Corals DataSource">
+      <SettingRow>
+        <DataSourceSelector
+          mustUseDataSource
+          types={supportedTypes}
+          useDataSources={props.useDataSources}
+          onChange={onDataSourceChange}
+          widgetId={props.id}
+        />
+      </SettingRow>
+    </SettingSection>
     <SettingSection title="FeatureLayer Name">
       <SettingRow>
         <TextInput type="text" placeholder="layer name" htmlSize={28} value={props.config.layerName} onChange={onLayerNameChange}/>

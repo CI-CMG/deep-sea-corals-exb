@@ -18,6 +18,7 @@ function isDataSourceFilterChangeMessageType (obj: Message): obj is DataSourceFi
   return (obj as DataSourceFilterChangeMessage).type === 'DATA_SOURCE_FILTER_CHANGE'
 }
 
+const dataSourceManager = DataSourceManager.getInstance()
 export default class UpdateLayerAction extends AbstractMessageAction {
   filterMessageDescription (messageDescription: MessageDescription): boolean {
     return messageDescription.messageType === MessageType.DataSourceFilterChange
@@ -37,9 +38,11 @@ export default class UpdateLayerAction extends AbstractMessageAction {
       case MessageType.DataSourceFilterChange:
         const dsFilterChangeMessage = isDataSourceFilterChangeMessageType(message) ? message : undefined
         console.log({dsFilterChangeMessage})
-        const dataSource = DataSourceManager.getInstance().getDataSource(dsFilterChangeMessage.dataSourceIds) as QueriableDataSource
+        // const dataSource = DataSourceManager.getInstance().getDataSource(dsFilterChangeMessage.dataSourceIds) as QueriableDataSource
+        const dataSource = dataSourceManager.getDataSource(dsFilterChangeMessage.dataSourceIds) as QueriableDataSource
+
         const queryParams: SqlQueryParams = dataSource.getCurrentQueryParams()
-        console.log('new: ', dataSource)
+        // console.log('new: ', dataSource)
         // triggers widget render by updating widget state
         getAppStore().dispatch(appActions.widgetStatePropChange(this.widgetId, 'queryParams', queryParams.where))
         // getAppStore().dispatch(appActions.widgetStatePropChange(this.widgetId, 'filterChangeMessage', dsFilterChangeMessage))

@@ -18,15 +18,19 @@
  * to no longer be drawn
  */
 import {
-  type AllWidgetProps,
+  React,
   jsx,
+  type AllWidgetProps,
   type IMState,
   ReactRedux,
   appActions,
   getAppStore,
-  jimuHistory
+  jimuHistory,
+  type DataSource,
+  DataSourceComponent
 } from 'jimu-core'
-import { type JimuMapView, JimuMapViewComponent } from 'jimu-arcgis'
+
+import { type JimuMapView, JimuMapViewComponent, type FeatureLayerDataSource } from 'jimu-arcgis'
 import GraphicsLayer from 'esri/layers/GraphicsLayer'
 import type FeatureLayer from 'esri/layers/FeatureLayer'
 import type Graphic from 'esri/Graphic'
@@ -44,43 +48,16 @@ import {
   getScientificNameCounts,
   toggleOutlineColor,
   getHighlightedGraphic,
-  getEnvironmentalVariables
+  getEnvironmentalVariables,
+  setDataSource,
+  getName
 } from '../h3-utils'
-
+import { EnvironmentalVariables, HexbinSummary, PhylumCount, ScientificNameCount, SpeciesCount } from '../h3-layer-types'
 const { useSelector } = ReactRedux
 
-interface HexbinSummary {
-  minDepth: number
-  maxDepth: number
-  phylumCounts: PhylumCount[]
-  speciesCount: SpeciesCount
-  scientificNameCounts: ScientificNameCount[]
-  environmentalVariables?: EnvironmentalVariables
-}
-
-interface EnvironmentalVariables {
-  salinity?: number
-  min_salinity?: number
-  max_salinity?: number
-  oxygen?: number
-  min_oxygen?: number
-  max_oxygen?: number
-  temperature?: number
-  min_temperature?: number
-  max_temperature?: number
-}
-interface PhylumCount {
-  Count: number
-  Phylum: string
-}
-interface ScientificNameCount {
-  Count: number
-  ScientificName: string
-}
-
-interface SpeciesCount {
-  rawCount: number
-  normalizedCount?: number
+// user-defined type guard using type predicate
+function isFeatureLayerDataSourceType (obj: DataSource): obj is FeatureLayerDataSource {
+  return (obj as FeatureLayerDataSource).type === 'FEATURE_LAYER'
 }
 
 export default function H3Layer (props: AllWidgetProps<IMConfig>) {
@@ -91,6 +68,7 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
   const [serverError, setServerError] = useState(false)
   const queryParamsRef = useRef(null)
   const mapViewRef = useRef<MapView>(null)
+  const [activeDs, setActiveDs] = useState<FeatureLayerDataSource>()
 
   // for convenience in JSX. cannot destruct from object because selectedGraphic may be null
   const h3 = selectedGraphic?.attributes.h3
@@ -100,6 +78,7 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
   const widgetState = useSelector((state: IMState) => {
     return state.widgetsState[props.widgetId]
   })
+  // console.log({widgetState})
   queryParamsRef.current = widgetState?.queryParams
 
   // console.log(`re-rendering H3Layer. h3 = ${h3}; queryParams = ${widgetState?.queryParams}`)
@@ -110,17 +89,29 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
     return widgetState
   })
 
+  // runs once
+  function onDataSourceCreated (ds: DataSource) {
+    const featureLayerDataSource = isFeatureLayerDataSourceType(ds) ? ds : undefined
+    //const dsTitle = featureLayerDataSource.layer.title
+    // set DataSource in h3-utils module
+    setDataSource(featureLayerDataSource)
+    // setActiveDs(featureLayerDataSource)
+  }
+
   const handleExpandSidebar = (sectionId: string, viewId: string): void => {
     if (!sidebarWidgetState) {
       console.warn(`Sidebar ${props.config.sidePanelId} not available`)
       return
     }
+
     // counterintuitive naming convention: "collapse=true" means panel is expanded
-    getAppStore().dispatch(appActions.widgetStatePropChange(
-      props.config.sidePanelId,
-      'collapse',
-      true
-    ))
+    if (!sidebarWidgetState.collapse) {
+      getAppStore().dispatch(appActions.widgetStatePropChange(
+        props.config.sidePanelId,
+        'collapse',
+        true
+      ))
+    }
     jimuHistory.changeView(sectionId, viewId)
   }
 
@@ -189,7 +180,7 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
     const graphicHits = hitTestResult.results?.filter(hitResult =>
       hitResult.type === 'graphic' && hitResult.layer.type === 'graphics'
     ) as __esri.GraphicHit[]
-    console.log(`${featureHits?.length || 0} features; ${graphicHits?.length || 0} hexbins`)
+    // console.log(`${featureHits?.length || 0} features; ${graphicHits?.length || 0} hexbins`)
 
     if (graphicHits?.length === 1) {
       // console.log('hexbin clicked: ', graphicHits[0].graphic.attributes.h3)
@@ -273,29 +264,6 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
             const elapsedMillisecsForPopup = new Date().getTime() - startTimeForPopup.getTime()
             // console.log(`popup completed in ${elapsedMillisecsForPopup / 1000} seconds`)
           })
-      /*
-        // attempt to delay execution of hitTest on points, hexbin layers until webmap popup completes
-        jmv.view.popup.fetchFeatures(evt).then((response) => {
-          // default to empty array to keep TypeScript happy
-          const layerViewPromises = response.promisesPerLayerView || []
-          Promise.allSettled(layerViewPromises).then(() => {
-            // popup should be complete at this point
-            const elapsedMillisecsForPopup = new Date().getTime() - startTimeForPopup.getTime()
-            console.log(`popup completed in ${elapsedMillisecsForPopup / 1000} seconds`)
-            const startTimeForHitTest = new Date()
-            jmv.view
-              .hitTest(evt, hitTestOptions)
-              .then((response) => mapClickHandler(response))
-              .catch((error) => console.error('Error in hitTest: ', error))
-              .finally(() => {
-                const elapsedMillisecsForHitTest = new Date().getTime() - startTimeForHitTest.getTime()
-                console.log(`hitTest completed in ${elapsedMillisecsForHitTest / 1000} seconds`)
-              })
-          }) // end promisesPerLayerView
-          .finally(() => console.log('end promisesPerLayerView'))
-        })
-        .finally(() => console.log('end popup.fetchFeatures')) // end popup.fetchFeatures
-      */
       }) // end view on click
     }) // end MapView#when
   } // end activeViewChangeHandler
@@ -401,11 +369,18 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
   // console.log('leaving h3-layer')
   return (
     <div>
-      {h3 ? formatHexbinSummary() : <p>Please select a hexbin...</p>}
+      <DataSourceComponent
+        useDataSource={props.useDataSources?.[0]}
+        widgetId={props.id}
+        onDataSourceCreated={onDataSourceCreated}
+      />
       <JimuMapViewComponent
         useMapWidgetId={props.useMapWidgetIds?.[0]}
         onActiveViewChange={activeViewChangeHandler}
       />
+      <div>
+        {h3 ? formatHexbinSummary() : <p>Please select a hexagonal area to summarize</p>}
+      </div>
     </div>
 
   )
