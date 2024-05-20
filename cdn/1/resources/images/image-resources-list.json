@@ -40,5 +40,47 @@
     "isUseCompress": false,
     "originalWidth": 768,
     "originalHeight": 355
+  },
+  "1716239009355": {
+    "originalName": "noaa-logo-rgb-2022.png",
+    "fileName": "1716239009355.png",
+    "size": 57994,
+    "url": "${appResourceUrl}/images/widget_9/1716239009355.png",
+    "created": 1716239009355,
+    "resourcesPrefix": "images/widget_9",
+    "referedIds": [],
+    "originId": "1716239009355",
+    "fileFormat": "image/png",
+    "isUseCompress": false,
+    "originalWidth": 1501,
+    "originalHeight": 1501
+  },
+  "1716240564890": {
+    "originalName": "DSCRTP_logo_1_1.png",
+    "fileName": "1716240564890.png",
+    "size": 25847,
+    "url": "${appResourceUrl}/images/widget_61/1716240564890.png",
+    "created": 1716240564890,
+    "resourcesPrefix": "images/widget_61",
+    "referedIds": [],
+    "originId": "1716240564890",
+    "fileFormat": "image/png",
+    "isUseCompress": false,
+    "originalWidth": 1100,
+    "originalHeight": 225
+  },
+  "1716240680651": {
+    "originalName": "DSC_old_logo.jpg",
+    "fileName": "1716240680651.jpg",
+    "size": 833866,
+    "url": "${appResourceUrl}/images/widget_61/1716240680651.jpg",
+    "created": 1716240680651,
+    "resourcesPrefix": "images/widget_61",
+    "referedIds": [],
+    "originId": "1716240680651",
+    "fileFormat": "image/jpeg",
+    "isUseCompress": false,
+    "originalWidth": 1616,
+    "originalHeight": 392
   }
 }
