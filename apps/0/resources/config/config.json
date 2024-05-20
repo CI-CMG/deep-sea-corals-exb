@@ -102,7 +102,7 @@
           "bbox": {
             "left": "29.0%",
             "right": "0.0%",
-            "top": "325.00px",
+            "top": "350.00px",
             "bottom": "49.9%",
             "width": "16.00px",
             "height": "7.0%"
@@ -224,7 +224,7 @@
           "bbox": {
             "left": "0.00%",
             "right": "0.00%",
-            "top": "0.0%",
+            "top": "25.00px",
             "bottom": "92.9%",
             "width": "73.3%",
             "height": "7.1%"
@@ -302,21 +302,21 @@
       },
       "order": [
         "0",
-        "1",
         "2",
         "3",
-        "4"
+        "4",
+        "5"
       ],
       "content": {
         "0": {
           "type": "WIDGET",
           "bbox": {
-            "left": "53.8%",
-            "right": "160.00px",
+            "left": "65.7%",
+            "right": "200.00px",
             "top": "50%",
-            "bottom": "15.5%",
-            "width": "120.00px",
-            "height": "40.00px"
+            "bottom": "16.9%",
+            "width": "120px",
+            "height": "40px"
           },
           "widgetId": "widget_6",
           "setting": {
@@ -326,31 +326,9 @@
               "top": false,
               "bottom": true
             },
-            "vCenter": true
-          }
-        },
-        "1": {
-          "type": "WIDGET",
-          "bbox": {
-            "left": "81.8%",
-            "right": "13px",
-            "top": "50%",
-            "bottom": "0.00%",
-            "width": "120.00px",
-            "height": "40.00px"
-          },
-          "widgetId": "widget_7",
-          "setting": {
-            "autoProps": {
-              "right": false,
-              "left": true,
-              "top": false,
-              "bottom": true
-            },
             "vCenter": true,
             "hCenter": false
-          },
-          "isPending": false
+          }
         },
         "2": {
           "type": "WIDGET",
@@ -378,12 +356,12 @@
         "3": {
           "type": "WIDGET",
           "bbox": {
-            "left": "15.00px",
+            "left": "10.00px",
             "right": "74.5%",
             "top": "50%",
             "bottom": "0.0%",
-            "width": "36.00px",
-            "height": "36.00px"
+            "width": "40.00px",
+            "height": "40.00px"
           },
           "widgetId": "widget_9",
           "setting": {
@@ -399,10 +377,10 @@
         "4": {
           "type": "WIDGET",
           "bbox": {
-            "left": "66.6%",
-            "right": "307px",
+            "left": "54.2%",
+            "right": "330.00px",
             "top": "50%",
-            "bottom": "18.8%",
+            "bottom": "16.8%",
             "width": "120px",
             "height": "40px"
           },
@@ -416,6 +394,31 @@
             },
             "vCenter": true,
             "hCenter": false
+          }
+        },
+        "5": {
+          "type": "WIDGET",
+          "widgetId": "widget_61",
+          "bbox": {
+            "left": "76.6%",
+            "right": "10.00px",
+            "top": "50%",
+            "bottom": "0.0%",
+            "width": "180.00px",
+            "height": "1250.0000%"
+          },
+          "setting": {
+            "autoProps": {
+              "right": false,
+              "left": true,
+              "top": false,
+              "bottom": true,
+              "height": {}
+            },
+            "vCenter": true,
+            "hCenter": false,
+            "heightMode": "ratio",
+            "aspectRatio": 0.24
           }
         }
       }
@@ -1703,84 +1706,6 @@
       },
       "id": "widget_6"
     },
-    "widget_7": {
-      "uri": "widgets/common/button/",
-      "version": "1.13.0",
-      "label": "Button 2",
-      "config": {
-        "functionConfig": {
-          "text": "Return",
-          "textExpression": null,
-          "toolTip": "go back to deep sea coral website data overview page",
-          "toolTipExpression": null,
-          "linkParam": {
-            "linkType": "WEB_ADDRESS",
-            "openType": "_blank",
-            "value": "https://deepseacoraldata.noaa.gov/data",
-            "expression": null
-          }
-        },
-        "styleConfig": {
-          "useCustom": true,
-          "customStyle": {
-            "regular": {
-              "background": {
-                "color": "#076fe5",
-                "fillType": "fill"
-              },
-              "border": {
-                "type": "solid",
-                "color": "#076fe5",
-                "width": "1px"
-              },
-              "text": {
-                "color": "#fff",
-                "size": "14px"
-              },
-              "borderRadius": {
-                "unit": "px",
-                "number": [
-                  2,
-                  2,
-                  2,
-                  2
-                ]
-              },
-              "iconProps": {
-                "color": "#fff",
-                "size": 14
-              }
-            },
-            "hover": {
-              "background": {
-                "color": "#005eca",
-                "fillType": "fill"
-              },
-              "border": {
-                "type": "solid",
-                "width": "0px"
-              },
-              "text": {
-                "size": "14px"
-              },
-              "borderRadius": {
-                "unit": "px",
-                "number": [
-                  2,
-                  2,
-                  2,
-                  2
-                ]
-              },
-              "iconProps": {
-                "size": 14
-              }
-            }
-          }
-        }
-      },
-      "id": "widget_7"
-    },
     "widget_8": {
       "uri": "widgets/common/text/",
       "version": "1.13.0",
@@ -1791,6 +1716,15 @@
         "style": {
           "verticalAlign": "start",
           "wrap": true
+        },
+        "tooltip": {
+          "name": "National Deep-Sea Corals and Sponges Database",
+          "parts": [
+            {
+              "type": "STRING",
+              "exp": "\"National Deep-Sea Corals and Sponges Database\""
+            }
+          ]
         }
       },
       "id": "widget_8"
@@ -1801,21 +1735,26 @@
       "label": "Image",
       "config": {
         "functionConfig": {
-          "altText": "",
-          "toolTip": "",
-          "linkParam": {},
+          "altText": "National Centers for Environmental Information, National Oceanic and Atmospheric Administration",
+          "toolTip": "go to the National Centers for Environmental Information",
+          "linkParam": {
+            "linkType": "WEB_ADDRESS",
+            "openType": "_self",
+            "value": "https://www.ncei.noaa.gov",
+            "expression": null
+          },
           "scale": "Fit",
           "imageParam": {
-            "url": "${appResourceUrl}/images/widget_9/1696461043375.png",
-            "originalUrl": "${appResourceUrl}/images/widget_9/1696461043375.png",
-            "fileName": "1696461043375.png",
-            "originalName": "1663878503405.png",
+            "url": "${appResourceUrl}/images/widget_9/1716239009355.png",
+            "originalUrl": "${appResourceUrl}/images/widget_9/1716239009355.png",
+            "fileName": "1716239009355.png",
+            "originalName": "noaa-logo-rgb-2022.png",
             "imgSourceType": "BY_UPLOAD",
             "fileFormat": "image/png",
-            "originalId": "1696461043375",
+            "originalId": "1716239009355",
             "isUseCompress": false,
-            "originalWidth": 240,
-            "originalHeight": 240,
+            "originalWidth": 1501,
+            "originalHeight": 1501,
             "cropParam": {
               "svgViewBox": "0 0 16 16",
               "svgPath": "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0Z",
@@ -1824,17 +1763,20 @@
           },
           "imageDisplayQualityMode": "ORIGINAL",
           "imgSourceType": "",
-          "srcExpression": null
+          "srcExpression": null,
+          "altTextExpression": null,
+          "toolTipExpression": null
         },
         "styleConfig": {}
       },
       "id": "widget_9",
       "style": {
         "background": {
-          "color": "var(--primary-100)",
+          "color": "var(--org-header-bg)",
           "fillType": "fill"
         }
-      }
+      },
+      "useDataSources": []
     },
     "widget_10": {
       "uri": "widgets/layout/column/",
@@ -3546,6 +3488,54 @@
         "configUrl": "https://www.ncei.noaa.gov/waf/dsc-data/config/DeepSeaCorals/properties.json"
       },
       "id": "widget_60"
+    },
+    "widget_61": {
+      "uri": "widgets/common/image/",
+      "version": "1.13.0",
+      "label": "DSCRTP graphical element",
+      "config": {
+        "functionConfig": {
+          "altText": "NOAA Deep Sea Corals page",
+          "toolTip": "go to NOAA Deep Sea Corals page",
+          "linkParam": {},
+          "scale": "Fit",
+          "imageParam": {
+            "url": "${appResourceUrl}/images/widget_61/1716240680651.jpg",
+            "originalUrl": "${appResourceUrl}/images/widget_61/1716240680651.jpg",
+            "fileName": "1716240680651.jpg",
+            "originalName": "DSC_old_logo.jpg",
+            "imgSourceType": "BY_UPLOAD",
+            "fileFormat": "image/jpeg",
+            "originalId": "1716240680651",
+            "isUseCompress": false,
+            "originalWidth": 1616,
+            "originalHeight": 392
+          },
+          "imageDisplayQualityMode": "ORIGINAL",
+          "imgSourceType": "",
+          "srcExpression": null,
+          "toolTipExpression": null,
+          "altTextExpression": null,
+          "imageFillMode": "FILL"
+        },
+        "styleConfig": {}
+      },
+      "id": "widget_61",
+      "style": {
+        "background": {
+          "color": "",
+          "fillType": "fill",
+          "image": {
+            "url": ""
+          }
+        },
+        "border": {
+          "color": null,
+          "type": "solid",
+          "width": "2px"
+        },
+        "borderRadius": null
+      }
     }
   },
   "widgetsManifest": {},
@@ -3956,5 +3946,5 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1715633146515
+  "timestamp": 1716244870893
 }
