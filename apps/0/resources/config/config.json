@@ -1229,29 +1229,6 @@
     "layout_24": {
       "type": "FIXED",
       "content": {
-        "0": {
-          "type": "WIDGET",
-          "setting": {
-            "style": {},
-            "autoProps": {
-              "left": true,
-              "right": false,
-              "top": false,
-              "bottom": true,
-              "width": "STRETCH"
-            },
-            "lockParent": false
-          },
-          "bbox": {
-            "left": 20,
-            "top": 20,
-            "width": "92.00%",
-            "height": "65.00%",
-            "right": 20,
-            "bottom": "30.6070%"
-          },
-          "widgetId": "widget_52"
-        },
         "2": {
           "type": "WIDGET",
           "setting": {
@@ -1271,9 +1248,9 @@
           },
           "bbox": {
             "left": "20px",
-            "top": "75.3%",
+            "top": "4.7%",
             "width": "91.7%",
-            "height": "80.00px",
+            "height": "320px",
             "right": "20px",
             "bottom": "0px"
           },
@@ -1282,7 +1259,6 @@
         }
       },
       "order": [
-        "0",
         "2"
       ],
       "setting": {
@@ -3215,42 +3191,12 @@
       },
       "id": "widget_50"
     },
-    "widget_52": {
-      "uri": "widgets/common/image/",
-      "version": "1.13.0",
-      "label": "Image 2",
-      "config": {
-        "functionConfig": {
-          "altText": "",
-          "toolTip": "",
-          "linkParam": {},
-          "scale": "Fit",
-          "imageParam": {
-            "url": "${appResourceUrl}/images/widget_52/1698778725966.jpeg",
-            "originalUrl": "${appResourceUrl}/images/widget_52/1698778725966.jpeg",
-            "fileName": "1698778725966.jpeg",
-            "originalName": "1668535134067.jpeg",
-            "imgSourceType": "BY_UPLOAD",
-            "fileFormat": "image/jpeg",
-            "originalId": "1698778725966",
-            "isUseCompress": false,
-            "originalWidth": 768,
-            "originalHeight": 355
-          },
-          "imgSourceType": "",
-          "srcExpression": null,
-          "imageDisplayQualityMode": "ORIGINAL"
-        },
-        "styleConfig": {}
-      },
-      "id": "widget_52"
-    },
     "widget_54": {
       "uri": "widgets/common/text/",
       "version": "1.13.0",
       "label": "Text 10",
       "config": {
-        "text": "<p><span style=\"background-color: rgb(255, 255, 255); color: var(--dark-800); font-size: 14px;\">﻿</span><span style=\"background-color: rgb(255, 255, 255); color: rgb(24, 24, 24); font-size: 14px;\">﻿Welcome to the pre-release version of NOAA's Deep-sea Corals and Sponges data discovery tool. This application is under active development and your feedback is welcome.</span><span style=\"color: var(--dark-800); font-size: 14px;\">﻿</span></p>",
+        "text": "<p style=\"text-align: center;\"><strong style=\"font-size: 16px;\">Welcome to NOAA's Deep-sea Corals and </strong></p><p style=\"text-align: center;\"><strong style=\"font-size: 16px;\">Sponges data discovery tool</strong></p><p style=\"text-align: center;\"><br></p><p><span style=\"font-size: 14px;\">For questions, or to submit feedback, please email us at&nbsp;</span><a href=\"mailto:deepseacoraldata@noaa.gov\" target=\"_blank\" data-uniqueid=\"\" data-dsid=\"\" data-link=\"null\" style=\"font-size: 14px; color: rgb(17, 85, 204);\">deepseacoraldata@noaa.gov</a><span style=\"font-size: 14px;\">.&nbsp;Official metadata and citation information for the National Database for Deep-sea Corals and Sponges can be found at:&nbsp;&nbsp;</span><a href=\"https://deepseacoraldata.noaa.gov\" target=\"_blank\" data-uniqueid=\"27baff8b_cb77_81f2_9a0a_7c2d7d788578\" data-dsid=\"\" data-link=\"%7B%22linkType%22%3A%22WEB_ADDRESS%22%2C%22openType%22%3A%22_blank%22%2C%22value%22%3A%22https%3A%2F%2Fdeepseacoraldata.noaa.gov%22%2C%22expression%22%3Anull%7D\" style=\"font-size: 14px; color: rgb(17, 85, 204);\">https://deepseacoraldata.</a><a href=\"https://deepseacoraldata.noaa.gov\" target=\"_blank\" data-uniqueid=\"27baff8b_cb77_81f2_9a0a_7c2d7d788578\" data-dsid=\"\" data-link=\"%7B%22linkType%22%3A%22WEB_ADDRESS%22%2C%22openType%22%3A%22_blank%22%2C%22value%22%3A%22https%3A%2F%2Fdeepseacoraldata.noaa.gov%22%2C%22expression%22%3Anull%7D\" style=\"font-size: 14px; color: rgb(17, 85, 204);\">noaa.gov/data</a></p><p><br></p><p><span style=\"font-size: 14px; color: var(--dark-800); background-color: rgb(255, 255, 255);\">Please read the important information below regarding the use of data from this portal:</span></p><p><br></p><p style=\"text-align: left;\"><em style=\"font-family: &quot;Avenir Next&quot;; font-size: 12px; color: var(--dark-800); background-color: rgb(255, 255, 255);\">This data portal and the data delivered therein is not an official communication of the National Oceanic and Atmospheric Administration (NOAA) or the United States Department of Commerce. All data provided through this portal is offered on an 'as is' basis, and the user assumes responsibility for its use. Any claims against the Department of Commerce or its bureaus arising from the use of this data portal will be governed by applicable Federal law. Any reference to specific commercial products, processes, or services by service mark, trademark, manufacturer, or otherwise, does not constitute or imply endorsement, recommendation, or favoring by the Department of Commerce. The Department of Commerce seal and logo, or the seal and logo of any DOC bureau, shall not be used in any manner to imply endorsement of any commercial product or activity by the DOC or the United States Government.</em></p>",
         "placeholder": "<p><span style=\"color: var(--dark-800);\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>",
         "style": {
           "verticalAlign": "start",
@@ -3946,5 +3892,5 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1716244870893
+  "timestamp": 1716249087762
 }
