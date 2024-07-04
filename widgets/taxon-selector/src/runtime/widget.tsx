@@ -246,8 +246,8 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
         value={selectedPhylum}
         onChange={phylumSelectHandler}
         placeholder="Select a Phylum..."
-        style={{ padding: '10px', width: 200 }}
-        ariaLabel='Select a Phylum'
+        style={{ paddingLeft: '10px', paddingBottom: '10px', width: 200 }}
+        aria-label='Select a Phylum'
         menuRole="menu"
         menuItemCheckMode="singleCheck"
         disabled={!phylumList.length}
@@ -259,7 +259,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
         value={selectedClass}
         onChange={classSelectHandler}
         placeholder="Select a Class..."
-        style={{ padding: '10px', width: 200 }}
+        style={{ paddingLeft: '10px', paddingBottom: '10px', width: 200 }}
         menuRole="menu"
         disabled={!selectedPhylum}
       >
@@ -292,14 +292,15 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
         value={selectedGenus}
         onChange={genusSelectHandler}
         placeholder="Select a Genus..."
-        style={{ paddingLeft: '10px', paddingBottom: '10px', width: 200 }}
+        style={{ paddingLeft: '10px', width: 200 }}
         menuRole="menu"
         disabled={!selectedFamily}
       >
         {genusList.map(item => <Option value={item}>{item}</Option>)}
       </Select>
 
-      <Button style={{ margin: '10px' }} onClick={resetButtonHandler}>Reset</Button>
+      <Button style={{ marginLeft: '10px' }} onClick={resetButtonHandler}>Reset</Button>
+
     </div>
   )
 }
