@@ -3430,8 +3430,8 @@
       "label": "DSCRTP graphical element",
       "config": {
         "functionConfig": {
-          "altText": "NOAA Deep Sea Corals page",
-          "toolTip": "go to NOAA Deep Sea Corals page",
+          "altText": "go to NOAA's Deep-sea Coral Research and Technology Program's data page",
+          "toolTip": "go to NOAA's Deep-sea Coral Research and Technology Program's data page",
           "linkParam": {},
           "scale": "Fit",
           "imageParam": {
@@ -3887,5 +3887,5 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1716249087762
+  "timestamp": 1720471378540
 }
