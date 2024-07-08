@@ -3443,7 +3443,12 @@
         "functionConfig": {
           "altText": "go to NOAA's Deep-sea Coral Research and Technology Program's data page",
           "toolTip": "go to NOAA's Deep-sea Coral Research and Technology Program's data page",
-          "linkParam": {},
+          "linkParam": {
+            "linkType": "WEB_ADDRESS",
+            "openType": "_self",
+            "value": "https://deepseacoraldata.noaa.gov/index.php/data",
+            "expression": null
+          },
           "scale": "Fit",
           "imageParam": {
             "url": "${appResourceUrl}/images/widget_61/1716240680651.jpg",
@@ -3481,7 +3486,8 @@
           "width": "2px"
         },
         "borderRadius": null
-      }
+      },
+      "useDataSources": []
     }
   },
   "widgetsManifest": {},
@@ -3892,5 +3898,5 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1720471378540
+  "timestamp": 1720481276676
 }
