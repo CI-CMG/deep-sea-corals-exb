@@ -247,10 +247,10 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
       {validBboxRef.current
         ? <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Tooltip placement="top" title="open ERDDAP console to customize output">
-          <Button type="primary" tag="a" href={generateErddapUrl('html')} target="_blank" style={{ marginRight: '20px', textDecoration: 'none', color:'white' }}>Customize</Button>
+          <Button type="primary" role="button" href={generateErddapUrl('html')} target="_blank" style={{ marginRight: '20px', textDecoration: 'none', color:'white' }}>Customize</Button>
         </Tooltip>
         <Tooltip placement="top" title="Download standard CSV file with current filters applied">
-          <Button type="primary" tag="a" href={generateErddapUrl('csvp')} target="_blank" style={{ textDecoration: 'none', color:'white' }}>Download</Button>
+          <Button type="primary" role="button" href={generateErddapUrl('csvp')} target="_blank" style={{ textDecoration: 'none', color:'white' }}>Download</Button>
         </Tooltip>
       </div>
         : <div style={{ width: '80%', alignContent: 'center' }}>
@@ -260,7 +260,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
       }
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Tooltip placement="top" title="Download the entire database in a CSV format">
-          <Button type="primary" tag="a" href={props.config.csvFileUrl} target="_blank" style={{ width: '230px', marginTop: '20px', textDecoration: 'none', color:'white' }}>Download Entire Database</Button>
+          <Button type="primary" role="button" href={props.config.csvFileUrl} target="_blank" style={{ width: '230px', marginTop: '20px', textDecoration: 'none', color:'white' }}>Download Entire Database</Button>
         </Tooltip>
       </div>
 
