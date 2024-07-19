@@ -474,6 +474,7 @@
       },
       "order": [
         "1",
+        "2",
         "0"
       ],
       "content": {
@@ -506,6 +507,23 @@
             "left": 0,
             "width": 2,
             "height": "25px"
+          }
+        },
+        "2": {
+          "type": "WIDGET",
+          "widgetId": "widget_62",
+          "setting": {
+            "autoProps": {
+              "height": "AUTO"
+            },
+            "style": {
+              "alignSelf": "center"
+            }
+          },
+          "bbox": {
+            "left": 5,
+            "width": 2,
+            "height": "20.00px"
           }
         }
       }
@@ -1597,7 +1615,7 @@
       "version": "1.13.0",
       "label": "Text",
       "config": {
-        "text": "<p style=\"text-align: center;\"><span style=\"color: rgb(255, 255, 255);\">Application Version 3.0.0</span></p>",
+        "text": "<p style=\"text-align: center;\"><span style=\"color: rgb(255, 255, 255);\">Application Version 3.0.1</span></p>",
         "placeholder": "Double click to edit text",
         "style": {
           "verticalAlign": "start",
@@ -3488,6 +3506,84 @@
         "borderRadius": null
       },
       "useDataSources": []
+    },
+    "widget_62": {
+      "uri": "widgets/common/button/",
+      "version": "1.13.0",
+      "label": "User Guide Button",
+      "config": {
+        "functionConfig": {
+          "toolTip": "open User Guide",
+          "toolTipExpression": null,
+          "text": "User Guide",
+          "textExpression": null,
+          "linkParam": {
+            "linkType": "WEB_ADDRESS",
+            "openType": "_blank",
+            "value": "https://www.ncei.noaa.gov/waf/dsc-data/supplementary/PortalUserGuide.pdf",
+            "expression": null
+          }
+        },
+        "styleConfig": {
+          "useCustom": true,
+          "customStyle": {
+            "regular": {
+              "background": {
+                "color": "rgba(0,0,0,0)",
+                "fillType": "fill"
+              },
+              "border": {
+                "type": "solid",
+                "color": "rgba(0,0,0,0)",
+                "width": "1px"
+              },
+              "text": {
+                "color": "#fff",
+                "size": "14px"
+              },
+              "borderRadius": {
+                "unit": "px",
+                "number": [
+                  2,
+                  2,
+                  2,
+                  2
+                ]
+              },
+              "iconProps": {
+                "color": "#fff",
+                "size": 14
+              }
+            },
+            "hover": {
+              "background": {
+                "color": "rgba(0,0,0,0)",
+                "fillType": "fill"
+              },
+              "border": {
+                "type": "solid",
+                "width": "0px"
+              },
+              "text": {
+                "size": "14px"
+              },
+              "borderRadius": {
+                "unit": "px",
+                "number": [
+                  2,
+                  2,
+                  2,
+                  2
+                ]
+              },
+              "iconProps": {
+                "size": 14
+              }
+            }
+          }
+        }
+      },
+      "id": "widget_62"
     }
   },
   "widgetsManifest": {},
@@ -3894,9 +3990,9 @@
       "LARGE": "layout_7"
     },
     "height": {
-      "LARGE": "25px"
+      "LARGE": 24
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1720481276676
+  "timestamp": 1721426399684
 }
