@@ -76,7 +76,9 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
     const startTime = new Date()
     const searchParams = new URLSearchParams([
       ['where', '1=1'],
-      ['outFields', 'Phylum']
+      ['outFields', 'Phylum'],
+      ['orderByFields', 'Phylum']
+
     ])
     const data = await getDataFromFeatureService(searchParams)
     const phylums = data.features.map(feature => feature.attributes.Phylum).map(name => name || 'NA')
@@ -88,7 +90,8 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
   async function updateClassList (phylumName: string) {
     const searchParams = new URLSearchParams([
       ['where', `Phylum='${phylumName}'`],
-      ['outFields', 'Class']
+      ['outFields', 'Class'],
+      ['orderByFields', 'Class']
     ])
     const data = await getDataFromFeatureService(searchParams)
     const classes = data.features.map(feature => feature.attributes.Class).map(name => name || 'NA')
@@ -99,7 +102,8 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
   async function updateOrderList (className: string) {
     const searchParams = new URLSearchParams([
       ['where', `Class='${className}'`],
-      ['outFields', 'Order_']
+      ['outFields', 'Order_'],
+      ['orderByFields', 'Order_']
     ])
     const data = await getDataFromFeatureService(searchParams)
     const orders = data.features.map(feature => feature.attributes.Order_).map(name => name || 'NA')
@@ -109,7 +113,8 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
   async function updateFamilyList (orderName: string) {
     const searchParams = new URLSearchParams([
       ['where', `Order_='${orderName}'`],
-      ['outFields', 'Family']
+      ['outFields', 'Family'],
+      ['orderByFields', 'Family']
     ])
     const data = await getDataFromFeatureService(searchParams)
     const families = data.features.map(feature => feature.attributes.Family).map(name => name || 'NA')
@@ -119,11 +124,11 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
   async function updateGenusList (familyName: string) {
     const searchParams = new URLSearchParams([
       ['where', `Family='${familyName}'`],
-      ['outFields', 'Genus']
+      ['outFields', 'Genus'],
+      ['orderByFields', 'Genus']
     ])
     const data = await getDataFromFeatureService(searchParams)
     const genera = data.features.map(feature => feature.attributes.Genus).map(name => name || 'NA')
-    console.log('genus list: ', genera)
     setGenusList(genera)
   }
 
