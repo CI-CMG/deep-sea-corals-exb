@@ -158,7 +158,7 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
           speciesCount: { rawCount: scientificNameCounts.length },
           environmentalVariables
         })
-        // console.log('promises completed: ', depthRange, phylumCounts, scientificNameCounts, environmentalVariables)
+        console.log('promises completed: ', depthRange, phylumCounts, scientificNameCounts, environmentalVariables)
       }).catch((reason) => {
         console.error('Error getting HexbinSummary. ', reason)
         setServerError(reason)
@@ -283,7 +283,8 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
     // list of scientificNameCounts guaranteed to have unique 'ScientificName'
     // hexbinSummary?.scientificNameCounts.sort((a, b) => a.ScientificName > b.ScientificName ? 1 : -1).forEach(it => {
     hexbinSummary?.scientificNameCounts.forEach(it => {
-      textAreaContent += `${it.ScientificName}: ${it.Count} (${calcSpeciesPercentage(it.Count)}%)\n`
+      // textAreaContent += `${it.ScientificName}: ${it.Count} (${calcSpeciesPercentage(it.Count)}%) | ${it.VernacularNameCategory}\n`
+      textAreaContent += `<${it.VernacularNameCategory}>\n${it.ScientificName}: ${it.Count} (${calcSpeciesPercentage(it.Count)}%)\n\n`
     })
 
     function salinity (environmentalVariables) {
@@ -348,7 +349,7 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
                 return <li>{it.ScientificName}: {it.Count} ({calcSpeciesPercentage(it.Count)}%)</li>
               })}
               </ul> */}
-              <textarea readOnly rows={5} style={{ width: '90%', marginLeft: '10px', marginRight: '15px' }}>
+              <textarea readOnly rows={5} wrap="off" style={{ width: '90%', marginLeft: '10px', marginRight: '15px', resize: 'vertical', overflow: 'auto' }}>
               {textAreaContent}
               </textarea>
               <div style={{ marginTop: '5px' }}>

@@ -26,7 +26,8 @@ export interface HexbinSummary {
 
   export interface ScientificNameCount {
     Count: number
-    ScientificName: string
+    ScientificName: string,
+    VernacularNameCategory?: string
   }
   
   export interface SpeciesCount {
