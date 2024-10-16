@@ -256,7 +256,7 @@ async function getScientificNameCounts (h3, whereClause = '1=1') {
   const startTime = new Date()
   const searchParams = new URLSearchParams()
   searchParams.set('where', `${whereClause} and h3_2='${h3}'`)
-  searchParams.set('groupByFieldsForStatistics', 'ScientificName')
+  searchParams.set('groupByFieldsForStatistics', 'ScientificName,VernacularNameCategory')
   searchParams.set('outStatistics', '[{"statisticType":"Count","onStatisticField":"ScientificName","outStatisticFieldName":"Count"}]')
   searchParams.set('orderByFields', 'Count DESC')
   searchParams.set('returnGeometry', 'false')
