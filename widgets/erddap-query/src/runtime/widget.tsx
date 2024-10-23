@@ -20,21 +20,22 @@ import type MapView from '@arcgis/core/views/MapView'
 // import SpatialReference from 'esri/geometry/SpatialReference'
 import webMercatorUtils from 'esri/geometry/support/webMercatorUtils'
 import reactiveUtils from 'esri/core/reactiveUtils'
-import { useEffect, useState, useRef } from 'react'
+import { useState, useRef } from 'react'
 
 // import { Label, Radio, defaultMessages as jimuUIMessages } from 'jimu-ui'
 import { type IMConfig } from '../config'
-import { URLSearchParams } from 'url'
+// import { URLSearchParams } from 'url'
 import './widget.css'
+// import { element } from 'prop-types'
 
 const { useSelector } = ReactRedux
 
-interface CoordsObject {
-  xmin: number
-  ymin: number
-  xmax: number
-  ymax: number
-}
+// interface CoordsObject {
+//   xmin: number
+//   ymin: number
+//   xmax: number
+//   ymax: number
+// }
 
 function findOceanNameByCode (code: string): string {
   const values = {
@@ -85,7 +86,7 @@ function convertSqlToErddapParams (sql: string, searchParams: string[]) {
       // to be rejoined and replace single quotes with double quotes
       return t.slice(0, 2).concat(t.slice(2).join(' ').replace(/'/g, '"'))
     })
-  // console.log(clauses)
+  console.log(clauses)
 
   // build key/value pairs for specified parameters
   clauses.filter(elem => elem[0].toLowerCase() === 'vernacularnamecategory').forEach(elem => {
@@ -136,12 +137,34 @@ function convertSqlToErddapParams (sql: string, searchParams: string[]) {
   clauses.filter(elem => elem[0].toLowerCase() === 'genus').forEach(elem => {
     searchParams.push(`Genus=${elem[2]}`)
   })
+
+  clauses.filter(elem => elem[0].toLowerCase() === 'synonyms').forEach(elem => {
+    // e.g. "%paradox%" -> ".*paradox.*"
+    const regex = /["%]/g
+    const str = elem[2].replace(regex, '')
+    // mark as case-insensitive pattern match
+    searchParams.push(`Synonyms=~"(?i).*${str}.*"`)
+  })
+
+  clauses.filter(elem => elem[0].toLowerCase() === 'verbatimscientificname').forEach(elem => {
+    const regex = /["%]/g
+    const str = elem[2].replace(regex, '')
+    searchParams.push(`VerbatimScientificName=~"(?i).*${str}.*"`)
+  })
+
+  clauses.filter(elem => elem[0].toLowerCase() === 'aphiaid').forEach(elem => {
+    searchParams.push(`AphiaID=${elem[2]}`)
+  })
+
+  clauses.filter(elem => elem[0].toLowerCase() === 'identificationqualifier').forEach(elem => {
+    searchParams.push(`IdentificationQualifier=${elem[2]}`)
+  })
 }
 
-function formatExtent (mercExtent: Extent) {
-  const geoExtent = webMercatorUtils.webMercatorToGeographic(mercExtent, false) as Extent
-  return `${geoExtent.xmin.toFixed(3)}, ${geoExtent.ymin.toFixed(3)}, ${geoExtent.xmax.toFixed(3)}, ${geoExtent.ymax.toFixed(3)}`
-}
+// function formatExtent (mercExtent: Extent) {
+//   const geoExtent = webMercatorUtils.webMercatorToGeographic(mercExtent, false) as Extent
+//   return `${geoExtent.xmin.toFixed(3)}, ${geoExtent.ymin.toFixed(3)}, ${geoExtent.xmax.toFixed(3)}, ${geoExtent.ymax.toFixed(3)}`
+// }
 
 export default function Widget (props: AllWidgetProps<IMConfig>) {
   console.log('rendering erddap-query...')
@@ -155,7 +178,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
     return state.widgetsState[props.widgetId]
   })
 
-  // build ERDDAP Url. Note that uses a non-standard for for search parameters
+  // build ERDDAP Url. Note that uses a non-standard pattern for search parameters
   const stdFields = 'ShallowFlag,DatasetID,CatalogNumber,SampleID,ImageURL,Repository,ScientificName,VernacularNameCategory,TaxonRank,IdentificationQualifier,Locality,latitude,longitude,DepthInMeters,DepthMethod,ObservationDate,SurveyID,Station,EventID,SamplingEquipment,LocationAccuracy,RecordType,DataProvider'
   const searchParams: string[] = []
 
@@ -173,7 +196,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
     convertSqlToErddapParams(activeDs.getCurrentQueryParams().where, searchParams)
   }
   const erddapUrl = `${props.config.erddapBaseUrl}.html?${stdFields}&${searchParams.join('&')}`
-  console.log({ erddapUrl })
+  // console.log({ erddapUrl })
 
   function copyUrlBtn () {
     // TODO add message to toaster
@@ -183,10 +206,8 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
   function generateErddapUrl (type = 'html') {
     console.log(type)
     if (type === 'html') {
-      console.log(erddapUrl)
       return erddapUrl
     } else {
-      console.log(erddapUrl?.replace('deep_sea_corals.html', 'deep_sea_corals.csvp'))
       return erddapUrl?.replace('deep_sea_corals.html', 'deep_sea_corals.csvp')
     }
   }
@@ -247,10 +268,10 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
       {validBboxRef.current
         ? <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Tooltip placement="top" title="open ERDDAP console to customize output">
-          <Button type="primary" role="button" href={generateErddapUrl('html')} target="_blank" style={{ marginRight: '20px', textDecoration: 'none', color:'white' }}>Customize</Button>
+          <Button type="primary" role="button" href={generateErddapUrl('html')} target="_blank" style={{ marginRight: '20px', textDecoration: 'none', color: 'white' }}>Customize</Button>
         </Tooltip>
         <Tooltip placement="top" title="Download standard CSV file with current filters applied">
-          <Button type="primary" role="button" href={generateErddapUrl('csvp')} target="_blank" style={{ textDecoration: 'none', color:'white' }}>Download</Button>
+          <Button type="primary" role="button" href={generateErddapUrl('csvp')} target="_blank" style={{ textDecoration: 'none', color: 'white' }}>Download</Button>
         </Tooltip>
       </div>
         : <div style={{ width: '80%', alignContent: 'center' }}>
@@ -260,7 +281,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
       }
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Tooltip placement="top" title="Download the entire database in a CSV format">
-          <Button type="primary" role="button" href={props.config.csvFileUrl} target="_blank" style={{ width: '230px', marginTop: '20px', textDecoration: 'none', color:'white' }}>Download Entire Database</Button>
+          <Button type="primary" role="button" href={props.config.csvFileUrl} target="_blank" style={{ width: '230px', marginTop: '20px', textDecoration: 'none', color: 'white' }}>Download Entire Database</Button>
         </Tooltip>
       </div>
 
