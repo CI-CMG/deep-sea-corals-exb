@@ -23,9 +23,9 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
   const [selectedOrder, setSelectedOrder] = useState<string|undefined>()
   const [selectedFamily, setSelectedFamily] = useState<string|undefined>()
   const [selectedGenus, setSelectedGenus] = useState<string|undefined>()
-  const featureServiceUrl = 'https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB_FeatureLayer/FeatureServer/0/query?'
+  const featureServiceUrl = 'https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB/FeatureServer/0/query?'
   //TODO read from configuration
-  // const serviceUrl = (props.config.serviceUrl) ? props.config.serviceUrl : 'https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB_FeatureLayer/FeatureServer/0/query?'
+  // const serviceUrl = (props.config.serviceUrl) ? props.config.serviceUrl : 'https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB/FeatureServer/0/query?'
 
   // handle changes to taxon selections. update map and publish new values
   useEffect(() => {
@@ -78,7 +78,6 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
       ['where', '1=1'],
       ['outFields', 'Phylum'],
       ['orderByFields', 'Phylum']
-
     ])
     const data = await getDataFromFeatureService(searchParams)
     const phylums = data.features.map(feature => feature.attributes.Phylum).map(name => name || 'NA')

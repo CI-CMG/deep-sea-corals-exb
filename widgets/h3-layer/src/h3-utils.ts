@@ -12,7 +12,7 @@ import Color from 'esri/Color'
 import { type FeatureLayerDataSource } from 'jimu-arcgis'
 
 // TODO derive from settings.tsx
-const featureServiceUrl = 'https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB_FeatureLayer/FeatureServer/0/query'
+const featureServiceUrl = 'https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB/FeatureServer/0/query'
 const stdColor = new Color('whitesmoke')
 const highlightColor = new Color('yellow')
 const hexbinBoundaryWidth = 0
@@ -142,9 +142,11 @@ async function getH3Counts (whereClause: string) {
   searchParams.set('resultOffset', results.length.toString())
   searchParams.set('returnExceededLimitFeatures', true.toString())
   searchParams.set('f', 'json')
+  // console.log(searchParams.toString())
 
   while (returnExceededLimitFeatures) {
     const data = await makeH3Request(searchParams)
+    // console.log(data.features)
     results = results.concat(data.features.map(it => it.attributes))
     if (data.exceededTransferLimit) {
       searchParams.set('resultOffset', results.length.toString())

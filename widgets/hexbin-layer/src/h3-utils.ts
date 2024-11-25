@@ -12,7 +12,7 @@ import Color from 'esri/Color'
 import { type FeatureLayerDataSource } from 'jimu-arcgis'
 
 // TODO derive from settings.tsx
-const featureServiceUrl = 'https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB_FeatureLayer/FeatureServer/0/query'
+const featureServiceUrl = 'https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB/FeatureServer/0/query'
 const stdColor = new Color('whitesmoke')
 const highlightColor = new Color('yellow')
 const hexbinBoundaryWidth = 0

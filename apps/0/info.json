@@ -2,7 +2,7 @@
   "created": 1705101220035,
   "description": "",
   "id": "0",
-  "modified": 1721936808177,
+  "modified": 1732577008433,
   "owner": "ncei_noaa",
   "tags": "",
   "thumbnail": null,
@@ -14,10 +14,12 @@
     "Ready To Use",
     "JavaScript",
     "status: Published",
-    "version:1.13.0",
-    "publishVersion:1.13.0"
+    "version:1.15.0",
+    "publishVersion:1.15.0"
   ],
   "portalUrl": "https://noaa.maps.arcgis.com",
   "username": "ncei_noaa",
-  "url": null
+  "url": null,
+  "name": "Deep-sea Corals",
+  "isLocalApp": true
 }

@@ -18,7 +18,7 @@ export default function Setting (props: AllWidgetSettingProps<IMConfig>) {
   }
 
   const onDataSourceChange = (useDataSources: UseDataSource[]) => {
-    console.log({useDataSources})
+    // console.log({ useDataSources })
     props.onSettingChange({
       id: props.id,
       useDataSources: useDataSources
@@ -33,28 +33,28 @@ export default function Setting (props: AllWidgetSettingProps<IMConfig>) {
   }
 
   const onSidePanelChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event)
+    // console.log(event)
     props.onSettingChange({
       id: props.id,
       config: props.config.set('sidePanelId', event.target.value)
     })
   }
   const onSectionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event)
+    // console.log(event)
     props.onSettingChange({
       id: props.id,
       config: props.config.set('sectionId', event.target.value)
     })
   }
   const onDetailsViewChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event)
+    // console.log(event)
     props.onSettingChange({
       id: props.id,
       config: props.config.set('detailsViewId', event.target.value)
     })
   }
   const onSummaryViewChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event)
+    // console.log(event)
     props.onSettingChange({
       id: props.id,
       config: props.config.set('summaryViewId', event.target.value)

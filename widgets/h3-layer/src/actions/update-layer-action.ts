@@ -37,7 +37,7 @@ export default class UpdateLayerAction extends AbstractMessageAction {
     switch (message.type) {
       case MessageType.DataSourceFilterChange:
         const dsFilterChangeMessage = isDataSourceFilterChangeMessageType(message) ? message : undefined
-        console.log({dsFilterChangeMessage})
+        console.log({ dsFilterChangeMessage })
         // const dataSource = DataSourceManager.getInstance().getDataSource(dsFilterChangeMessage.dataSourceIds) as QueriableDataSource
         const dataSource = dataSourceManager.getDataSource(dsFilterChangeMessage.dataSourceIds) as QueriableDataSource
 
