@@ -158,7 +158,7 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
           speciesCount: { rawCount: scientificNameCounts.length },
           environmentalVariables
         })
-        // console.log('promises completed: ', depthRange, phylumCounts, scientificNameCounts, environmentalVariables)
+        console.log('promises completed: ', depthRange, phylumCounts, scientificNameCounts, environmentalVariables)
       }).catch((reason) => {
         console.error('Error getting HexbinSummary. ', reason)
         setServerError(reason)
