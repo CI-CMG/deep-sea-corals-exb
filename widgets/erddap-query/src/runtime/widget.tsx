@@ -86,7 +86,7 @@ function convertSqlToErddapParams (sql: string, searchParams: string[]) {
       // to be rejoined and replace single quotes with double quotes
       return t.slice(0, 2).concat(t.slice(2).join(' ').replace(/'/g, '"'))
     })
-  console.log(clauses)
+  // console.log(clauses)
 
   // build key/value pairs for specified parameters
   clauses.filter(elem => elem[0].toLowerCase() === 'vernacularnamecategory').forEach(elem => {
@@ -109,11 +109,11 @@ function convertSqlToErddapParams (sql: string, searchParams: string[]) {
     searchParams.push(`ObservationYear ${elem[1]} ${elem[2]}`)
   })
 
-  clauses.filter(elem => elem[0].toLowerCase() === 'fishcouncilregion').forEach(elem => {
+  clauses.filter(elem => elem[0].toLowerCase() === 'fishcouncilregioncode').forEach(elem => {
     searchParams.push(`FishCouncilRegion="${findFisheryRegionByCode(elem[2])}"`)
   })
 
-  clauses.filter(elem => elem[0].toLowerCase() === 'ocean').forEach(elem => {
+  clauses.filter(elem => elem[0].toLowerCase() === 'oceancode').forEach(elem => {
     searchParams.push(`Ocean="${findOceanNameByCode(elem[2])}"`)
   })
 
@@ -167,7 +167,7 @@ function convertSqlToErddapParams (sql: string, searchParams: string[]) {
 // }
 
 export default function Widget (props: AllWidgetProps<IMConfig>) {
-  console.log('rendering erddap-query...')
+  // console.log('rendering erddap-query...')
   const [activeDs, setActiveDs] = useState<FeatureLayerDataSource>()
   const [geographicMapExtent, setGeographicMapExtent] = useState<Extent>()
   const [mapView, setMapView] = useState<MapView>()
@@ -204,7 +204,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
   }
 
   function generateErddapUrl (type = 'html') {
-    console.log(type)
+    // console.log(type)
     if (type === 'html') {
       return erddapUrl
     } else {

@@ -53,7 +53,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
   // const [mapView, setMapView] = useState<MapView>()
   const graphicsLayerRef = useRef<GraphicsLayer>()
   // const [queryParams, setQueryParams] = useState<string>()
-  const where = activeDs ?  activeDs.getCurrentQueryParams().where : '1=1'
+  const where = activeDs ? activeDs.getCurrentQueryParams().where : '1=1'
 
   // get state for this widget
   const widgetState = useSelector((state: IMState) => {
