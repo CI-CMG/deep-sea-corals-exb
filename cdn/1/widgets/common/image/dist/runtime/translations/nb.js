@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Bilde",imageChooseShape:"Form",imageCrop:"Beskjær"})}}}));
+System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Bilde",imageChooseShape:"Form",imageCrop:"Beskj\xe6r"})}}}));

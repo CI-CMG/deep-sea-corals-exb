@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"フィルター",allExprsMustBeTrue:"次の条件式のすべてが正しい:",anyExprsMustBeTrue:"次の条件式のいずれかが正しい:"})}}}));
+System.register([],(function(e){return{execute:function(){e({_widgetLabel:"\u30d5\u30a3\u30eb\u30bf\u30fc"})}}}));

@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Filter",allExprsMustBeTrue:"Svi ovi izrazi moraju da budu tačni:",anyExprsMustBeTrue:"Bilo koji od ovih izraza mora je tačan:"})}}}));
+System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Filter"})}}}));

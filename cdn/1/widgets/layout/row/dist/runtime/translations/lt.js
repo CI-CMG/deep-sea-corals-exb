@@ -1,1 +1,1 @@
-System.register([],(function(i){return{execute:function(){i({_widgetLabel:"Eilutė",widgetProperties:"Valdiklio savybės",widgetFunctions:"Valdiklio funkcijos",widgetName:"valdiklio pavadinimas:",widgetProps:"valdiklio savybės:",tips:"Eilutė"})}}}));
+System.register([],(function(i){return{execute:function(){i({_widgetLabel:"Eilut\u0117",widgetProperties:"Valdiklio savyb\u0117s",widgetFunctions:"Valdiklio funkcijos",widgetName:"valdiklio pavadinimas:",widgetProps:"valdiklio savyb\u0117s:",tips:"Eilut\u0117"})}}}));

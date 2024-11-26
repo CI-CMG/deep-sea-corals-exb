@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Schaltfläche"})}}}));
+System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Schaltfl\xe4che"})}}}));

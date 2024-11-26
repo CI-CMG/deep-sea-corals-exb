@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Tlačítko"})}}}));
+System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Tla\u010d\xedtko"})}}}));

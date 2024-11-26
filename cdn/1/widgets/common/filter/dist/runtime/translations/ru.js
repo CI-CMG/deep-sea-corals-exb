@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Фильтр",allExprsMustBeTrue:"Все эти выражения должны иметь значение true:",anyExprsMustBeTrue:"Любое из этих выражений должно иметь значение true:"})}}}));
+System.register([],(function(e){return{execute:function(){e({_widgetLabel:"\u0424\u0438\u043b\u044c\u0442\u0440"})}}}));

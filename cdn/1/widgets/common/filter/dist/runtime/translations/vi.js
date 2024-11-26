@@ -1,1 +1,1 @@
-System.register([],(function(t){return{execute:function(){t({_widgetLabel:"Bộ lọc",allExprsMustBeTrue:"Tất cả những biểu thức này phải đúng:",anyExprsMustBeTrue:"Một biểu thức bất kỳ trong số này phải đúng:"})}}}));
+System.register([],(function(e){return{execute:function(){e({_widgetLabel:"B\u1ed9 l\u1ecdc"})}}}));

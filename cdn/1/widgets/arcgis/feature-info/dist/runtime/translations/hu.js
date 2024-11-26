@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Vektoroselem-információ",noDeataMessageDefaultText:"Nincsenek adatok.",featureNumbers:"{index}/{count}",featureInfoDataActionLabel:"{layer} vektoroselem-információ aktuális rekord"})}}}));
+System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Vektoroselem-inform\xe1ci\xf3",noDeataMessageDefaultText:"Nincsenek adatok.",featureNumbers:"{index}/{count}",featureInfoDataActionLabel:"{layer} vektoroselem-inform\xe1ci\xf3 aktu\xe1lis rekord"})}}}));

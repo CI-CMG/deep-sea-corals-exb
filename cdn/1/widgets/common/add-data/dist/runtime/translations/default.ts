@@ -17,7 +17,7 @@ export default {
   exceedMaxSizeError: 'The file size exceeds the maximum limit.',
   exceedMaxRecordsError: 'The number of records exceeds the maximum threshold.',
   cannotBeAddedError: '{layerName} cannot be added. Support for adding this type is not yet available.',
-  supportedTypesHint: 'Supported formats: Shapefile, CSV, KML, GeoJSON.',
+  supportedTypesHint: 'Supported formats: Shapefile, CSV, KML, GeoJSON, GPX.',
   fileIsUploading: '{fileName} is uploading',
   clickToAddData: 'Click to add data',
   sampleUrl: 'Sample URL'

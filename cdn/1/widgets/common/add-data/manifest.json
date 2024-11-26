@@ -2,8 +2,8 @@
   "name": "add-data",
   "label": "Add Data",
   "type": "widget",
-  "version": "1.13.0",
-  "exbVersion": "1.13.0",
+  "version": "1.15.0",
+  "exbVersion": "1.15.0",
   "author": "Esri R&D Center Beijing",
   "description": "This is the widget which allows you to add data by searching for layers in ArcGIS content, entering URLs, or uploading local files.",
   "copyright": "",
@@ -17,8 +17,10 @@
   ],
   "excludeDataActions": [
     "arcgis-map.showOnMap",
-    "near-me.locate",
-    "elevation-profile.*"
+    "elevation-profile.*",
+    "table.viewInTable",
+    "directions.PlanRoute",
+    "relatedData"
   ],
   "properties": {
     "canConsumeDataAction": true,

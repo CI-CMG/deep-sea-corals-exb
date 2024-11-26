@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({verticalAlign:"垂直對齊",spaceAround:"周圍空間",spaceBetween:"之間的空間",spaceEvenly:"均勻的空間",horizontalAlign:"水平對齊",scrollable:"可捲動"})}}}));
+System.register([],(function(e){return{execute:function(){e({verticalAlign:"\u5782\u76f4\u5c0d\u9f4a",spaceAround:"\u5468\u570d\u7a7a\u9593",spaceBetween:"\u4e4b\u9593\u7684\u7a7a\u9593",spaceEvenly:"\u5747\u52fb\u7684\u7a7a\u9593",horizontalAlign:"\u6c34\u5e73\u5c0d\u9f4a",scrollable:"\u53ef\u6372\u52d5"})}}}));

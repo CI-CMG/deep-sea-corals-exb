@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"ปุ่ม"})}}}));
+System.register([],(function(e){return{execute:function(){e({_widgetLabel:"\u0e1b\u0e38\u0e48\u0e21"})}}}));

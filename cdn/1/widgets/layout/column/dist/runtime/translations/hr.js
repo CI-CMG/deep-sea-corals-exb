@@ -1,1 +1,1 @@
-System.register([],(function(t){return{execute:function(){t({_widgetLabel:"Stupac",widgetProperties:"Vlasništva widgeta",widgetFunctions:"Funkcije widgeta",widgetName:"naziv widgeta:",widgetProps:"vlasništva widgeta:",tips:"Stupac"})}}}));
+System.register([],(function(t){return{execute:function(){t({_widgetLabel:"Stupac",widgetProperties:"Vlasni\u0161tva widgeta",widgetFunctions:"Funkcije widgeta",widgetName:"naziv widgeta:",widgetProps:"vlasni\u0161tva widgeta:",tips:"Stupac"})}}}));

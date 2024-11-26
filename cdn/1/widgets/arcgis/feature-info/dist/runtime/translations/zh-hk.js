@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"圖徵資訊",noDeataMessageDefaultText:"找不到資料。",featureNumbers:"{count} 的 {index}",featureInfoDataActionLabel:"{layer} 圖徵資訊目前記錄"})}}}));
+System.register([],(function(e){return{execute:function(){e({_widgetLabel:"\u5716\u5fb5\u8cc7\u8a0a",noDeataMessageDefaultText:"\u627e\u4e0d\u5230\u8cc7\u6599\u3002",featureNumbers:"{count} \u7684 {index}",featureInfoDataActionLabel:"{layer} \u5716\u5fb5\u8cc7\u8a0a\u76ee\u524d\u8a18\u9304"})}}}));

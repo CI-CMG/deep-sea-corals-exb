@@ -1,11 +1,6 @@
 {
   "limitGraphics": false,
   "maxGraphics": 0,
-  "title": true,
-  "fields": true,
-  "media": true,
-  "attachments": true,
-  "lastEditInfo": true,
   "noDataMessage": "",
   "styleType": "usePopupDefined",
   "style": {
@@ -16,5 +11,8 @@
       "unit": "px"
     },
     "backgroundColor": ""
-  }
+  },
+  "dsNavigator": true,
+  "featureNavigator": true,
+  "dsConfigs": []
 }

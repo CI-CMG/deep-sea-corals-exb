@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"圖片",imageChooseShape:"形狀",imageCrop:"裁剪"})}}}));
+System.register([],(function(e){return{execute:function(){e({_widgetLabel:"\u5716\u7247",imageChooseShape:"\u5f62\u72c0",imageCrop:"\u88c1\u526a"})}}}));

@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Kép",imageChooseShape:"Alakzat",imageCrop:"Kivágás"})}}}));
+System.register([],(function(e){return{execute:function(){e({_widgetLabel:"K\xe9p",imageChooseShape:"Alakzat",imageCrop:"Kiv\xe1g\xe1s"})}}}));

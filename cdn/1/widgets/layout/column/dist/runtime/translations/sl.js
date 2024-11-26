@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Stolpec",widgetProperties:"Lastnosti pripomočka",widgetFunctions:"Funkcije pripomočka",widgetName:"ime pripomočka:",widgetProps:"lastnosti pripomočka:",tips:"Stolpec"})}}}));
+System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Stolpec",widgetProperties:"Lastnosti pripomo\u010dka",widgetFunctions:"Funkcije pripomo\u010dka",widgetName:"ime pripomo\u010dka:",widgetProps:"lastnosti pripomo\u010dka:",tips:"Stolpec"})}}}));

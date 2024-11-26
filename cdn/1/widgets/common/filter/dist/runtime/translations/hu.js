@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Szűrő",allExprsMustBeTrue:"Az összes kifejezésnek igaznak kell lennie:",anyExprsMustBeTrue:"A következő kifejezések bármelyike igaz:"})}}}));
+System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Sz\u0171r\u0151"})}}}));

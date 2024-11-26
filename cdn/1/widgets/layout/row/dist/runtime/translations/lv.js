@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Rinda",widgetProperties:"Logrīka īpašības",widgetFunctions:"Logrīka funkcijas",widgetName:"logrīka nosaukums:",widgetProps:"logrīka īpašības:",tips:"Rinda"})}}}));
+System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Rinda",widgetProperties:"Logr\u012bka \u012bpa\u0161\u012bbas",widgetFunctions:"Logr\u012bka funkcijas",widgetName:"logr\u012bka nosaukums:",widgetProps:"logr\u012bka \u012bpa\u0161\u012bbas:",tips:"Rinda"})}}}));

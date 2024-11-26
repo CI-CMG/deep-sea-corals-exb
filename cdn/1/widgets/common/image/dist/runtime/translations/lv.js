@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Attēls",imageChooseShape:"Forma",imageCrop:"Apgriezt"})}}}));
+System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Att\u0113ls",imageChooseShape:"Forma",imageCrop:"Apgriezt"})}}}));

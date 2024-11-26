@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Redak",widgetProperties:"Vlasništva widgeta",widgetFunctions:"Funkcije widgeta",widgetName:"naziv widgeta:",widgetProps:"vlasništva widgeta:",tips:"Redak"})}}}));
+System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Redak",widgetProperties:"Vlasni\u0161tva widgeta",widgetFunctions:"Funkcije widgeta",widgetName:"naziv widgeta:",widgetProps:"vlasni\u0161tva widgeta:",tips:"Redak"})}}}));

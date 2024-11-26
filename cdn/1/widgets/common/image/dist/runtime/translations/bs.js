@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Slika",imageChooseShape:"Oblik",imageCrop:"Obreži"})}}}));
+System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Slika",imageChooseShape:"Oblik",imageCrop:"Obre\u017ei"})}}}));

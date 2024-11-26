@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"过滤器",allExprsMustBeTrue:"所有这些表达式必须为 true:",anyExprsMustBeTrue:"任何表达式均为 true："})}}}));
+System.register([],(function(e){return{execute:function(){e({_widgetLabel:"\u8fc7\u6ee4\u5668"})}}}));

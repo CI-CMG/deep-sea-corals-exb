@@ -15,5 +15,9 @@ export default {
   placeholderOfEditDesHere: 'Edit description here',
   syncWithTheme: 'Sync with experince theme',
   respectTheSource: 'Respect the source',
-  usePopupDefined: 'Use popup defined'
+  usePopupDefined: 'Use popup defined',
+  dsNavigator: 'Data navigation',
+  featureNavigator: 'Feature navigation',
+  contentConfiguration: 'Content configuration',
+  displayAttachAs: 'Display attachments as'
 }

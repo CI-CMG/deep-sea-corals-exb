@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"زر"})}}}));
+System.register([],(function(e){return{execute:function(){e({_widgetLabel:"\u0632\u0631"})}}}));

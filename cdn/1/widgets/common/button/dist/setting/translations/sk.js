@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Tlačidlo"})}}}));
+System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Tla\u010didlo"})}}}));
