@@ -1370,9 +1370,89 @@
         "0"
       ],
       "label": "Default"
+    },
+    "layout_27": {
+      "type": "FIXED",
+      "content": {
+        "0": {
+          "type": "WIDGET",
+          "widgetId": "widget_63",
+          "bbox": {
+            "left": "50%",
+            "right": "0.0%",
+            "top": "5.00px",
+            "bottom": "89.3%",
+            "width": "95.00%",
+            "height": "42.00px"
+          },
+          "setting": {
+            "autoProps": {
+              "right": true,
+              "left": false,
+              "top": false,
+              "bottom": true,
+              "height": "AUTO",
+              "width": "CUSTOM"
+            },
+            "vCenter": false,
+            "hCenter": true
+          }
+        },
+        "1": {
+          "type": "WIDGET",
+          "widgetId": "widget_64",
+          "bbox": {
+            "left": "50%",
+            "right": "0.0%",
+            "top": "80.00px",
+            "bottom": "74.2%",
+            "width": "95.00%",
+            "height": "11.9%"
+          },
+          "setting": {
+            "autoProps": {
+              "right": true,
+              "left": false,
+              "top": false,
+              "bottom": true,
+              "height": "AUTO"
+            },
+            "vCenter": false,
+            "hCenter": true
+          }
+        },
+        "2": {
+          "type": "WIDGET",
+          "widgetId": "widget_65",
+          "bbox": {
+            "left": "50%",
+            "right": "0.0%",
+            "top": "160.00px",
+            "bottom": "61.6%",
+            "width": "95.00%",
+            "height": "11.9%"
+          },
+          "setting": {
+            "autoProps": {
+              "right": true,
+              "left": false,
+              "top": false,
+              "bottom": true,
+              "height": "AUTO"
+            },
+            "vCenter": false,
+            "hCenter": true
+          }
+        }
+      },
+      "order": [
+        "0",
+        "1",
+        "2"
+      ]
     }
   },
-  "exbVersion": "1.13.0",
+  "exbVersion": "1.15.0",
   "mainSizeMode": "LARGE",
   "theme": "themes/default/",
   "forBuilderAttributes": {
@@ -1388,13 +1468,13 @@
   "widgets": {
     "widget_1": {
       "uri": "widgets/layout/sidebar/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Sidebar",
       "config": {
         "direction": "HORIZONTAL",
         "collapseSide": "FIRST",
         "overlay": false,
-        "size": "310px",
+        "size": "320px",
         "divider": {
           "visible": true,
           "lineStyle": {
@@ -1462,7 +1542,7 @@
     },
     "widget_2": {
       "uri": "widgets/layout/sidebar/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Sidebar 2",
       "config": {
         "direction": "HORIZONTAL",
@@ -1536,7 +1616,7 @@
     },
     "widget_3": {
       "uri": "widgets/arcgis/arcgis-map/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Map",
       "config": {
         "toolConfig": {
@@ -1590,7 +1670,7 @@
     },
     "widget_4": {
       "uri": "widgets/layout/row/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Row",
       "config": {
         "space": 10,
@@ -1612,7 +1692,7 @@
     },
     "widget_5": {
       "uri": "widgets/common/text/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Text",
       "config": {
         "text": "<p style=\"text-align: center;\"><span style=\"color: rgb(255, 255, 255);\">Application Version 3.0.1</span></p>",
@@ -1625,7 +1705,7 @@
     },
     "widget_6": {
       "uri": "widgets/common/button/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Button",
       "config": {
         "functionConfig": {
@@ -1701,7 +1781,7 @@
     },
     "widget_8": {
       "uri": "widgets/common/text/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Text 2",
       "config": {
         "text": "<p><span style=\"font-size: 24px;\">Deep Sea Corals and Sponges</span></p>",
@@ -1723,7 +1803,7 @@
     },
     "widget_9": {
       "uri": "widgets/common/image/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Image",
       "config": {
         "functionConfig": {
@@ -1772,7 +1852,7 @@
     },
     "widget_10": {
       "uri": "widgets/layout/column/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Upper Left Column",
       "config": {
         "space": {
@@ -1805,7 +1885,7 @@
     },
     "widget_11": {
       "uri": "widgets/layout/column/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Lower Left Column",
       "config": {
         "space": {
@@ -1832,7 +1912,7 @@
     },
     "widget_12": {
       "uri": "widgets/common/navigator/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Left Side Views Navigation",
       "config": {
         "data": {
@@ -1841,6 +1921,7 @@
           "views": [
             "view_6",
             "view_2",
+            "view_7",
             "view_3"
           ]
         },
@@ -1863,7 +1944,7 @@
     },
     "widget_13": {
       "uri": "widgets/common/text/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Filters Label",
       "config": {
         "text": "<p style=\"text-align: center;\"><strong style=\"font-size: 16px;\">Filters</strong></p>",
@@ -1885,7 +1966,7 @@
     },
     "widget_14": {
       "uri": "widgets/common/button/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Filters Help Button",
       "config": {
         "functionConfig": {
@@ -1939,7 +2020,7 @@
     },
     "widget_15": {
       "uri": "widgets/layout/column/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Right Side Column",
       "config": {
         "space": {
@@ -1966,7 +2047,7 @@
     },
     "widget_17": {
       "uri": "widgets/common/button/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Right Panel Help Button",
       "config": {
         "functionConfig": {
@@ -2020,7 +2101,7 @@
     },
     "widget_18": {
       "uri": "widgets/common/navigator/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Right Side Views Navigation",
       "config": {
         "data": {
@@ -2281,7 +2362,7 @@
     },
     "widget_32": {
       "uri": "widgets/common/filter/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Filter",
       "config": {
         "groupByLayer": false,
@@ -2305,14 +2386,6 @@
               }
             },
             "name": "Category",
-            "useDataSource": {
-              "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
-              "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
-              "rootDataSourceId": "dataSource_1",
-              "fields": [
-                "VernacularNameCategory"
-              ]
-            },
             "sqlExprObj": {
               "logicalOperator": "AND",
               "parts": [
@@ -2341,7 +2414,18 @@
               "displaySQL": "(VernacularNameCategory = ?)"
             },
             "autoApplyWhenWidgetOpen": false,
-            "collapseFilterExprs": false
+            "collapseFilterExprs": false,
+            "isGroup": false,
+            "useDataSources": [
+              {
+                "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
+                "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
+                "rootDataSourceId": "dataSource_1",
+                "fields": [
+                  "VernacularNameCategory"
+                ]
+              }
+            ]
           },
           {
             "icon": {
@@ -2355,15 +2439,6 @@
               }
             },
             "name": "Photos",
-            "useDataSource": {
-              "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
-              "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
-              "rootDataSourceId": "dataSource_1",
-              "fields": [
-                "ImageURL",
-                "HighlightImageURL"
-              ]
-            },
             "sqlExprObj": {
               "logicalOperator": "OR",
               "parts": [
@@ -2412,7 +2487,19 @@
               "displaySQL": "(ImageURL starts with 'http') or (HighlightImageURL starts with 'http')"
             },
             "autoApplyWhenWidgetOpen": false,
-            "collapseFilterExprs": false
+            "collapseFilterExprs": false,
+            "isGroup": false,
+            "useDataSources": [
+              {
+                "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
+                "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
+                "rootDataSourceId": "dataSource_1",
+                "fields": [
+                  "ImageURL",
+                  "HighlightImageURL"
+                ]
+              }
+            ]
           },
           {
             "icon": {
@@ -2426,14 +2513,6 @@
               }
             },
             "name": "Depth (m)",
-            "useDataSource": {
-              "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
-              "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
-              "rootDataSourceId": "dataSource_1",
-              "fields": [
-                "DepthInMeters"
-              ]
-            },
             "sqlExprObj": {
               "logicalOperator": "AND",
               "parts": [
@@ -2482,7 +2561,18 @@
               "displaySQL": "(DepthInMeters >= ?) and (DepthInMeters <= ?)"
             },
             "autoApplyWhenWidgetOpen": false,
-            "collapseFilterExprs": true
+            "collapseFilterExprs": true,
+            "isGroup": false,
+            "useDataSources": [
+              {
+                "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
+                "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
+                "rootDataSourceId": "dataSource_1",
+                "fields": [
+                  "DepthInMeters"
+                ]
+              }
+            ]
           },
           {
             "icon": {
@@ -2496,14 +2586,6 @@
               }
             },
             "name": "Observation Year",
-            "useDataSource": {
-              "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
-              "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
-              "rootDataSourceId": "dataSource_1",
-              "fields": [
-                "ObservationYear"
-              ]
-            },
             "sqlExprObj": {
               "logicalOperator": "AND",
               "parts": [
@@ -2552,7 +2634,18 @@
               "displaySQL": "(ObservationYear >= ?) and (ObservationYear <= ?)"
             },
             "autoApplyWhenWidgetOpen": false,
-            "collapseFilterExprs": true
+            "collapseFilterExprs": true,
+            "isGroup": false,
+            "useDataSources": [
+              {
+                "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
+                "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
+                "rootDataSourceId": "dataSource_1",
+                "fields": [
+                  "ObservationYear"
+                ]
+              }
+            ]
           },
           {
             "icon": {
@@ -2566,20 +2659,12 @@
               }
             },
             "name": "Fish Council Region",
-            "useDataSource": {
-              "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
-              "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
-              "rootDataSourceId": "dataSource_1",
-              "fields": [
-                "FishCouncilRegion"
-              ]
-            },
             "sqlExprObj": {
               "logicalOperator": "AND",
               "parts": [
                 {
                   "type": "SINGLE",
-                  "jimuFieldName": "FishCouncilRegion",
+                  "jimuFieldName": "FishCouncilRegionCode",
                   "operator": "NUMBER_OPERATOR_IS",
                   "valueOptions": {
                     "isValid": true,
@@ -2595,49 +2680,49 @@
                       {
                         "value": 0,
                         "label": "0",
-                        "alias": "NA",
+                        "alias": "Caribbean",
                         "selected": false
                       },
                       {
                         "value": 1,
                         "label": "1",
-                        "alias": "Caribbean",
+                        "alias": "Gulf of Mexico",
                         "selected": false
                       },
                       {
                         "value": 2,
                         "label": "2",
-                        "alias": "Gulf of Mexico",
+                        "alias": "Mid-Atlantic",
                         "selected": false
                       },
                       {
                         "value": 3,
                         "label": "3",
-                        "alias": "Mid-Atlantic",
+                        "alias": "New England",
                         "selected": false
                       },
                       {
                         "value": 4,
                         "label": "4",
-                        "alias": "New England",
+                        "alias": "North Pacific",
                         "selected": false
                       },
                       {
                         "value": 5,
                         "label": "5",
-                        "alias": "North Pacific",
+                        "alias": "Pacific",
                         "selected": false
                       },
                       {
                         "value": 6,
                         "label": "6",
-                        "alias": "Pacific",
+                        "alias": "South Atlantic",
                         "selected": false
                       },
                       {
                         "value": 7,
                         "label": "7",
-                        "alias": "South Atlantic",
+                        "alias": "Unknown",
                         "selected": false
                       },
                       {
@@ -2660,10 +2745,21 @@
                 }
               ],
               "sql": "",
-              "displaySQL": "(FishCouncilRegion = ?)"
+              "displaySQL": "(FishCouncilRegionCode = ?)"
             },
             "autoApplyWhenWidgetOpen": false,
-            "collapseFilterExprs": false
+            "collapseFilterExprs": false,
+            "isGroup": false,
+            "useDataSources": [
+              {
+                "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
+                "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
+                "rootDataSourceId": "dataSource_1",
+                "fields": [
+                  "FishCouncilRegionCode"
+                ]
+              }
+            ]
           },
           {
             "icon": {
@@ -2677,20 +2773,12 @@
               }
             },
             "name": "Ocean",
-            "useDataSource": {
-              "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
-              "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
-              "rootDataSourceId": "dataSource_1",
-              "fields": [
-                "Ocean"
-              ]
-            },
             "sqlExprObj": {
               "logicalOperator": "AND",
               "parts": [
                 {
                   "type": "SINGLE",
-                  "jimuFieldName": "Ocean",
+                  "jimuFieldName": "OceanCode",
                   "operator": "NUMBER_OPERATOR_IS",
                   "valueOptions": {
                     "isValid": true,
@@ -2759,10 +2847,21 @@
                 }
               ],
               "sql": "",
-              "displaySQL": "(Ocean = ?)"
+              "displaySQL": "(OceanCode = ?)"
             },
             "autoApplyWhenWidgetOpen": false,
-            "collapseFilterExprs": false
+            "collapseFilterExprs": false,
+            "isGroup": false,
+            "useDataSources": [
+              {
+                "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
+                "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
+                "rootDataSourceId": "dataSource_1",
+                "fields": [
+                  "OceanCode"
+                ]
+              }
+            ]
           }
         ]
       },
@@ -2774,11 +2873,11 @@
           "rootDataSourceId": "dataSource_1",
           "fields": [
             "DepthInMeters",
-            "FishCouncilRegion",
+            "FishCouncilRegionCode",
             "HighlightImageURL",
             "ImageURL",
             "ObservationYear",
-            "Ocean",
+            "OceanCode",
             "VernacularNameCategory"
           ]
         }
@@ -2789,7 +2888,7 @@
       "version": "1.0.0",
       "label": "Taxon Selector",
       "config": {
-        "serviceUrl": "https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB_FeatureLayer/FeatureServer/0/query?"
+        "serviceUrl": "https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB/FeatureServer/0/query?"
       },
       "id": "widget_33",
       "useDataSources": [
@@ -2848,7 +2947,7 @@
     },
     "widget_36": {
       "uri": "widgets/common/controller/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Widget Controller",
       "config": {
         "behavior": {
@@ -2892,7 +2991,8 @@
                   "color": "#e3e3e3"
                 }
               }
-            }
+            },
+            "showIndicator": false
           }
         }
       },
@@ -2930,16 +3030,11 @@
     },
     "widget_42": {
       "uri": "widgets/arcgis/feature-info/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Feature Info",
       "config": {
         "limitGraphics": false,
         "maxGraphics": 0,
-        "title": true,
-        "fields": true,
-        "media": true,
-        "attachments": true,
-        "lastEditInfo": true,
         "noDataMessage": "",
         "styleType": "usePopupDefined",
         "style": {
@@ -2950,7 +3045,22 @@
             "unit": "px"
           },
           "backgroundColor": ""
-        }
+        },
+        "dsConfigs": [
+          {
+            "id": "default_data_source_config",
+            "useDataSourceId": "dataSource_1-17d1b07042b-layer-6",
+            "contentConfig": {
+              "title": true,
+              "fields": true,
+              "media": true,
+              "attachments": true,
+              "lastEditInfo": true
+            }
+          }
+        ],
+        "dsNavigator": true,
+        "featureNavigator": true
       },
       "id": "widget_42",
       "dataActions": {
@@ -3030,7 +3140,7 @@
     },
     "widget_43": {
       "uri": "widgets/common/image/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Density Legend Graphic",
       "config": {
         "functionConfig": {
@@ -3062,7 +3172,7 @@
     },
     "widget_44": {
       "uri": "widgets/layout/row/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Density Legend Text",
       "config": {
         "space": 10,
@@ -3084,7 +3194,7 @@
     },
     "widget_45": {
       "uri": "widgets/common/text/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Text 7",
       "config": {
         "text": "<p><strong style=\"font-size: 14px;\">Highest Density</strong></p>",
@@ -3097,7 +3207,7 @@
     },
     "widget_46": {
       "uri": "widgets/common/text/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Text 8",
       "config": {
         "text": "<p style=\"text-align: right;\"><strong style=\"font-size: 14px;\">Lowest Density</strong></p>",
@@ -3134,7 +3244,7 @@
     },
     "widget_48": {
       "uri": "widgets/common/button/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Button 8",
       "config": {
         "functionConfig": {
@@ -3188,7 +3298,7 @@
     },
     "widget_50": {
       "uri": "widgets/common/text/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "ERDDAP Export Dialog Title",
       "config": {
         "text": "<p><strong style=\"font-size: 18px; color: var(--dark-800);\">﻿Export Data via ERDDAP</strong></p>",
@@ -3201,7 +3311,7 @@
     },
     "widget_54": {
       "uri": "widgets/common/text/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Text 10",
       "config": {
         "text": "<p style=\"text-align: center;\"><strong style=\"font-size: 16px;\">Welcome to NOAA's Deep-sea Corals and </strong></p><p style=\"text-align: center;\"><strong style=\"font-size: 16px;\">Sponges data discovery tool</strong></p><p style=\"text-align: center;\"><br></p><p><span style=\"font-size: 14px;\">For questions, or to submit feedback, please email us at&nbsp;</span><a href=\"mailto:deepseacoraldata@noaa.gov\" target=\"_blank\" data-uniqueid=\"\" data-dsid=\"\" data-link=\"null\" style=\"font-size: 14px; color: rgb(17, 85, 204);\">deepseacoraldata@noaa.gov</a><span style=\"font-size: 14px;\">.&nbsp;Official metadata and citation information for the National Database for Deep-sea Corals and Sponges can be found at:&nbsp;&nbsp;</span><a href=\"https://deepseacoraldata.noaa.gov\" target=\"_blank\" data-uniqueid=\"27baff8b_cb77_81f2_9a0a_7c2d7d788578\" data-dsid=\"\" data-link=\"%7B%22linkType%22%3A%22WEB_ADDRESS%22%2C%22openType%22%3A%22_blank%22%2C%22value%22%3A%22https%3A%2F%2Fdeepseacoraldata.noaa.gov%22%2C%22expression%22%3Anull%7D\" style=\"font-size: 14px; color: rgb(17, 85, 204);\">https://deepseacoraldata.</a><a href=\"https://deepseacoraldata.noaa.gov\" target=\"_blank\" data-uniqueid=\"27baff8b_cb77_81f2_9a0a_7c2d7d788578\" data-dsid=\"\" data-link=\"%7B%22linkType%22%3A%22WEB_ADDRESS%22%2C%22openType%22%3A%22_blank%22%2C%22value%22%3A%22https%3A%2F%2Fdeepseacoraldata.noaa.gov%22%2C%22expression%22%3Anull%7D\" style=\"font-size: 14px; color: rgb(17, 85, 204);\">noaa.gov/data</a></p><p><br></p><p><span style=\"font-size: 14px; color: var(--dark-800); background-color: rgb(255, 255, 255);\">Please read the important information below regarding the use of data from this portal:</span></p><p><br></p><p style=\"text-align: left;\"><em style=\"font-family: &quot;Avenir Next&quot;; font-size: 12px; color: var(--dark-800); background-color: rgb(255, 255, 255);\">This data portal and the data delivered therein is not an official communication of the National Oceanic and Atmospheric Administration (NOAA) or the United States Department of Commerce. All data provided through this portal is offered on an 'as is' basis, and the user assumes responsibility for its use. Any claims against the Department of Commerce or its bureaus arising from the use of this data portal will be governed by applicable Federal law. Any reference to specific commercial products, processes, or services by service mark, trademark, manufacturer, or otherwise, does not constitute or imply endorsement, recommendation, or favoring by the Department of Commerce. The Department of Commerce seal and logo, or the seal and logo of any DOC bureau, shall not be used in any manner to imply endorsement of any commercial product or activity by the DOC or the United States Government.</em></p>",
@@ -3399,7 +3509,7 @@
     },
     "widget_59": {
       "uri": "widgets/common/button/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "Add Layer Button",
       "config": {
         "functionConfig": {
@@ -3444,7 +3554,7 @@
     },
     "widget_61": {
       "uri": "widgets/common/image/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "DSCRTP graphical element",
       "config": {
         "functionConfig": {
@@ -3498,7 +3608,7 @@
     },
     "widget_62": {
       "uri": "widgets/common/button/",
-      "version": "1.13.0",
+      "version": "1.15.0",
       "label": "User Guide Button",
       "config": {
         "functionConfig": {
@@ -3573,6 +3683,64 @@
         }
       },
       "id": "widget_62"
+    },
+    "widget_63": {
+      "uri": "widgets/synonym-filter/",
+      "version": "1.0.0",
+      "label": "Synonym Filter",
+      "config": {
+        "serviceUrl": "https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB/FeatureServer/0/query?",
+        "pointLayerTitle": "https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB/FeatureServer/0/query"
+      },
+      "id": "widget_63",
+      "useMapWidgetIds": [
+        "widget_3"
+      ],
+      "useDataSources": [
+        {
+          "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
+          "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
+          "rootDataSourceId": "dataSource_1"
+        }
+      ]
+    },
+    "widget_64": {
+      "uri": "widgets/verbatim-name-filter/",
+      "version": "1.0.0",
+      "label": "Verbatim Scientific Name Filter",
+      "config": {
+        "serviceUrl": "https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB/FeatureServer/0/query?"
+      },
+      "id": "widget_64",
+      "useMapWidgetIds": [
+        "widget_3"
+      ],
+      "useDataSources": [
+        {
+          "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
+          "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
+          "rootDataSourceId": "dataSource_1"
+        }
+      ]
+    },
+    "widget_65": {
+      "uri": "widgets/aphiaid-filter/",
+      "version": "1.0.0",
+      "label": "AphiaID Filter",
+      "config": {
+        "serviceUrl": "https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB/FeatureServer/0/query?"
+      },
+      "id": "widget_65",
+      "useMapWidgetIds": [
+        "widget_3"
+      ],
+      "useDataSources": [
+        {
+          "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
+          "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
+          "rootDataSourceId": "dataSource_1"
+        }
+      ]
     }
   },
   "widgetsManifest": {},
@@ -3611,6 +3779,13 @@
       "layout": {
         "LARGE": "layout_17"
       }
+    },
+    "view_7": {
+      "id": "view_7",
+      "label": "Text",
+      "layout": {
+        "LARGE": "layout_27"
+      }
     }
   },
   "sections": {
@@ -3620,6 +3795,7 @@
       "views": [
         "view_6",
         "view_2",
+        "view_7",
         "view_3"
       ]
     },
@@ -3638,9 +3814,11 @@
       "mode": "FIXED",
       "sizeMode": {
         "LARGE": {
-          "position": "CENTER",
+          "widthMode": "CUSTOM",
+          "heightMode": "CUSTOM",
           "width": "480px",
-          "height": "432px"
+          "height": "432px",
+          "position": "MIDDLE_CENTER"
         }
       },
       "dialogBackground": {
@@ -3656,16 +3834,19 @@
       },
       "index": 0,
       "isSplash": false,
-      "label": "Filters Panel Help Dialog"
+      "label": "Filters Panel Help Dialog",
+      "blockPage": true
     },
     "dialog_2": {
       "id": "dialog_2",
       "mode": "FIXED",
       "sizeMode": {
         "LARGE": {
-          "position": "CENTER",
+          "widthMode": "CUSTOM",
+          "heightMode": "CUSTOM",
           "width": "480px",
-          "height": "432px"
+          "height": "432px",
+          "position": "MIDDLE_CENTER"
         }
       },
       "dialogBackground": {
@@ -3681,16 +3862,19 @@
       },
       "index": 1,
       "isSplash": false,
-      "label": "Right Panel Help Dialog"
+      "label": "Right Panel Help Dialog",
+      "blockPage": true
     },
     "dialog_3": {
       "id": "dialog_3",
       "mode": "FIXED",
       "sizeMode": {
         "LARGE": {
-          "position": "CENTER",
+          "widthMode": "CUSTOM",
+          "heightMode": "CUSTOM",
           "width": "420px",
-          "height": "300px"
+          "height": "300px",
+          "position": "MIDDLE_CENTER"
         }
       },
       "dialogBackground": {
@@ -3707,16 +3891,19 @@
       "index": 2,
       "isSplash": false,
       "label": "ERDDAP Export",
-      "closeWhenClickOverlay": true
+      "closeWhenClickOverlay": true,
+      "blockPage": true
     },
     "dialog_4": {
       "id": "dialog_4",
       "mode": "FIXED",
       "sizeMode": {
         "LARGE": {
-          "position": "CENTER",
+          "widthMode": "CUSTOM",
+          "heightMode": "CUSTOM",
           "width": "480px",
-          "height": "400px"
+          "height": "400px",
+          "position": "MIDDLE_CENTER"
         }
       },
       "interactionType": "BUTTON_INLINE",
@@ -3740,18 +3927,20 @@
         "LARGE": "layout_24"
       },
       "index": 3,
-      "isSplash": true,
-      "label": "Splash Screen"
+      "isSplash": false,
+      "label": "Splash Screen",
+      "blockPage": true
     },
     "dialog_5": {
       "id": "dialog_5",
       "mode": "FIXED",
       "sizeMode": {
         "LARGE": {
-          "position": "CENTER",
+          "widthMode": "CUSTOM",
+          "heightMode": "CUSTOM",
           "width": "480px",
           "height": "432px",
-          "aspectRatio": false
+          "position": "MIDDLE_CENTER"
         }
       },
       "overlayColor": "var(--dark-900)",
@@ -3768,15 +3957,16 @@
         }
       },
       "label": "Add Layer Dialog",
-      "closeWhenClickOverlay": true
+      "closeWhenClickOverlay": true,
+      "blockPage": true
     }
   },
   "dataSources": {
     "dataSource_1": {
       "id": "dataSource_1",
       "type": "WEB_MAP",
-      "sourceLabel": "Deep Sea Corals Web Map",
-      "itemId": "4947595256c64673ab5136fe8b183379",
+      "sourceLabel": "Deep Sea Corals Web Map v2",
+      "itemId": "f97ae350bbd5466586e6dff08f09efc5",
       "portalUrl": "https://noaa.maps.arcgis.com"
     }
   },
@@ -3800,7 +3990,8 @@
             },
             "actionUseDataSource": null,
             "sqlExprObj": null,
-            "enabledDataRelationShip": true
+            "enabledDataRelationShip": true,
+            "connectionType": "SET_CUSTOM_FIELDS"
           },
           "version": "1.12.0",
           "useDataSources": [
@@ -3848,17 +4039,19 @@
           "messageWidgetId": "widget_3",
           "actionName": "filter data record action",
           "description": null,
-          "config": {
-            "messageUseDataSource": null,
-            "actionUseDataSource": {
-              "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
-              "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
-              "rootDataSourceId": "dataSource_1"
-            },
-            "sqlExprObj": null,
-            "enabledDataRelationShip": true,
-            "enableQueryWithCurrentExtent": true
-          },
+          "config": [
+            {
+              "messageUseDataSource": null,
+              "actionUseDataSource": {
+                "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
+                "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
+                "rootDataSourceId": "dataSource_1"
+              },
+              "sqlExprObj": null,
+              "enabledDataRelationShip": true,
+              "enableQueryWithCurrentExtent": true
+            }
+          ],
           "version": "1.13.0",
           "useDataSources": [
             {
@@ -3935,6 +4128,81 @@
           "version": "1.0.0"
         }
       ]
+    },
+    "messageConfig_7": {
+      "id": "messageConfig_7",
+      "widgetId": "widget_63",
+      "messageType": "DATA_SOURCE_FILTER_CHANGE",
+      "actions": [
+        {
+          "actionId": "widget_55-filter-change-1729295194361",
+          "widgetId": "widget_55",
+          "messageWidgetId": "widget_63",
+          "actionName": "filter-change",
+          "description": null,
+          "config": null,
+          "version": "1.0.0"
+        },
+        {
+          "actionId": "widget_47-update-layer-1729295202457",
+          "widgetId": "widget_47",
+          "messageWidgetId": "widget_63",
+          "actionName": "update-layer",
+          "description": null,
+          "config": null,
+          "version": "1.0.0"
+        }
+      ]
+    },
+    "messageConfig_8": {
+      "id": "messageConfig_8",
+      "widgetId": "widget_64",
+      "messageType": "DATA_SOURCE_FILTER_CHANGE",
+      "actions": [
+        {
+          "actionId": "widget_47-update-layer-1729722778569",
+          "widgetId": "widget_47",
+          "messageWidgetId": "widget_64",
+          "actionName": "update-layer",
+          "description": null,
+          "config": null,
+          "version": "1.0.0"
+        },
+        {
+          "actionId": "widget_55-filter-change-1729722784888",
+          "widgetId": "widget_55",
+          "messageWidgetId": "widget_64",
+          "actionName": "filter-change",
+          "description": null,
+          "config": null,
+          "version": "1.0.0"
+        }
+      ]
+    },
+    "messageConfig_9": {
+      "id": "messageConfig_9",
+      "widgetId": "widget_65",
+      "messageType": "DATA_SOURCE_FILTER_CHANGE",
+      "actions": [
+        {
+          "actionId": "widget_47-update-layer-1729722795320",
+          "widgetId": "widget_47",
+          "messageWidgetId": "widget_65",
+          "actionName": "update-layer",
+          "description": null,
+          "config": null,
+          "version": "1.0.0"
+        },
+        {
+          "actionId": "widget_55-filter-change-1729722804865",
+          "widgetId": "widget_55",
+          "messageWidgetId": "widget_65",
+          "actionName": "filter-change",
+          "description": null,
+          "config": null,
+          "version": "1.0.0"
+        }
+      ]
     }
   },
   "attributes": {
@@ -3965,7 +4233,7 @@
       "link": "https://www.noaa.gov"
     }
   },
-  "originExbVersion": "1.13.0",
+  "originExbVersion": "1.15.0",
   "pageStructure": [
     {
       "page_0": []
@@ -3989,5 +4257,6 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1721426399684
+  "timestamp": 1732320609806,
+  "publishTimestamp": 1732577008424
 }

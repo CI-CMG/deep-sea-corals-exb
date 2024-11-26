@@ -82,5 +82,19 @@
     "isUseCompress": false,
     "originalWidth": 1616,
     "originalHeight": 392
+  },
+  "1728428146484": {
+    "originalName": "DSC_old_logo_180px_bilinear.jpg",
+    "fileName": "1728428146484.jpg",
+    "size": 590913,
+    "url": "${appResourceUrl}/images/widget_61/1728428146484.jpg",
+    "created": 1728428146484,
+    "resourcesPrefix": "images/widget_61",
+    "referedIds": [],
+    "originId": "1728428146484",
+    "fileFormat": "image/jpeg",
+    "isUseCompress": false,
+    "originalWidth": 180,
+    "originalHeight": 44
   }
 }
