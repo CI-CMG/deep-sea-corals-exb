@@ -1452,7 +1452,7 @@
       ]
     }
   },
-  "exbVersion": "1.15.0",
+  "exbVersion": "1.16.0",
   "mainSizeMode": "LARGE",
   "theme": "themes/default/",
   "forBuilderAttributes": {
@@ -1468,7 +1468,7 @@
   "widgets": {
     "widget_1": {
       "uri": "widgets/layout/sidebar/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "Sidebar",
       "config": {
         "direction": "HORIZONTAL",
@@ -1542,7 +1542,7 @@
     },
     "widget_2": {
       "uri": "widgets/layout/sidebar/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "Sidebar 2",
       "config": {
         "direction": "HORIZONTAL",
@@ -1616,7 +1616,7 @@
     },
     "widget_3": {
       "uri": "widgets/arcgis/arcgis-map/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "Map",
       "config": {
         "toolConfig": {
@@ -1670,7 +1670,7 @@
     },
     "widget_4": {
       "uri": "widgets/layout/row/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "Row",
       "config": {
         "space": 10,
@@ -1692,10 +1692,10 @@
     },
     "widget_5": {
       "uri": "widgets/common/text/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "Text",
       "config": {
-        "text": "<p style=\"text-align: center;\"><span style=\"color: rgb(255, 255, 255);\">Application Version 3.1.0</span></p>",
+        "text": "<p style=\"text-align: center;\"><span style=\"color: rgb(255, 255, 255);\">Application Version 3.2.0﻿</span></p>",
         "style": {
           "verticalAlign": "start",
           "wrap": true
@@ -1705,7 +1705,7 @@
     },
     "widget_6": {
       "uri": "widgets/common/button/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "Button",
       "config": {
         "functionConfig": {
@@ -1781,7 +1781,7 @@
     },
     "widget_8": {
       "uri": "widgets/common/text/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "Text 2",
       "config": {
         "text": "<p><span style=\"font-size: 24px;\">Deep Sea Corals and Sponges</span></p>",
@@ -1803,7 +1803,7 @@
     },
     "widget_9": {
       "uri": "widgets/common/image/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "Image",
       "config": {
         "functionConfig": {
@@ -1852,7 +1852,7 @@
     },
     "widget_10": {
       "uri": "widgets/layout/column/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "Upper Left Column",
       "config": {
         "space": {
@@ -1885,7 +1885,7 @@
     },
     "widget_11": {
       "uri": "widgets/layout/column/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "Lower Left Column",
       "config": {
         "space": {
@@ -1912,7 +1912,7 @@
     },
     "widget_12": {
       "uri": "widgets/common/navigator/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "Left Side Views Navigation",
       "config": {
         "data": {
@@ -1944,7 +1944,7 @@
     },
     "widget_13": {
       "uri": "widgets/common/text/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "Filters Label",
       "config": {
         "text": "<p style=\"text-align: center;\"><strong style=\"font-size: 16px;\">Filters</strong></p>",
@@ -1966,7 +1966,7 @@
     },
     "widget_14": {
       "uri": "widgets/common/button/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "Filters Help Button",
       "config": {
         "functionConfig": {
@@ -2020,7 +2020,7 @@
     },
     "widget_15": {
       "uri": "widgets/layout/column/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "Right Side Column",
       "config": {
         "space": {
@@ -2047,7 +2047,7 @@
     },
     "widget_17": {
       "uri": "widgets/common/button/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "Right Panel Help Button",
       "config": {
         "functionConfig": {
@@ -2101,7 +2101,7 @@
     },
     "widget_18": {
       "uri": "widgets/common/navigator/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "Right Side Views Navigation",
       "config": {
         "data": {
@@ -2362,7 +2362,7 @@
     },
     "widget_32": {
       "uri": "widgets/common/filter/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "Filter",
       "config": {
         "groupByLayer": false,
@@ -2415,7 +2415,6 @@
             },
             "autoApplyWhenWidgetOpen": false,
             "collapseFilterExprs": false,
-            "isGroup": false,
             "useDataSources": [
               {
                 "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
@@ -2425,7 +2424,8 @@
                   "VernacularNameCategory"
                 ]
               }
-            ]
+            ],
+            "type": "SINGLE"
           },
           {
             "icon": {
@@ -2488,7 +2488,6 @@
             },
             "autoApplyWhenWidgetOpen": false,
             "collapseFilterExprs": false,
-            "isGroup": false,
             "useDataSources": [
               {
                 "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
@@ -2499,7 +2498,8 @@
                   "HighlightImageURL"
                 ]
               }
-            ]
+            ],
+            "type": "SINGLE"
           },
           {
             "icon": {
@@ -2562,7 +2562,6 @@
             },
             "autoApplyWhenWidgetOpen": false,
             "collapseFilterExprs": true,
-            "isGroup": false,
             "useDataSources": [
               {
                 "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
@@ -2572,7 +2571,8 @@
                   "DepthInMeters"
                 ]
               }
-            ]
+            ],
+            "type": "SINGLE"
           },
           {
             "icon": {
@@ -2635,7 +2635,6 @@
             },
             "autoApplyWhenWidgetOpen": false,
             "collapseFilterExprs": true,
-            "isGroup": false,
             "useDataSources": [
               {
                 "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
@@ -2645,7 +2644,8 @@
                   "ObservationYear"
                 ]
               }
-            ]
+            ],
+            "type": "SINGLE"
           },
           {
             "icon": {
@@ -2749,7 +2749,6 @@
             },
             "autoApplyWhenWidgetOpen": false,
             "collapseFilterExprs": false,
-            "isGroup": false,
             "useDataSources": [
               {
                 "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
@@ -2759,7 +2758,8 @@
                   "FishCouncilRegionCode"
                 ]
               }
-            ]
+            ],
+            "type": "SINGLE"
           },
           {
             "icon": {
@@ -2851,7 +2851,6 @@
             },
             "autoApplyWhenWidgetOpen": false,
             "collapseFilterExprs": false,
-            "isGroup": false,
             "useDataSources": [
               {
                 "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
@@ -2861,7 +2860,8 @@
                   "OceanCode"
                 ]
               }
-            ]
+            ],
+            "type": "SINGLE"
           }
         ]
       },
@@ -2947,7 +2947,7 @@
     },
     "widget_36": {
       "uri": "widgets/common/controller/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "Widget Controller",
       "config": {
         "behavior": {
@@ -3030,7 +3030,7 @@
     },
     "widget_42": {
       "uri": "widgets/arcgis/feature-info/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "Feature Info",
       "config": {
         "limitGraphics": false,
@@ -3060,7 +3060,8 @@
           }
         ],
         "dsNavigator": true,
-        "featureNavigator": true
+        "featureNavigator": true,
+        "useMapWidget": false
       },
       "id": "widget_42",
       "dataActions": {
@@ -3140,7 +3141,7 @@
     },
     "widget_43": {
       "uri": "widgets/common/image/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "Density Legend Graphic",
       "config": {
         "functionConfig": {
@@ -3172,7 +3173,7 @@
     },
     "widget_44": {
       "uri": "widgets/layout/row/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "Density Legend Text",
       "config": {
         "space": 10,
@@ -3194,7 +3195,7 @@
     },
     "widget_45": {
       "uri": "widgets/common/text/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "Text 7",
       "config": {
         "text": "<p><strong style=\"font-size: 14px;\">Highest Density</strong></p>",
@@ -3207,7 +3208,7 @@
     },
     "widget_46": {
       "uri": "widgets/common/text/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "Text 8",
       "config": {
         "text": "<p style=\"text-align: right;\"><strong style=\"font-size: 14px;\">Lowest Density</strong></p>",
@@ -3509,7 +3510,7 @@
     },
     "widget_59": {
       "uri": "widgets/common/button/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "Add Layer Button",
       "config": {
         "functionConfig": {
@@ -3554,7 +3555,7 @@
     },
     "widget_61": {
       "uri": "widgets/common/image/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "DSCRTP graphical element",
       "config": {
         "functionConfig": {
@@ -3608,7 +3609,7 @@
     },
     "widget_62": {
       "uri": "widgets/common/button/",
-      "version": "1.15.0",
+      "version": "1.16.0",
       "label": "User Guide Button",
       "config": {
         "functionConfig": {
@@ -4209,6 +4210,7 @@
     "portalUrl": "https://noaa.maps.arcgis.com",
     "isWebTier": false,
     "clientId": "",
+    "express": false,
     "title": "Deep-sea Corals",
     "description": null,
     "type": "Web Experience",
@@ -4233,7 +4235,7 @@
       "link": "https://www.noaa.gov"
     }
   },
-  "originExbVersion": "1.15.0",
+  "originExbVersion": "1.16.0",
   "pageStructure": [
     {
       "page_0": []
@@ -4257,6 +4259,6 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1732320609806,
-  "publishTimestamp": 1732577008424
+  "timestamp": 1734558321472,
+  "publishTimestamp": 1734558322947
 }

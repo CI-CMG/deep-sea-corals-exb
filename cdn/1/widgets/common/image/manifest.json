@@ -2,8 +2,8 @@
   "name": "image",
   "label": "Image",
   "type": "widget",
-  "version": "1.15.0",
-  "exbVersion": "1.15.0",
+  "version": "1.16.0",
+  "exbVersion": "1.16.0",
   "author": "Esri R&D Center Beijing",
   "description": "This is the widget to display an image.",
   "copyright": "",
@@ -27,6 +27,11 @@
       "name": "croptool",
       "point": "CONTEXT_TOOL",
       "uri": "tools/croptool"
+    },
+    {
+      "name": "appConfigOperations",
+      "point": "APP_CONFIG_OPERATIONS",
+      "uri": "tools/app-config-operations"
     }
   ],
   "translatedLocales": [

@@ -20,5 +20,6 @@ export default {
   supportedTypesHint: 'Supported formats: Shapefile, CSV, KML, GeoJSON, GPX.',
   fileIsUploading: '{fileName} is uploading',
   clickToAddData: 'Click to add data',
-  sampleUrl: 'Sample URL'
+  sampleUrl: 'Sample URL',
+  fileHasNoValidData: 'The file does not contain any valid data.'
 }

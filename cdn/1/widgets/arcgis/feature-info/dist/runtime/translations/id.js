@@ -1,1 +1,1 @@
-System.register([],(function(a){return{execute:function(){a({_widgetLabel:"Info Fitur",noDeataMessageDefaultText:"Tidak ada data yang ditemukan.",featureNumbers:"{index} dari {count}",featureInfoDataActionLabel:"catatan saat ini info fitur {layer}"})}}}));
+System.register([],(function(a){return{execute:function(){a({_widgetLabel:"Info Fitur",noDataMessageDefaultText:"Tidak ada data yang ditemukan.",featureNumbers:"{index} dari {count}",featureInfoDataActionLabel:"catatan saat ini info fitur {layer}"})}}}));

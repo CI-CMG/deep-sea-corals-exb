@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Inform\xe1cie o prvku",noDeataMessageDefaultText:"Nena\u0161li sa \u017eiadne \xfadaje.",featureNumbers:"{index} z {count}",featureInfoDataActionLabel:"{layer} inform\xe1cie o prvku aktu\xe1lneho z\xe1znamu"})}}}));
+System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Inform\xe1cie o prvku",noDataMessageDefaultText:"Nena\u0161li sa \u017eiadne d\xe1ta.",featureNumbers:"{index} z {count}",featureInfoDataActionLabel:"{layer} inform\xe1cie o prvku aktu\xe1lneho z\xe1znamu"})}}}));

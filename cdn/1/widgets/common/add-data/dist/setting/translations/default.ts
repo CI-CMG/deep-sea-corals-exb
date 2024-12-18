@@ -5,5 +5,7 @@ export default {
   uploadFiles: 'Upload files',
   emptyListMessage: 'Empty list message',
   defaultPlaceholderText: 'There is currently no added data.',
-  curateACollection: 'Curate a collection'
+  curateACollection: 'Curate a collection',
+  allowRenaming: 'Allow renaming',
+  allowRemoval: 'Allow removal'
 }
