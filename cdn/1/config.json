@@ -1695,7 +1695,7 @@
       "version": "1.15.0",
       "label": "Text",
       "config": {
-        "text": "<p style=\"text-align: center;\"><span style=\"color: rgb(255, 255, 255);\">Application Version 3.0.1</span></p>",
+        "text": "<p style=\"text-align: center;\"><span style=\"color: rgb(255, 255, 255);\">Application Version 3.1.0</span></p>",
         "style": {
           "verticalAlign": "start",
           "wrap": true
