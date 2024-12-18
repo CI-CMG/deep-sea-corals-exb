@@ -13,7 +13,7 @@ jobs:
       - name: Download Experience Builder
         # WARNING: this is not an officially supported method of downloading Experience Builder
         # taken from https://github.com/gavinr-maps/experience-builder-devops-example/blob/master/.github/workflows/build-app.yml
-        run: curl -o exb.zip "$(curl -s 'https://downloads.arcgis.com/dms/rest/download/secured/arcgis-experience-builder-1.16.zip?f=json&folder=software%2FExperienceBuilder%2F1.15' | jq -r '.url')"
+        run: curl -o exb.zip "$(curl -s 'https://downloads.arcgis.com/dms/rest/download/secured/arcgis-experience-builder-1.16.zip?f=json&folder=software%2FExperienceBuilder%2F1.16' | jq -r '.url')"
       - name: Unzip Experience Builder
         run: unzip -q exb.zip -d arcgis-experience-builder-1.16
       - name: Copy Custom Widgets
