@@ -8,10 +8,14 @@ jobs:
   Build-and-Deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: node version
-        run: node --version
       - name: Check out repository code
         uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - name: node version
+        run: node --version
       - name: Download Experience Builder
         # WARNING: this is not an officially supported method of downloading Experience Builder
         # taken from https://github.com/gavinr-maps/experience-builder-devops-example/blob/master/.github/workflows/build-app.yml
