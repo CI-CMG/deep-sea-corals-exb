@@ -28,10 +28,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
-          cache-dependency-path: arcgis-experience-builder-1.16/ArcGISExperienceBuilder/client/package-lock.json
+          # cache: 'npm'
+          # cache-dependency-path: arcgis-experience-builder-1.16/ArcGISExperienceBuilder/client/package-lock.json
       - name: node version
         run: node --version
+      - name: npm logging
+        run: npm config set loglevel error
       - name: NPM install client folder
         run: npm ci
         working-directory: arcgis-experience-builder-1.16/ArcGISExperienceBuilder/client
