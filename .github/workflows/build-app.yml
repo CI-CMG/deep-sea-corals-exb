@@ -8,6 +8,8 @@ jobs:
   Build-and-Deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: node version
+        run: node --version
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: Download Experience Builder
