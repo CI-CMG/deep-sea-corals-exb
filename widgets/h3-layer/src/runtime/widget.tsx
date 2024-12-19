@@ -52,7 +52,7 @@ import {
   setDataSource,
   getName
 } from '../h3-utils'
-import { EnvironmentalVariables, HexbinSummary, PhylumCount, ScientificNameCount, SpeciesCount } from '../h3-layer-types'
+import { EnvironmentalVariables, type HexbinSummary, PhylumCount, type ScientificNameCount, SpeciesCount } from '../h3-layer-types'
 const { useSelector } = ReactRedux
 
 // user-defined type guard using type predicate
@@ -141,8 +141,7 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
       setServerError(null)
 
       // use queryParamsRef to avoid having to add widgetState.queryParams to dependency array
-      const whereClause = queryParamsRef.current || '1=1'
-
+      const whereClause = `(${queryParamsRef.current || '1=1'})`
       Promise.all([
         getDepthRange(h3, whereClause),
         getPhylumCounts(h3, whereClause),
@@ -158,7 +157,7 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
           speciesCount: { rawCount: scientificNameCounts.length },
           environmentalVariables
         })
-        console.log('promises completed: ', depthRange, phylumCounts, scientificNameCounts, environmentalVariables)
+        // console.log('promises completed: ', depthRange, phylumCounts, scientificNameCounts, environmentalVariables)
       }).catch((reason) => {
         console.error('Error getting HexbinSummary. ', reason)
         setServerError(reason)
@@ -261,7 +260,7 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
           .hitTest(evt, hitTestOptions)
           .then((response) => { mapClickHandler(response) })
           .finally(() => {
-            const elapsedMillisecsForPopup = new Date().getTime() - startTimeForPopup.getTime()
+            // const elapsedMillisecsForPopup = new Date().getTime() - startTimeForPopup.getTime()
             // console.log(`popup completed in ${elapsedMillisecsForPopup / 1000} seconds`)
           })
       }) // end view on click
