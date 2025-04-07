@@ -333,12 +333,12 @@
         "2": {
           "type": "WIDGET",
           "bbox": {
-            "left": "65.00px",
-            "right": "56.1%",
+            "left": "320.00px",
+            "right": "48.4%",
             "top": "50%",
-            "bottom": "0.0%",
-            "width": "360px",
-            "height": "100.0%"
+            "bottom": "15.2%",
+            "width": "341px",
+            "height": "70.1%"
           },
           "widgetId": "widget_8",
           "setting": {
@@ -350,7 +350,8 @@
               "width": "AUTO",
               "height": "AUTO"
             },
-            "vCenter": true
+            "vCenter": true,
+            "hCenter": false
           }
         },
         "3": {
@@ -361,7 +362,7 @@
             "top": "50%",
             "bottom": "0.0%",
             "width": "40.00px",
-            "height": "40.00px"
+            "height": "50.00px"
           },
           "widgetId": "widget_9",
           "setting": {
@@ -369,9 +370,13 @@
               "left": false,
               "right": true,
               "top": false,
-              "bottom": true
+              "bottom": true,
+              "height": {},
+              "width": "AUTO"
             },
-            "vCenter": true
+            "vCenter": true,
+            "heightMode": "fixed",
+            "aspectRatio": 1
           }
         },
         "4": {
@@ -1812,25 +1817,25 @@
           "linkParam": {
             "linkType": "WEB_ADDRESS",
             "openType": "_self",
-            "value": "https://www.ncei.noaa.gov",
+            "value": "https://www.ncei.noaa.gov/products/noaa-deep-sea-coral-and-sponge-map",
             "expression": null
           },
           "scale": "Fit",
           "imageParam": {
-            "url": "${appResourceUrl}/images/widget_9/1716239009355.png",
-            "originalUrl": "${appResourceUrl}/images/widget_9/1716239009355.png",
-            "fileName": "1716239009355.png",
-            "originalName": "noaa-logo-rgb-2022.png",
+            "url": "${appResourceUrl}/images/widget_9/1744058061648.png",
+            "originalUrl": "${appResourceUrl}/images/widget_9/1744058061648.png",
+            "fileName": "1744058061648.png",
+            "originalName": "map-banner.png",
             "imgSourceType": "BY_UPLOAD",
             "fileFormat": "image/png",
-            "originalId": "1716239009355",
+            "originalId": "1744058061648",
             "isUseCompress": false,
-            "originalWidth": 1501,
-            "originalHeight": 1501,
+            "originalWidth": 342,
+            "originalHeight": 75,
             "cropParam": {
               "svgViewBox": "0 0 16 16",
-              "svgPath": "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0Z",
-              "cropShape": "circle"
+              "svgPath": "M0 0h16v16H0z",
+              "cropShape": "square"
             }
           },
           "imageDisplayQualityMode": "ORIGINAL",
@@ -1844,7 +1849,7 @@
       "id": "widget_9",
       "style": {
         "background": {
-          "color": "var(--org-header-bg)",
+          "color": null,
           "fillType": "fill"
         }
       },
@@ -2658,7 +2663,7 @@
                 "size": 14
               }
             },
-            "name": "Fish Council Region",
+            "name": "Fishery Management Council",
             "sqlExprObj": {
               "logicalOperator": "AND",
               "parts": [
@@ -2735,8 +2740,8 @@
                   },
                   "displayType": "USE_ASK_FOR_VALUE",
                   "askForValueOptions": {
-                    "label": "Fishery Region",
-                    "display": "INLINE",
+                    "label": "Fishery Management Council",
+                    "display": "BLOCK",
                     "hint": "",
                     "cascade": "NONE"
                   },
@@ -3005,7 +3010,7 @@
     },
     "widget_37": {
       "uri": "widgets/arcgis/map-layers/",
-      "version": "1.12.0",
+      "version": "1.16.0",
       "label": "Map Layers",
       "config": {
         "useMapWidget": true,
@@ -3128,6 +3133,9 @@
               }
             }
           }
+        },
+        "setFilter": {
+          "enabled": true
         }
       },
       "useDataSources": [
@@ -4259,6 +4267,6 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1734558321472,
-  "publishTimestamp": 1734558322947
+  "timestamp": 1744058465253,
+  "publishTimestamp": 1744058480077
 }
