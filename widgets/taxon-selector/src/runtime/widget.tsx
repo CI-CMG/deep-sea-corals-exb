@@ -80,7 +80,9 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
       ['orderByFields', 'Phylum']
     ])
     const data = await getDataFromFeatureService(searchParams)
-    const phylums = data.features.map(feature => feature.attributes.Phylum).map(name => name || 'NA')
+    // represent null values w/ 'NA' in the pull-down list
+    // const phylums = data.features.map(feature => feature.attributes.Phylum).map(name => name || 'NA')
+    const phylums = data.features.map(feature => feature.attributes.Phylum)
     setPhylumList(phylums)
     const endTime = new Date()
     console.debug(`Phylum data loaded from FeatureService in ${(endTime.getTime() - startTime.getTime()) / 1000} seconds`)
@@ -93,7 +95,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
       ['orderByFields', 'Class']
     ])
     const data = await getDataFromFeatureService(searchParams)
-    const classes = data.features.map(feature => feature.attributes.Class).map(name => name || 'NA')
+    const classes = data.features.map(feature => feature.attributes.Class)
     setClassList(classes)
   }
 
@@ -105,7 +107,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
       ['orderByFields', 'Order_']
     ])
     const data = await getDataFromFeatureService(searchParams)
-    const orders = data.features.map(feature => feature.attributes.Order_).map(name => name || 'NA')
+    const orders = data.features.map(feature => feature.attributes.Order_)
     setOrderList(orders)
   }
 
@@ -116,7 +118,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
       ['orderByFields', 'Family']
     ])
     const data = await getDataFromFeatureService(searchParams)
-    const families = data.features.map(feature => feature.attributes.Family).map(name => name || 'NA')
+    const families = data.features.map(feature => feature.attributes.Family)
     setFamilyList(families)
   }
 
@@ -127,7 +129,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
       ['orderByFields', 'Genus']
     ])
     const data = await getDataFromFeatureService(searchParams)
-    const genera = data.features.map(feature => feature.attributes.Genus).map(name => name || 'NA')
+    const genera = data.features.map(feature => feature.attributes.Genus)
     setGenusList(genera)
   }
 
