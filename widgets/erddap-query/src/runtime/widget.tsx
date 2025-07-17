@@ -179,7 +179,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
   })
 
   // build ERDDAP Url. Note that uses a non-standard pattern for search parameters
-  const stdFields = 'ShallowFlag,DatasetID,CatalogNumber,SampleID,ImageURL,Repository,ScientificName,VernacularNameCategory,TaxonRank,IdentificationQualifier,Locality,latitude,longitude,DepthInMeters,DepthMethod,ObservationDate,SurveyID,Station,EventID,SamplingEquipment,LocationAccuracy,RecordType,DataProvider'
+  const stdFields = 'DatabaseVersion,ShallowFlag,DatasetID,CatalogNumber,SampleID,ImageURL,Repository,ScientificName,VernacularNameCategory,TaxonRank,IdentificationQualifier,Locality,latitude,longitude,DepthInMeters,DepthMethod,ObservationDate,SurveyID,Station,EventID,SamplingEquipment,LocationAccuracy,RecordType,DataProvider'
   const searchParams: string[] = []
 
   if (mapView && mapView.extent) {
@@ -204,6 +204,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
   }
 
   function generateErddapUrl (type = 'html') {
+    console.log(activeDs.getCurrentQueryParams().where)
     // console.log(type)
     if (type === 'html') {
       return erddapUrl
