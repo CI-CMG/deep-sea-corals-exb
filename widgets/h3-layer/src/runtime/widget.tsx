@@ -80,6 +80,7 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
   })
   // console.log({widgetState})
   queryParamsRef.current = widgetState?.queryParams
+  console.log('queryParams: ', queryParamsRef.current)
 
   // console.log(`re-rendering H3Layer. h3 = ${h3}; queryParams = ${widgetState?.queryParams}`)
 
