@@ -1479,7 +1479,7 @@
         "direction": "HORIZONTAL",
         "collapseSide": "FIRST",
         "overlay": false,
-        "size": "320px",
+        "size": "330px",
         "divider": {
           "visible": true,
           "lineStyle": {
@@ -1700,7 +1700,7 @@
       "version": "1.16.0",
       "label": "Text",
       "config": {
-        "text": "<p style=\"text-align: center;\"><span style=\"color: rgb(255, 255, 255);\">Application Version 3.2.0﻿</span></p>",
+        "text": "<p style=\"text-align: center;\"><span style=\"color: rgb(255, 255, 255);\">Application Version 3.2.1</span></p>",
         "style": {
           "verticalAlign": "start",
           "wrap": true
@@ -2691,7 +2691,7 @@
                       {
                         "value": 1,
                         "label": "1",
-                        "alias": "Gulf of Mexico",
+                        "alias": "Gulf",
                         "selected": false
                       },
                       {
@@ -4260,6 +4260,6 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1744058465253,
-  "publishTimestamp": 1744058480077
+  "timestamp": 1752712683449,
+  "publishTimestamp": 1752712688814
 }
