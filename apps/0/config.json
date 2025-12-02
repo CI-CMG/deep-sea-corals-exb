@@ -1700,7 +1700,7 @@
       "version": "1.16.0",
       "label": "Text",
       "config": {
-        "text": "<p style=\"text-align: center;\"><span style=\"color: rgb(255, 255, 255);\">Application Version 3.2.1</span></p>",
+        "text": "<p style=\"text-align: center;\"><span style=\"color: rgb(255, 255, 255);\">Application Version 3.2.2</span></p>",
         "style": {
           "verticalAlign": "start",
           "wrap": true
@@ -4260,6 +4260,6 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1764709015071,
-  "publishTimestamp": 1764709022352
+  "timestamp": 1764710164545,
+  "publishTimestamp": 1764710168329
 }
