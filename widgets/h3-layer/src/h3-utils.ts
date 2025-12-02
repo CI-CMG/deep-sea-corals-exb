@@ -2,7 +2,7 @@ import FeatureLayer from 'esri/layers/FeatureLayer'
 import type GraphicsLayer from 'esri/layers/GraphicsLayer'
 import Graphic from 'esri/Graphic'
 import type SimpleFillSymbol from 'esri/symbols/SimpleFillSymbol'
-import webMercatorUtils from 'esri/geometry/support/webMercatorUtils'
+import { webMercatorToGeographic } from 'esri/geometry/support/webMercatorUtils'
 import Extent from 'esri/geometry/Extent'
 import PopupTemplate from 'esri/PopupTemplate'
 import { h3ToGeoBoundary } from 'h3-js'
@@ -22,11 +22,11 @@ let noFiltersH3Counts = null
 
 let coralsDataSource: FeatureLayerDataSource
 
-export function setDataSource(dataSource: FeatureLayerDataSource) {
+export function setDataSource (dataSource: FeatureLayerDataSource) {
   coralsDataSource = dataSource
 }
 
-export function getName() {
+export function getName () {
   return coralsDataSource.layer.title
 }
 
@@ -278,57 +278,36 @@ async function getScientificNameCounts (h3, whereClause = '1=1') {
   return data.features.map(it => it.attributes)
 }
 
-interface EnvironmentalVariables {
-  oxygen?: number
-  min_oxygen?: number
-  max_oxygen?: number
-  salinity?: number
-  min_salinity?: number
-  max_salinity?: number
-  temperature?: number
-  min_temperature?: number
-  max_temperature?: number
-}
-
-// does not consider filter criteria
-// uses hardcoded URL different from points layer
-async function getEnvironmentalVariables(h3) {
-  const hexbinFeatureServiceUrl = 'https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/Deep_Sea_Corals_and_Sponges_summarized_in_level_4_hexbins/FeatureServer/0/query'
-  const startTime = new Date()
+async function getEnvironmentalStatistics (h3, fieldName, whereClause) {
+  const serviceUrl = 'https://services2.arcgis.com/C8EMgrsFcRFL6LrL/arcgis/rest/services/DSCRTP_NatDB/FeatureServer/0/query'
   const searchParams = new URLSearchParams()
-  searchParams.set('where', `h3='${h3}'`)
-  searchParams.set('outFields', '*')
+  searchParams.set('where', `h3_2='${h3}' and ${fieldName} is not null and ${whereClause}`)
   searchParams.set('returnGeometry', 'false')
   searchParams.set('f', 'json')
-  const response = await fetch(hexbinFeatureServiceUrl, {
+  // searchParams.set('outFields', `${fieldName}`)
+  // searchParams.set('orderByFields', `${fieldName}`)
+  let outStatisticsString = '['
+  outStatisticsString += `{"statisticType":"avg","onStatisticField":"${fieldName}","outStatisticFieldName":"Average"},`
+  outStatisticsString += `{"statisticType":"min","onStatisticField":"${fieldName}","outStatisticFieldName":"Min"},`
+  outStatisticsString += `{"statisticType":"max","onStatisticField":"${fieldName}","outStatisticFieldName":"Max"},`
+  outStatisticsString += `{"statisticType":"count","onStatisticField":"${fieldName}","outStatisticFieldName":"Count"}`
+  outStatisticsString += ']'
+  searchParams.set('outStatistics', outStatisticsString)
+  // console.log(searchParams.toString())
+  const response = await fetch(serviceUrl, {
     method: 'POST',
     body: searchParams
   })
   if (!response.ok) {
-    throw new Error('Error fetching data from: ' + hexbinFeatureServiceUrl)
+    throw new Error('Error fetching data from: ' + serviceUrl)
   }
   const data = await response.json()
-  const endTime = new Date()
-  const environmentalVariables = {} as EnvironmentalVariables
-  // should always be exactly 1 feature returned
-  const attributes = data.features[0].attributes
-  if (attributes.oxygen) {
-    environmentalVariables.oxygen = attributes.oxygen
-    environmentalVariables.min_oxygen = attributes.min_oxygen
-    environmentalVariables.max_oxygen = attributes.max_oxygen
-  }
-  if (attributes.salinity) {
-    environmentalVariables.salinity = attributes.salinity
-    environmentalVariables.min_salinity = attributes.min_salinity
-    environmentalVariables.max_salinity = attributes.max_salinity
-  }
-  if (attributes.temperature) {
-    environmentalVariables.temperature = attributes.temperature
-    environmentalVariables.min_temperature = attributes.min_temperature
-    environmentalVariables.max_temperature = attributes.max_temperature
-  }
-  // console.debug(`retrieved environmental variables for h3 ${h3} in ${(endTime.getTime() - startTime.getTime()) / 1000} seconds`)
-  return (environmentalVariables)
+  return ({
+    min: data.features[0].attributes.Min,
+    max: data.features[0].attributes.Max,
+    avg: data.features[0].attributes.Average,
+    count: data.features[0].attributes.Count
+  })
 }
 
 function getSimpleFillSymbol (fillColor = [227, 139, 79, 0.8]) {
@@ -386,9 +365,10 @@ function convertAndFormatCoordinates (coords, dp: number = 5) {
   // clone incoming coords Object and augment with spatialReference
   const extentProps = Object.assign({ spatialReference: { wkid: 102100 } }, coords)
   const extent = new Extent(extentProps)
-  const geoExtent = webMercatorUtils.webMercatorToGeographic(extent, false) as Extent
+  const geoExtent = webMercatorToGeographic(extent, false) as Extent
   return `${geoExtent.xmin.toFixed(dp)}, ${geoExtent.ymin.toFixed(dp)}, ${geoExtent.xmax.toFixed(dp)}, ${geoExtent.ymax.toFixed(dp)}`
 }
+
 export {
   featurePopupTemplate,
   graphicPopupTemplate,
@@ -405,5 +385,5 @@ export {
   highlightColor,
   getHighlightedGraphic,
   getSpeciesCount,
-  getEnvironmentalVariables
+  getEnvironmentalStatistics
 }

@@ -48,11 +48,16 @@ import {
   getScientificNameCounts,
   toggleOutlineColor,
   getHighlightedGraphic,
-  getEnvironmentalVariables,
-  setDataSource,
-  getName
+  // getEnvironmentalVariables,
+  getEnvironmentalStatistics,
+  setDataSource
 } from '../h3-utils'
-import { EnvironmentalVariables, type HexbinSummary, PhylumCount, type ScientificNameCount, SpeciesCount } from '../h3-layer-types'
+
+import {
+  type EnvironmentalStats,
+  type HexbinSummary,
+  type ScientificNameCount
+} from '../h3-layer-types'
 const { useSelector } = ReactRedux
 
 // user-defined type guard using type predicate
@@ -68,7 +73,7 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
   const [serverError, setServerError] = useState(false)
   const queryParamsRef = useRef(null)
   const mapViewRef = useRef<MapView>(null)
-  const [activeDs, setActiveDs] = useState<FeatureLayerDataSource>()
+  // const [activeDs, setActiveDs] = useState<FeatureLayerDataSource>()
 
   // for convenience in JSX. cannot destruct from object because selectedGraphic may be null
   const h3 = selectedGraphic?.attributes.h3
@@ -80,7 +85,7 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
   })
   // console.log({widgetState})
   queryParamsRef.current = widgetState?.queryParams
-  console.log('queryParams: ', queryParamsRef.current)
+  // console.log('queryParams: ', queryParamsRef.current)
 
   // console.log(`re-rendering H3Layer. h3 = ${h3}; queryParams = ${widgetState?.queryParams}`)
 
@@ -147,16 +152,21 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
         getDepthRange(h3, whereClause),
         getPhylumCounts(h3, whereClause),
         getScientificNameCounts(h3, whereClause),
-        getEnvironmentalVariables(h3)
+        getEnvironmentalStatistics(h3, 'Temperature', whereClause),
+        getEnvironmentalStatistics(h3, 'Salinity', whereClause),
+        getEnvironmentalStatistics(h3, 'Oxygen', whereClause)
+        // getEnvironmentalVariables(h3)
         // getSpeciesCount(h3, whereClause)
-      ]).then(([depthRange, phylumCounts, scientificNameCounts, environmentalVariables]) => {
+      ]).then(([depthRange, phylumCounts, scientificNameCounts, temperature, salinity, oxygen]) => {
         setHexbinSummary({
           minDepth: depthRange.MinDepth,
           maxDepth: depthRange.MaxDepth,
           phylumCounts,
           scientificNameCounts,
           speciesCount: { rawCount: scientificNameCounts.length },
-          environmentalVariables
+          temperature: temperature,
+          salinity: salinity,
+          oxygen: oxygen
         })
         // console.log('promises completed: ', depthRange, phylumCounts, scientificNameCounts, environmentalVariables)
       }).catch((reason) => {
@@ -255,7 +265,7 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
 
       jmv.view.on('click', (evt) => {
         // console.log('mapclick detected: ', evt)
-        const startTimeForPopup = new Date()
+        // const startTimeForPopup = new Date()
         // TODO this is where flow stops when it fails to handle map click
         jmv.view
           .hitTest(evt, hitTestOptions)
@@ -287,9 +297,9 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
       textAreaContent += `<${it.VernacularNameCategory}>\n${it.ScientificName}: ${it.Count} (${calcSpeciesPercentage(it.Count)}%)\n\n`
     })
 
-    function salinity (environmentalVariables) {
-      if (environmentalVariables?.salinity) {
-        const str = `${environmentalVariables.min_salinity} / ${hexbinSummary.environmentalVariables.salinity} / ${environmentalVariables.max_salinity}`
+    function salinity (stats: EnvironmentalStats) {
+      if (stats.count) {
+        const str = `${stats.min} / ${stats.avg.toFixed(1)} / ${stats.max} / ${stats.count.toLocaleString()}`
         return (
           <li>salinity(PSU): {str}</li>
         )
@@ -297,9 +307,9 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
         return (<li>salinity: not available</li>)
       }
     }
-    function temperature (environmentalVariables) {
-      if (environmentalVariables?.temperature) {
-        const str = `${environmentalVariables.min_temperature} / ${hexbinSummary.environmentalVariables.temperature} / ${environmentalVariables.max_temperature}`
+    function temperature (stats: EnvironmentalStats) {
+      if (stats.count) {
+        const str = `${stats.min} / ${stats.avg.toFixed(1)} / ${stats.max} / ${stats.count.toLocaleString()}`
         return (
           <li>temperature(&#8451;): {str}</li>
         )
@@ -307,9 +317,9 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
         return (<li>temperature: not available</li>)
       }
     }
-    function oxygen (environmentalVariables) {
-      if (environmentalVariables?.oxygen) {
-        const str = `${environmentalVariables.min_oxygen} / ${hexbinSummary.environmentalVariables.oxygen} / ${environmentalVariables.max_oxygen}`
+    function oxygen (stats: EnvironmentalStats) {
+      if (stats.count) {
+        const str = `${stats.min} / ${stats.avg.toFixed(1)} / ${stats.max} / ${stats.count.toLocaleString()}`
         return (
           <li>oxygen(mL/L): {str}</li>
         )
@@ -353,11 +363,11 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
               {textAreaContent}
               </textarea>
               <div style={{ marginTop: '5px' }}>
-                <span style={{ fontWeight: 'bold' }}>Environmental Variables</span> (min / median / max):
+                <span style={{ fontWeight: 'bold' }}>Environmental Variables</span> (min / avg / max / count):
                 <ul style={{ listStyleType: 'none', padding: 0, margin: 0 }}>
-                  {salinity(hexbinSummary.environmentalVariables)}
-                  {temperature(hexbinSummary.environmentalVariables)}
-                  {oxygen(hexbinSummary.environmentalVariables)}
+                  {salinity(hexbinSummary.salinity)}
+                  {temperature(hexbinSummary.temperature)}
+                  {oxygen(hexbinSummary.oxygen)}
                 </ul>
               </div>
             </div>
