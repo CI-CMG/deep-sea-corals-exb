@@ -4260,6 +4260,15 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1764710164545,
-  "publishTimestamp": 1764710168329
+  "timestamp": 1766083742580,
+  "analytics": {
+    "enable": true,
+    "google": {
+      "measurementId": "G-E1Q1BML6E5"
+    }
+  },
+  "cookieBanner": {
+    "uid": "103311e0-dc42-11f0-bf14-359107a8b062"
+  },
+  "publishTimestamp": 1766083773804
 }
