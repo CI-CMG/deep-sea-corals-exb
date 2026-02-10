@@ -1,0 +1,30 @@
+{
+  "name": "ocis",
+  "label": "OCIS",
+  "dependency": [
+    "jimu-arcgis"
+  ],
+  "type": "widget",
+  "version": "1.0.0",
+  "exbVersion": "1.16.0",
+  "author": "John Cartwright",
+  "description": "A widget to display OCIS data based on the selected H3 grid cell.",
+  "copyright": "",
+  "license": "http://www.apache.org/licenses/LICENSE-2.0",
+  "messageActions": [
+    {
+      "name": "update-layer",
+      "label": "Update Layer",
+      "uri": "actions/update-layer-action",
+      "settingUri": "actions/update-layer-action-setting"
+    }
+  ],
+  "properties": {},
+  "translatedLocales": [
+    "en"
+  ],
+  "defaultSize": {
+    "width": 200,
+    "height": 100
+  }
+}
