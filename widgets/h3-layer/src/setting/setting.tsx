@@ -39,6 +39,13 @@ export default function Setting (props: AllWidgetSettingProps<IMConfig>) {
       config: props.config.set('sidePanelId', event.target.value)
     })
   }
+  const onOcisWidgetIdChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // console.log(event)
+    props.onSettingChange({
+      id: props.id,
+      config: props.config.set('ocisWidgetId', event.target.value)
+    })
+  }
   const onSectionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // console.log(event)
     props.onSettingChange({
@@ -85,9 +92,14 @@ export default function Setting (props: AllWidgetSettingProps<IMConfig>) {
         <TextInput type="text" placeholder="layer name" htmlSize={28} value={props.config.layerName} onChange={onLayerNameChange}/>
       </SettingRow>
     </SettingSection>
-    <SettingSection title="Sidepanel">
+    <SettingSection title="Sidepane Widget">
       <SettingRow>
         <TextInput type="text" placeholder="widgetId" htmlSize={28} value={props.config.sidePanelId} onChange={onSidePanelChange}/>
+      </SettingRow>
+    </SettingSection>
+    <SettingSection title="OCIS Widget">
+      <SettingRow>
+        <TextInput type="text" placeholder="widgetId" htmlSize={28} value={props.config.ocisWidgetId} onChange={onOcisWidgetIdChange}/>
       </SettingRow>
     </SettingSection>
     <SettingSection title="Section">

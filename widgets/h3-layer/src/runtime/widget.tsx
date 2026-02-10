@@ -138,7 +138,9 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
   useEffect(() => {
     if (selectedGraphic) {
       const h3 = selectedGraphic.attributes.h3
-      // console.log('selected hexbin changed: ', h3)
+      console.log('selected hexbin changed: ', h3)
+      console.log('OCIS widgetId: ', props.config.ocisWidgetId)
+      getAppStore().dispatch(appActions.widgetStatePropChange(props.config.ocisWidgetId, 'h3', h3))
       deselectPreviousHexbin()
       toggleOutlineColor(selectedGraphic)
 
@@ -174,7 +176,9 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
         setServerError(reason)
       })
     } else {
-      // console.log('no selected hexbin...')
+      console.log('no selected hexbin...')
+      getAppStore().dispatch(appActions.widgetStatePropChange(props.config.ocisWidgetId, 'h3', null))
+
       resetHexbinSummary()
       deselectPreviousHexbin()
     }
