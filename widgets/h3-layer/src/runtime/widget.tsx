@@ -136,6 +136,7 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
   }, [widgetState?.queryParams])
 
   useEffect(() => {
+    console.log('selectedGraphic changed: ', selectedGraphic)
     if (selectedGraphic) {
       const h3 = selectedGraphic.attributes.h3
       console.log('selected hexbin changed: ', h3)
@@ -185,7 +186,7 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
   }, [selectedGraphic])
 
   function mapClickHandler (hitTestResult: __esri.HitTestResult) {
-    // console.log('inside mapClickHandler with : ', hitTestResult)
+    console.log('inside mapClickHandler with : ', hitTestResult)
 
     // hitTest options ensure that only Corals layer and Graphics layer tested
     const featureHits = hitTestResult.results?.filter(hitResult =>
@@ -197,10 +198,10 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
     // console.log(`${featureHits?.length || 0} features; ${graphicHits?.length || 0} hexbins`)
 
     if (graphicHits?.length === 1) {
-      // console.log('hexbin clicked: ', graphicHits[0].graphic.attributes.h3)
+      console.log('hexbin clicked: ', graphicHits[0].graphic.attributes.h3)
       setSelectedGraphic(graphicHits[0].graphic)
     } else if (graphicHits?.length === 0) {
-      // console.log('outside hexbin')
+      console.log('outside hexbin')
       setSelectedGraphic(null)
     } else {
       // when click lands on hexbin boundary, arbitrarily use the first element in array
