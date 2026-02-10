@@ -1455,6 +1455,58 @@
         "1",
         "2"
       ]
+    },
+    "layout_28": {
+      "type": "FIXED",
+      "content": {
+        "0": {
+          "type": "WIDGET",
+          "widgetId": "widget_66",
+          "bbox": {
+            "left": "0.0%",
+            "right": "0.0%",
+            "top": "10.00px",
+            "bottom": "72.4%",
+            "width": "100.0%",
+            "height": "7.9%"
+          },
+          "setting": {
+            "autoProps": {
+              "right": false,
+              "left": true,
+              "top": false,
+              "bottom": true,
+              "height": "AUTO"
+            }
+          }
+        },
+        "1": {
+          "type": "WIDGET",
+          "widgetId": "widget_67",
+          "bbox": {
+            "left": "0.0%",
+            "right": "0.0%",
+            "top": "72px",
+            "bottom": "0.00%",
+            "width": "100.0%",
+            "height": "76.6%"
+          },
+          "setting": {
+            "autoProps": {
+              "left": false,
+              "right": true,
+              "top": false,
+              "bottom": true,
+              "width": "STRETCH",
+              "height": "STRETCH"
+            }
+          }
+        }
+      },
+      "order": [
+        "0",
+        "1"
+      ]
     }
   },
   "exbVersion": "1.16.0",
@@ -3237,7 +3289,9 @@
         "sidePanelId": "widget_2",
         "sectionId": "section_2",
         "detailsViewId": "view_4",
-        "summaryViewId": "view_5"
+        "summaryViewId": "view_5",
+        "ocisPanelId": "widget_67",
+        "ocisWidgetId": "widget_67"
       },
       "id": "widget_47",
       "useMapWidgetIds": [
@@ -3750,6 +3804,33 @@
           "rootDataSourceId": "dataSource_1"
         }
       ]
+    },
+    "widget_66": {
+      "uri": "widgets/common/text/",
+      "version": "1.16.0",
+      "label": "Text 11",
+      "config": {
+        "text": "<p style=\"text-align: center;\">Information from the </p><p style=\"text-align: center;\"><strong style=\"font-size: 16px;\"><a href=\"https://ocean-and-coasts-information-system-esrioceans.hub.arcgis.com/\" target=\"_blank\" data-uniqueid=\"7204cadc_c69c_9a42_c400_8253e022dae2\" data-dsid=\"\" data-link=\"%7B%22linkType%22%3A%22WEB_ADDRESS%22%2C%22openType%22%3A%22_blank%22%2C%22value%22%3A%22https%3A%2F%2Focean-and-coasts-information-system-esrioceans.hub.arcgis.com%2F%22%2C%22expression%22%3Anull%7D\">Ocean and Coast Information System</a></strong></p>",
+        "tooltip": {
+          "name": "",
+          "parts": [
+            {
+              "type": "STRING",
+              "exp": "\"\""
+            }
+          ]
+        }
+      },
+      "id": "widget_66"
+    },
+    "widget_67": {
+      "uri": "widgets/ocis/",
+      "version": "1.0.0",
+      "label": "OCIS",
+      "config": {
+        "exampleConfigProperty": "test"
+      },
+      "id": "widget_67"
     }
   },
   "widgetsManifest": {},
@@ -3795,6 +3876,13 @@
       "layout": {
         "LARGE": "layout_27"
       }
+    },
+    "view_8": {
+      "id": "view_8",
+      "label": "OCIS",
+      "layout": {
+        "LARGE": "layout_28"
+      }
     }
   },
   "sections": {
@@ -3813,7 +3901,8 @@
       "label": "Section 2",
       "views": [
         "view_4",
-        "view_5"
+        "view_5",
+        "view_8"
       ]
     }
   },
@@ -4260,7 +4349,7 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1766083742580,
+  "timestamp": 1770761476421,
   "analytics": {
     "enable": true,
     "google": {
@@ -4270,5 +4359,5 @@
   "cookieBanner": {
     "uid": "103311e0-dc42-11f0-bf14-359107a8b062"
   },
-  "publishTimestamp": 1766083773804
+  "publishTimestamp": 1770762654917
 }
