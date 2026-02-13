@@ -199,7 +199,7 @@
           "bbox": {
             "left": "0.0%",
             "right": "0.0%",
-            "top": "20px",
+            "top": "10.00px",
             "bottom": "0.0%",
             "width": "100.0%",
             "height": "97.2%"
@@ -223,8 +223,8 @@
           "type": "WIDGET",
           "bbox": {
             "left": "0.00%",
-            "right": "0.00%",
-            "top": "25.00px",
+            "right": "5.00px",
+            "top": "15.00px",
             "bottom": "92.9%",
             "width": "73.3%",
             "height": "7.1%"
@@ -1465,7 +1465,7 @@
           "bbox": {
             "left": "0.0%",
             "right": "0.0%",
-            "top": "10.00px",
+            "top": "0.00px",
             "bottom": "72.4%",
             "width": "100.0%",
             "height": "7.9%"
@@ -1482,19 +1482,19 @@
         },
         "1": {
           "type": "WIDGET",
-          "widgetId": "widget_67",
+          "widgetId": "widget_68",
           "bbox": {
             "left": "0.0%",
             "right": "0.0%",
-            "top": "72px",
+            "top": "60.00px",
             "bottom": "0.00%",
             "width": "100.0%",
-            "height": "76.6%"
+            "height": "67.8%"
           },
           "setting": {
             "autoProps": {
-              "left": false,
-              "right": true,
+              "right": false,
+              "left": true,
               "top": false,
               "bottom": true,
               "width": "STRETCH",
@@ -1506,6 +1506,28 @@
       "order": [
         "0",
         "1"
+      ]
+    },
+    "layout_29": {
+      "content": {
+        "0": {
+          "type": "WIDGET",
+          "widgetId": "widget_67",
+          "bbox": {
+            "width": "300px",
+            "height": "825px"
+          },
+          "setting": {
+            "autoProps": {
+              "height": "AUTO"
+            }
+          }
+        }
+      },
+      "type": "COLUMN",
+      "label": "Default",
+      "order": [
+        "0"
       ]
     }
   },
@@ -1752,7 +1774,7 @@
       "version": "1.16.0",
       "label": "Text",
       "config": {
-        "text": "<p style=\"text-align: center;\"><span style=\"color: rgb(255, 255, 255);\">Application Version 3.2.2</span></p>",
+        "text": "<p style=\"text-align: center;\"><span style=\"color: rgb(255, 255, 255);\">Application Version 3.3.0</span></p>",
         "style": {
           "verticalAlign": "start",
           "wrap": true
@@ -2291,7 +2313,7 @@
     },
     "widget_25": {
       "uri": "widgets/common/button/",
-      "version": "1.13.0",
+      "version": "1.16.0",
       "label": "Button 6",
       "config": {
         "functionConfig": {
@@ -2345,7 +2367,7 @@
     },
     "widget_26": {
       "uri": "widgets/common/text/",
-      "version": "1.13.0",
+      "version": "1.16.0",
       "label": "Text 5",
       "config": {
         "text": "<p><strong style=\"font-size: 14px; color: var(--dark-800);\">Detail / Summary Panel</strong></p>",
@@ -2358,20 +2380,29 @@
     },
     "widget_27": {
       "uri": "widgets/common/text/",
-      "version": "1.13.0",
+      "version": "1.16.0",
       "label": "Text 6",
       "config": {
-        "text": "<p><span style=\"color: var(--dark-800);\">The panel on the right side of the map has two tabs, \"Detail\" and \"Summary\". The Detail tab allows you to page through every available record given the current map extent and any filters that have been applied. You can toggle between the tabs by clicking on the titles \"Detail\" and \"Summary\" respectively.  The Summary tab displays data aggregated by fixed hexagonal areas, aka \"hexbins\".</span></p><p><br></p><p><span style=\"color: var(--dark-800);\">If you select a point on the map, the Detail tab will display the corresponding record (note that this may take a few seconds). Switching to the Summary tab will show summary information for the hexbin containing the selected record.</span></p><p><br></p><p><span style=\"color: var(--dark-800);\">If you click on a location which is covered by a hexbin but does not intersect a point, the Summary tab will automatically be selected. If you click on a location not covered by a hexbin, no summary information will be displayed but you will still be able to page through active records in the Detail tab.</span></p>",
+        "text": "<p><span style=\"color: var(--dark-800);\">The panel on the right side of the map has three tabs, \"Detail\", \"Summary\", and \"OCIS\". The Detail tab allows you to page through every available record given the current map extent and any filters that have been applied. The Summary tab displays data aggregated by fixed hexagonal areas, aka \"hexbins\". The OCIS tab displays selected information from the </span><a href=\"https://ocean-and-coasts-information-system-esrioceans.hub.arcgis.com/\" target=\"_blank\" data-uniqueid=\"644230b5_9a4c_6c05_3cfe_849275e24341\" data-dsid=\"\" data-link=\"%7B%22linkType%22%3A%22WEB_ADDRESS%22%2C%22openType%22%3A%22_blank%22%2C%22value%22%3A%22https%3A%2F%2Focean-and-coasts-information-system-esrioceans.hub.arcgis.com%2F%22%2C%22expression%22%3Anull%7D\" style=\"color: var(--dark-800);\">Ocean and Coasts Information System</a><span style=\"color: var(--dark-800);\"> for the selected hexbin. You can toggle between the tabs by clicking on the titles \"Detail\" and \"Summary\" respectively. </span></p><p><br></p><p><span style=\"color: var(--dark-800);\">If you select a point on the map, the Detail tab will display the corresponding record (note that this may take a few seconds). Switching to the Summary tab will show summary information for the hexbin containing the selected record.</span></p><p><br></p><p><span style=\"color: var(--dark-800);\">If you click on a location which is covered by a hexbin but does not intersect a point, the Summary tab will automatically be selected. If you click on a location not covered by a hexbin, no summary information will be displayed but you will still be able to page through active records in the Detail tab.</span></p>",
         "style": {
           "verticalAlign": "start",
           "wrap": true
+        },
+        "tooltip": {
+          "name": "go to the Ocean and Coasts Information System",
+          "parts": [
+            {
+              "type": "STRING",
+              "exp": "\"go to the Ocean and Coasts Information System\""
+            }
+          ]
         }
       },
       "id": "widget_27"
     },
     "widget_28": {
       "uri": "widgets/common/button/",
-      "version": "1.13.0",
+      "version": "1.16.0",
       "label": "Button 7",
       "config": {
         "functionConfig": {
@@ -3831,6 +3862,30 @@
         "exampleConfigProperty": "test"
       },
       "id": "widget_67"
+    },
+    "widget_68": {
+      "uri": "widgets/layout/column/",
+      "version": "1.16.0",
+      "label": "Column",
+      "config": {
+        "space": 10,
+        "style": {
+          "padding": {
+            "space": [
+              10
+            ],
+            "unit": "px"
+          },
+          "justifyContent": "flex-start",
+          "alignItems": "stretch"
+        }
+      },
+      "id": "widget_68",
+      "layouts": {
+        "DEFAULT": {
+          "LARGE": "layout_29"
+        }
+      }
     }
   },
   "widgetsManifest": {},
@@ -4356,7 +4411,7 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1770761476421,
+  "timestamp": 1771023113180,
   "analytics": {
     "enable": true,
     "google": {
@@ -4366,5 +4421,5 @@
   "cookieBanner": {
     "uid": "103311e0-dc42-11f0-bf14-359107a8b062"
   },
-  "publishTimestamp": 1770762654917
+  "publishTimestamp": 1771023167982
 }
