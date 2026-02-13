@@ -44,8 +44,27 @@ function buildUrl (h3: string) {
   return (`${ocisFeatureServiceUrl}?${searchParams.toString()}`)
 }
 
+function formatFloatValue (str: string): string {
+  const num = parseFloat(str)
+  if (Number.isNaN(num)) {
+    return ''
+  }
+  // round *up* to 2 decimal places for display purposes. Always use positive values
+  return (Math.abs(Math.ceil(num * 100) / 100)).toLocaleString()
+}
+
+function formatIntValue (str: string): string {
+  const num = parseInt(str)
+  // if string cannot be parsed to a number, return empty string to avoid displaying "NaN"
+  if (Number.isNaN(num)) {
+    return ''
+  }
+  return num.toLocaleString()
+}
+
 export default function DataDisplay ({ h3 }: { h3: string }) {
   const url = buildUrl(h3)
+  console.log('OCIS query URL: ', url)
   const { data, loading, error } = useLoadJSON<any>(url)
 
   if (loading) {
@@ -57,46 +76,49 @@ export default function DataDisplay ({ h3 }: { h3: string }) {
   }
 
   console.log('data from OCIS query: ', data)
+  if (data.features.length === 0) {
+    return <div>No data available for grid ID {h3}.</div>
+  }
 
   return (
-    <div style={{ overflowY: 'auto' }}>
+    <div style={{paddingLeft: '10px', overflowY: 'auto' }}>
       <table>
         <tbody>
           <tr><td>{fields[0].display}</td><td>{data.features[0].attributes[fields[0].name]}</td></tr>
           <tr><td colSpan={2} style={{ fontWeight: 'bold' }}>Biodiversity</td></tr>
-          <tr><td>{fields[1].display}</td><td>{data.features[0].attributes[fields[1].name]}</td></tr>
-          <tr><td>{fields[2].display}</td><td>{data.features[0].attributes[fields[2].name]}</td></tr>
-          <tr><td>{fields[3].display}</td><td>{parseInt(data.features[0].attributes[fields[3].name]).toLocaleString()}</td></tr>
-          <tr><td>{fields[4].display}</td><td>{data.features[0].attributes[fields[4].name]}</td></tr>
-          <tr><td>{fields[5].display}</td><td>{data.features[0].attributes[fields[5].name]}</td></tr>
+          <tr><td>{fields[1].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[1].name])}</td></tr>
+          <tr><td>{fields[2].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[2].name])}</td></tr>
+          <tr><td>{fields[3].display}</td><td>{formatIntValue(data.features[0].attributes[fields[3].name])}</td></tr>
+          <tr><td>{fields[4].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[4].name])}</td></tr>
+          <tr><td>{fields[5].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[5].name])}</td></tr>
           <tr><td colSpan={2} style={{ fontWeight: 'bold' }}>Resource Management</td></tr>
-          <tr><td>{fields[6].display}</td><td>{data.features[0].attributes[fields[6].name]}</td></tr>
-          <tr><td>{fields[7].display}</td><td>{data.features[0].attributes[fields[7].name]}</td></tr>
-          <tr><td>{fields[8].display}</td><td>{data.features[0].attributes[fields[8].name]}</td></tr>
+          <tr><td>{fields[6].display}</td><td>{formatIntValue(data.features[0].attributes[fields[6].name])}</td></tr>
+          <tr><td>{fields[7].display}</td><td>{formatIntValue(data.features[0].attributes[fields[7].name])}</td></tr>
+          <tr><td>{fields[8].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[8].name])}</td></tr>
           <tr><td colSpan={2} style={{ fontWeight: 'bold' }}>Bathymetry & Seafloor</td></tr>
-          <tr><td>{fields[9].display}</td><td>{parseInt(data.features[0].attributes[fields[9].name]).toLocaleString()}</td></tr>
-          <tr><td>{fields[10].display}</td><td>{parseInt(data.features[0].attributes[fields[10].name]).toLocaleString()}</td></tr>
-          <tr><td>{fields[11].display}</td><td>{parseFloat(data.features[0].attributes[fields[11].name]).toFixed(2)}</td></tr>
-          <tr><td>{fields[12].display}</td><td>{parseFloat(data.features[0].attributes[fields[12].name]).toFixed(2)}</td></tr>
-          <tr><td>{fields[13].display}</td><td>{parseFloat(data.features[0].attributes[fields[13].name]).toFixed(2)}</td></tr>
-          <tr><td>{fields[14].display}</td><td>{parseFloat(data.features[0].attributes[fields[14].name]).toFixed(2)}</td></tr>
-          <tr><td>{fields[15].display}</td><td>{data.features[0].attributes[fields[15].name]}</td></tr>
+          <tr><td>{fields[9].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[9].name])}</td></tr>
+          <tr><td>{fields[10].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[10].name])}</td></tr>
+          <tr><td>{fields[11].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[11].name])}</td></tr>
+          <tr><td>{fields[12].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[12].name])}</td></tr>
+          <tr><td>{fields[13].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[13].name])}</td></tr>
+          <tr><td>{fields[14].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[14].name])}</td></tr>
+          <tr><td>{fields[15].display}</td><td>{formatIntValue(data.features[0].attributes[fields[15].name])}</td></tr>
           <tr><td colSpan={2} style={{ fontWeight: 'bold' }}>Surveys & Exploration</td></tr>
-          <tr><td>{fields[16].display}</td><td>{parseInt(data.features[0].attributes[fields[16].name]).toLocaleString()}</td></tr>
-          <tr><td>{fields[17].display}</td><td>{parseInt(data.features[0].attributes[fields[17].name]).toLocaleString()}</td></tr>
-          <tr><td>{fields[18].display}</td><td>{parseInt(data.features[0].attributes[fields[18].name]).toLocaleString()}</td></tr>
-          <tr><td>{fields[19].display}</td><td>{parseInt(data.features[0].attributes[fields[19].name]).toLocaleString()}</td></tr>
+          <tr><td>{fields[16].display}</td><td>{formatIntValue(data.features[0].attributes[fields[16].name])}</td></tr>
+          <tr><td>{fields[17].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[17].name])}</td></tr>
+          <tr><td>{fields[18].display}</td><td>{formatIntValue(data.features[0].attributes[fields[18].name])}</td></tr>
+          <tr><td>{fields[19].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[19].name])}</td></tr>
           <tr><td colSpan={2} style={{ fontWeight: 'bold' }}>Human Activity (Shipping, Fishing & Infrastructure)</td></tr>
-          <tr><td>{fields[20].display}</td><td>{parseInt(data.features[0].attributes[fields[20].name]).toLocaleString()}</td></tr>
-          <tr><td>{fields[21].display}</td><td>{parseInt(data.features[0].attributes[fields[21].name]).toLocaleString()}</td></tr>
-          <tr><td>{fields[22].display}</td><td>{parseInt(data.features[0].attributes[fields[22].name]).toLocaleString()}</td></tr>
-          <tr><td>{fields[23].display}</td><td>{parseInt(data.features[0].attributes[fields[23].name]).toLocaleString()}</td></tr>
-          <tr><td>{fields[24].display}</td><td>{parseInt(data.features[0].attributes[fields[24].name]).toLocaleString()}</td></tr>
-          <tr><td>{fields[25].display}</td><td>{parseInt(data.features[0].attributes[fields[25].name]).toLocaleString()}</td></tr>
-          <tr><td>{fields[26].display}</td><td>{data.features[0].attributes[fields[26].name]}</td></tr>
-          <tr><td>{fields[27].display}</td><td>{data.features[0].attributes[fields[27].name]}</td></tr>
-          <tr><td>{fields[28].display}</td><td>{data.features[0].attributes[fields[28].name]}</td></tr>
-          <tr><td>{fields[29].display}</td><td>{data.features[0].attributes[fields[29].name]}</td></tr>
+          <tr><td>{fields[20].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[20].name])}</td></tr>
+          <tr><td>{fields[21].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[21].name])}</td></tr>
+          <tr><td>{fields[22].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[22].name])}</td></tr>
+          <tr><td>{fields[23].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[23].name])}</td></tr>
+          <tr><td>{fields[24].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[24].name])}</td></tr>
+          <tr><td>{fields[25].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[25].name])}</td></tr>
+          <tr><td>{fields[26].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[26].name])}</td></tr>
+          <tr><td>{fields[27].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[27].name])}</td></tr>
+          <tr><td>{fields[28].display}</td><td>{formatIntValue(data.features[0].attributes[fields[28].name])}</td></tr>
+          <tr><td>{fields[29].display}</td><td>{formatIntValue(data.features[0].attributes[fields[29].name])}</td></tr>
       </tbody>
       </table>
     </div>
