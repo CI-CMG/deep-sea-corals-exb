@@ -10398,6 +10398,49 @@
     "group": 7
   },
   {
+    "name": "h3-widget",
+    "manifest": {
+      "name": "h3-widget",
+      "label": "H3 Widget",
+      "dependency": [
+        "jimu-arcgis"
+      ],
+      "type": "widget",
+      "version": "1.0.0",
+      "exbVersion": "1.16.0",
+      "author": "John Cartwright",
+      "description": "maintain a client-side layer showing stats aggregated by H3 tile",
+      "copyright": "",
+      "license": "http://www.apache.org/licenses/LICENSE-2.0",
+      "messageActions": [
+        {
+          "name": "update-layer",
+          "label": "Update Layer",
+          "uri": "actions/update-layer-action",
+          "settingUri": "actions/update-layer-action-setting"
+        }
+      ],
+      "properties": {},
+      "translatedLocales": [
+        "en"
+      ],
+      "defaultSize": {
+        "width": 200,
+        "height": 100
+      }
+    },
+    "i18nLabel": {
+      "en": "H3 Widget"
+    },
+    "i18nDescription": {
+      "en": null
+    },
+    "uri": "widgets/h3-widget/",
+    "icon": "widgets/h3-widget/icon.svg",
+    "order": 700,
+    "group": 7
+  },
+  {
     "name": "hexbin-info",
     "manifest": {
       "name": "hexbin-info",
