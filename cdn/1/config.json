@@ -1484,8 +1484,8 @@
           "type": "WIDGET",
           "widgetId": "widget_68",
           "bbox": {
-            "left": "0.0%",
-            "right": "0.0%",
+            "left": "10.00px",
+            "right": "10.00px",
             "top": "60.00px",
             "bottom": "0.00%",
             "width": "100.0%",
@@ -1515,7 +1515,7 @@
           "widgetId": "widget_67",
           "bbox": {
             "width": "300px",
-            "height": "825px"
+            "height": "36px"
           },
           "setting": {
             "autoProps": {
@@ -2383,7 +2383,7 @@
       "version": "1.16.0",
       "label": "Text 6",
       "config": {
-        "text": "<p><span style=\"color: var(--dark-800);\">The panel on the right side of the map has three tabs, \"Detail\", \"Summary\", and \"OCIS\". The Detail tab allows you to page through every available record given the current map extent and any filters that have been applied. The Summary tab displays data aggregated by fixed hexagonal areas, aka \"hexbins\". The OCIS tab displays selected information from the </span><a href=\"https://ocean-and-coasts-information-system-esrioceans.hub.arcgis.com/\" target=\"_blank\" data-uniqueid=\"644230b5_9a4c_6c05_3cfe_849275e24341\" data-dsid=\"\" data-link=\"%7B%22linkType%22%3A%22WEB_ADDRESS%22%2C%22openType%22%3A%22_blank%22%2C%22value%22%3A%22https%3A%2F%2Focean-and-coasts-information-system-esrioceans.hub.arcgis.com%2F%22%2C%22expression%22%3Anull%7D\" style=\"color: var(--dark-800);\">Ocean and Coasts Information System</a><span style=\"color: var(--dark-800);\"> for the selected hexbin. You can toggle between the tabs by clicking on the titles \"Detail\" and \"Summary\" respectively. </span></p><p><br></p><p><span style=\"color: var(--dark-800);\">If you select a point on the map, the Detail tab will display the corresponding record (note that this may take a few seconds). Switching to the Summary tab will show summary information for the hexbin containing the selected record.</span></p><p><br></p><p><span style=\"color: var(--dark-800);\">If you click on a location which is covered by a hexbin but does not intersect a point, the Summary tab will automatically be selected. If you click on a location not covered by a hexbin, no summary information will be displayed but you will still be able to page through active records in the Detail tab.</span></p>",
+        "text": "<p><span style=\"color: var(--dark-800);\">The panel on the right side of the map has three tabs, \"Detail\", \"Summary\", and \"OCIS\". The Detail tab allows you to page through every available record given the current map extent and any filters that have been applied. The Summary tab displays data aggregated by fixed hexagonal areas, aka \"hexagons\". These hexagons have an area of approximately 1.77 km2 and are indexed at Level 4 of the</span><a href=\"https://h3geo.org/\" target=\"_blank\" data-uniqueid=\"d7d70e0e_1455_634a_4785_4925bb637414\" data-dsid=\"\" data-link=\"%7B%22linkType%22%3A%22WEB_ADDRESS%22%2C%22openType%22%3A%22_blank%22%2C%22value%22%3A%22https%3A%2F%2Fh3geo.org%2F%22%2C%22expression%22%3Anull%7D\" style=\"color: var(--dark-800);\"> H3 system</a><span style=\"color: var(--dark-800);\">. The OCIS tab displays selected information from the </span><a href=\"https://ocean-and-coasts-information-system-esrioceans.hub.arcgis.com/\" target=\"_blank\" data-uniqueid=\"644230b5_9a4c_6c05_3cfe_849275e24341\" data-dsid=\"\" data-link=\"%7B%22linkType%22%3A%22WEB_ADDRESS%22%2C%22openType%22%3A%22_blank%22%2C%22value%22%3A%22https%3A%2F%2Focean-and-coasts-information-system-esrioceans.hub.arcgis.com%2F%22%2C%22expression%22%3Anull%7D\" style=\"color: var(--dark-800);\">Ocean and Coasts Information System</a><span style=\"color: var(--dark-800);\"> for the selected hexagon. You can toggle between the tabs by clicking on the titles \"Detail\" and \"Summary\" respectively. </span></p><p><br></p><p><span style=\"color: var(--dark-800);\">If you select a point on the map, the Detail tab will display the corresponding record (note that this may take a few seconds). Switching to the Summary tab will show summary information for the hexbin containing the selected record.</span></p><p><br></p><p><span style=\"color: var(--dark-800);\">If you click on a location which is covered by a hexbin but does not intersect a point, the Summary tab will automatically be selected. If you click on a location not covered by a hexbin, no summary information will be displayed but you will still be able to page through active records in the Detail tab.</span></p>",
         "style": {
           "verticalAlign": "start",
           "wrap": true
@@ -4411,7 +4411,7 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1771023113180,
+  "timestamp": 1771283409826,
   "analytics": {
     "enable": true,
     "google": {
@@ -4421,5 +4421,5 @@
   "cookieBanner": {
     "uid": "103311e0-dc42-11f0-bf14-359107a8b062"
   },
-  "publishTimestamp": 1771023167982
+  "publishTimestamp": 1771283894898
 }
