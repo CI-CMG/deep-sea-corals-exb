@@ -46,15 +46,15 @@ export default function Widget (props: AllWidgetProps<IMConfig> & ExtraProps) {
     return (
       <div>
         <div>
-          <p>No H3 cell selected</p>
+          <p style={{ fontSize: 'medium' }}>Please select a hexagon to summarize.</p>
         </div>
     </div>
     )
   }
 
   return (
-    <div>
-      {widgetState.h3 ? <DataDisplay h3={widgetState.h3} /> : <p>Please select a hexagonal area to summarize</p>}
+    <div style={{ overflowY: 'auto' }}>
+      {widgetState.h3 ? <DataDisplay h3={widgetState.h3} /> : <p style={{ fontSize: 'medium' }}>Please select a hexagon to summarize</p>}
     </div>
   )
 }

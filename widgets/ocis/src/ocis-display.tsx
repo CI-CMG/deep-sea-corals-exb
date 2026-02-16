@@ -11,8 +11,9 @@ const fields = [
   { index: 6, display: 'Count of Marine Protected Areas', name: 'mpa_count' },
   { index: 7, display: 'Count of Marine Managed Areas', name: 'prosea_count' },
   { index: 8, display: 'Weighted Level of Fishing Protection', name: 'prosea_lvl' },
-  { index: 9, display: 'Minimum Depth (meters)', name: 'bathy_min' },
-  { index: 10, display: 'Maximum Depth (meters)', name: 'bathy_max' },
+  // note the bathy_min, bathy_max labels are swapped due to the conversion to positive depth values
+  { index: 9, display: 'Minimum Depth (meters)', name: 'bathy_max' },
+  { index: 10, display: 'Maximum Depth (meters)', name: 'bathy_min' },
   { index: 11, display: 'Mean of Depth (meters)', name: 'bathy_mean' },
   { index: 12, display: 'Minimum Slope', name: 'slope_min' },
   { index: 13, display: 'Maximum Slope', name: 'slope_max' },
@@ -21,7 +22,7 @@ const fields = [
   { index: 16, display: 'Count of Hydrographic Surveys', name: 'survey_count' },
   { index: 17, display: 'Total Area of Hydrographic Surveys (sq. km)', name: 'survey_area_km' },
   { index: 18, display: 'Count of Expedition Tracklines', name: 'oer_track_count' },
-  { index: 19, display: 'Total Length of Expedition Tracklines (sq. km)', name: 'oer_track_km' },
+  { index: 19, display: 'Total Length of Expedition Tracklines (km)', name: 'oer_track_km' },
   { index: 20, display: 'Global Vessel Density', name: 'ship_global' },
   { index: 21, display: 'Commercial Vessel Density', name: 'ship_comm' },
   { index: 22, display: 'Fishing Vessel Density', name: 'ship_fish' },
@@ -77,11 +78,11 @@ export default function DataDisplay ({ h3 }: { h3: string }) {
 
   console.log('data from OCIS query: ', data)
   if (data.features.length === 0) {
-    return <div>No data available for grid ID {h3}.</div>
+    return <div>OCIS data are not available for hexagon {h3}. The  OCIS only covers the United States EEZ.</div>
   }
 
   return (
-    <div style={{paddingLeft: '10px', overflowY: 'auto' }}>
+    <div style={{ paddingLeft: '10px', overflowY: 'auto' }}>
       <table>
         <tbody>
           <tr><td>{fields[0].display}</td><td>{data.features[0].attributes[fields[0].name]}</td></tr>
@@ -102,7 +103,7 @@ export default function DataDisplay ({ h3 }: { h3: string }) {
           <tr><td>{fields[12].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[12].name])}</td></tr>
           <tr><td>{fields[13].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[13].name])}</td></tr>
           <tr><td>{fields[14].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[14].name])}</td></tr>
-          <tr><td>{fields[15].display}</td><td>{formatIntValue(data.features[0].attributes[fields[15].name])}</td></tr>
+          {/* <tr><td>{fields[15].display}</td><td>{formatIntValue(data.features[0].attributes[fields[15].name])}</td></tr> */}
           <tr><td colSpan={2} style={{ fontWeight: 'bold' }}>Surveys & Exploration</td></tr>
           <tr><td>{fields[16].display}</td><td>{formatIntValue(data.features[0].attributes[fields[16].name])}</td></tr>
           <tr><td>{fields[17].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[17].name])}</td></tr>

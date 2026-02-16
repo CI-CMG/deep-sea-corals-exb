@@ -395,7 +395,7 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
         onActiveViewChange={activeViewChangeHandler}
       />
       <div>
-        {h3 ? formatHexbinSummary() : <p>Please select a hexagonal area to summarize</p>}
+        {h3 ? formatHexbinSummary() : <p style={{ fontSize: 'medium' }}> Please select a hexagon to summarize</p>}
       </div>
     </div>
 
