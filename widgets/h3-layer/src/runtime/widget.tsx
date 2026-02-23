@@ -209,10 +209,10 @@ export default function H3Layer (props: AllWidgetProps<IMConfig>) {
     }
     // open side panel and select view. featureHits takes priority
     if (featureHits.length) {
-      handleExpandSidebar(props.config.sectionId, props.config.detailsViewId)
+      // handleExpandSidebar(props.config.sectionId, props.config.detailsViewId)
       mapViewRef.current.popup.visible = true
     } else if (graphicHits.length) {
-      handleExpandSidebar(props.config.sectionId, props.config.summaryViewId)
+      // handleExpandSidebar(props.config.sectionId, props.config.summaryViewId)
       mapViewRef.current.popup.visible = false
     } else {
       // no hits - leave sidepanel in current state
