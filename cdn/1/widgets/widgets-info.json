@@ -10661,6 +10661,36 @@
     "group": 7
   },
   {
+    "name": "scientific-name",
+    "manifest": {
+      "name": "scientific-name",
+      "type": "widget",
+      "version": "1.19.0",
+      "exbVersion": "1.19.0",
+      "author": "John Cartwright",
+      "description": "A widget containing a Calcite Autocomplete component and used to select a scientific name of interest from a long externally-hosted list",
+      "copyright": "",
+      "license": "http://www.apache.org/licenses/LICENSE-2.0",
+      "properties": {},
+      "publishMessages": [
+        "DATA_SOURCE_FILTER_CHANGE"
+      ],
+      "translatedLocales": [
+        "en"
+      ],
+      "defaultSize": {
+        "width": 300,
+        "height": 300
+      }
+    },
+    "i18nLabel": {},
+    "i18nDescription": {},
+    "uri": "widgets/scientific-name/",
+    "icon": "widgets/scientific-name/icon.svg",
+    "order": 700,
+    "group": 7
+  },
+  {
     "name": "scientific-name-autocomplete",
     "manifest": {
       "name": "scientific-name-autocomplete",
