@@ -10119,6 +10119,38 @@
     "group": 7
   },
   {
+    "name": "datasetid-filter",
+    "manifest": {
+      "name": "datasetid-filter",
+      "label": "DatasetID Filter",
+      "type": "widget",
+      "dependency": "jimu-arcgis",
+      "version": "1.0.0",
+      "exbVersion": "1.16.0",
+      "author": "John Cartwright",
+      "description": "filter the data records by specified DatasetID value",
+      "copyright": "",
+      "license": "http://www.apache.org/licenses/LICENSE-2.0",
+      "properties": {},
+      "publishMessages": [
+        "DATA_SOURCE_FILTER_CHANGE"
+      ],
+      "translatedLocales": [
+        "en"
+      ],
+      "defaultSize": {
+        "width": 400,
+        "height": 400
+      }
+    },
+    "i18nLabel": {},
+    "i18nDescription": {},
+    "uri": "widgets/datasetid-filter/",
+    "icon": "widgets/datasetid-filter/icon.svg",
+    "order": 700,
+    "group": 7
+  },
+  {
     "name": "demo-widget",
     "manifest": {
       "name": "demo-widget",
