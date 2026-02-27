@@ -8,7 +8,10 @@ export default function (props: AllWidgetProps<IMConfig>) {
   const [databaseVersion, setDatabaseVersion] = useState('not available')
 
   useEffect(() => {
-    fetch(props.config.configUrl).then()
+    fetch(
+      props.config.configUrl,
+      { cache: 'no-store' }
+    ).then()
       .then((res) => {
         if (!res.ok) {
           console.warn(`Error reading configuration file from ${props.config.configUrl}: `, res.statusText)
