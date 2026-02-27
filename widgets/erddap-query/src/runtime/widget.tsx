@@ -94,7 +94,7 @@ function convertSqlToErddapParams (sql: string, searchParams: string[]) {
   })
 
   clauses.filter(elem => elem[0].toLowerCase() === 'imageurl').forEach(elem => {
-    searchParams.push('ImageURL=~"http.+"')
+    searchParams.push('ImageURL=~"https://.*"')
   })
 
   clauses.filter(elem => elem[0].toLowerCase() === 'depthinmeters').forEach(elem => {
