@@ -1448,12 +1448,36 @@
             "vCenter": false,
             "hCenter": true
           }
+        },
+        "3": {
+          "type": "WIDGET",
+          "widgetId": "widget_69",
+          "bbox": {
+            "left": "50%",
+            "right": "2.7%",
+            "top": "240.00px",
+            "bottom": "0.00%",
+            "width": "95.00%",
+            "height": "11.9%"
+          },
+          "setting": {
+            "autoProps": {
+              "right": true,
+              "left": false,
+              "top": false,
+              "bottom": true,
+              "height": "AUTO"
+            },
+            "vCenter": false,
+            "hCenter": true
+          }
         }
       },
       "order": [
         "0",
         "1",
-        "2"
+        "2",
+        "3"
       ]
     },
     "layout_28": {
@@ -1774,7 +1798,7 @@
       "version": "1.16.0",
       "label": "Text",
       "config": {
-        "text": "<p style=\"text-align: center;\"><span style=\"color: rgb(255, 255, 255);\">Application Version 3.3.0</span></p>",
+        "text": "<p style=\"text-align: center;\"><span style=\"color: rgb(255, 255, 255);\">Application Version 3.2.0<span class=\"ql-cursor\">﻿</span></span></p>",
         "style": {
           "verticalAlign": "start",
           "wrap": true
@@ -3108,7 +3132,7 @@
     },
     "widget_41": {
       "uri": "widgets/arcgis/legend/",
-      "version": "1.13.0",
+      "version": "1.16.0",
       "label": "Legend",
       "config": {},
       "id": "widget_41",
@@ -3886,6 +3910,26 @@
           "LARGE": "layout_29"
         }
       }
+    },
+    "widget_69": {
+      "uri": "widgets/datasetid-filter/",
+      "version": "1.0.0",
+      "label": "DatasetID Filter",
+      "config": {
+        "serviceUrl": "https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB/FeatureServer/0/query?",
+        "pointLayerTitle": ""
+      },
+      "id": "widget_69",
+      "useMapWidgetIds": [
+        "widget_3"
+      ],
+      "useDataSources": [
+        {
+          "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
+          "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
+          "rootDataSourceId": "dataSource_1"
+        }
+      ]
     }
   },
   "widgetsManifest": {},
@@ -4356,6 +4400,31 @@
           "version": "1.0.0"
         }
       ]
+    },
+    "messageConfig_10": {
+      "id": "messageConfig_10",
+      "widgetId": "widget_69",
+      "messageType": "DATA_SOURCE_FILTER_CHANGE",
+      "actions": [
+        {
+          "actionId": "widget_47-update-layer-1772154352583",
+          "widgetId": "widget_47",
+          "messageWidgetId": "widget_69",
+          "actionName": "update-layer",
+          "description": null,
+          "config": null,
+          "version": "1.0.0"
+        },
+        {
+          "actionId": "widget_55-filter-change-1772154358671",
+          "widgetId": "widget_55",
+          "messageWidgetId": "widget_69",
+          "actionName": "filter-change",
+          "description": null,
+          "config": null,
+          "version": "1.0.0"
+        }
+      ]
     }
   },
   "attributes": {
@@ -4411,7 +4480,7 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1771283409826,
+  "timestamp": 1772155852653,
   "analytics": {
     "enable": true,
     "google": {
@@ -4421,5 +4490,5 @@
   "cookieBanner": {
     "uid": "103311e0-dc42-11f0-bf14-359107a8b062"
   },
-  "publishTimestamp": 1771283894898
+  "publishTimestamp": 1772155856187
 }
