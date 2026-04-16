@@ -106,7 +106,7 @@ function convertSqlToErddapParams (sql: string, searchParams: string[]) {
   })
 
   clauses.filter(elem => elem[0].toLowerCase() === 'observationyear').forEach(elem => {
-    searchParams.push(`ObservationYear ${elem[1]} ${elem[2]}`)
+    searchParams.push(`ObservationYear${elem[1]}${elem[2]}`)
   })
 
   clauses.filter(elem => elem[0].toLowerCase() === 'fishcouncilregioncode').forEach(elem => {
