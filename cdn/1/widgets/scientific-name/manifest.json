@@ -1,11 +1,10 @@
 {
-  "name": "scientific-name-autocomplete",
-  "label": "Scientific Name Selection",
+  "name": "scientific-name",
   "type": "widget",
-  "version": "1.0.0",
-  "exbVersion": "1.12.0",
+  "version": "1.19.0",
+  "exbVersion": "1.19.0",
   "author": "John Cartwright",
-  "description": "select the scientific name from values in DataSource using MUI autocomplete widget",
+  "description": "A widget containing a Calcite Autocomplete component and used to select a scientific name of interest from a long externally-hosted list",
   "copyright": "",
   "license": "http://www.apache.org/licenses/LICENSE-2.0",
   "properties": {},
@@ -16,7 +15,7 @@
     "en"
   ],
   "defaultSize": {
-    "width": 400,
-    "height": 400
+    "width": 300,
+    "height": 300
   }
 }
