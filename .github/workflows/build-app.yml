@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: node version
         run: node --version
       - name: Download Experience Builder
@@ -27,7 +27,7 @@ jobs:
         working-directory: ArcGISExperienceBuilder/server
       - name: Copy apps
         run: cp -r apps/* ArcGISExperienceBuilder/server/public/apps
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: 22
           # cache: 'npm'
@@ -77,6 +77,7 @@ jobs:
       #     pageres http://localhost:5000/index.html 1024x768 --filename=screenshot --delay=10
       - name: Deploy app zip to GH Pages
         uses: JamesIves/github-pages-deploy-action@v4
+        # uses: actions/deploy-pages@v4 
         with:
           branch: gh-pages
           folder: ArcGISExperienceBuilder/app
