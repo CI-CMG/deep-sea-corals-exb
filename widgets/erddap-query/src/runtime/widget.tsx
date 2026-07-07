@@ -94,11 +94,11 @@ function convertSqlToErddapParams (sql: string, searchParams: string[]) {
   })
 
   clauses.filter(elem => elem[0].toLowerCase() === 'imageurl').forEach(elem => {
-    searchParams.push('ImageURL=~"http.+"')
+    searchParams.push('ImageURL=~"https://.*"')
   })
 
   clauses.filter(elem => elem[0].toLowerCase() === 'depthinmeters').forEach(elem => {
-    searchParams.push(`DepthInMeters ${elem[1]} ${elem[2]}`)
+    searchParams.push(`DepthInMeters${elem[1]}${elem[2]}`)
   })
 
   clauses.filter(elem => elem[0].toLowerCase() === 'scientificname').forEach(elem => {
@@ -106,7 +106,7 @@ function convertSqlToErddapParams (sql: string, searchParams: string[]) {
   })
 
   clauses.filter(elem => elem[0].toLowerCase() === 'observationyear').forEach(elem => {
-    searchParams.push(`ObservationYear ${elem[1]} ${elem[2]}`)
+    searchParams.push(`ObservationYear${elem[1]}${elem[2]}`)
   })
 
   clauses.filter(elem => elem[0].toLowerCase() === 'fishcouncilregioncode').forEach(elem => {

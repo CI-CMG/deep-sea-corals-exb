@@ -1,0 +1,9 @@
+#filter-string-container {
+    /* border-top: solid 1px black;
+    border-bottom: solid 1px black; */
+    padding: 5px;
+}
+
+#filter-string-label {
+    padding-right: 5px;
+}
