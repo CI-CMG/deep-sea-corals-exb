@@ -27,7 +27,7 @@ jobs:
         run: cp -r apps/* arcgis-experience-builder-1.19/ArcGISExperienceBuilder/server/public/apps
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           # cache: 'npm'
           # cache-dependency-path: arcgis-experience-builder-1.19/ArcGISExperienceBuilder/client/package-lock.json
       - name: node version
