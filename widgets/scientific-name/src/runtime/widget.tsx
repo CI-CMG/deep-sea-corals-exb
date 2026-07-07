@@ -73,18 +73,16 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
   // should only run on initial load
   useEffect(() => {
     console.log('fetching names from: ', props.config.scientificNamesUrl)
-    fetch(props.config.scientificNamesUrl).then()
+    fetch(props.config.scientificNamesUrl)
       .then((res) => {
         if (!res.ok) {
-          console.warn(`Error reading configuration file from ${props.config.scientificNamesUrl}: `, res.statusText)
-          return
+          throw new Error(`Error reading configuration file from ${props.config.scientificNamesUrl}: ${res.statusText}`)
         }
         return res.json()
       })
       .then((nameslist) => {
         if (!nameslist) {
-          console.error('configuration file improperly formatted: no names found')
-          return
+          throw new Error('configuration file improperly formatted: no names found')
         }
         if (nameslist.length > 0) {
           console.log(`${nameslist.length} unique scientific names loaded from ${props.config.scientificNamesUrl}`)
