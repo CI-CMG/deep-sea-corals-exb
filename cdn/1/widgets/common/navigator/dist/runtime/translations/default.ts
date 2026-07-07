@@ -1,6 +1,7 @@
 export default {
   _widgetLabel: 'Views Navigation',
-  widgetPlaceholder: 'Please add a Section to use this widget.',
+  widgetPlaceholder: 'Please link to a Section to use this widget.',
+  widgetPlaceholderWithNoView: 'Please select a view to use this widget.',
   tabDefault: 'Tab default',
   tabUnderline: 'Tab underline',
   tabPills: 'Tab pills',

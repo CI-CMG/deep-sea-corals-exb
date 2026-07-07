@@ -8,7 +8,6 @@ export default {
   showOrHideLabels: 'Show or hide labels',
   showLayerForMap: 'Show layers for map data only',
   customizeLayerDesc: 'Select the layers to display for users.',
-  customizeLayerWarnings: 'The selected Map widget does not contain a web map or web scene.',
   enableLegend: 'Show legend',
   showAllLegend: 'Show legend for all visible layers by default',
   useTickBoxes: 'Use tick boxes to control layer visibility',
@@ -16,5 +15,9 @@ export default {
   searchLayers: 'Search layers',
   showTables: 'Show tables',
   popup: 'Enable or disable pop-up',
-  customizeDescription: 'Specify which layers will be displayed for each map'
+  customizeDescription: 'Specify which layers will be displayed for each map',
+  expandAllLayersByDefault: 'Expand all layers by default',
+  visibilityRange: 'Visibility range',
+  layerBatchOptions: 'Enable layer batch options',
+  changeSymbolForRuntimeLayers: 'Change symbols for layers generated at runtime'
 }

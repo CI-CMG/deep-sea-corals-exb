@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Bot\xf3n"})}}}));
+System.register([],function(e){return{execute:function(){e({_widgetLabel:"Bot\xf3n"})}}});

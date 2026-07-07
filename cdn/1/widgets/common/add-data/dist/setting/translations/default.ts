@@ -7,5 +7,9 @@ export default {
   defaultPlaceholderText: 'There is currently no added data.',
   curateACollection: 'Curate a collection',
   allowRenaming: 'Allow renaming',
-  allowRemoval: 'Allow removal'
+  allowRemoval: 'Allow removal',
+  dataTypeRestriction: 'Data type restriction',
+  allowExportSetting: 'Allow export',
+  exportSettings: 'Export settings',
+  formatOptions: 'Format options'
 }

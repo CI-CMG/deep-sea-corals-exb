@@ -7,7 +7,6 @@ export default {
   attachments: 'Attachments',
   lastEditInfo: 'Last edit info',
   maxFeaturesDisplayed: 'Maximum features displayed',
-  noDataMessage: 'No data message',
   noDataMessageDefaultText: 'No data found.',
   textSize: 'Text size',
   widgetTitle: 'Widget title',

@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Nupp"})}}}));
+System.register([],function(e){return{execute:function(){e({_widgetLabel:"Nupp"})}}});

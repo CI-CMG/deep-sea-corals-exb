@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Filtriraj"})}}}));
+System.register([],function(e){return{execute:function(){e({_widgetLabel:"Filtriraj"})}}});

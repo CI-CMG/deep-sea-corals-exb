@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Knop"})}}}));
+System.register([],function(e){return{execute:function(){e({_widgetLabel:"Knop",dynamicStyleExpressionsLabel:"Content knoptekst gebruiken"})}}});

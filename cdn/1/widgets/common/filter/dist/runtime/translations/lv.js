@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Filtrs"})}}}));
+System.register([],function(e){return{execute:function(){e({_widgetLabel:"Filtrs"})}}});

@@ -1,3 +1,4 @@
 export default {
-  _widgetLabel: 'Button'
+  _widgetLabel: 'Button',
+  dynamicStyleExpressionsLabel:'Use Button Text content'
 }

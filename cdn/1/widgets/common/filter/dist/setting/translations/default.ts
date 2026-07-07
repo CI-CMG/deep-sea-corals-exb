@@ -9,7 +9,7 @@ export default {
   setFilterItem: 'Create new filter',
   setFilterItemForGroup: 'Create new group',
   setFilterItemForCustom: 'Create new custom filter',
-  dsRemoveTips: 'Removing the main field associated data will reset all SQL expressions for the group.',
+  dsRemoveTips: 'Removing all the main field associated data views will reset all SQL expressions for the group.',
   autoApplyWhenWidgetOpen: 'Apply this filter automatically',
   collapseFilterExprs: 'Collapse filter details (if any) automatically',
   arrangeAndStyle: 'Arrangement style',
@@ -20,5 +20,6 @@ export default {
   omitInternalStyleTip: 'If there is only one clause in each filter, and it is asking for values (or displaying label), this option allows you to exclude the activation styles (along with the label and the icon), display the clause content directly, and auto-apply it.',
   wrapFilters: 'Wrap items',
   advancedTools: 'Advanced tools',
-  blankStatusMsg: 'Click the "New filter", "New group", or "New custom filter" button to add and configure filters.'
+  blankStatusMsg: 'Click the "New filter", "New group", or "New custom filter" button to add and configure filters.',
+  i18nFilterItemLabel: 'Item label'
 }

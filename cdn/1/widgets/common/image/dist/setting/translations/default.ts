@@ -4,8 +4,6 @@ export default {
   staticSource: 'Static',
   dynamicSource: 'Dynamic',
   imageSet: 'Select an image',
-  toolTip: 'Tooltip',
-  altText: 'Alt text',
   imageSetLink: 'Set link',
   imageShape: 'Shape',
   imagePosition: 'Position',
@@ -28,5 +26,6 @@ export default {
   displayQualityTooltipWithLow: 'Low',
   displayQualityTooltipWithMedium: 'Medium',
   displayQualityTooltipWithHigh: 'High',
-  displayQualityTooltipWithOriginal: 'Original'
+  displayQualityTooltipWithOriginal: 'Original',
+  imageViewer: 'Image viewer'
 }

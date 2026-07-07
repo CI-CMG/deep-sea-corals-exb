@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"\u6309\u9215"})}}}));
+System.register([],function(e){return{execute:function(){e({_widgetLabel:"\u6309\u9215"})}}});

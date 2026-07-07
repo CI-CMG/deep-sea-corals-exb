@@ -2,8 +2,8 @@
   "name": "feature-info",
   "label": "Feature Info",
   "type": "widget",
-  "version": "1.16.0",
-  "exbVersion": "1.16.0",
+  "version": "1.19.0",
+  "exbVersion": "1.19.0",
   "author": "Esri R&D Center Beijing",
   "description": "This is the widget used in developer guide",
   "copyright": "",
@@ -23,7 +23,15 @@
   },
   "excludeDataActions": [
     "arcgis-map.addToMap",
-    "directions.PlanRoute"
+    "directions.PlanRoute",
+    "arcgis-map.showPopup"
+  ],
+  "extensions": [
+    {
+      "name": "appConfigOperations",
+      "point": "APP_CONFIG_OPERATIONS",
+      "uri": "extensions/app-config-operations"
+    }
   ],
   "translatedLocales": [
     "en",
@@ -48,7 +56,7 @@
     "ko",
     "lt",
     "lv",
-    "nb",
+    "no",
     "nl",
     "pl",
     "pt-br",

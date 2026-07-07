@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Filtre Uygula"})}}}));
+System.register([],function(e){return{execute:function(){e({_widgetLabel:"Filtre Uygula"})}}});

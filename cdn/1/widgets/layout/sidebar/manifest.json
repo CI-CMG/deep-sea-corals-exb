@@ -3,8 +3,8 @@
   "label": "Sidebar",
   "type": "widget",
   "widgetType": "LAYOUT",
-  "version": "1.16.0",
-  "exbVersion": "1.16.0",
+  "version": "1.19.0",
+  "exbVersion": "1.19.0",
   "author": "Esri R&D Center Beijing",
   "description": "This is the widget used in developer guide",
   "copyright": "",
@@ -39,6 +39,13 @@
       "type": "FIXED"
     }
   ],
+  "extensions": [
+    {
+      "name": "appConfigOperations",
+      "point": "APP_CONFIG_OPERATIONS",
+      "uri": "tools/app-config-operations"
+    }
+  ],
   "defaultSize": {
     "width": 800,
     "height": 400
@@ -66,7 +73,7 @@
     "ko",
     "lt",
     "lv",
-    "nb",
+    "no",
     "nl",
     "pl",
     "pt-br",

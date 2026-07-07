@@ -1,20 +1,25 @@
-System.register(["jimu-core","jimu-theme","jimu-ui","jimu-for-builder"],(function(e,t){var i={},s={},o={},n={};return{setters:[function(e){i.ReactRedux=e.ReactRedux,i.classNames=e.classNames,i.css=e.css,i.hooks=e.hooks,i.jsx=e.jsx,i.polished=e.polished},function(e){s.ThemeSwitchComponent=e.ThemeSwitchComponent,s.useTheme=e.useTheme,s.useTheme2=e.useTheme2,s.useUseTheme2=e.useUseTheme2},function(e){o.Link=e.Link,o.defaultMessages=e.defaultMessages},function(e){n.getAppConfigAction=e.getAppConfigAction}],execute:function(){e((()=>{"use strict";var e={79244:e=>{e.exports=i},4108:e=>{e.exports=n},1888:e=>{e.exports=s},14321:e=>{e.exports=o}},t={};function r(i){var s=t[i];if(void 0!==s)return s.exports;var o=t[i]={exports:{}};return e[i](o,o.exports,r),o.exports}r.d=(e,t)=>{for(var i in t)r.o(t,i)&&!r.o(e,i)&&Object.defineProperty(e,i,{enumerable:!0,get:t[i]})},r.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),r.r=e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})};var u={};r.r(u),r.d(u,{default:()=>g});var l=r(79244),a=r(1888),d=r(14321),c=r(4108);const m=["default","primary","secondary","tertiary","danger","link"],p=(e,t)=>l.css`
-    width: 360px;
+System.register(["jimu-core/emotion","jimu-core","jimu-theme","jimu-ui","jimu-for-builder"],function(e,t){var i={},o={},s={},n={},r={};return{setters:[function(e){i.jsx=e.jsx},function(e){o.ReactRedux=e.ReactRedux,o.classNames=e.classNames,o.css=e.css,o.hooks=e.hooks,o.polished=e.polished},function(e){s.ThemeSwitchComponent=e.ThemeSwitchComponent,s.useTheme=e.useTheme,s.useTheme2=e.useTheme2,s.useUseTheme2=e.useUseTheme2},function(e){n.Link=e.Link,n.Tooltip=e.Tooltip,n.defaultMessages=e.defaultMessages,n.hooks=e.hooks},function(e){r.getAppConfigAction=e.getAppConfigAction}],execute:function(){e((()=>{var e={1888:e=>{"use strict";e.exports=s},4108:e=>{"use strict";e.exports=r},14321:e=>{"use strict";e.exports=n},67386:e=>{"use strict";e.exports=i},79244:e=>{"use strict";e.exports=o}},t={};function u(i){var o=t[i];if(void 0!==o)return o.exports;var s=t[i]={exports:{}};return e[i](s,s.exports,u),s.exports}u.d=(e,t)=>{for(var i in t)u.o(t,i)&&!u.o(e,i)&&Object.defineProperty(e,i,{enumerable:!0,get:t[i]})},u.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),u.r=e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},u.p="";var l={};return u.p=window.jimuConfig.baseUrl,(()=>{"use strict";u.r(l),u.d(l,{default:()=>c});var e=u(67386),t=u(79244),i=u(1888),o=u(14321),s=u(4108);const n=["default","primary","secondary","tertiary","danger","link"],r=(e,i,o,s)=>t.css`
+    min-width: 360px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: ${e.sys.spacing[3]};
     padding: ${e.sys.spacing[5]};
     .button-item{
       width: 100%;
-      font-size: ${l.polished.rem(13)};
+      font-size: ${t.polished.rem(13)};
+    }
+    .button-item.jimu-link-link {
+      text-decoration: underline;
     }
     .quick-style-item{
       padding: ${e.sys.spacing[2]};
       margin: 2px;
       &.quick-style-item-selected{
-        outline: 2px solid ${t.sys.color.primary.light};
+        outline: 2px solid ${i.sys.color.primary.light};
       }
+      ${o||"tertiary"!==s?"":"color: inherit;"}
       background-color: ${e.sys.color.surface.background};
-        cursor: pointer;
+      color: ${e.sys.color.surface.backgroundText};
+      cursor: pointer;
     }
-  `,g={QuickStyle:e=>{var t,i,s;const{widgetId:o}=e,n=l.ReactRedux.useSelector((e=>{var t;return null===(t=(e.appStateInBuilder?e.appStateInBuilder:e).appConfig.widgets[o])||void 0===t?void 0:t.config})),r=!(null===(t=null==n?void 0:n.styleConfig)||void 0===t?void 0:t.useCustom)&&(null===(s=null===(i=null==n?void 0:n.styleConfig)||void 0===i?void 0:i.themeStyle)||void 0===s?void 0:s.quickStyleType),u=(0,a.useTheme)(),g=(0,a.useTheme2)(),f=(0,a.useUseTheme2)(),y=window.jimuConfig.isBuilder!==f?g:u,h=window.jimuConfig.isBuilder!==f?u:g,v=l.hooks.useTranslation(d.defaultMessages);return(0,l.jsx)("div",{css:p(y,h)},(0,l.jsx)(a.ThemeSwitchComponent,{useTheme2:window.jimuConfig.isBuilder},m.map(((e,t)=>(0,l.jsx)("div",{key:t,className:(0,l.classNames)("quick-style-item",{"quick-style-item-selected":r===e}),onClick:()=>{(e=>{let t=n.setIn(["styleConfig","useCustom"],!1);t=t.setIn(["styleConfig","themeStyle","quickStyleType"],e),t=t.set("styleConfig",t.styleConfig.without("customStyle")),(0,c.getAppConfigAction)().editWidgetConfig(o,t).exec()})(e)}},(0,l.jsx)(d.Link,{title:v("variableButton"),role:"button",className:"button-item text-truncate",type:e},v("variableButton")))))))}};return u})())}}}));
+  `,c={QuickStyle:u=>{var l,c,a;const{widgetId:d}=u,m=o.hooks.useClassicTheme(),p=t.ReactRedux.useSelector(e=>{var t;return null===(t=(e.appStateInBuilder?e.appStateInBuilder:e).appConfig.widgets[d])||void 0===t?void 0:t.config}),g=!(null===(l=null==p?void 0:p.styleConfig)||void 0===l?void 0:l.useCustom)&&(null===(a=null===(c=null==p?void 0:p.styleConfig)||void 0===c?void 0:c.themeStyle)||void 0===a?void 0:a.quickStyleType)||"default",f=(0,i.useTheme)(),y=(0,i.useTheme2)(),h=(0,i.useUseTheme2)(),x=window.jimuConfig.isBuilder!==h?y:f,v=window.jimuConfig.isBuilder!==h?f:y,k=t.hooks.useTranslation(o.defaultMessages);return(0,e.jsx)("div",{css:r(x,v,m,g),children:(0,e.jsx)(i.ThemeSwitchComponent,{useTheme2:window.jimuConfig.isBuilder,children:n.map((i,n)=>(0,e.jsx)("div",{className:(0,t.classNames)("quick-style-item",{"quick-style-item-selected":g===i}),onClick:()=>{(e=>{let t=p.setIn(["styleConfig","useCustom"],!1);t=t.setIn(["styleConfig","themeStyle","quickStyleType"],e),t=t.set("styleConfig",t.styleConfig.without("customStyle")),(0,s.getAppConfigAction)().editWidgetConfig(d,t).exec()})(i)},children:(0,e.jsx)(o.Tooltip,{title:k(`${i}Button`),children:(0,e.jsx)(o.Link,{role:"button",color:m||"tertiary"!==i?null:"inherit",className:"button-item text-truncate",type:i,children:k("variableButton")})})},n))})})}}})(),l})())}}});

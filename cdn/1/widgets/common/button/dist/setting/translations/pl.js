@@ -1,1 +1,1 @@
-System.register([],(function(e){return{execute:function(){e({_widgetLabel:"Przycisk"})}}}));
+System.register([],function(e){return{execute:function(){e({_widgetLabel:"Przycisk",dynamicStyleExpressionsLabel:"U\u017cyj zasob\xf3w tekstowych przycisku"})}}});
