@@ -554,18 +554,10 @@
         },
         "2": {
           "type": "WIDGET",
+          "widgetId": "widget_69",
           "bbox": {
-            "width": "95.00%",
-            "height": "250.00px"
-          },
-          "widgetId": "widget_31",
-          "setting": {
-            "autoProps": {
-              "width": "CUSTOM"
-            },
-            "style": {
-              "alignSelf": "center"
-            }
+            "width": "300px",
+            "height": "300px"
           }
         }
       }
@@ -1448,36 +1440,12 @@
             "vCenter": false,
             "hCenter": true
           }
-        },
-        "3": {
-          "type": "WIDGET",
-          "widgetId": "widget_69",
-          "bbox": {
-            "left": "50%",
-            "right": "2.7%",
-            "top": "240.00px",
-            "bottom": "0.00%",
-            "width": "95.00%",
-            "height": "11.9%"
-          },
-          "setting": {
-            "autoProps": {
-              "right": true,
-              "left": false,
-              "top": false,
-              "bottom": true,
-              "height": "AUTO"
-            },
-            "vCenter": false,
-            "hCenter": true
-          }
         }
       },
       "order": [
         "0",
         "1",
-        "2",
-        "3"
+        "2"
       ]
     },
     "layout_28": {
@@ -1555,7 +1523,7 @@
       ]
     }
   },
-  "exbVersion": "1.16.0",
+  "exbVersion": "1.19.0",
   "mainSizeMode": "LARGE",
   "theme": "themes/default/",
   "forBuilderAttributes": {
@@ -1571,7 +1539,7 @@
   "widgets": {
     "widget_1": {
       "uri": "widgets/layout/sidebar/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Sidebar",
       "config": {
         "direction": "HORIZONTAL",
@@ -1645,7 +1613,7 @@
     },
     "widget_2": {
       "uri": "widgets/layout/sidebar/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Sidebar 2",
       "config": {
         "direction": "HORIZONTAL",
@@ -1719,7 +1687,7 @@
     },
     "widget_3": {
       "uri": "widgets/arcgis/arcgis-map/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Map",
       "config": {
         "toolConfig": {
@@ -1773,7 +1741,7 @@
     },
     "widget_4": {
       "uri": "widgets/layout/row/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Row",
       "config": {
         "space": 10,
@@ -1795,10 +1763,10 @@
     },
     "widget_5": {
       "uri": "widgets/common/text/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Text",
       "config": {
-        "text": "<p style=\"text-align: center;\"><span style=\"color: rgb(255, 255, 255);\">Application Version 3.2.0<span class=\"ql-cursor\">﻿</span></span></p>",
+        "text": "<p style=\"text-align: center;\"><span style=\"color: rgb(255, 255, 255);\">Application Version 3.3.0</span></p>",
         "style": {
           "verticalAlign": "start",
           "wrap": true
@@ -1808,7 +1776,7 @@
     },
     "widget_6": {
       "uri": "widgets/common/button/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Button",
       "config": {
         "functionConfig": {
@@ -1884,7 +1852,7 @@
     },
     "widget_8": {
       "uri": "widgets/common/text/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Text 2",
       "config": {
         "text": "<p><span style=\"font-size: 24px;\">Deep Sea Corals and Sponges</span></p>",
@@ -1906,7 +1874,7 @@
     },
     "widget_9": {
       "uri": "widgets/common/image/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Image",
       "config": {
         "functionConfig": {
@@ -1955,7 +1923,7 @@
     },
     "widget_10": {
       "uri": "widgets/layout/column/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Upper Left Column",
       "config": {
         "space": {
@@ -1988,7 +1956,7 @@
     },
     "widget_11": {
       "uri": "widgets/layout/column/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Lower Left Column",
       "config": {
         "space": {
@@ -2015,7 +1983,7 @@
     },
     "widget_12": {
       "uri": "widgets/common/navigator/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Left Side Views Navigation",
       "config": {
         "data": {
@@ -2047,7 +2015,7 @@
     },
     "widget_13": {
       "uri": "widgets/common/text/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Filters Label",
       "config": {
         "text": "<p style=\"text-align: center;\"><strong style=\"font-size: 16px;\">Filters</strong></p>",
@@ -2069,7 +2037,7 @@
     },
     "widget_14": {
       "uri": "widgets/common/button/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Filters Help Button",
       "config": {
         "functionConfig": {
@@ -2123,7 +2091,7 @@
     },
     "widget_15": {
       "uri": "widgets/layout/column/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Right Side Column",
       "config": {
         "space": {
@@ -2150,7 +2118,7 @@
     },
     "widget_17": {
       "uri": "widgets/common/button/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Right Panel Help Button",
       "config": {
         "functionConfig": {
@@ -2204,7 +2172,7 @@
     },
     "widget_18": {
       "uri": "widgets/common/navigator/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Right Side Views Navigation",
       "config": {
         "data": {
@@ -2235,7 +2203,7 @@
     },
     "widget_19": {
       "uri": "widgets/common/button/",
-      "version": "1.13.0",
+      "version": "1.19.0",
       "label": "Button 3",
       "config": {
         "functionConfig": {
@@ -2289,7 +2257,7 @@
     },
     "widget_21": {
       "uri": "widgets/common/text/",
-      "version": "1.13.0",
+      "version": "1.19.0",
       "label": "Text 3",
       "config": {
         "text": "<p><strong style=\"color: var(--dark-800); font-size: 14px;\">﻿Filters</strong></p>",
@@ -2302,7 +2270,7 @@
     },
     "widget_22": {
       "uri": "widgets/common/text/",
-      "version": "1.13.0",
+      "version": "1.19.0",
       "label": "Text 4",
       "config": {
         "text": "<p>Filters for limiting the displayed records are located in the panel left of the map. The \"Scientific Name\" filter allows you to type in the scientific name of interest. It will \"autocomplete', displaying all options beginning with the characters you typed. </p><p>Other filters are available in the \"Basic\", \"Taxon\", and \"Models\" tabs below. The \"Taxon\" filters are intended to operate from the most general to the most specific and only offer choices pertinent to the previous selections. </p><p>Unlike the other two tabs, the \"Models\" tab does not filter the sample records, but instead filters the display of model output predicting the location of specified species. </p><p>Multiple filters can be applied simultaneously and note that is it possible to have a combination of filters which do not match any records. <span style=\"color: var(--dark-800);\">﻿</span></p>",
@@ -2315,7 +2283,7 @@
     },
     "widget_24": {
       "uri": "widgets/common/button/",
-      "version": "1.13.0",
+      "version": "1.19.0",
       "label": "Button 5",
       "config": {
         "functionConfig": {
@@ -2337,7 +2305,7 @@
     },
     "widget_25": {
       "uri": "widgets/common/button/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Button 6",
       "config": {
         "functionConfig": {
@@ -2391,7 +2359,7 @@
     },
     "widget_26": {
       "uri": "widgets/common/text/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Text 5",
       "config": {
         "text": "<p><strong style=\"font-size: 14px; color: var(--dark-800);\">Detail / Summary Panel</strong></p>",
@@ -2404,7 +2372,7 @@
     },
     "widget_27": {
       "uri": "widgets/common/text/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Text 6",
       "config": {
         "text": "<p><span style=\"color: var(--dark-800);\">The panel on the right side of the map has three tabs, \"Detail\", \"Summary\", and \"OCIS\". The Detail tab allows you to page through every available record given the current map extent and any filters that have been applied. The Summary tab displays data aggregated by fixed hexagonal areas, aka \"hexagons\". These hexagons have an area of approximately 1.77 km2 and are indexed at Level 4 of the</span><a href=\"https://h3geo.org/\" target=\"_blank\" data-uniqueid=\"d7d70e0e_1455_634a_4785_4925bb637414\" data-dsid=\"\" data-link=\"%7B%22linkType%22%3A%22WEB_ADDRESS%22%2C%22openType%22%3A%22_blank%22%2C%22value%22%3A%22https%3A%2F%2Fh3geo.org%2F%22%2C%22expression%22%3Anull%7D\" style=\"color: var(--dark-800);\"> H3 system</a><span style=\"color: var(--dark-800);\">. The OCIS tab displays selected information from the </span><a href=\"https://ocean-and-coasts-information-system-esrioceans.hub.arcgis.com/\" target=\"_blank\" data-uniqueid=\"644230b5_9a4c_6c05_3cfe_849275e24341\" data-dsid=\"\" data-link=\"%7B%22linkType%22%3A%22WEB_ADDRESS%22%2C%22openType%22%3A%22_blank%22%2C%22value%22%3A%22https%3A%2F%2Focean-and-coasts-information-system-esrioceans.hub.arcgis.com%2F%22%2C%22expression%22%3Anull%7D\" style=\"color: var(--dark-800);\">Ocean and Coasts Information System</a><span style=\"color: var(--dark-800);\"> for the selected hexagon. You can toggle between the tabs by clicking on the titles \"Detail\" and \"Summary\" respectively. </span></p><p><br></p><p><span style=\"color: var(--dark-800);\">If you select a point on the map, the Detail tab will display the corresponding record (note that this may take a few seconds). Switching to the Summary tab will show summary information for the hexbin containing the selected record.</span></p><p><br></p><p><span style=\"color: var(--dark-800);\">If you click on a location which is covered by a hexbin but does not intersect a point, the Summary tab will automatically be selected. If you click on a location not covered by a hexbin, no summary information will be displayed but you will still be able to page through active records in the Detail tab.</span></p>",
@@ -2426,7 +2394,7 @@
     },
     "widget_28": {
       "uri": "widgets/common/button/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Button 7",
       "config": {
         "functionConfig": {
@@ -2456,25 +2424,9 @@
         "widget_3"
       ]
     },
-    "widget_31": {
-      "uri": "widgets/scientific-name-autocomplete/",
-      "version": "1.0.0",
-      "label": "Scientific Name Selection",
-      "config": {
-        "scientificNamesUrl": "https://www.ncei.noaa.gov/waf/dsc-data/config/DeepSeaCorals/scientific_names.json"
-      },
-      "id": "widget_31",
-      "useDataSources": [
-        {
-          "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
-          "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
-          "rootDataSourceId": "dataSource_1"
-        }
-      ]
-    },
     "widget_32": {
       "uri": "widgets/common/filter/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Filter",
       "config": {
         "groupByLayer": false,
@@ -3059,7 +3011,7 @@
     },
     "widget_36": {
       "uri": "widgets/common/controller/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Widget Controller",
       "config": {
         "behavior": {
@@ -3132,7 +3084,7 @@
     },
     "widget_41": {
       "uri": "widgets/arcgis/legend/",
-      "version": "1.16.0",
+      "version": "1.13.0",
       "label": "Legend",
       "config": {},
       "id": "widget_41",
@@ -3142,7 +3094,7 @@
     },
     "widget_42": {
       "uri": "widgets/arcgis/feature-info/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Feature Info",
       "config": {
         "limitGraphics": false,
@@ -3256,7 +3208,7 @@
     },
     "widget_43": {
       "uri": "widgets/common/image/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Density Legend Graphic",
       "config": {
         "functionConfig": {
@@ -3288,7 +3240,7 @@
     },
     "widget_44": {
       "uri": "widgets/layout/row/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Density Legend Text",
       "config": {
         "space": 10,
@@ -3310,7 +3262,7 @@
     },
     "widget_45": {
       "uri": "widgets/common/text/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Text 7",
       "config": {
         "text": "<p><strong style=\"font-size: 14px;\">Highest Density</strong></p>",
@@ -3323,7 +3275,7 @@
     },
     "widget_46": {
       "uri": "widgets/common/text/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Text 8",
       "config": {
         "text": "<p style=\"text-align: right;\"><strong style=\"font-size: 14px;\">Lowest Density</strong></p>",
@@ -3362,7 +3314,7 @@
     },
     "widget_48": {
       "uri": "widgets/common/button/",
-      "version": "1.15.0",
+      "version": "1.19.0",
       "label": "Button 8",
       "config": {
         "functionConfig": {
@@ -3416,7 +3368,7 @@
     },
     "widget_50": {
       "uri": "widgets/common/text/",
-      "version": "1.15.0",
+      "version": "1.19.0",
       "label": "ERDDAP Export Dialog Title",
       "config": {
         "text": "<p><strong style=\"font-size: 18px; color: var(--dark-800);\">﻿Export Data via ERDDAP</strong></p>",
@@ -3429,7 +3381,7 @@
     },
     "widget_54": {
       "uri": "widgets/common/text/",
-      "version": "1.15.0",
+      "version": "1.19.0",
       "label": "Text 10",
       "config": {
         "text": "<p style=\"text-align: center;\"><strong style=\"font-size: 16px;\">Welcome to NOAA's Deep-sea Corals and </strong></p><p style=\"text-align: center;\"><strong style=\"font-size: 16px;\">Sponges data discovery tool</strong></p><p style=\"text-align: center;\"><br></p><p><span style=\"font-size: 14px;\">For questions, or to submit feedback, please email us at&nbsp;</span><a href=\"mailto:deepseacoraldata@noaa.gov\" target=\"_blank\" data-uniqueid=\"\" data-dsid=\"\" data-link=\"null\" style=\"font-size: 14px; color: rgb(17, 85, 204);\">deepseacoraldata@noaa.gov</a><span style=\"font-size: 14px;\">.&nbsp;Official metadata and citation information for the National Database for Deep-sea Corals and Sponges can be found at:&nbsp;&nbsp;</span><a href=\"https://deepseacoraldata.noaa.gov\" target=\"_blank\" data-uniqueid=\"27baff8b_cb77_81f2_9a0a_7c2d7d788578\" data-dsid=\"\" data-link=\"%7B%22linkType%22%3A%22WEB_ADDRESS%22%2C%22openType%22%3A%22_blank%22%2C%22value%22%3A%22https%3A%2F%2Fdeepseacoraldata.noaa.gov%22%2C%22expression%22%3Anull%7D\" style=\"font-size: 14px; color: rgb(17, 85, 204);\">https://deepseacoraldata.</a><a href=\"https://deepseacoraldata.noaa.gov\" target=\"_blank\" data-uniqueid=\"27baff8b_cb77_81f2_9a0a_7c2d7d788578\" data-dsid=\"\" data-link=\"%7B%22linkType%22%3A%22WEB_ADDRESS%22%2C%22openType%22%3A%22_blank%22%2C%22value%22%3A%22https%3A%2F%2Fdeepseacoraldata.noaa.gov%22%2C%22expression%22%3Anull%7D\" style=\"font-size: 14px; color: rgb(17, 85, 204);\">noaa.gov/data</a></p><p><br></p><p><span style=\"font-size: 14px; color: var(--dark-800); background-color: rgb(255, 255, 255);\">Please read the important information below regarding the use of data from this portal:</span></p><p><br></p><p style=\"text-align: left;\"><em style=\"font-family: &quot;Avenir Next&quot;; font-size: 12px; color: var(--dark-800); background-color: rgb(255, 255, 255);\">This data portal and the data delivered therein is not an official communication of the National Oceanic and Atmospheric Administration (NOAA) or the United States Department of Commerce. All data provided through this portal is offered on an 'as is' basis, and the user assumes responsibility for its use. Any claims against the Department of Commerce or its bureaus arising from the use of this data portal will be governed by applicable Federal law. Any reference to specific commercial products, processes, or services by service mark, trademark, manufacturer, or otherwise, does not constitute or imply endorsement, recommendation, or favoring by the Department of Commerce. The Department of Commerce seal and logo, or the seal and logo of any DOC bureau, shall not be used in any manner to imply endorsement of any commercial product or activity by the DOC or the United States Government.</em></p>",
@@ -3471,7 +3423,7 @@
     },
     "widget_56": {
       "uri": "widgets/common/button/",
-      "version": "1.13.0",
+      "version": "1.19.0",
       "label": "Button 9",
       "config": {
         "functionConfig": {
@@ -3627,7 +3579,7 @@
     },
     "widget_59": {
       "uri": "widgets/common/button/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Add Layer Button",
       "config": {
         "functionConfig": {
@@ -3672,7 +3624,7 @@
     },
     "widget_61": {
       "uri": "widgets/common/image/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "DSCRTP graphical element",
       "config": {
         "functionConfig": {
@@ -3726,7 +3678,7 @@
     },
     "widget_62": {
       "uri": "widgets/common/button/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "User Guide Button",
       "config": {
         "functionConfig": {
@@ -3862,7 +3814,7 @@
     },
     "widget_66": {
       "uri": "widgets/common/text/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Text 11",
       "config": {
         "text": "<p style=\"text-align: center;\">Information from the </p><p style=\"text-align: center;\"><strong style=\"font-size: 16px;\"><a href=\"https://ocean-and-coasts-information-system-esrioceans.hub.arcgis.com/\" target=\"_blank\" data-uniqueid=\"7204cadc_c69c_9a42_c400_8253e022dae2\" data-dsid=\"\" data-link=\"%7B%22linkType%22%3A%22WEB_ADDRESS%22%2C%22openType%22%3A%22_blank%22%2C%22value%22%3A%22https%3A%2F%2Focean-and-coasts-information-system-esrioceans.hub.arcgis.com%2F%22%2C%22expression%22%3Anull%7D\">Ocean and Coast Information System</a></strong></p>",
@@ -3874,6 +3826,9 @@
               "exp": "\"\""
             }
           ]
+        },
+        "style": {
+          "wrap": true
         }
       },
       "id": "widget_66"
@@ -3889,7 +3844,7 @@
     },
     "widget_68": {
       "uri": "widgets/layout/column/",
-      "version": "1.16.0",
+      "version": "1.19.0",
       "label": "Column",
       "config": {
         "space": 10,
@@ -3912,17 +3867,13 @@
       }
     },
     "widget_69": {
-      "uri": "widgets/datasetid-filter/",
-      "version": "1.0.0",
-      "label": "DatasetID Filter",
+      "uri": "widgets/scientific-name/",
+      "version": "1.19.0",
       "config": {
-        "serviceUrl": "https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB/FeatureServer/0/query?",
-        "pointLayerTitle": ""
+        "scientificNamesUrl": "https://www.ncei.noaa.gov/waf/dsc-data/config/DeepSeaCorals/scientific_names.json"
       },
       "id": "widget_69",
-      "useMapWidgetIds": [
-        "widget_3"
-      ],
+      "useDataSourcesEnabled": true,
       "useDataSources": [
         {
           "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
@@ -4201,31 +4152,6 @@
         }
       ]
     },
-    "messageConfig_2": {
-      "id": "messageConfig_2",
-      "widgetId": "widget_31",
-      "messageType": "DATA_SOURCE_FILTER_CHANGE",
-      "actions": [
-        {
-          "actionId": "widget_47-update-layer-1698777607932",
-          "widgetId": "widget_47",
-          "messageWidgetId": "widget_31",
-          "actionName": "update-layer",
-          "description": null,
-          "config": null,
-          "version": "1.0.0"
-        },
-        {
-          "actionId": "widget_55-filter-change-1705968071644",
-          "widgetId": "widget_55",
-          "messageWidgetId": "widget_31",
-          "actionName": "filter-change",
-          "description": null,
-          "config": null,
-          "version": "1.0.0"
-        }
-      ]
-    },
     "messageConfig_3": {
       "id": "messageConfig_3",
       "widgetId": "widget_3",
@@ -4407,19 +4333,21 @@
       "messageType": "DATA_SOURCE_FILTER_CHANGE",
       "actions": [
         {
-          "actionId": "widget_47-update-layer-1772154352583",
-          "widgetId": "widget_47",
+          "actionId": "widget_55-filter-change-1772150059259",
+          "widgetId": "widget_55",
+          "sectionId": null,
           "messageWidgetId": "widget_69",
-          "actionName": "update-layer",
+          "actionName": "filter-change",
           "description": null,
           "config": null,
           "version": "1.0.0"
         },
         {
-          "actionId": "widget_55-filter-change-1772154358671",
-          "widgetId": "widget_55",
+          "actionId": "widget_47-update-layer-1772150070748",
+          "widgetId": "widget_47",
+          "sectionId": null,
           "messageWidgetId": "widget_69",
-          "actionName": "filter-change",
+          "actionName": "update-layer",
           "description": null,
           "config": null,
           "version": "1.0.0"
@@ -4449,7 +4377,6 @@
       "link": "https://www.noaa.gov"
     }
   },
-  "originExbVersion": "1.16.0",
   "pageStructure": [
     {
       "page_0": []
@@ -4473,7 +4400,7 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1772155852653,
+  "timestamp": 1772150124836,
   "analytics": {
     "enable": true,
     "google": {
@@ -4483,5 +4410,5 @@
   "cookieBanner": {
     "uid": "103311e0-dc42-11f0-bf14-359107a8b062"
   },
-  "publishTimestamp": 1772155856187
+  "publishTimestamp": 1783448511951
 }
