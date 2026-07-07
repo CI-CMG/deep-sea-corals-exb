@@ -8,18 +8,21 @@ export default function (props: AllWidgetProps<IMConfig>) {
   const [databaseVersion, setDatabaseVersion] = useState('not available')
 
   useEffect(() => {
-    fetch(props.config.configUrl).then()
-      .then((res) => {
-        if (!res.ok) {
-          console.warn(`Error reading configuration file from ${props.config.configUrl}: `, res.statusText)
-          return
-        }
-        return res.json()
-      })
-      .then((configData) => {
-        if (!configData.databaseVersion) {
-          console.error('configuration file improperly formatted: missing databaseVersion property')
-          return
+    fetch(
+      props.config.configUrl,
+      { cache: 'no-store' }
+    ).then((res) => {
+      if (!res.ok) {
+        // console.warn(`Error reading configuration file from ${props.config.configUrl}: ${res.statusText}`)
+        throw new Error(`Error reading configuration file from ${props.config.configUrl}: ${res.statusText}`)
+        // return
+      }
+      return res.json()
+    }).then((configData) => {
+      if (!configData.databaseVersion) {
+          // console.error('configuration file improperly formatted: missing databaseVersion property')
+          throw new Error('configuration file improperly formatted: missing databaseVersion property')
+          // return
         }
         setDatabaseVersion(configData.databaseVersion)
       })
