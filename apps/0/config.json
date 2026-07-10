@@ -1402,80 +1402,6 @@
         "4"
       ]
     },
-    "layout_28": {
-      "type": "FIXED",
-      "content": {
-        "0": {
-          "type": "WIDGET",
-          "widgetId": "widget_66",
-          "bbox": {
-            "left": "0.0%",
-            "right": "0.0%",
-            "top": "0.00px",
-            "bottom": "72.4%",
-            "width": "100.0%",
-            "height": "7.9%"
-          },
-          "setting": {
-            "autoProps": {
-              "right": false,
-              "left": true,
-              "top": false,
-              "bottom": true,
-              "height": "AUTO"
-            }
-          }
-        },
-        "1": {
-          "type": "WIDGET",
-          "widgetId": "widget_68",
-          "bbox": {
-            "left": "10.00px",
-            "right": "10.00px",
-            "top": "60.00px",
-            "bottom": "0.00%",
-            "width": "100.0%",
-            "height": "67.8%"
-          },
-          "setting": {
-            "autoProps": {
-              "right": false,
-              "left": true,
-              "top": false,
-              "bottom": true,
-              "width": "STRETCH",
-              "height": "STRETCH"
-            }
-          }
-        }
-      },
-      "order": [
-        "0",
-        "1"
-      ]
-    },
-    "layout_29": {
-      "content": {
-        "0": {
-          "type": "WIDGET",
-          "widgetId": "widget_67",
-          "bbox": {
-            "width": "300px",
-            "height": "36px"
-          },
-          "setting": {
-            "autoProps": {
-              "height": "AUTO"
-            }
-          }
-        }
-      },
-      "type": "COLUMN",
-      "label": "Default",
-      "order": [
-        "0"
-      ]
-    },
     "layout_30": {
       "content": {
         "0": {
@@ -3799,60 +3725,6 @@
         }
       ]
     },
-    "widget_66": {
-      "uri": "widgets/common/text/",
-      "version": "1.19.0",
-      "label": "Text 11",
-      "config": {
-        "text": "<p style=\"text-align: center;\">Information from the </p><p style=\"text-align: center;\"><strong style=\"font-size: 16px;\"><a href=\"https://ocean-and-coasts-information-system-esrioceans.hub.arcgis.com/\" target=\"_blank\" data-uniqueid=\"7204cadc_c69c_9a42_c400_8253e022dae2\" data-dsid=\"\" data-link=\"%7B%22linkType%22%3A%22WEB_ADDRESS%22%2C%22openType%22%3A%22_blank%22%2C%22value%22%3A%22https%3A%2F%2Focean-and-coasts-information-system-esrioceans.hub.arcgis.com%2F%22%2C%22expression%22%3Anull%7D\">Ocean and Coast Information System</a></strong></p>",
-        "tooltip": {
-          "name": "",
-          "parts": [
-            {
-              "type": "STRING",
-              "exp": "\"\""
-            }
-          ]
-        },
-        "style": {
-          "wrap": true
-        }
-      },
-      "id": "widget_66"
-    },
-    "widget_67": {
-      "uri": "widgets/ocis/",
-      "version": "1.0.0",
-      "label": "OCIS",
-      "config": {
-        "exampleConfigProperty": "test"
-      },
-      "id": "widget_67"
-    },
-    "widget_68": {
-      "uri": "widgets/layout/column/",
-      "version": "1.19.0",
-      "label": "Column",
-      "config": {
-        "space": 10,
-        "style": {
-          "padding": {
-            "space": [
-              10
-            ],
-            "unit": "px"
-          },
-          "justifyContent": "flex-start",
-          "alignItems": "stretch"
-        }
-      },
-      "id": "widget_68",
-      "layouts": {
-        "DEFAULT": {
-          "LARGE": "layout_29"
-        }
-      }
-    },
     "widget_69": {
       "uri": "widgets/scientific-name/",
       "version": "1.19.0",
@@ -3982,13 +3854,6 @@
       "layout": {
         "LARGE": "layout_27"
       }
-    },
-    "view_8": {
-      "id": "view_8",
-      "label": "OCIS",
-      "layout": {
-        "LARGE": "layout_28"
-      }
     }
   },
   "sections": {
@@ -4007,8 +3872,7 @@
       "label": "Section 2",
       "views": [
         "view_4",
-        "view_5",
-        "view_8"
+        "view_5"
       ]
     }
   },
@@ -4488,7 +4352,7 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1783726851950,
+  "timestamp": 1783727625974,
   "analytics": {
     "enable": true,
     "google": {
@@ -4498,5 +4362,5 @@
   "cookieBanner": {
     "uid": "103311e0-dc42-11f0-bf14-359107a8b062"
   },
-  "publishTimestamp": 1783727224450
+  "publishTimestamp": 1783727712882
 }
