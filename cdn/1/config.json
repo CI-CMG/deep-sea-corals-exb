@@ -441,9 +441,9 @@
         "0": {
           "type": "WIDGET",
           "bbox": {
-            "left": "0.0%",
+            "left": "0%",
             "right": "0.00%",
-            "top": "0.0%",
+            "top": "50%",
             "bottom": "0.0%",
             "width": "62.5%",
             "height": "100.0%"
@@ -453,10 +453,12 @@
             "autoProps": {
               "left": false,
               "right": true,
-              "top": true,
-              "bottom": false,
+              "top": false,
+              "bottom": true,
               "width": "STRETCH"
-            }
+            },
+            "hCenter": false,
+            "vCenter": true
           }
         }
       }
@@ -511,7 +513,7 @@
           },
           "bbox": {
             "left": 0,
-            "width": 2,
+            "width": 3,
             "height": "25px"
           }
         },
@@ -797,19 +799,19 @@
         },
         "2": {
           "type": "WIDGET",
+          "widgetId": "widget_71",
           "bbox": {
             "left": "10.00px",
             "right": "10.00px",
-            "top": "10.00px",
-            "bottom": "0.00px",
+            "top": "15.00px",
+            "bottom": "88.9%",
             "width": "66.7%",
-            "height": "11.3%"
+            "height": "11.1%"
           },
-          "widgetId": "widget_47",
           "setting": {
             "autoProps": {
-              "left": false,
-              "right": true,
+              "right": false,
+              "left": true,
               "top": false,
               "bottom": true,
               "width": "STRETCH",
@@ -1372,106 +1374,32 @@
     "layout_27": {
       "type": "FIXED",
       "content": {
-        "0": {
+        "4": {
           "type": "WIDGET",
-          "widgetId": "widget_63",
+          "widgetId": "widget_72",
           "bbox": {
-            "left": "50%",
-            "right": "0.0%",
-            "top": "5.00px",
-            "bottom": "89.3%",
-            "width": "95.00%",
-            "height": "42.00px"
+            "left": "20.00px",
+            "right": "0%",
+            "top": "10.00px",
+            "bottom": "0.0%",
+            "width": "90.9%",
+            "height": "100.0%"
           },
           "setting": {
             "autoProps": {
-              "right": true,
-              "left": false,
-              "top": false,
-              "bottom": true,
-              "height": "AUTO",
-              "width": "CUSTOM"
+              "right": false,
+              "left": true,
+              "top": true,
+              "bottom": false,
+              "width": "STRETCH",
+              "height": "STRETCH"
             },
-            "vCenter": false,
-            "hCenter": true
-          }
-        },
-        "1": {
-          "type": "WIDGET",
-          "widgetId": "widget_64",
-          "bbox": {
-            "left": "50%",
-            "right": "0.0%",
-            "top": "80.00px",
-            "bottom": "74.2%",
-            "width": "95.00%",
-            "height": "11.9%"
-          },
-          "setting": {
-            "autoProps": {
-              "right": true,
-              "left": false,
-              "top": false,
-              "bottom": true,
-              "height": "AUTO"
-            },
-            "vCenter": false,
-            "hCenter": true
-          }
-        },
-        "2": {
-          "type": "WIDGET",
-          "widgetId": "widget_65",
-          "bbox": {
-            "left": "50%",
-            "right": "0.0%",
-            "top": "160.00px",
-            "bottom": "61.6%",
-            "width": "95.00%",
-            "height": "11.9%"
-          },
-          "setting": {
-            "autoProps": {
-              "right": true,
-              "left": false,
-              "top": false,
-              "bottom": true,
-              "height": "AUTO"
-            },
-            "vCenter": false,
-            "hCenter": true
-          }
-        },
-        "3": {
-          "type": "WIDGET",
-          "widgetId": "widget_70",
-          "bbox": {
-            "left": "50%",
-            "right": "0.0%",
-            "top": "240.00px",
-            "bottom": "41.8%",
-            "width": "95.00%",
-            "height": "11.8%"
-          },
-          "setting": {
-            "autoProps": {
-              "right": true,
-              "left": false,
-              "top": false,
-              "bottom": true,
-              "width": "CUSTOM",
-              "height": "AUTO"
-            },
-            "vCenter": false,
-            "hCenter": true
+            "hCenter": false
           }
         }
       },
       "order": [
-        "0",
-        "1",
-        "2",
-        "3"
+        "4"
       ]
     },
     "layout_28": {
@@ -1547,6 +1475,70 @@
       "order": [
         "0"
       ]
+    },
+    "layout_30": {
+      "content": {
+        "0": {
+          "type": "WIDGET",
+          "widgetId": "widget_64",
+          "bbox": {
+            "width": "330px",
+            "height": "400px"
+          },
+          "setting": {
+            "autoProps": {
+              "height": "AUTO"
+            }
+          }
+        },
+        "1": {
+          "type": "WIDGET",
+          "widgetId": "widget_65",
+          "bbox": {
+            "width": "330px",
+            "height": "400px"
+          },
+          "setting": {
+            "autoProps": {
+              "height": "AUTO"
+            }
+          }
+        },
+        "2": {
+          "type": "WIDGET",
+          "widgetId": "widget_70",
+          "bbox": {
+            "width": "330px",
+            "height": "400px"
+          },
+          "setting": {
+            "autoProps": {
+              "height": "AUTO"
+            }
+          }
+        },
+        "3": {
+          "type": "WIDGET",
+          "widgetId": "widget_63",
+          "bbox": {
+            "width": "310px",
+            "height": "63px"
+          },
+          "setting": {
+            "autoProps": {
+              "height": "AUTO"
+            }
+          }
+        }
+      },
+      "type": "COLUMN",
+      "label": "Default",
+      "order": [
+        "3",
+        "0",
+        "1",
+        "2"
+      ]
     }
   },
   "exbVersion": "1.19.0",
@@ -1554,12 +1546,7 @@
   "theme": "themes/default/",
   "forBuilderAttributes": {
     "lockLayout": false,
-    "viewPortSize": {
-      "LARGE": {
-        "width": 1280,
-        "height": 1024
-      }
-    }
+    "viewPortSize": {}
   },
   "template": "blankfullscreen",
   "widgets": {
@@ -3312,32 +3299,6 @@
       },
       "id": "widget_46"
     },
-    "widget_47": {
-      "uri": "widgets/h3-layer/",
-      "version": "1.0.0",
-      "label": "H3 Layer",
-      "config": {
-        "exampleConfigProperty": "test",
-        "layerName": "Deep Sea Coral and Sponge Observations",
-        "sidePanelId": "widget_2",
-        "sectionId": "section_2",
-        "detailsViewId": "view_4",
-        "summaryViewId": "view_5",
-        "ocisPanelId": "widget_67",
-        "ocisWidgetId": "widget_67"
-      },
-      "id": "widget_47",
-      "useMapWidgetIds": [
-        "widget_3"
-      ],
-      "useDataSources": [
-        {
-          "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
-          "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
-          "rootDataSourceId": "dataSource_1"
-        }
-      ]
-    },
     "widget_48": {
       "uri": "widgets/common/button/",
       "version": "1.19.0",
@@ -3927,6 +3888,55 @@
           "rootDataSourceId": "dataSource_1"
         }
       ]
+    },
+    "widget_71": {
+      "uri": "widgets/h3-widget/",
+      "version": "1.0.0",
+      "label": "H3 Widget",
+      "config": {
+        "exampleConfigProperty": "test",
+        "layerName": "Deep Sea Coral and Sponge Observations",
+        "sidePanelId": "widget_2",
+        "ocisWidgetId": "widget_67",
+        "sectionId": "section_2",
+        "detailsViewId": "view_4",
+        "summaryViewId": "view_5"
+      },
+      "id": "widget_71",
+      "useMapWidgetIds": [
+        "widget_3"
+      ],
+      "useDataSources": [
+        {
+          "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
+          "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
+          "rootDataSourceId": "dataSource_1"
+        }
+      ]
+    },
+    "widget_72": {
+      "uri": "widgets/layout/column/",
+      "version": "1.19.0",
+      "label": "Column 2",
+      "config": {
+        "space": 10,
+        "style": {
+          "padding": {
+            "space": [
+              10
+            ],
+            "unit": "px"
+          },
+          "justifyContent": "flex-start",
+          "alignItems": "stretch"
+        }
+      },
+      "id": "widget_72",
+      "layouts": {
+        "DEFAULT": {
+          "LARGE": "layout_30"
+        }
+      }
     }
   },
   "widgetsManifest": {},
@@ -4254,19 +4264,20 @@
       "messageType": "DATA_SOURCE_FILTER_CHANGE",
       "actions": [
         {
-          "actionId": "widget_47-update-layer-1705530145155",
-          "widgetId": "widget_47",
+          "actionId": "widget_55-filter-change-1705530699051",
+          "widgetId": "widget_55",
           "messageWidgetId": "widget_32",
-          "actionName": "update-layer",
+          "actionName": "filter-change",
           "description": null,
           "config": null,
           "version": "1.0.0"
         },
         {
-          "actionId": "widget_55-filter-change-1705530699051",
-          "widgetId": "widget_55",
+          "actionId": "widget_71-update-layer-1783723823925",
+          "widgetId": "widget_71",
+          "sectionId": null,
           "messageWidgetId": "widget_32",
-          "actionName": "filter-change",
+          "actionName": "update-layer",
           "description": null,
           "config": null,
           "version": "1.0.0"
@@ -4279,19 +4290,20 @@
       "messageType": "DATA_SOURCE_FILTER_CHANGE",
       "actions": [
         {
-          "actionId": "widget_47-update-layer-1705967631968",
-          "widgetId": "widget_47",
+          "actionId": "widget_55-filter-change-1705967637839",
+          "widgetId": "widget_55",
           "messageWidgetId": "widget_33",
-          "actionName": "update-layer",
+          "actionName": "filter-change",
           "description": null,
           "config": null,
           "version": "1.0.0"
         },
         {
-          "actionId": "widget_55-filter-change-1705967637839",
-          "widgetId": "widget_55",
+          "actionId": "widget_71-update-layer-1783723854439",
+          "widgetId": "widget_71",
+          "sectionId": null,
           "messageWidgetId": "widget_33",
-          "actionName": "filter-change",
+          "actionName": "update-layer",
           "description": null,
           "config": null,
           "version": "1.0.0"
@@ -4313,8 +4325,9 @@
           "version": "1.0.0"
         },
         {
-          "actionId": "widget_47-update-layer-1729295202457",
-          "widgetId": "widget_47",
+          "actionId": "widget_71-update-layer-1783723880548",
+          "widgetId": "widget_71",
+          "sectionId": null,
           "messageWidgetId": "widget_63",
           "actionName": "update-layer",
           "description": null,
@@ -4329,19 +4342,20 @@
       "messageType": "DATA_SOURCE_FILTER_CHANGE",
       "actions": [
         {
-          "actionId": "widget_47-update-layer-1729722778569",
-          "widgetId": "widget_47",
+          "actionId": "widget_55-filter-change-1729722784888",
+          "widgetId": "widget_55",
           "messageWidgetId": "widget_64",
-          "actionName": "update-layer",
+          "actionName": "filter-change",
           "description": null,
           "config": null,
           "version": "1.0.0"
         },
         {
-          "actionId": "widget_55-filter-change-1729722784888",
-          "widgetId": "widget_55",
+          "actionId": "widget_71-update-layer-1783723890742",
+          "widgetId": "widget_71",
+          "sectionId": null,
           "messageWidgetId": "widget_64",
-          "actionName": "filter-change",
+          "actionName": "update-layer",
           "description": null,
           "config": null,
           "version": "1.0.0"
@@ -4354,19 +4368,20 @@
       "messageType": "DATA_SOURCE_FILTER_CHANGE",
       "actions": [
         {
-          "actionId": "widget_47-update-layer-1729722795320",
-          "widgetId": "widget_47",
+          "actionId": "widget_55-filter-change-1729722804865",
+          "widgetId": "widget_55",
           "messageWidgetId": "widget_65",
-          "actionName": "update-layer",
+          "actionName": "filter-change",
           "description": null,
           "config": null,
           "version": "1.0.0"
         },
         {
-          "actionId": "widget_55-filter-change-1729722804865",
-          "widgetId": "widget_55",
+          "actionId": "widget_71-update-layer-1783723904564",
+          "widgetId": "widget_71",
+          "sectionId": null,
           "messageWidgetId": "widget_65",
-          "actionName": "filter-change",
+          "actionName": "update-layer",
           "description": null,
           "config": null,
           "version": "1.0.0"
@@ -4389,8 +4404,8 @@
           "version": "1.0.0"
         },
         {
-          "actionId": "widget_47-update-layer-1772150070748",
-          "widgetId": "widget_47",
+          "actionId": "widget_71-update-layer-1783723812869",
+          "widgetId": "widget_71",
           "sectionId": null,
           "messageWidgetId": "widget_69",
           "actionName": "update-layer",
@@ -4416,8 +4431,8 @@
           "version": "1.0.0"
         },
         {
-          "actionId": "widget_47-update-layer-1783461395532",
-          "widgetId": "widget_47",
+          "actionId": "widget_71-update-layer-1783723916261",
+          "widgetId": "widget_71",
           "sectionId": null,
           "messageWidgetId": "widget_70",
           "actionName": "update-layer",
@@ -4480,7 +4495,7 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1783461400936,
+  "timestamp": 1783726851950,
   "analytics": {
     "enable": true,
     "google": {
@@ -4490,5 +4505,5 @@
   "cookieBanner": {
     "uid": "103311e0-dc42-11f0-bf14-359107a8b062"
   },
-  "publishTimestamp": 1783465359710
+  "publishTimestamp": 1783727224450
 }

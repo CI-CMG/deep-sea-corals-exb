@@ -1,12 +1,12 @@
 {
-  "name": "h3-layer",
-  "label": "H3 Layer",
+  "name": "h3-widget",
+  "label": "H3 Widget",
   "dependency": [
     "jimu-arcgis"
   ],
   "type": "widget",
   "version": "1.0.0",
-  "exbVersion": "1.12.0",
+  "exbVersion": "1.16.0",
   "author": "John Cartwright",
   "description": "maintain a client-side layer showing stats aggregated by H3 tile",
   "copyright": "",
