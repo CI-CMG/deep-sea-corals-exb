@@ -37,7 +37,7 @@ import type Graphic from 'esri/Graphic'
 import type MapView from 'esri/views/MapView'
 import PopupTemplate from 'esri/PopupTemplate'
 import { useState, useEffect, useRef } from 'react'
-import { type IMConfig } from '../config'
+import type { IMConfig } from '../config'
 import { getGraphics, toggleOutlineColor, getHighlightedGraphic, setDataSource } from '../h3-utils'
 import HexbinInfo from './hexbin-info'
 const { useSelector } = ReactRedux
