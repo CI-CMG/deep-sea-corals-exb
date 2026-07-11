@@ -7,7 +7,7 @@ import {
 import React, { useState } from 'react'
 import { type JimuMapView, JimuMapViewComponent } from 'jimu-arcgis'
 import FilterStringInput from './filter-string-input'
-import { type IMConfig } from '../config'
+import type { IMConfig } from '../config'
 
 export default function Widget (props: AllWidgetProps<IMConfig>) {
   const [dataSource, setDataSource] = useState(null)
