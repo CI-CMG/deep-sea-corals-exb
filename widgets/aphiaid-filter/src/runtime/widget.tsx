@@ -7,7 +7,7 @@ import {
 import React, { useState } from 'react'
 import { type JimuMapView, JimuMapViewComponent } from 'jimu-arcgis'
 import FilterStringInput from './filter-string-input'
-import { type IMConfig } from '../config'
+import type { IMConfig } from '../config'
 
 export default function Widget (props: AllWidgetProps<IMConfig>) {
   const [dataSource, setDataSource] = useState(null)
@@ -41,7 +41,6 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
 
     let q = null
     if (filterString) {
-      // find pattern anywhere in verbatimscientificname
       q = { where: `AphiaID = '${filterString}'` }
     }
     // const oldQuery = (dataSource as QueriableDataSource).getCurrentQueryParams()
