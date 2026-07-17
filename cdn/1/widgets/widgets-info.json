@@ -12579,6 +12579,38 @@
     "group": 7
   },
   {
+    "name": "text-filters-widget",
+    "manifest": {
+      "name": "text-filters-widget",
+      "label": "Text Filters",
+      "type": "widget",
+      "dependency": "jimu-arcgis",
+      "version": "1.0.0",
+      "exbVersion": "1.19.0",
+      "author": "John Cartwright",
+      "description": "collection of filters which accept a single string value",
+      "copyright": "",
+      "license": "http://www.apache.org/licenses/LICENSE-2.0",
+      "properties": {},
+      "publishMessages": [
+        "DATA_SOURCE_FILTER_CHANGE"
+      ],
+      "translatedLocales": [
+        "en"
+      ],
+      "defaultSize": {
+        "width": 400,
+        "height": 300
+      }
+    },
+    "i18nLabel": {},
+    "i18nDescription": {},
+    "uri": "widgets/text-filters-widget/",
+    "icon": "widgets/text-filters-widget/icon.svg",
+    "order": 700,
+    "group": 7
+  },
+  {
     "name": "verbatim-name-filter",
     "manifest": {
       "name": "verbatim-name-filter",

@@ -1,12 +1,12 @@
 {
-  "name": "synonym-filter",
-  "label": "Synonym Filter",
+  "name": "text-filters-widget",
+  "label": "Text Filters",
   "type": "widget",
   "dependency": "jimu-arcgis",
   "version": "1.0.0",
-  "exbVersion": "1.15.0",
+  "exbVersion": "1.19.0",
   "author": "John Cartwright",
-  "description": "filter the data records by text pattern match against the Synonyms field",
+  "description": "collection of filters which accept a single string value",
   "copyright": "",
   "license": "http://www.apache.org/licenses/LICENSE-2.0",
   "properties": {},
@@ -18,6 +18,6 @@
   ],
   "defaultSize": {
     "width": 400,
-    "height": 400
+    "height": 300
   }
 }
