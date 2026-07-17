@@ -560,7 +560,7 @@
           "widgetId": "widget_69",
           "bbox": {
             "width": "300px",
-            "height": "300px"
+            "height": "300.00px"
           }
         }
       }
@@ -1480,49 +1480,10 @@
       "content": {
         "0": {
           "type": "WIDGET",
-          "widgetId": "widget_64",
-          "bbox": {
-            "width": "330px",
-            "height": "400px"
-          },
-          "setting": {
-            "autoProps": {
-              "height": "AUTO"
-            }
-          }
-        },
-        "1": {
-          "type": "WIDGET",
-          "widgetId": "widget_65",
-          "bbox": {
-            "width": "330px",
-            "height": "400px"
-          },
-          "setting": {
-            "autoProps": {
-              "height": "AUTO"
-            }
-          }
-        },
-        "2": {
-          "type": "WIDGET",
-          "widgetId": "widget_70",
-          "bbox": {
-            "width": "330px",
-            "height": "400px"
-          },
-          "setting": {
-            "autoProps": {
-              "height": "AUTO"
-            }
-          }
-        },
-        "3": {
-          "type": "WIDGET",
-          "widgetId": "widget_63",
+          "widgetId": "widget_73",
           "bbox": {
             "width": "310px",
-            "height": "63px"
+            "height": "264px"
           },
           "setting": {
             "autoProps": {
@@ -1534,10 +1495,7 @@
       "type": "COLUMN",
       "label": "Default",
       "order": [
-        "3",
-        "0",
-        "1",
-        "2"
+        "0"
       ]
     }
   },
@@ -1779,7 +1737,7 @@
       "version": "1.19.0",
       "label": "Text",
       "config": {
-        "text": "<p style=\"text-align: center;\"><span style=\"color: rgb(255, 255, 255);\">Application Version 3.3.0</span></p>",
+        "text": "<p style=\"text-align: center;\"><span style=\"color: rgb(255, 255, 255);\">Application Version 3.4.0</span></p>",
         "style": {
           "verticalAlign": "start",
           "wrap": true
@@ -3741,64 +3699,6 @@
       },
       "id": "widget_62"
     },
-    "widget_63": {
-      "uri": "widgets/synonym-filter/",
-      "version": "1.0.0",
-      "label": "Synonym Filter",
-      "config": {
-        "serviceUrl": "https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB/FeatureServer/0/query?",
-        "pointLayerTitle": "https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB/FeatureServer/0/query"
-      },
-      "id": "widget_63",
-      "useMapWidgetIds": [
-        "widget_3"
-      ],
-      "useDataSources": [
-        {
-          "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
-          "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
-          "rootDataSourceId": "dataSource_1"
-        }
-      ]
-    },
-    "widget_64": {
-      "uri": "widgets/verbatim-name-filter/",
-      "version": "1.0.0",
-      "label": "Verbatim Scientific Name Filter",
-      "config": {
-        "serviceUrl": "https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB/FeatureServer/0/query?"
-      },
-      "id": "widget_64",
-      "useMapWidgetIds": [
-        "widget_3"
-      ],
-      "useDataSources": [
-        {
-          "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
-          "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
-          "rootDataSourceId": "dataSource_1"
-        }
-      ]
-    },
-    "widget_65": {
-      "uri": "widgets/aphiaid-filter/",
-      "version": "1.0.0",
-      "label": "AphiaID Filter",
-      "config": {
-        "serviceUrl": "https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB/FeatureServer/0/query?"
-      },
-      "id": "widget_65",
-      "useMapWidgetIds": [
-        "widget_3"
-      ],
-      "useDataSources": [
-        {
-          "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
-          "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
-          "rootDataSourceId": "dataSource_1"
-        }
-      ]
-    },
     "widget_66": {
       "uri": "widgets/common/text/",
       "version": "1.19.0",
@@ -3869,26 +3769,6 @@
         }
       ]
     },
-    "widget_70": {
-      "uri": "widgets/datasetid-filter/",
-      "version": "1.0.0",
-      "label": "DatasetID Filter",
-      "config": {
-        "serviceUrl": "https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB/FeatureServer/0/query?",
-        "pointLayerTitle": ""
-      },
-      "id": "widget_70",
-      "useMapWidgetIds": [
-        "widget_3"
-      ],
-      "useDataSources": [
-        {
-          "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
-          "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
-          "rootDataSourceId": "dataSource_1"
-        }
-      ]
-    },
     "widget_71": {
       "uri": "widgets/h3-widget/",
       "version": "1.0.0",
@@ -3937,6 +3817,22 @@
           "LARGE": "layout_30"
         }
       }
+    },
+    "widget_73": {
+      "uri": "widgets/text-filters-widget/",
+      "version": "1.0.0",
+      "label": "Text Filters",
+      "config": {
+        "serviceUrl": "https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB/FeatureServer/0/query?"
+      },
+      "id": "widget_73",
+      "useDataSources": [
+        {
+          "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
+          "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
+          "rootDataSourceId": "dataSource_1"
+        }
+      ]
     }
   },
   "widgetsManifest": {},
@@ -4310,84 +4206,6 @@
         }
       ]
     },
-    "messageConfig_7": {
-      "id": "messageConfig_7",
-      "widgetId": "widget_63",
-      "messageType": "DATA_SOURCE_FILTER_CHANGE",
-      "actions": [
-        {
-          "actionId": "widget_55-filter-change-1729295194361",
-          "widgetId": "widget_55",
-          "messageWidgetId": "widget_63",
-          "actionName": "filter-change",
-          "description": null,
-          "config": null,
-          "version": "1.0.0"
-        },
-        {
-          "actionId": "widget_71-update-layer-1783723880548",
-          "widgetId": "widget_71",
-          "sectionId": null,
-          "messageWidgetId": "widget_63",
-          "actionName": "update-layer",
-          "description": null,
-          "config": null,
-          "version": "1.0.0"
-        }
-      ]
-    },
-    "messageConfig_8": {
-      "id": "messageConfig_8",
-      "widgetId": "widget_64",
-      "messageType": "DATA_SOURCE_FILTER_CHANGE",
-      "actions": [
-        {
-          "actionId": "widget_55-filter-change-1729722784888",
-          "widgetId": "widget_55",
-          "messageWidgetId": "widget_64",
-          "actionName": "filter-change",
-          "description": null,
-          "config": null,
-          "version": "1.0.0"
-        },
-        {
-          "actionId": "widget_71-update-layer-1783723890742",
-          "widgetId": "widget_71",
-          "sectionId": null,
-          "messageWidgetId": "widget_64",
-          "actionName": "update-layer",
-          "description": null,
-          "config": null,
-          "version": "1.0.0"
-        }
-      ]
-    },
-    "messageConfig_9": {
-      "id": "messageConfig_9",
-      "widgetId": "widget_65",
-      "messageType": "DATA_SOURCE_FILTER_CHANGE",
-      "actions": [
-        {
-          "actionId": "widget_55-filter-change-1729722804865",
-          "widgetId": "widget_55",
-          "messageWidgetId": "widget_65",
-          "actionName": "filter-change",
-          "description": null,
-          "config": null,
-          "version": "1.0.0"
-        },
-        {
-          "actionId": "widget_71-update-layer-1783723904564",
-          "widgetId": "widget_71",
-          "sectionId": null,
-          "messageWidgetId": "widget_65",
-          "actionName": "update-layer",
-          "description": null,
-          "config": null,
-          "version": "1.0.0"
-        }
-      ]
-    },
     "messageConfig_10": {
       "id": "messageConfig_10",
       "widgetId": "widget_69",
@@ -4415,26 +4233,26 @@
         }
       ]
     },
-    "messageConfig_11": {
-      "id": "messageConfig_11",
-      "widgetId": "widget_70",
+    "messageConfig_12": {
+      "id": "messageConfig_12",
+      "widgetId": "widget_73",
       "messageType": "DATA_SOURCE_FILTER_CHANGE",
       "actions": [
         {
-          "actionId": "widget_55-filter-change-1783461374424",
+          "actionId": "widget_55-filter-change-1784160133165",
           "widgetId": "widget_55",
           "sectionId": null,
-          "messageWidgetId": "widget_70",
+          "messageWidgetId": "widget_73",
           "actionName": "filter-change",
           "description": null,
           "config": null,
           "version": "1.0.0"
         },
         {
-          "actionId": "widget_71-update-layer-1783723916261",
+          "actionId": "widget_71-update-layer-1784160141565",
           "widgetId": "widget_71",
           "sectionId": null,
-          "messageWidgetId": "widget_70",
+          "messageWidgetId": "widget_73",
           "actionName": "update-layer",
           "description": null,
           "config": null,
@@ -4488,7 +4306,7 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1783726851950,
+  "timestamp": 1784326840912,
   "analytics": {
     "enable": true,
     "google": {
@@ -4498,5 +4316,5 @@
   "cookieBanner": {
     "uid": "103311e0-dc42-11f0-bf14-359107a8b062"
   },
-  "publishTimestamp": 1783727224450
+  "publishTimestamp": 1784326842985
 }
