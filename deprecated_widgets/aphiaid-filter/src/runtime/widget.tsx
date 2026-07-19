@@ -2,15 +2,17 @@
 import {
   type AllWidgetProps,
   jsx, DataSourceComponent,
-  type QueriableDataSource, type DataSource, MessageManager, DataSourceFilterChangeMessage
+  type QueriableDataSource, type DataSource, MessageManager, DataSourceFilterChangeMessage,
+  type ArcGISQueryParams
 } from 'jimu-core'
 import React, { useState } from 'react'
 import { type JimuMapView, JimuMapViewComponent } from 'jimu-arcgis'
-import FilterStringInput from './filter-string-input'
-import { type IMConfig } from '../config'
+// import FilterStringInput from './filter-string-input'
+// import {Button, Dropdown, TextInput} from 'jimu-ui'
+import type { IMConfig } from '../config'
 
 export default function Widget (props: AllWidgetProps<IMConfig>) {
-  const [dataSource, setDataSource] = useState(null)
+  const [dataSource, setDataSource] = useState<QueriableDataSource | null>(null)
   const [view, setView] = useState(null)
 
   // runs once
@@ -35,23 +37,13 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
   // handle changes to filter string. update map and publish new values
   function applyFilter (filterString: string) {
     if (!dataSource || !view) {
-      console.warn('verbatim-name-filter: DataSource and/or MapView not yet set. QueryParams cannot updated')
+      console.warn('DataSource and/or MapView not yet set. QueryParams cannot updated')
       return
     }
 
-    let q = null
-    if (filterString) {
-      // find pattern anywhere in verbatimscientificname
-      q = { where: `AphiaID = '${filterString}'` }
-    }
-    // const oldQuery = (dataSource as QueriableDataSource).getCurrentQueryParams()
-
-    // leading parens in this statement can confuse any preceeding statement w/o semicolon
-    (dataSource as QueriableDataSource).updateQueryParams(q, props.id)
-
-    // const newQuery = (dataSource as QueriableDataSource).getCurrentQueryParams()
-
-    MessageManager.getInstance().publishMessage(new DataSourceFilterChangeMessage(props.id, dataSource.id))
+    const q:ArcGISQueryParams = filterString ? { where: `AphiaID = '${filterString}'` } : null
+    dataSource.updateQueryParams(q, props.id)
+    MessageManager.getInstance().publishMessage(new DataSourceFilterChangeMessage(props.id, [dataSource.id]))
   }
 
   return (
@@ -66,7 +58,17 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
           useMapWidgetId={props.useMapWidgetIds?.[0]}
           onActiveViewChange={activeViewChangeHandler}></JimuMapViewComponent>
       </div>
-        <FilterStringInput applyFilter={applyFilter}/>
+        {/* <FilterStringInput applyFilter={applyFilter}/>
+        <TextInput
+          onAcceptValue={value => { console.log('onAcceptValue: ', value) }}
+          onPressEnter={(value) => { console.log('onPressEnter: ', value) }}
+          type="search"
+          style={{ width: '90%' }}
+        /> */}
+        <calcite-input-text
+          style={{width: '80%'}} label-text="Aphia ID"
+          oncalciteInputTextChange={(evt) => { applyFilter(evt.target.value) }}>
+        </calcite-input-text>
     </div>
   )
 }

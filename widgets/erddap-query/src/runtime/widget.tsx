@@ -167,7 +167,7 @@ function convertSqlToErddapParams (sql: string, searchParams: string[]) {
 // }
 
 export default function Widget (props: AllWidgetProps<IMConfig>) {
-  // console.log('rendering erddap-query...')
+  console.log('rendering erddap-query...')
   const [activeDs, setActiveDs] = useState<FeatureLayerDataSource>()
   const [geographicMapExtent, setGeographicMapExtent] = useState<Extent>()
   const [mapView, setMapView] = useState<MapView>()
