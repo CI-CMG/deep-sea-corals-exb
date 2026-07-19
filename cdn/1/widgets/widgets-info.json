@@ -11822,38 +11822,6 @@
     "group": 2
   },
   {
-    "name": "aphiaid-filter",
-    "manifest": {
-      "name": "aphiaid-filter",
-      "label": "AphiaID Filter",
-      "type": "widget",
-      "dependency": "jimu-arcgis",
-      "version": "1.0.0",
-      "exbVersion": "1.15.0",
-      "author": "John Cartwright",
-      "description": "filter the data records by specified AphiaID value",
-      "copyright": "",
-      "license": "http://www.apache.org/licenses/LICENSE-2.0",
-      "properties": {},
-      "publishMessages": [
-        "DATA_SOURCE_FILTER_CHANGE"
-      ],
-      "translatedLocales": [
-        "en"
-      ],
-      "defaultSize": {
-        "width": 400,
-        "height": 400
-      }
-    },
-    "i18nLabel": {},
-    "i18nDescription": {},
-    "uri": "widgets/aphiaid-filter/",
-    "icon": "widgets/aphiaid-filter/icon.svg",
-    "order": 700,
-    "group": 7
-  },
-  {
     "name": "database-version",
     "manifest": {
       "name": "database-version",
@@ -11877,38 +11845,6 @@
     "i18nDescription": {},
     "uri": "widgets/database-version/",
     "icon": "widgets/database-version/icon.svg",
-    "order": 700,
-    "group": 7
-  },
-  {
-    "name": "datasetid-filter",
-    "manifest": {
-      "name": "datasetid-filter",
-      "label": "DatasetID Filter",
-      "type": "widget",
-      "dependency": "jimu-arcgis",
-      "version": "1.0.0",
-      "exbVersion": "1.16.0",
-      "author": "John Cartwright",
-      "description": "filter the data records by specified DatasetID value",
-      "copyright": "",
-      "license": "http://www.apache.org/licenses/LICENSE-2.0",
-      "properties": {},
-      "publishMessages": [
-        "DATA_SOURCE_FILTER_CHANGE"
-      ],
-      "translatedLocales": [
-        "en"
-      ],
-      "defaultSize": {
-        "width": 400,
-        "height": 400
-      }
-    },
-    "i18nLabel": {},
-    "i18nDescription": {},
-    "uri": "widgets/datasetid-filter/",
-    "icon": "widgets/datasetid-filter/icon.svg",
     "order": 700,
     "group": 7
   },
@@ -12070,53 +12006,6 @@
     "group": 7
   },
   {
-    "name": "filtered-record-count",
-    "manifest": {
-      "name": "filtered-record-count",
-      "label": "Filtered Record Count",
-      "dependency": "jimu-arcgis",
-      "type": "widget",
-      "version": "1.0.0",
-      "exbVersion": "1.12.0",
-      "author": "John Cartwright",
-      "description": "display the total and filtered record counts",
-      "copyright": "",
-      "license": "http://www.apache.org/licenses/LICENSE-2.0",
-      "messageActions": [
-        {
-          "name": "filter-change",
-          "label": "Filter Change",
-          "uri": "actions/filter-change-action",
-          "settingUri": "actions/filter-change-action-setting"
-        },
-        {
-          "name": "extent-change",
-          "label": "Extent Change Handler",
-          "uri": "actions/extent-change-action",
-          "settingUri": "actions/extent-change-action-setting"
-        }
-      ],
-      "properties": {},
-      "translatedLocales": [
-        "en"
-      ],
-      "defaultSize": {
-        "width": 200,
-        "height": 100
-      }
-    },
-    "i18nLabel": {
-      "en": "Filtered Record Count"
-    },
-    "i18nDescription": {
-      "en": null
-    },
-    "uri": "widgets/filtered-record-count/",
-    "icon": "widgets/filtered-record-count/icon.svg",
-    "order": 700,
-    "group": 7
-  },
-  {
     "name": "get-map-coordinates",
     "manifest": {
       "name": "get-map-coordinates",
@@ -12145,49 +12034,6 @@
     },
     "uri": "widgets/get-map-coordinates/",
     "icon": "widgets/get-map-coordinates/icon.svg",
-    "order": 700,
-    "group": 7
-  },
-  {
-    "name": "h3-layer",
-    "manifest": {
-      "name": "h3-layer",
-      "label": "H3 Layer",
-      "dependency": [
-        "jimu-arcgis"
-      ],
-      "type": "widget",
-      "version": "1.0.0",
-      "exbVersion": "1.12.0",
-      "author": "John Cartwright",
-      "description": "maintain a client-side layer showing stats aggregated by H3 tile",
-      "copyright": "",
-      "license": "http://www.apache.org/licenses/LICENSE-2.0",
-      "messageActions": [
-        {
-          "name": "update-layer",
-          "label": "Update Layer",
-          "uri": "actions/update-layer-action",
-          "settingUri": "actions/update-layer-action-setting"
-        }
-      ],
-      "properties": {},
-      "translatedLocales": [
-        "en"
-      ],
-      "defaultSize": {
-        "width": 200,
-        "height": 100
-      }
-    },
-    "i18nLabel": {
-      "en": "H3 Layer"
-    },
-    "i18nDescription": {
-      "en": null
-    },
-    "uri": "widgets/h3-layer/",
-    "icon": "widgets/h3-layer/icon.svg",
     "order": 700,
     "group": 7
   },
@@ -12231,88 +12077,6 @@
     },
     "uri": "widgets/h3-widget/",
     "icon": "widgets/h3-widget/icon.svg",
-    "order": 700,
-    "group": 7
-  },
-  {
-    "name": "hexbin-info",
-    "manifest": {
-      "name": "hexbin-info",
-      "label": "Hexbin Info",
-      "dependency": "jimu-arcgis",
-      "type": "widget",
-      "version": "1.0.0",
-      "exbVersion": "1.13.0",
-      "author": "John Cartwright",
-      "description": "displays summary information on the selected H3 hexbin",
-      "copyright": "",
-      "license": "http://www.apache.org/licenses/LICENSE-2.0",
-      "messageActions": [
-        {
-          "name": "filter-change",
-          "label": "Filter Change",
-          "uri": "actions/filter-change-action",
-          "settingUri": "actions/filter-change-action-setting"
-        }
-      ],
-      "properties": {},
-      "translatedLocales": [
-        "en"
-      ],
-      "defaultSize": {
-        "width": 200,
-        "height": 100
-      }
-    },
-    "i18nLabel": {
-      "en": "Hexbin Info"
-    },
-    "i18nDescription": {
-      "en": null
-    },
-    "uri": "widgets/hexbin-info/",
-    "icon": "widgets/hexbin-info/icon.svg",
-    "order": 700,
-    "group": 7
-  },
-  {
-    "name": "hexbin-layer",
-    "manifest": {
-      "name": "hexbin-layer",
-      "label": "Hexbin Layer",
-      "dependency": "jimu-arcgis",
-      "type": "widget",
-      "version": "1.0.0",
-      "exbVersion": "1.13.0",
-      "author": "John Cartwright",
-      "description": "creates/refreshes a graphics layer on the map representing H3 hexbins",
-      "copyright": "",
-      "license": "http://www.apache.org/licenses/LICENSE-2.0",
-      "messageActions": [
-        {
-          "name": "filter-change",
-          "label": "Filter Change",
-          "uri": "actions/filter-change-action",
-          "settingUri": "actions/filter-change-action-setting"
-        }
-      ],
-      "properties": {},
-      "translatedLocales": [
-        "en"
-      ],
-      "defaultSize": {
-        "width": 200,
-        "height": 100
-      }
-    },
-    "i18nLabel": {
-      "en": "Hexbin Layer"
-    },
-    "i18nDescription": {
-      "en": null
-    },
-    "uri": "widgets/hexbin-layer/",
-    "icon": "widgets/hexbin-layer/icon.svg",
     "order": 700,
     "group": 7
   },
@@ -12515,38 +12279,6 @@
     "group": 7
   },
   {
-    "name": "synonym-filter",
-    "manifest": {
-      "name": "synonym-filter",
-      "label": "Synonym Filter",
-      "type": "widget",
-      "dependency": "jimu-arcgis",
-      "version": "1.0.0",
-      "exbVersion": "1.15.0",
-      "author": "John Cartwright",
-      "description": "filter the data records by text pattern match against the Synonyms field",
-      "copyright": "",
-      "license": "http://www.apache.org/licenses/LICENSE-2.0",
-      "properties": {},
-      "publishMessages": [
-        "DATA_SOURCE_FILTER_CHANGE"
-      ],
-      "translatedLocales": [
-        "en"
-      ],
-      "defaultSize": {
-        "width": 400,
-        "height": 400
-      }
-    },
-    "i18nLabel": {},
-    "i18nDescription": {},
-    "uri": "widgets/synonym-filter/",
-    "icon": "widgets/synonym-filter/icon.svg",
-    "order": 700,
-    "group": 7
-  },
-  {
     "name": "taxon-selector",
     "manifest": {
       "name": "taxon-selector",
@@ -12607,38 +12339,6 @@
     "i18nDescription": {},
     "uri": "widgets/text-filters-widget/",
     "icon": "widgets/text-filters-widget/icon.svg",
-    "order": 700,
-    "group": 7
-  },
-  {
-    "name": "verbatim-name-filter",
-    "manifest": {
-      "name": "verbatim-name-filter",
-      "label": "Verbatim Scientific Name Filter",
-      "type": "widget",
-      "dependency": "jimu-arcgis",
-      "version": "1.0.0",
-      "exbVersion": "1.15.0",
-      "author": "John Cartwright",
-      "description": "filter the data records by text pattern match against the VerbatimScientificName field",
-      "copyright": "",
-      "license": "http://www.apache.org/licenses/LICENSE-2.0",
-      "properties": {},
-      "publishMessages": [
-        "DATA_SOURCE_FILTER_CHANGE"
-      ],
-      "translatedLocales": [
-        "en"
-      ],
-      "defaultSize": {
-        "width": 400,
-        "height": 400
-      }
-    },
-    "i18nLabel": {},
-    "i18nDescription": {},
-    "uri": "widgets/verbatim-name-filter/",
-    "icon": "widgets/verbatim-name-filter/icon.svg",
     "order": 700,
     "group": 7
   },
