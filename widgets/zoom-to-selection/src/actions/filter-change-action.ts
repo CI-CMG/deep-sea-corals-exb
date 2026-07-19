@@ -1,0 +1,49 @@
+import {
+  AbstractMessageAction,
+  MessageType,
+  type Message,
+  getAppStore,
+  appActions,
+  type DataSourceFilterChangeMessage,
+  type ExtentChangeMessage,
+  DataSourceManager,
+  type QueriableDataSource,
+  type SqlQueryParams,
+  type MessageDescription
+} from 'jimu-core'
+
+// custom type guard to avoid TypeScript casting variable
+function isDataSourceFilterChangeMessageType (obj: Message): obj is DataSourceFilterChangeMessage {
+  return (obj as DataSourceFilterChangeMessage).type === 'DATA_SOURCE_FILTER_CHANGE'
+}
+
+export default class FilterAction extends AbstractMessageAction {
+  filterMessageDescription (messageDescription: MessageDescription) {
+    return (
+      messageDescription.messageType === MessageType.DataSourceFilterChange
+    )
+  }
+
+  filterMessage (message: Message): boolean {
+    return message.type === MessageType.DataSourceFilterChange
+  }
+
+  //set action setting uri
+  getSettingComponentUri (messageType: MessageType, messageWidgetId?: string): string {
+    return 'actions/filter-change-action-setting'
+  }
+
+  onExecute (message: Message) {
+    switch (message.type) {
+      case MessageType.DataSourceFilterChange:
+        const dsFilterChangeMessage = isDataSourceFilterChangeMessageType(message) ? message : undefined
+        // triggers widget render by updating widget state
+        getAppStore().dispatch(appActions.widgetStatePropChange(this.widgetId, 'filterChangeMessage', dsFilterChangeMessage))
+        break
+      default:
+        // no action needed for this message type, but we return true to indicate that the message was handled
+        break
+    }
+    return true
+  }
+}

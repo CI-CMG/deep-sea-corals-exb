@@ -249,7 +249,8 @@
       "label": "Map FixedLayout",
       "order": [
         "0",
-        "1"
+        "1",
+        "2"
       ],
       "content": {
         "0": {
@@ -276,11 +277,11 @@
           "type": "WIDGET",
           "bbox": {
             "left": "0.0%",
-            "top": "100.00px",
+            "top": "125px",
             "width": "60px",
-            "height": "150.00px",
-            "right": "91.0%",
-            "bottom": "71.8%"
+            "height": "188px",
+            "right": "93.8%",
+            "bottom": "49.5%"
           },
           "widgetId": "widget_36",
           "setting": {
@@ -291,7 +292,31 @@
               "right": true,
               "top": false,
               "bottom": true
-            }
+            },
+            "vCenter": false,
+            "hCenter": false
+          }
+        },
+        "2": {
+          "type": "WIDGET",
+          "widgetId": "widget_74",
+          "bbox": {
+            "left": "6.3%",
+            "right": "79.2%",
+            "top": "2.0%",
+            "bottom": "90.9%",
+            "width": "14.5%",
+            "height": "7.1%"
+          },
+          "setting": {
+            "autoProps": {
+              "left": false,
+              "right": true,
+              "top": false,
+              "bottom": true
+            },
+            "vCenter": false,
+            "hCenter": false
           }
         }
       }
@@ -3833,6 +3858,27 @@
           "rootDataSourceId": "dataSource_1"
         }
       ]
+    },
+    "widget_74": {
+      "uri": "widgets/zoom-to-selection/",
+      "version": "1.0.0",
+      "label": "Zoom to Selection Button",
+      "config": {
+        "erddapBaseUrl": "https://www.ncei.noaa.gov/erddap/tabledap/deep_sea_corals",
+        "csvFileUrl": "https://noaa.maps.arcgis.com/home/item.html?id=f465861aecac410980a7c601cfec7850",
+        "standardFieldsList": "ShallowFlag,DatasetID,CatalogNumber,SampleID,ImageURL,Repository,ScientificName,VernacularNameCategory,TaxonRank,IdentificationQualifier,Locality,latitude,longitude,DepthInMeters,DepthMethod,ObservationDate,SurveyID,Station,EventID,SamplingEquipment,LocationAccuracy,RecordType,DataProvider"
+      },
+      "id": "widget_74",
+      "useMapWidgetIds": [
+        "widget_3"
+      ],
+      "useDataSources": [
+        {
+          "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
+          "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
+          "rootDataSourceId": "dataSource_1"
+        }
+      ]
     }
   },
   "widgetsManifest": {},
@@ -4230,6 +4276,16 @@
           "description": null,
           "config": null,
           "version": "1.0.0"
+        },
+        {
+          "actionId": "widget_74-filter-change-1784330158648",
+          "widgetId": "widget_74",
+          "sectionId": null,
+          "messageWidgetId": "widget_69",
+          "actionName": "filter-change",
+          "description": null,
+          "config": null,
+          "version": "1.0.0"
         }
       ]
     },
@@ -4254,6 +4310,16 @@
           "sectionId": null,
           "messageWidgetId": "widget_73",
           "actionName": "update-layer",
+          "description": null,
+          "config": null,
+          "version": "1.0.0"
+        },
+        {
+          "actionId": "widget_74-filter-change-1784435014449",
+          "widgetId": "widget_74",
+          "sectionId": null,
+          "messageWidgetId": "widget_73",
+          "actionName": "filter-change",
           "description": null,
           "config": null,
           "version": "1.0.0"
@@ -4306,7 +4372,7 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1784326840912,
+  "timestamp": 1784435087041,
   "analytics": {
     "enable": true,
     "google": {
@@ -4316,5 +4382,5 @@
   "cookieBanner": {
     "uid": "103311e0-dc42-11f0-bf14-359107a8b062"
   },
-  "publishTimestamp": 1784326842985
+  "publishTimestamp": 1784435095645
 }
