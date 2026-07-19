@@ -12641,5 +12641,46 @@
     "icon": "widgets/verbatim-name-filter/icon.svg",
     "order": 700,
     "group": 7
+  },
+  {
+    "name": "zoom-to-selection",
+    "manifest": {
+      "name": "zoom-to-selection",
+      "label": "Zoom to Selection Button",
+      "type": "widget",
+      "version": "1.0.0",
+      "exbVersion": "1.19.0",
+      "dependency": "jimu-arcgis",
+      "author": "John Cartwright",
+      "description": "make a best effort to zoom to the extent of the currently filtered features ",
+      "copyright": "",
+      "license": "http://www.apache.org/licenses/LICENSE-2.0",
+      "messageActions": [
+        {
+          "name": "filter-change",
+          "label": "Filter Change",
+          "uri": "actions/filter-change-action",
+          "settingUri": "actions/filter-change-action-setting"
+        }
+      ],
+      "properties": {},
+      "translatedLocales": [
+        "en"
+      ],
+      "defaultSize": {
+        "width": 200,
+        "height": 100
+      }
+    },
+    "i18nLabel": {
+      "en": "Zoom to Selection"
+    },
+    "i18nDescription": {
+      "en": null
+    },
+    "uri": "widgets/zoom-to-selection/",
+    "icon": "widgets/zoom-to-selection/icon.svg",
+    "order": 700,
+    "group": 7
   }
 ]
