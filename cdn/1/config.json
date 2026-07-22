@@ -301,12 +301,12 @@
           "type": "WIDGET",
           "widgetId": "widget_74",
           "bbox": {
-            "left": "6.3%",
-            "right": "79.2%",
-            "top": "2.0%",
-            "bottom": "90.9%",
-            "width": "14.5%",
-            "height": "7.1%"
+            "left": "55.00px",
+            "right": "77.1%",
+            "top": "10px",
+            "bottom": "94.8%",
+            "width": "145.00px",
+            "height": "40px"
           },
           "setting": {
             "autoProps": {
@@ -3792,7 +3792,8 @@
           "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
           "rootDataSourceId": "dataSource_1"
         }
-      ]
+      ],
+      "label": "scientific-name 3"
     },
     "widget_71": {
       "uri": "widgets/h3-widget/",
@@ -4379,7 +4380,7 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1784435087041,
+  "timestamp": 1784756832403,
   "analytics": {
     "enable": true,
     "google": {
@@ -4389,5 +4390,5 @@
   "cookieBanner": {
     "uid": "103311e0-dc42-11f0-bf14-359107a8b062"
   },
-  "publishTimestamp": 1784435095645
+  "publishTimestamp": 1784756843193
 }
