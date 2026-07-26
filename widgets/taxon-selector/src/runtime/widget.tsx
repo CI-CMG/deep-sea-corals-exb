@@ -8,9 +8,10 @@ import {
 import React, { useState, useEffect } from 'react'
 import { type JimuMapView, JimuMapViewComponent } from 'jimu-arcgis'
 import { Select, Option, Button } from 'jimu-ui'
-import { type IMConfig } from '../config'
+import type { IMConfig } from '../config'
 
 export default function Widget (props: AllWidgetProps<IMConfig>) {
+  console.log('rendering taxon-selector...')
   const [dataSource, setDataSource] = useState(null)
   const [view, setView] = useState(null)
   const [phylumList, setPhylumList] = useState<string[]>([])
@@ -18,17 +19,19 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
   const [orderList, setOrderList] = useState<string[]>([])
   const [familyList, setFamilyList] = useState<string[]>([])
   const [genusList, setGenusList] = useState<string[]>([])
-  const [selectedPhylum, setSelectedPhylum] = useState<string|undefined>()
-  const [selectedClass, setSelectedClass] = useState<string|undefined>()
-  const [selectedOrder, setSelectedOrder] = useState<string|undefined>()
-  const [selectedFamily, setSelectedFamily] = useState<string|undefined>()
-  const [selectedGenus, setSelectedGenus] = useState<string|undefined>()
+  const [selectedPhylum, setSelectedPhylum] = useState<string|string[]>()
+  const [selectedClass, setSelectedClass] = useState<string|string[]>()
+  const [selectedOrder, setSelectedOrder] = useState<string|string[]>()
+  const [selectedFamily, setSelectedFamily] = useState<string|string[]>()
+  const [selectedGenus, setSelectedGenus] = useState<string|string[]>()
   const featureServiceUrl = 'https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB/FeatureServer/0/query?'
   //TODO read from configuration
   // const serviceUrl = (props.config.serviceUrl) ? props.config.serviceUrl : 'https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB/FeatureServer/0/query?'
-
+  // console.log('rendering TaxonSelector widget', selectedPhylum, selectedClass, selectedOrder, selectedFamily, selectedGenus)
   // handle changes to taxon selections. update map and publish new values
+
   useEffect(() => {
+    console.log('taxon-selector: inside useEffect...')
     // console.log('phylum: ' + selectedPhylum + '; class: ' + selectedClass + '; order: ' + selectedOrder + '; genus: ' + selectedGenus)
     if (!dataSource || !view) {
       // console.warn('taxon-selector: DataSource and/or MapView not yet set. QueryParams cannot updated')
@@ -47,10 +50,25 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
     sendMessage()
   }, [selectedPhylum, selectedClass, selectedFamily, selectedOrder, selectedGenus])
 
+
   // run once when widget is loaded
   useEffect(() => {
     // list of phylums does not change
-    updatePhylumList()
+    const startTime = new Date()
+    const searchParams = new URLSearchParams([
+      ['where', '1=1'],
+      ['outFields', 'Phylum'],
+      ['orderByFields', 'Phylum']
+    ])
+    getDataFromFeatureService(searchParams)
+    .then(data => {
+      const phylums = data.features.map(feature => feature.attributes.Phylum)
+      // represent null values w/ 'NA' in the pull-down list
+      // const phylums = data.features.map(feature => feature.attributes.Phylum).map(name => name || 'NA')
+      setPhylumList(phylums)
+      const endTime = new Date()
+      console.debug(`Phylum data loaded from FeatureService in ${(endTime.getTime() - startTime.getTime()) / 1000} seconds`)
+    })
   }, [])
 
   async function getDataFromFeatureService (incomingSearchParams: URLSearchParams) {
@@ -72,25 +90,9 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
     return await response.json()
   }
 
-  async function updatePhylumList () {
-    const startTime = new Date()
-    const searchParams = new URLSearchParams([
-      ['where', '1=1'],
-      ['outFields', 'Phylum'],
-      ['orderByFields', 'Phylum']
-    ])
-    const data = await getDataFromFeatureService(searchParams)
-    // represent null values w/ 'NA' in the pull-down list
-    // const phylums = data.features.map(feature => feature.attributes.Phylum).map(name => name || 'NA')
-    const phylums = data.features.map(feature => feature.attributes.Phylum)
-    setPhylumList(phylums)
-    const endTime = new Date()
-    console.debug(`Phylum data loaded from FeatureService in ${(endTime.getTime() - startTime.getTime()) / 1000} seconds`)
-  }
-
   async function updateClassList (phylumName: string) {
     const searchParams = new URLSearchParams([
-      ['where', `Phylum='${phylumName}'`],
+      ['where', `Phylum='${phylumName}' and Class is not null`],
       ['outFields', 'Class'],
       ['orderByFields', 'Class']
     ])
@@ -102,7 +104,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
   // 'Order' is reserved word in SQL so renamed to 'Order_ in FeatureService'
   async function updateOrderList (className: string) {
     const searchParams = new URLSearchParams([
-      ['where', `Class='${className}'`],
+      ['where', `Class='${className}' and Order_ is not null`],
       ['outFields', 'Order_'],
       ['orderByFields', 'Order_']
     ])
@@ -113,7 +115,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
 
   async function updateFamilyList (orderName: string) {
     const searchParams = new URLSearchParams([
-      ['where', `Order_='${orderName}'`],
+      ['where', `Order_='${orderName}' and Family is not null`],
       ['outFields', 'Family'],
       ['orderByFields', 'Family']
     ])
@@ -124,7 +126,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
 
   async function updateGenusList (familyName: string) {
     const searchParams = new URLSearchParams([
-      ['where', `Family='${familyName}'`],
+      ['where', `Family='${familyName}' and Genus is not null`],
       ['outFields', 'Genus'],
       ['orderByFields', 'Genus']
     ])
@@ -156,60 +158,71 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
   }
 
   function resetButtonHandler (evt: React.MouseEvent<HTMLButtonElement>) {
-    if (selectedPhylum) { setSelectedPhylum(null) }
-    if (selectedClass) { setSelectedClass(null) }
-    if (selectedOrder) { setSelectedOrder(null) }
-    if (selectedFamily) { setSelectedFamily(null) }
-    if (selectedGenus) { setSelectedGenus(null) }
-  }
+    console.log('reset button clicked',selectedPhylum, selectedClass, selectedOrder, selectedFamily, selectedGenus)
 
-  // changing phylum resets all other Select elements in hierarchy
-  function phylumSelectHandler (evt: React.ChangeEvent<HTMLSelectElement>) {
-    setSelectedPhylum(evt.target.value)
-    updateClassList(evt.target.value)
-
-    // reset dependent values
-    setSelectedClass(undefined)
-    setSelectedOrder(undefined)
-    setSelectedFamily(undefined)
-    setSelectedGenus(undefined)
+    setSelectedPhylum('')
+    setSelectedClass('')
+    setSelectedOrder('')
+    setSelectedFamily('')
+    setSelectedGenus('')
+    setClassList([])
     setOrderList([])
     setFamilyList([])
     setGenusList([])
   }
 
-  function classSelectHandler (evt: React.ChangeEvent<HTMLSelectElement>) {
-    setSelectedClass(evt.target.value)
-    updateOrderList(evt.target.value)
+  // changing phylum resets all other Select elements in hierarchy
+  function phylumSelectHandler (evt: CustomEvent) {
+    const target = evt.target as HTMLCalciteComboboxElement
+    setSelectedPhylum(target.value)
+    // value will always be a string and not an array because selection-mode="single-persist"
+    updateClassList(target.value as string)
 
     // reset dependent values
-    setSelectedOrder(undefined)
-    setSelectedFamily(undefined)
-    setSelectedGenus(undefined)
+    setSelectedClass('')
+    setSelectedOrder('')
+    setSelectedFamily('')
+    setSelectedGenus('')
+    setOrderList([])
     setFamilyList([])
     setGenusList([])
   }
 
-  function orderSelectHandler (evt: React.ChangeEvent<HTMLSelectElement>) {
-    setSelectedOrder(evt.target.value)
-    updateFamilyList(evt.target.value)
+  function classSelectHandler (evt: any) {
+    setSelectedClass(evt.target.value)
+    updateOrderList(evt.target.value)
 
     // reset dependent values
-    setSelectedFamily(undefined)
-    setSelectedGenus(undefined)
+    setSelectedOrder('')
+    setSelectedFamily('')
+    setSelectedGenus('')
+    setFamilyList([])
     setGenusList([])
   }
 
-  function familySelectHandler (evt: React.ChangeEvent<HTMLSelectElement>) {
-    setSelectedFamily(evt.target.value)
-    updateGenusList(evt.target.value)
+  function orderSelectHandler (evt: CustomEvent) {
+    const target = evt.target as HTMLCalciteComboboxElement
+    setSelectedOrder(target.value)
+    updateFamilyList(target.value as string)
 
     // reset dependent values
-    setSelectedGenus(undefined)
+    setSelectedFamily('')
+    setSelectedGenus('')
+    setGenusList([])
   }
 
-  function genusSelectHandler (evt: React.ChangeEvent<HTMLSelectElement>) {
-    setSelectedGenus(evt.target.value)
+  function familySelectHandler (evt: CustomEvent) {
+    const target = evt.target as HTMLCalciteComboboxElement
+    setSelectedFamily(target.value)
+    updateGenusList(target.value as string)
+
+    // reset dependent values
+    setSelectedGenus('')
+  }
+
+  function genusSelectHandler (evt: CustomEvent) {
+    const target = evt.target as HTMLCalciteComboboxElement
+    setSelectedGenus(target.value as string)
   }
 
   // runs once
@@ -248,62 +261,53 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
           onActiveViewChange={activeViewChangeHandler}></JimuMapViewComponent>
 
       </div>
-      <Select
-        value={selectedPhylum}
-        onChange={phylumSelectHandler}
-        placeholder="Select a Phylum..."
+      <calcite-combobox label="Phylum" placeholder="Select a Phylum..."
+        selection-display="fit" selection-appearance="highlight"
+        selection-mode="single-persist"
+        value={selectedPhylum} disabled={!phylumList.length}
+        oncalciteComboboxChange={phylumSelectHandler}
         style={{ paddingLeft: '10px', paddingBottom: '10px', width: 200 }}
-        aria-label='Select a Phylum'
-        menuRole="menu"
-        menuItemCheckMode="singleCheck"
-        disabled={!phylumList.length}
       >
-        {phylumList?.map(item => <Option value={item}>{item}</Option>)}
-      </Select>
-
-      <Select
-        value={selectedClass}
-        onChange={classSelectHandler}
-        placeholder="Select a Class..."
+          {phylumList?.map(item => <calcite-combobox-item value={item} heading={item}></calcite-combobox-item>)}
+      </calcite-combobox>
+      <calcite-combobox label="Class" placeholder="Select a Class..."
+        selection-display="fit" selection-appearance="highlight"
+        selection-mode="single-persist"
+        value={selectedClass} disabled={!classList.length}
+        oncalciteComboboxChange={classSelectHandler}
         style={{ paddingLeft: '10px', paddingBottom: '10px', width: 200 }}
-        menuRole="menu"
-        disabled={!selectedPhylum}
       >
-        {classList.map(item => <Option value={item}>{item}</Option>)}
-      </Select>
+          {classList?.map(item => <calcite-combobox-item value={item} heading={item}></calcite-combobox-item>)}
+      </calcite-combobox>
 
-      <Select
-        value={selectedOrder}
-        onChange={orderSelectHandler}
-        placeholder="Select an Order..."
+      <calcite-combobox label="Order" placeholder="Select an Order..."
+        selection-display="fit" selection-appearance="highlight"
+        selection-mode="single-persist"
+        value={selectedOrder} disabled={!orderList.length}
+        oncalciteComboboxChange={orderSelectHandler}
         style={{ paddingLeft: '10px', paddingBottom: '10px', width: 200 }}
-        menuRole="menu"
-        disabled={!selectedClass}
       >
-        {orderList.map(item => <Option value={item}>{item}</Option>)}
-      </Select>
+          {orderList?.map(item => <calcite-combobox-item value={item} heading={item}></calcite-combobox-item>)}
+      </calcite-combobox>
 
-      <Select
-        value={selectedFamily}
-        onChange={familySelectHandler}
-        placeholder="Select a Family..."
+      <calcite-combobox label="Family" placeholder="Select a Family..."
+        selection-display="fit" selection-appearance="highlight"
+        selection-mode="single-persist"
+        value={selectedFamily} disabled={!familyList.length}
+        oncalciteComboboxChange={familySelectHandler}
         style={{ paddingLeft: '10px', paddingBottom: '10px', width: 200 }}
-        menuRole="menu"
-        disabled={!selectedOrder}
       >
-        {familyList.map(item => <Option value={item}>{item}</Option>)}
-      </Select>
-
-      <Select
-        value={selectedGenus}
-        onChange={genusSelectHandler}
-        placeholder="Select a Genus..."
-        style={{ paddingLeft: '10px', width: 200 }}
-        menuRole="menu"
-        disabled={!selectedFamily}
+          {familyList?.map(item => <calcite-combobox-item value={item} heading={item}></calcite-combobox-item>)}
+      </calcite-combobox>
+      <calcite-combobox label="Genus" placeholder="Select a Genus..."
+        selection-display="fit" selection-appearance="highlight"
+        selection-mode="single-persist"
+        value={selectedGenus} disabled={!genusList.length}
+        oncalciteComboboxChange={genusSelectHandler}
+        style={{ paddingLeft: '10px', paddingBottom: '10px', width: 200 }}
       >
-        {genusList.map(item => <Option value={item}>{item}</Option>)}
-      </Select>
+        {genusList.map(item => <calcite-combobox-item value={item} heading={item}></calcite-combobox-item>)}
+      </calcite-combobox>
 
       <Button style={{ marginLeft: '10px' }} onClick={resetButtonHandler}>Reset</Button>
 
