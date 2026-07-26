@@ -1,0 +1,4 @@
+.scroll-vertical {
+  height: 100px;        /* Sets a rigid container height */
+  overflow-y: auto;     /* Adds a vertical scrollbar only when content overflows */
+}
