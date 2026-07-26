@@ -5,13 +5,13 @@ import {
   type IMState,
   ReactRedux,
   type DataSource,
-  DataSourceComponent
+  DataSourceComponent,
+  type FeatureLayerDataSource
 } from 'jimu-core'
 import {
   type JimuMapView,
   // type JimuFeatureLayerView,
-  JimuMapViewComponent,
-  type FeatureLayerDataSource
+  JimuMapViewComponent
   // type MapDataSource
 } from 'jimu-arcgis'
 import { Button, Icon, Tooltip } from 'jimu-ui'
@@ -23,7 +23,7 @@ import reactiveUtils from 'esri/core/reactiveUtils'
 import { useState, useRef } from 'react'
 
 // import { Label, Radio, defaultMessages as jimuUIMessages } from 'jimu-ui'
-import { type IMConfig } from '../config'
+import type { IMConfig } from '../config'
 // import { URLSearchParams } from 'url'
 import './widget.css'
 // import { element } from 'prop-types'
@@ -156,9 +156,13 @@ function convertSqlToErddapParams (sql: string, searchParams: string[]) {
     searchParams.push(`AphiaID=${elem[2]}`)
   })
 
-  clauses.filter(elem => elem[0].toLowerCase() === 'identificationqualifier').forEach(elem => {
-    searchParams.push(`IdentificationQualifier=${elem[2]}`)
+  clauses.filter(elem => elem[0].toLowerCase() === 'datasetid').forEach(elem => {
+    searchParams.push(`DatasetID=${elem[2]}`)
   })
+
+  // clauses.filter(elem => elem[0].toLowerCase() === 'identificationqualifier').forEach(elem => {
+  //   searchParams.push(`IdentificationQualifier=${elem[2]}`)
+  // })
 }
 
 // function formatExtent (mercExtent: Extent) {
