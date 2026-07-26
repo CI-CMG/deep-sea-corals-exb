@@ -250,7 +250,8 @@
       "order": [
         "0",
         "1",
-        "2"
+        "2",
+        "3"
       ],
       "content": {
         "0": {
@@ -314,6 +315,30 @@
               "right": true,
               "top": false,
               "bottom": true
+            },
+            "vCenter": false,
+            "hCenter": false
+          }
+        },
+        "3": {
+          "type": "WIDGET",
+          "widgetId": "widget_75",
+          "bbox": {
+            "left": "75.4%",
+            "right": "10.00px",
+            "top": "91.4%",
+            "bottom": "25.00px",
+            "width": "23.9%",
+            "height": "4.9%"
+          },
+          "setting": {
+            "autoProps": {
+              "left": true,
+              "right": false,
+              "top": true,
+              "bottom": false,
+              "width": "AUTO",
+              "height": "AUTO"
             },
             "vCenter": false,
             "hCenter": false
@@ -1762,7 +1787,7 @@
       "version": "1.19.0",
       "label": "Text",
       "config": {
-        "text": "<p style=\"text-align: center;\"><span style=\"color: rgb(255, 255, 255);\">Application Version 3.4.0</span></p>",
+        "text": "<p style=\"text-align: center;\"><span style=\"color: rgb(255, 255, 255);\">Application Version 3.5.0</span></p>",
         "style": {
           "verticalAlign": "start",
           "wrap": true
@@ -3880,6 +3905,25 @@
           "rootDataSourceId": "dataSource_1"
         }
       ]
+    },
+    "widget_75": {
+      "uri": "widgets/filter-status/",
+      "version": "1.0.0",
+      "label": "Filter Status",
+      "config": {
+        "featureLayerTitle": "Deep Sea Coral and Sponge Observations"
+      },
+      "id": "widget_75",
+      "useMapWidgetIds": [
+        "widget_3"
+      ],
+      "useDataSources": [
+        {
+          "dataSourceId": "dataSource_1-17d1b07042b-layer-6",
+          "mainDataSourceId": "dataSource_1-17d1b07042b-layer-6",
+          "rootDataSourceId": "dataSource_1"
+        }
+      ]
     }
   },
   "widgetsManifest": {},
@@ -4234,6 +4278,16 @@
           "description": null,
           "config": null,
           "version": "1.0.0"
+        },
+        {
+          "actionId": "widget_75-filter-change-1785019667301",
+          "widgetId": "widget_75",
+          "sectionId": null,
+          "messageWidgetId": "widget_32",
+          "actionName": "filter-change",
+          "description": null,
+          "config": null,
+          "version": "1.0.0"
         }
       ]
     },
@@ -4264,6 +4318,16 @@
         {
           "actionId": "widget_74-filter-change-1784840335985",
           "widgetId": "widget_74",
+          "sectionId": null,
+          "messageWidgetId": "widget_33",
+          "actionName": "filter-change",
+          "description": null,
+          "config": null,
+          "version": "1.0.0"
+        },
+        {
+          "actionId": "widget_75-filter-change-1785029413111",
+          "widgetId": "widget_75",
           "sectionId": null,
           "messageWidgetId": "widget_33",
           "actionName": "filter-change",
@@ -4307,6 +4371,16 @@
           "description": null,
           "config": null,
           "version": "1.0.0"
+        },
+        {
+          "actionId": "widget_75-filter-change-1785029384873",
+          "widgetId": "widget_75",
+          "sectionId": null,
+          "messageWidgetId": "widget_69",
+          "actionName": "filter-change",
+          "description": null,
+          "config": null,
+          "version": "1.0.0"
         }
       ]
     },
@@ -4338,6 +4412,16 @@
         {
           "actionId": "widget_74-filter-change-1784435014449",
           "widgetId": "widget_74",
+          "sectionId": null,
+          "messageWidgetId": "widget_73",
+          "actionName": "filter-change",
+          "description": null,
+          "config": null,
+          "version": "1.0.0"
+        },
+        {
+          "actionId": "widget_75-filter-change-1785029433874",
+          "widgetId": "widget_75",
           "sectionId": null,
           "messageWidgetId": "widget_73",
           "actionName": "filter-change",
@@ -4400,7 +4484,7 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1784840373436,
+  "timestamp": 1785030787859,
   "analytics": {
     "enable": true,
     "google": {
@@ -4410,5 +4494,5 @@
   "cookieBanner": {
     "uid": "103311e0-dc42-11f0-bf14-359107a8b062"
   },
-  "publishTimestamp": 1784840376922
+  "publishTimestamp": 1785030790317
 }
