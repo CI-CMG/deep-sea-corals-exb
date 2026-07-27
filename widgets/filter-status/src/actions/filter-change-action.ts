@@ -15,6 +15,7 @@ import {
 function isDataSourceFilterChangeMessageType (obj: Message): obj is DataSourceFilterChangeMessage {
   return (obj as DataSourceFilterChangeMessage).type === 'DATA_SOURCE_FILTER_CHANGE'
 }
+
 export default class FilterChangeAction extends AbstractMessageAction {
   filterMessageDescription (messageDescription: MessageDescription): boolean {
     return messageDescription.messageType === MessageType.DataSourceFilterChange
@@ -29,18 +30,17 @@ export default class FilterChangeAction extends AbstractMessageAction {
     return 'actions/filter-change-action-setting'
   }
 
-  onExecute (message: Message, actionConfig?: any): Promise<boolean> | boolean {
+  onExecute (message: Message) {
     switch (message.type) {
       case MessageType.DataSourceFilterChange:
         const dsFilterChangeMessage = isDataSourceFilterChangeMessageType(message) ? message : undefined
-        const dataSource = DataSourceManager.getInstance().getDataSource(dsFilterChangeMessage.dataSourceIds[0]) as QueriableDataSource
-        const queryParams: SqlQueryParams = dataSource.getCurrentQueryParams()
-
         // triggers widget render by updating widget state
         getAppStore().dispatch(appActions.widgetStatePropChange(this.widgetId, 'filterChangeMessage', dsFilterChangeMessage))
-        // getAppStore().dispatch(appActions.widgetStatePropChange(this.widgetId, 'queryParams', queryParams.where))
-
         break
+      default:
+        // no action needed for this message type, but we return true to indicate that the message was handled
+        break
+
     }
     return true
   }
