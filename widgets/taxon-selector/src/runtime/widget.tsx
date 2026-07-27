@@ -263,7 +263,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
       </div>
       <calcite-combobox label="Phylum" placeholder="Select a Phylum..."
         selection-display="fit" selection-appearance="highlight"
-        selection-mode="single-persist"
+        selection-mode="single-persist" scale='s'
         value={selectedPhylum} disabled={!phylumList.length}
         oncalciteComboboxChange={phylumSelectHandler}
         style={{ paddingLeft: '10px', paddingBottom: '10px', width: 200 }}
@@ -272,7 +272,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
       </calcite-combobox>
       <calcite-combobox label="Class" placeholder="Select a Class..."
         selection-display="fit" selection-appearance="highlight"
-        selection-mode="single-persist"
+        selection-mode="single-persist" scale='s'
         value={selectedClass} disabled={!classList.length}
         oncalciteComboboxChange={classSelectHandler}
         style={{ paddingLeft: '10px', paddingBottom: '10px', width: 200 }}
@@ -282,7 +282,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
 
       <calcite-combobox label="Order" placeholder="Select an Order..."
         selection-display="fit" selection-appearance="highlight"
-        selection-mode="single-persist"
+        selection-mode="single-persist" scale='s'
         value={selectedOrder} disabled={!orderList.length}
         oncalciteComboboxChange={orderSelectHandler}
         style={{ paddingLeft: '10px', paddingBottom: '10px', width: 200 }}
@@ -292,7 +292,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
 
       <calcite-combobox label="Family" placeholder="Select a Family..."
         selection-display="fit" selection-appearance="highlight"
-        selection-mode="single-persist"
+        selection-mode="single-persist" scale='s'
         value={selectedFamily} disabled={!familyList.length}
         oncalciteComboboxChange={familySelectHandler}
         style={{ paddingLeft: '10px', paddingBottom: '10px', width: 200 }}
@@ -301,7 +301,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
       </calcite-combobox>
       <calcite-combobox label="Genus" placeholder="Select a Genus..."
         selection-display="fit" selection-appearance="highlight"
-        selection-mode="single-persist"
+        selection-mode="single-persist" scale='s'
         value={selectedGenus} disabled={!genusList.length}
         oncalciteComboboxChange={genusSelectHandler}
         style={{ paddingLeft: '10px', paddingBottom: '10px', width: 200 }}
@@ -309,7 +309,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
         {genusList.map(item => <calcite-combobox-item value={item} heading={item}></calcite-combobox-item>)}
       </calcite-combobox>
 
-      <Button style={{ marginLeft: '10px' }} onClick={resetButtonHandler}>Reset</Button>
+      <Button size='sm' style={{ marginLeft: '10px' }} onClick={resetButtonHandler}>Reset</Button>
 
     </div>
   )
