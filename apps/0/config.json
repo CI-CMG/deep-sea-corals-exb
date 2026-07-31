@@ -2529,7 +2529,7 @@
               "parts": [
                 {
                   "type": "SET",
-                  "logicalOperator": "AND",
+                  "logicalOperator": "OR",
                   "parts": [
                     {
                       "type": "SINGLE",
@@ -2574,8 +2574,8 @@
                   ]
                 }
               ],
-              "sql": "(HighlightImageURL LIKE 'https%') AND (ImageURL LIKE 'https%')",
-              "displaySQL": "((HighlightImageURL starts with 'https') and (ImageURL starts with 'https'))"
+              "sql": "(HighlightImageURL LIKE 'https%') OR (ImageURL LIKE 'https%')",
+              "displaySQL": "((HighlightImageURL starts with 'https') or (ImageURL starts with 'https'))"
             },
             "autoApplyWhenWidgetOpen": false,
             "collapseFilterExprs": false,
@@ -4483,7 +4483,7 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1785343928314,
+  "timestamp": 1785363730393,
   "analytics": {
     "enable": true,
     "google": {
@@ -4493,5 +4493,5 @@
   "cookieBanner": {
     "uid": "103311e0-dc42-11f0-bf14-359107a8b062"
   },
-  "publishTimestamp": 1785346152210
+  "publishTimestamp": 1785531470216
 }

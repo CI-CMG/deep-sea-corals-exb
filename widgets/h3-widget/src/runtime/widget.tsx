@@ -27,10 +27,10 @@ import {
   getAppStore,
   jimuHistory,
   type DataSource,
-  DataSourceComponent
+  DataSourceComponent,
+  type FeatureLayerDataSource
 } from 'jimu-core'
-
-import { type JimuMapView, JimuMapViewComponent, type FeatureLayerDataSource } from 'jimu-arcgis'
+import { type JimuMapView, JimuMapViewComponent } from 'jimu-arcgis'
 import GraphicsLayer from 'esri/layers/GraphicsLayer'
 import type FeatureLayer from 'esri/layers/FeatureLayer'
 import type Graphic from 'esri/Graphic'
@@ -67,7 +67,7 @@ export default function H3Widget (props: AllWidgetProps<IMConfig>) {
   queryParamsRef.current = widgetState?.queryParams || '1=1'
   // console.log('queryParams: ', queryParamsRef.current)
 
-  // console.log(`re-rendering H3Layer. h3 = ${h3}; queryParams = ${widgetState?.queryParams}`)
+  console.log(`re-rendering H3Layer. h3 = ${h3}; queryParams = ${widgetState?.queryParams}`)
 
   // Get the widget state - because the sidebar state may change in the runtime, via Redux's useSelector hook
   const sidebarWidgetState = useSelector((state: IMState) => {

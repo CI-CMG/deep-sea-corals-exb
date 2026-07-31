@@ -8,10 +8,10 @@ import {
 } from '../h3-utils'
 import PhylumChart from './PhylumChart'
 
-import {
-  type EnvironmentalStats,
-  type HexbinSummary,
-  type ScientificNameCount
+import type {
+  EnvironmentalStats,
+  HexbinSummary,
+  ScientificNameCount
 } from '../h3-widget-types'
 import './hexbin-info.css'
 
@@ -22,19 +22,22 @@ interface HexbinInfoProps {
 }
 
 export default function HexbinInfo ({ h3, pointCount, whereClause = '1=1' }: HexbinInfoProps) {
-  // console.log(`rendering HexbinInfo with h3: ${h3}, pointCount: ${pointCount}`)
+  console.log(`rendering HexbinInfo with h3: ${h3}, pointCount: ${pointCount}, whereClause: ${whereClause}`)
   const [hexbinSummary, setHexbinSummary] = useState<HexbinSummary>()
   const [serverError, setServerError] = useState(false)
-  const speciesCountRef = useRef<number>()
+  const speciesCountRef = useRef<number>(0)
 
   useEffect(() => {
+    // wrap the provided clause in parens to enforce correct SQL operator cardinality
+    const myWhereClause = whereClause !== '1=1' ? `(${whereClause})` : whereClause
+    console.log({myWhereClause})
     Promise.all([
-      getDepthRange(h3, whereClause),
-      getPhylumCounts(h3, whereClause),
-      getScientificNameCounts(h3, whereClause),
-      getEnvironmentalStatistics(h3, 'Temperature', whereClause),
-      getEnvironmentalStatistics(h3, 'Salinity', whereClause),
-      getEnvironmentalStatistics(h3, 'Oxygen', whereClause)
+      getDepthRange(h3, myWhereClause),
+      getPhylumCounts(h3, myWhereClause),
+      getScientificNameCounts(h3, myWhereClause),
+      getEnvironmentalStatistics(h3, 'Temperature', myWhereClause),
+      getEnvironmentalStatistics(h3, 'Salinity', myWhereClause),
+      getEnvironmentalStatistics(h3, 'Oxygen', myWhereClause)
     ]).then(([depthRange, phylumCounts, scientificNameCounts, temperature, salinity, oxygen]) => {
       setHexbinSummary({
         minDepth: depthRange.MinDepth,

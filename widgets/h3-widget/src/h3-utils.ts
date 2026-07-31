@@ -9,7 +9,7 @@ import { h3ToGeoBoundary } from 'h3-js'
 import { Classification } from './Classification'
 import Polygon from 'esri/geometry/Polygon'
 import Color from 'esri/Color'
-import { type FeatureLayerDataSource } from 'jimu-arcgis'
+import type { FeatureLayerDataSource } from 'jimu-core'
 
 // TODO derive from settings.tsx
 const featureServiceUrl = 'https://services2.arcgis.com/C8EMgrsFcRFL6LrL/ArcGIS/rest/services/DSCRTP_NatDB/FeatureServer/0/query'
@@ -17,8 +17,13 @@ const stdColor = new Color('whitesmoke')
 const highlightColor = new Color('yellow')
 const hexbinBoundaryWidth = 0
 
+interface IH3Count {
+  Count: number;
+  h3_2: string;
+}
+
 // cache the h3 counts when there are no filters applied
-let noFiltersH3Counts = null
+let noFiltersH3Counts:IH3Count[] = null
 
 let coralsDataSource: FeatureLayerDataSource
 
@@ -131,7 +136,7 @@ async function getH3Counts (whereClause: string) {
   }
 
   let returnExceededLimitFeatures = true
-  let results = []
+  let results:IH3Count[] = []
   const startTime = new Date()
   const searchParams = new URLSearchParams()
   searchParams.set('where', whereClause)
@@ -146,15 +151,15 @@ async function getH3Counts (whereClause: string) {
 
   while (returnExceededLimitFeatures) {
     const data = await makeH3Request(searchParams)
-    // console.log(data.features)
-    results = results.concat(data.features.map(it => it.attributes))
+    console.log(data.features)
+    results= results.concat(data.features.map(it => it.attributes))
     if (data.exceededTransferLimit) {
       searchParams.set('resultOffset', results.length.toString())
     } else {
       returnExceededLimitFeatures = false
     }
   }
-
+  console.log({results})
   const endTime = new Date()
   console.log(`retrieved ${results.length} records in ${(endTime.getTime() - startTime.getTime()) / 1000} seconds`)
   if ((whereClause === '1=1' || !whereClause) && !noFiltersH3Counts) {
@@ -175,7 +180,7 @@ async function makeH3Request (searchParams: URLSearchParams) {
   return (await response.json())
 }
 
-async function getDepthRange (h3, whereClause = '1=1') {
+async function getDepthRange (h3:string, whereClause = '1=1') {
   const startTime = new Date()
   const searchParams = new URLSearchParams()
   searchParams.set('where', `${whereClause} and h3_2='${h3}'`)
@@ -199,7 +204,7 @@ async function getDepthRange (h3, whereClause = '1=1') {
   return data.features[0].attributes
 }
 
-async function getSpeciesCount (h3, whereClause = '1=1') {
+async function getSpeciesCount (h3:string, whereClause = '1=1') {
   const startTime = new Date()
   const searchParams = new URLSearchParams()
   searchParams.set('where', `${whereClause} and h3_2='${h3}'`)
@@ -229,7 +234,7 @@ async function getSpeciesCount (h3, whereClause = '1=1') {
   return { rawCount: data.count, normalizedCount: normalizedValue }
 }
 
-async function getPhylumCounts (h3, whereClause = '1=1') {
+async function getPhylumCounts (h3:string, whereClause = '1=1') {
   const startTime = new Date()
   const searchParams = new URLSearchParams()
   searchParams.set('where', `${whereClause} and h3_2='${h3}'`)
@@ -254,7 +259,7 @@ async function getPhylumCounts (h3, whereClause = '1=1') {
   return data.features.map(it => it.attributes)
 }
 
-async function getScientificNameCounts (h3, whereClause = '1=1') {
+async function getScientificNameCounts (h3:string, whereClause = '1=1') {
   const startTime = new Date()
   const searchParams = new URLSearchParams()
   searchParams.set('where', `${whereClause} and h3_2='${h3}'`)
@@ -263,6 +268,7 @@ async function getScientificNameCounts (h3, whereClause = '1=1') {
   searchParams.set('orderByFields', 'Count DESC')
   searchParams.set('returnGeometry', 'false')
   searchParams.set('f', 'json')
+  console.log(`inside getScientificNameCounts with ${searchParams.toString()}`)
 
   const response = await fetch(featureServiceUrl, {
     method: 'POST',
@@ -278,7 +284,7 @@ async function getScientificNameCounts (h3, whereClause = '1=1') {
   return data.features.map(it => it.attributes)
 }
 
-async function getEnvironmentalStatistics (h3, fieldName, whereClause) {
+async function getEnvironmentalStatistics (h3:string, fieldName:string, whereClause:string) {
   // const serviceUrl = 'https://services2.arcgis.com/C8EMgrsFcRFL6LrL/arcgis/rest/services/DSCRTP_NatDB/FeatureServer/0/query'
   const searchParams = new URLSearchParams()
   searchParams.set('where', `h3_2='${h3}' and ${fieldName} is not null and ${whereClause}`)
