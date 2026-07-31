@@ -69,7 +69,7 @@ function AphiaIdFilter (props: { applyFilter: (value: string) => void }) {
 
   return(
     <div style={{marginTop: '15px'}}>
-      <calcite-input-text
+      <calcite-input-text scale='s'
         id="aphia-id-tooltip" clearable
         style={{width: '80%'}} label-text="Aphia ID"
         oncalciteInputTextChange={onChangeHandler}>
@@ -95,7 +95,7 @@ function DatasetIdFilter (props: { applyFilter: (value: string) => void }) {
 
   return(
     <div style={{marginTop: '15px'}}>
-      <calcite-input-text
+      <calcite-input-text scale='s'
         id="dataset-id-tooltip" clearable
         style={{width: '80%'}} label-text="Dataset ID"
         oncalciteInputTextChange={onChangeHandler}>
@@ -121,7 +121,7 @@ function SynonymFilter (props: { applyFilter: (value: string) => void }) {
 
   return(
     <div style={{marginTop: '15px'}}>
-      <calcite-input-text
+      <calcite-input-text scale='s'
         id="synonym-tooltip" clearable
         style={{width: '80%'}} label-text="Synonyms"
         oncalciteInputTextChange={onChangeHandler}>
@@ -148,7 +148,7 @@ function VerbatimNameFilter (props: { applyFilter: (value: string) => void }) {
 
   return(
     <div style={{marginTop: '15px'}}>
-      <calcite-input-text
+      <calcite-input-text scale='s'
         id="verbatim-name-tooltip" clearable
         style={{width: '80%'}} label-text="Verbatim Scientific Name"
         oncalciteInputTextChange={onChangeHandler}>
