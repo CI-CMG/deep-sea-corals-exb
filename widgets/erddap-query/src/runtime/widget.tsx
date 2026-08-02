@@ -10,23 +10,16 @@ import {
 } from 'jimu-core'
 import {
   type JimuMapView,
-  // type JimuFeatureLayerView,
   JimuMapViewComponent
-  // type MapDataSource
 } from 'jimu-arcgis'
 import { Button, Icon, Tooltip } from 'jimu-ui'
 import type Extent from 'esri/geometry/Extent'
 import type MapView from '@arcgis/core/views/MapView'
-// import SpatialReference from 'esri/geometry/SpatialReference'
-import webMercatorUtils from 'esri/geometry/support/webMercatorUtils'
-import reactiveUtils from 'esri/core/reactiveUtils'
+import { webMercatorToGeographic } from "@arcgis/core/geometry/support/webMercatorUtils"
+import { watch } from "@arcgis/core/core/reactiveUtils"
 import { useState, useRef } from 'react'
-
-// import { Label, Radio, defaultMessages as jimuUIMessages } from 'jimu-ui'
 import type { IMConfig } from '../config'
-// import { URLSearchParams } from 'url'
 import './widget.css'
-// import { element } from 'prop-types'
 
 const { useSelector } = ReactRedux
 
@@ -38,35 +31,35 @@ const { useSelector } = ReactRedux
 // }
 
 function findOceanNameByCode (code: string): string {
-  const values = {
-    0: 'Arctic',
-    1: 'Indian',
-    2: 'North Atlantic',
-    3: 'North Pacific',
-    4: 'South Atlantic',
-    5: 'South Pacific',
-    6: 'Southern'
-  }
-  return values[code] ? values[code] : ''
+  const values = new Map([
+    ['0', 'Arctic'],
+    ['1', 'Indian'],
+    ['2', 'North Atlantic'],
+    ['3', 'North Pacific'],
+    ['4', 'South Atlantic'],
+    ['5', 'South Pacific'],
+    ['6', 'Southern']
+  ])
+  return values.get(code) || ''
 }
 
 function findFisheryRegionByCode (code: string): string {
-  const values = {
-    0: 'NA',
-    1: 'Caribbean',
-    2: 'Gulf of Mexico',
-    3: 'Mid-Atlantic',
-    4: 'New England',
-    5: 'Nort Pacific',
-    6: 'Pacific',
-    7: 'South Atlantic',
-    8: 'Western Pacific'
-  }
-  return values[code] ? values[code] : ''
+  const values = [
+    'Caribbean',
+    'Gulf (formerly Gulf of Mexico)',
+    'Mid-Atlantic',
+    'New England',
+    'North Pacific',
+    'Pacific',
+    'South Atlantic',
+    'Unknown',
+    'Western Pacific'
+  ]
+  return values[parseInt(code)] || ''
 }
 
 // user-defined type guard using type predicate
-function isFeatureLayerDataSourceType (obj: DataSource): obj is FeatureLayerDataSource {
+function isFeatureLayerDataSourceType (obj: unknown): obj is FeatureLayerDataSource {
   return (obj as FeatureLayerDataSource).type === 'FEATURE_LAYER'
 }
 
@@ -173,6 +166,7 @@ function convertSqlToErddapParams (sql: string, searchParams: string[]) {
 export default function Widget (props: AllWidgetProps<IMConfig>) {
   console.log('rendering erddap-query...')
   const [activeDs, setActiveDs] = useState<FeatureLayerDataSource>()
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [geographicMapExtent, setGeographicMapExtent] = useState<Extent>()
   const [mapView, setMapView] = useState<MapView>()
   const validBboxRef = useRef(false)
@@ -187,7 +181,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
   const searchParams: string[] = []
 
   if (mapView && mapView.extent) {
-    const mapExtent = webMercatorUtils.webMercatorToGeographic(mapView.extent) as Extent
+    const mapExtent = webMercatorToGeographic(mapView.extent) as Extent
     // flag for antimeridian-crossing extent
     validBboxRef.current = (mapExtent.xmin < mapExtent.xmax)
     searchParams.push(`latitude>=${mapExtent.ymin.toFixed(4)}`)
@@ -229,12 +223,12 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
     setMapView(jmv.view as MapView)
     // TODO why does this not fire when widget is in Window but works normally when directly in layout?
     // 'updating' property fires multiple times during zoom/pan so using 'stationary' property reduces unnecessary re-renders
-    reactiveUtils.watch(
+    watch(
       () => jmv.view.stationary,
-      (stationary) => {
+      (stationary:boolean) => {
         if (stationary) {
           // console.log('ERDDAP extent: ', formatExtent(jmv.view.extent))
-          const extent = webMercatorUtils.webMercatorToGeographic(jmv.view.extent) as Extent
+          const extent = webMercatorToGeographic(jmv.view.extent) as Extent
           setGeographicMapExtent(extent)
         }
       }

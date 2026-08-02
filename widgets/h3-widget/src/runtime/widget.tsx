@@ -25,7 +25,6 @@ import {
   ReactRedux,
   appActions,
   getAppStore,
-  jimuHistory,
   type DataSource,
   DataSourceComponent,
   type FeatureLayerDataSource
@@ -43,13 +42,13 @@ import HexbinInfo from './hexbin-info'
 const { useSelector } = ReactRedux
 
 // user-defined type guard using type predicate
-function isFeatureLayerDataSourceType (obj: DataSource): obj is FeatureLayerDataSource {
+function isFeatureLayerDataSourceType (obj: unknown): obj is FeatureLayerDataSource {
   return (obj as FeatureLayerDataSource).type === 'FEATURE_LAYER'
 }
 
 export default function H3Widget (props: AllWidgetProps<IMConfig>) {
-  console.log('inside h3-widget with props: ', props)
-  const graphicsLayerRef = useRef<GraphicsLayer>()
+  // console.log('inside h3-widget with props: ', props)
+  const graphicsLayerRef = useRef<GraphicsLayer>(null)
   const [selectedGraphic, setSelectedGraphic] = useState<Graphic | null>(null)
   const queryParamsRef = useRef(null)
   const mapViewRef = useRef<MapView>(null)
@@ -67,13 +66,8 @@ export default function H3Widget (props: AllWidgetProps<IMConfig>) {
   queryParamsRef.current = widgetState?.queryParams || '1=1'
   // console.log('queryParams: ', queryParamsRef.current)
 
-  console.log(`re-rendering H3Layer. h3 = ${h3}; queryParams = ${widgetState?.queryParams}`)
+  // console.log(`re-rendering H3Layer. h3 = ${h3}; queryParams = ${widgetState?.queryParams}`)
 
-  // Get the widget state - because the sidebar state may change in the runtime, via Redux's useSelector hook
-  const sidebarWidgetState = useSelector((state: IMState) => {
-    const widgetState = state.widgetsState[props.config.sidePanelId]
-    return widgetState
-  })
 
   // runs once
   function onDataSourceCreated (ds: DataSource) {
@@ -84,22 +78,6 @@ export default function H3Widget (props: AllWidgetProps<IMConfig>) {
     // setActiveDs(featureLayerDataSource)
   }
 
-  const handleExpandSidebar = (sectionId: string, viewId: string): void => {
-    if (!sidebarWidgetState) {
-      console.warn(`Sidebar ${props.config.sidePanelId} not available`)
-      return
-    }
-
-    // counterintuitive naming convention: "collapse=true" means panel is expanded
-    if (!sidebarWidgetState.collapse) {
-      getAppStore().dispatch(appActions.widgetStatePropChange(
-        props.config.sidePanelId,
-        'collapse',
-        true
-      ))
-    }
-    jimuHistory.changeView(sectionId, viewId)
-  }
 
   useEffect(() => {
     // console.log('queryParams changed, updating graphics layer: ', widgetState?.queryParams)
@@ -116,58 +94,45 @@ export default function H3Widget (props: AllWidgetProps<IMConfig>) {
   }, [widgetState?.queryParams])
 
   useEffect(() => {
-    console.log('selectedGraphic changed: ', selectedGraphic)
+    // console.log('selectedGraphic changed: ', selectedGraphic)
     if (selectedGraphic) {
       const h3 = selectedGraphic.attributes.h3
-      console.log('selected hexbin changed: ', h3)
-      console.log('OCIS widgetId: ', props.config.ocisWidgetId)
+      // console.log('selected hexbin changed: ', h3)
+      // console.log('OCIS widgetId: ', props.config.ocisWidgetId)
       getAppStore().dispatch(appActions.widgetStatePropChange(props.config.ocisWidgetId, 'h3', h3))
       deselectPreviousHexbin()
       toggleOutlineColor(selectedGraphic)
       // use queryParamsRef to avoid having to add widgetState.queryParams to dependency array
       // const whereClause = `(${queryParamsRef.current || '1=1'})`
     } else {
-      console.log('no selected hexbin...')
+      // console.log('no selected hexbin...')
       getAppStore().dispatch(appActions.widgetStatePropChange(props.config.ocisWidgetId, 'h3', null))
       deselectPreviousHexbin()
     }
   }, [selectedGraphic])
 
   function mapClickHandler (hitTestResult: __esri.HitTestResult) {
-    console.log('inside mapClickHandler with : ', hitTestResult)
+    // console.log('inside mapClickHandler with : ', hitTestResult)
 
     // hitTest options ensure that only Corals layer and Graphics layer tested
-    const featureHits = hitTestResult.results?.filter(hitResult =>
-      hitResult.type === 'graphic' && hitResult.layer.type === 'feature'
-    ) as __esri.GraphicHit[]
+    // const featureHits = hitTestResult.results?.filter(hitResult =>
+    //   hitResult.type === 'graphic' && hitResult.layer.type === 'feature'
+    // ) as __esri.GraphicHit[]
     const graphicHits = hitTestResult.results?.filter(hitResult =>
       hitResult.type === 'graphic' && hitResult.layer.type === 'graphics'
     ) as __esri.GraphicHit[]
-    // console.log(`${featureHits?.length || 0} features; ${graphicHits?.length || 0} hexbins`)
+    // console.debug(`${featureHits?.length || 0} features; ${graphicHits?.length || 0} hexbins`)
 
     if (graphicHits?.length === 1) {
       console.log('hexbin clicked: ', graphicHits[0].graphic.attributes.h3)
       setSelectedGraphic(graphicHits[0].graphic)
     } else if (graphicHits?.length === 0) {
-      console.log('outside hexbin')
+      // console.log('outside hexbin')
       setSelectedGraphic(null)
     } else {
       // when click lands on hexbin boundary, arbitrarily use the first element in array
       setSelectedGraphic(graphicHits[0].graphic)
     }
-    /*
-    // open side panel and select view. featureHits takes priority
-    if (featureHits.length) {
-      handleExpandSidebar(props.config.sectionId, props.config.detailsViewId)
-      mapViewRef.current.popup.visible = true
-    } else if (graphicHits.length) {
-      handleExpandSidebar(props.config.sectionId, props.config.summaryViewId)
-      mapViewRef.current.popup.visible = false
-    } else {
-      // no hits - leave sidepanel in current state
-      mapViewRef.current.popup.visible = false
-    }
-      */
   }
 
   function deselectPreviousHexbin () {
@@ -213,10 +178,9 @@ export default function H3Widget (props: AllWidgetProps<IMConfig>) {
         include: [coralsLayer, graphicsLayer]
       }
 
-      jmv.view.on('click', (evt) => {
+      jmv.view.on('click', (evt:__esri.ViewClickEvent) => {
         // console.log('mapclick detected: ', evt)
         // const startTimeForPopup = new Date()
-        // TODO this is where flow stops when it fails to handle map click
         jmv.view
           .hitTest(evt, hitTestOptions)
           .then((response) => { mapClickHandler(response) })

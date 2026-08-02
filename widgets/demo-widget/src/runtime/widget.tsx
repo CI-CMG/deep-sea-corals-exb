@@ -6,43 +6,45 @@ import {
   type DataSource,
   DataSourceComponent,
   type IMState,
-  ReactRedux
+  ReactRedux,
+  type FeatureLayerDataSource,
+   type MapDataSource
 } from 'jimu-core'
 import {
   type JimuMapView,
   JimuMapViewComponent,
-  type FeatureLayerDataSource,
-  type MapDataSource
 } from 'jimu-arcgis'
 // import { useState, useEffect, useRef } from 'react'
-import webMercatorUtils from 'esri/geometry/support/webMercatorUtils'
+import { webMercatorToGeographic } from "@arcgis/core/geometry/support/webMercatorUtils"
 import type Extent from 'esri/geometry/Extent'
-import { type IMConfig } from '../config'
+import type { IMConfig } from '../config'
 // import type FeatureLayerView from 'esri/views/layers/FeatureLayerView'
 import FeatureLayer from 'esri/layers/FeatureLayer'
-import reactiveUtils from 'esri/core/reactiveUtils'
+import { watch } from "@arcgis/core/core/reactiveUtils"
+import "calcite-components"
 import './widget.css'
 // import Feature from '@arcgis/core/widgets/Feature'
 import { useState } from 'react'
 const { useSelector } = ReactRedux
 
 // user-defined type guard using type predicate
-function isMapDataSourceType (obj: DataSource): obj is MapDataSource {
-  return (obj as MapDataSource).type === 'WEB_MAP' && (obj as MapDataSource).isDataSourceSet
+function isMapDataSourceType (obj: unknown): obj is MapDataSource {
+  return (obj as MapDataSource).type === 'WEB_MAP' && (obj as MapDataSource).isDataSourceSet()
 }
 
-function isFeatureLayerDataSourceType (obj: DataSource): obj is FeatureLayerDataSource {
+// user-defined type guard using type predicate
+function isFeatureLayerDataSourceType (obj: unknown): obj is FeatureLayerDataSource {
   return (obj as FeatureLayerDataSource).type === 'FEATURE_LAYER'
 }
 
 function formatExtent (mercExtent: Extent) {
-  const geoExtent = webMercatorUtils.webMercatorToGeographic(mercExtent, false) as Extent
+  const geoExtent = webMercatorToGeographic(mercExtent, false) as Extent
   return `${geoExtent.xmin.toFixed(3)}, ${geoExtent.ymin.toFixed(3)}, ${geoExtent.xmax.toFixed(3)}, ${geoExtent.ymax.toFixed(3)}`
 }
 
 export default function Widget (props: AllWidgetProps<IMConfig>) {
-  console.info('rendering demo-widget...')
   const [activeDs, setActiveDs] = useState<FeatureLayerDataSource>()
+  console.info('rendering demo-widget...')
 
   // get state for this widget
   const widgetState = useSelector((state: IMState) => {
@@ -86,7 +88,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
     //   }
     // )
 
-    reactiveUtils.watch(
+    watch(
       () => jmv.view.stationary,
       (stationary) => {
         if (stationary) {
@@ -111,7 +113,6 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
       console.log({ pointsLayerView })
     })
   }
-
   return (
     <div style={{ paddingLeft: '10px' }}>
       <DataSourceComponent

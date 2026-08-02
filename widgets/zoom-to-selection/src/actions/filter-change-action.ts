@@ -5,10 +5,10 @@ import {
   getAppStore,
   appActions,
   type DataSourceFilterChangeMessage,
-  type ExtentChangeMessage,
-  DataSourceManager,
-  type QueriableDataSource,
-  type SqlQueryParams,
+  // type ExtentChangeMessage,
+  // DataSourceManager,
+  // type QueriableDataSource,
+  // type SqlQueryParams,
   type MessageDescription
 } from 'jimu-core'
 

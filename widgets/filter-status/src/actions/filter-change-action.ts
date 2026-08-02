@@ -6,9 +6,9 @@ import {
   appActions,
   type MessageDescription,
   type DataSourceFilterChangeMessage,
-  DataSourceManager,
-  type SqlQueryParams,
-  type QueriableDataSource
+  // DataSourceManager,
+  // type SqlQueryParams,
+  // type QueriableDataSource
 } from 'jimu-core'
 
 // custom type guard to avoid TypeScript casting variable

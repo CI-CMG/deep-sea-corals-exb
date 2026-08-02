@@ -5,23 +5,20 @@ import {
   type IMState,
   ReactRedux,
   type DataSource,
-  DataSourceComponent
+  DataSourceComponent,
+  type FeatureLayerDataSource
 } from 'jimu-core'
 import {
   type JimuMapView,
   // type JimuFeatureLayerView,
   JimuMapViewComponent,
-  type FeatureLayerDataSource
-  // type MapDataSource
 } from 'jimu-arcgis'
-import { Button, Icon, Tooltip } from 'jimu-ui'
+// import { Button, Icon, Tooltip } from 'jimu-ui'
 // import type Extent from 'esri/geometry/Extent'
 import Extent from "@arcgis/core/geometry/Extent"
 import type MapView from '@arcgis/core/views/MapView'
-// import SpatialReference from 'esri/geometry/SpatialReference'
-import webMercatorUtils from 'esri/geometry/support/webMercatorUtils'
-import reactiveUtils from 'esri/core/reactiveUtils'
-import { useState, useRef, useEffect } from 'react'
+import { geographicToWebMercator } from "@arcgis/core/geometry/support/webMercatorUtils"
+import { useState, useEffect } from 'react'
 
 // import { Label, Radio, defaultMessages as jimuUIMessages } from 'jimu-ui'
 import type { IMConfig } from '../config'
@@ -33,7 +30,7 @@ const { useSelector } = ReactRedux
 
 
 // user-defined type guard using type predicate
-function isFeatureLayerDataSourceType (obj: DataSource): obj is FeatureLayerDataSource {
+function isFeatureLayerDataSourceType (obj: unknown): obj is FeatureLayerDataSource {
   return (obj as FeatureLayerDataSource).type === 'FEATURE_LAYER'
 }
 
@@ -99,7 +96,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
     //const featureLayerDataSource = isFeatureLayerDataSourceType(ds) ? ds : undefined
     //setActiveDs(featureLayerDataSource)
     if (isFeatureLayerDataSourceType(ds)) {
-      setActiveDs(ds as FeatureLayerDataSource)
+      setActiveDs(ds)
     } else {
       console.error('zoom-to-selection: DataSource is not a FeatureLayerDataSource')
     }
@@ -118,7 +115,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
       console.error('zoom-to-selection: MapView and/or extent not yet set. Cannot zoom to selection')
       return
     }
-    const webMercatorExtent = webMercatorUtils.geographicToWebMercator(extent)
+    const webMercatorExtent = geographicToWebMercator(extent) as Extent
 
     if (webMercatorExtent.width < 50000 || webMercatorExtent.height < 50000) {
       // use centerpoint and fixed zoom level to avoid zooming in too far on small selections

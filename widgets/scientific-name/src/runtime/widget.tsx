@@ -3,6 +3,7 @@ import {
   type AllWidgetProps,
   DataSourceComponent,
   type QueriableDataSource,
+  type DataSource,
   // type IMDataSourceInfo,
   type SqlQueryParams,
   MessageManager,
@@ -72,7 +73,7 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
 
   // should only run on initial load
   useEffect(() => {
-    console.log('fetching names from: ', props.config.scientificNamesUrl)
+    console.info('fetching names from: ', props.config.scientificNamesUrl)
     fetch(props.config.scientificNamesUrl)
       .then((res) => {
         if (!res.ok) {
@@ -85,7 +86,7 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
           throw new Error('configuration file improperly formatted: no names found')
         }
         if (nameslist.length > 0) {
-          console.log(`${nameslist.length} unique scientific names loaded from ${props.config.scientificNamesUrl}`)
+          console.info(`${nameslist.length} unique scientific names loaded from ${props.config.scientificNamesUrl}`)
         }
         setNames(nameslist)
         setFilteredNames(nameslist)
@@ -95,13 +96,12 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
       })
   }, [props.config.scientificNamesUrl])
 
-  function handleDataSourceCreated(ds: QueriableDataSource) {
+  function handleDataSourceCreated(ds:DataSource) {
     if (!ds) {
       console.error('unable to create DataSource')
       return
     }
-    // console.log('DataSource created: ', ds)
-    setDataSource(ds)
+    setDataSource(ds as QueriableDataSource)
   }
 
   function handleDataSourceFailed(error:any) {
@@ -123,6 +123,7 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
   return (
     <div className="jimu-widget p-2">
       <CalciteAutocomplete ref={autocompleteRef}
+        // style={{ "-calcite-autocomplete-menu-max-size-y": "300px" }}
         name="scientific-names"
         placeholder="Select a scientific name"
         autocomplete='off'
