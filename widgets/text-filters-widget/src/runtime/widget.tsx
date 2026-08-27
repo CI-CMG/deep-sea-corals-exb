@@ -63,7 +63,7 @@ function AphiaIdFilter (props: {setFilterString: (filterString: string | null) =
   function onChangeHandler (evt:CustomEvent) {
     const value = (evt.target as HTMLCalciteInputTextElement).value
     if (value) {
-      setFilterString(`AphiaID = '${value}'`)
+      setFilterString(`AphiaID = ${value}`)
     } else {
       setFilterString(null)
     }
