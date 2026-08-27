@@ -11,7 +11,12 @@ import React, { useState } from 'react'
 import type { IMConfig } from '../config'
 
 export default function Widget (props: AllWidgetProps<IMConfig>) {
+  console.log('rendering text-filters-widget with props', props)
   const [dataSource, setDataSource] = useState<QueriableDataSource | null>(null)
+  const [aphiaIdFilterString, setAphiaIdFilterString] = useState<string | null>(null)
+  const [datasetIdFilterString, setDatasetIdFilterString] = useState<string | null>(null)
+  const [synonymFilterString, setSynonymFilterString] = useState<string | null>(null)
+  const [verbatimNameFilterString, setVerbatimNameFilterString] = useState<string | null>(null)
 
   // runs once
   function onDataSourceCreated (ds: DataSource) {
@@ -24,14 +29,9 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
   }
 
 
-  // handle changes to filter string. update map and publish new values
-  function applyFilter (filterString: string) {
-    if (!dataSource) {
-      console.warn('DataSource is not yet set. QueryParams cannot updated')
-      return
-    }
-
-    const q:ArcGISQueryParams = filterString ? { where: filterString } : null
+  if (dataSource) {
+    const filterString = [aphiaIdFilterString, datasetIdFilterString, synonymFilterString, verbatimNameFilterString].filter(v => !!v).join(' AND ')
+    const q:ArcGISQueryParams = { where: filterString || null }
     console.log('applyFilter: updating query params with', q)
     dataSource.updateQueryParams(q, props.id)
     MessageManager.getInstance().publishMessage(new DataSourceFilterChangeMessage(props.id, [dataSource.id]))
@@ -44,26 +44,28 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
         widgetId={props.id}
         onDataSourceCreated={onDataSourceCreated}
       />
+      {dataSource ?
       <div>
-        <AphiaIdFilter applyFilter={applyFilter}></AphiaIdFilter>
-        <DatasetIdFilter applyFilter={applyFilter}></DatasetIdFilter>
-        <SynonymFilter applyFilter={applyFilter}></SynonymFilter>
-        <VerbatimNameFilter applyFilter={applyFilter}></VerbatimNameFilter>
+        <AphiaIdFilter setFilterString={setAphiaIdFilterString}></AphiaIdFilter>
+        <DatasetIdFilter setFilterString={setDatasetIdFilterString}></DatasetIdFilter>
+        <SynonymFilter setFilterString={setSynonymFilterString}></SynonymFilter>
+        <VerbatimNameFilter setFilterString={setVerbatimNameFilterString}></VerbatimNameFilter>
       </div>
+      : <div>DataSource not yet created</div>}
     </div>
   )
 }
 
 
-function AphiaIdFilter (props: { applyFilter: (value: string) => void }) {
-  const { applyFilter } = props
+function AphiaIdFilter (props: {setFilterString: (filterString: string | null) => void}) {
+  const { setFilterString } = props
 
   function onChangeHandler (evt:CustomEvent) {
     const value = (evt.target as HTMLCalciteInputTextElement).value
     if (value) {
-      applyFilter(`AphiaID = '${value}'`)
+      setFilterString(`AphiaID = '${value}'`)
     } else {
-      applyFilter(null)
+      setFilterString(null)
     }
   }
 
@@ -81,15 +83,16 @@ function AphiaIdFilter (props: { applyFilter: (value: string) => void }) {
   )
 }
 
-function DatasetIdFilter (props: { applyFilter: (value: string) => void }) {
-  const { applyFilter } = props
+
+function DatasetIdFilter (props: {setFilterString: (filterString: string | null) => void}) {
+  const { setFilterString } = props
 
   function onChangeHandler (evt:CustomEvent) {
     const value = (evt.target as HTMLCalciteInputTextElement).value
     if (value) {
-      applyFilter(`DatasetID = '${value}'`)
+      setFilterString(`DatasetID = '${value}'`)
     } else {
-      applyFilter(null)
+      setFilterString(null)
     }
   }
 
@@ -107,15 +110,15 @@ function DatasetIdFilter (props: { applyFilter: (value: string) => void }) {
   )
 }
 
-function SynonymFilter (props: { applyFilter: (value: string) => void }) {
-  const { applyFilter } = props
+function SynonymFilter (props: {setFilterString: (filterString: string | null) => void}) {
+  const { setFilterString } = props
 
   function onChangeHandler (evt:CustomEvent) {
     const value = (evt.target as HTMLCalciteInputTextElement).value
     if (value) {
-      applyFilter(`Synonyms like '%${value}%'`)
+      setFilterString(`Synonyms like '%${value}%'`)
     } else {
-      applyFilter(null)
+      setFilterString(null)
     }
   }
 
@@ -134,15 +137,15 @@ function SynonymFilter (props: { applyFilter: (value: string) => void }) {
 }
 
 
-function VerbatimNameFilter (props: { applyFilter: (value: string) => void }) {
-  const { applyFilter } = props
+function VerbatimNameFilter (props: {setFilterString: (filterString: string | null) => void}) {
+  const { setFilterString } = props
 
   function onChangeHandler (evt:CustomEvent) {
     const value = (evt.target as HTMLCalciteInputTextElement).value
     if (value) {
-      applyFilter(`VerbatimScientificName like '%${value}%'`)
+      setFilterString(`VerbatimScientificName like '%${value}%'`)
     } else {
-      applyFilter(null)
+      setFilterString(null)
     }
   }
 

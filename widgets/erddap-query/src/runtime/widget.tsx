@@ -18,6 +18,7 @@ import type MapView from '@arcgis/core/views/MapView'
 import { webMercatorToGeographic } from "@arcgis/core/geometry/support/webMercatorUtils"
 import { watch } from "@arcgis/core/core/reactiveUtils"
 import { useState, useRef } from 'react'
+import { convertSqlToErddapParams } from './erddap-utils'
 import type { IMConfig } from '../config'
 import './widget.css'
 
@@ -29,7 +30,7 @@ const { useSelector } = ReactRedux
 //   xmax: number
 //   ymax: number
 // }
-
+/*
 function findOceanNameByCode (code: string): string {
   const values = new Map([
     ['0', 'Arctic'],
@@ -42,7 +43,8 @@ function findOceanNameByCode (code: string): string {
   ])
   return values.get(code) || ''
 }
-
+*/
+/*
 function findFisheryRegionByCode (code: string): string {
   const values = [
     'Caribbean',
@@ -57,15 +59,16 @@ function findFisheryRegionByCode (code: string): string {
   ]
   return values[parseInt(code)] || ''
 }
-
+*/
 // user-defined type guard using type predicate
 function isFeatureLayerDataSourceType (obj: unknown): obj is FeatureLayerDataSource {
   return (obj as FeatureLayerDataSource).type === 'FEATURE_LAYER'
 }
 
+/*
 // mutates the provided array
 function convertSqlToErddapParams (sql: string, searchParams: string[]) {
-  // console.log('inside convertSqlToErddapParams with ', sql)
+  console.log('inside convertSqlToErddapParams with ', sql)
 
   // manipulate SQL string into list of 3-element lists (field, operator, value)
   const clauses = sql
@@ -157,7 +160,7 @@ function convertSqlToErddapParams (sql: string, searchParams: string[]) {
   //   searchParams.push(`IdentificationQualifier=${elem[2]}`)
   // })
 }
-
+*/
 // function formatExtent (mercExtent: Extent) {
 //   const geoExtent = webMercatorUtils.webMercatorToGeographic(mercExtent, false) as Extent
 //   return `${geoExtent.xmin.toFixed(3)}, ${geoExtent.ymin.toFixed(3)}, ${geoExtent.xmax.toFixed(3)}, ${geoExtent.ymax.toFixed(3)}`
@@ -202,8 +205,6 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
   }
 
   function generateErddapUrl (type = 'html') {
-    console.log(activeDs.getCurrentQueryParams().where)
-    // console.log(type)
     if (type === 'html') {
       return erddapUrl
     } else {
