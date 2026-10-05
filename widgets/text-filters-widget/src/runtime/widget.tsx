@@ -17,6 +17,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
   const [datasetIdFilterString, setDatasetIdFilterString] = useState<string | null>(null)
   const [synonymFilterString, setSynonymFilterString] = useState<string | null>(null)
   const [verbatimNameFilterString, setVerbatimNameFilterString] = useState<string | null>(null)
+  const [catalogNumberFilterString, setCatalogNumberFilterString] = useState<string | null>(null)
 
   // runs once
   function onDataSourceCreated (ds: DataSource) {
@@ -30,7 +31,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
 
 
   if (dataSource) {
-    const filterString = [aphiaIdFilterString, datasetIdFilterString, synonymFilterString, verbatimNameFilterString].filter(v => !!v).join(' AND ')
+    const filterString = [aphiaIdFilterString, datasetIdFilterString, synonymFilterString, verbatimNameFilterString, catalogNumberFilterString].filter(v => !!v).join(' AND ')
     const q:ArcGISQueryParams = { where: filterString || null }
     console.log('applyFilter: updating query params with', q)
     dataSource.updateQueryParams(q, props.id)
@@ -50,6 +51,7 @@ export default function Widget (props: AllWidgetProps<IMConfig>) {
         <DatasetIdFilter setFilterString={setDatasetIdFilterString}></DatasetIdFilter>
         <SynonymFilter setFilterString={setSynonymFilterString}></SynonymFilter>
         <VerbatimNameFilter setFilterString={setVerbatimNameFilterString}></VerbatimNameFilter>
+        <CatalogNumberFilter setFilterString={setCatalogNumberFilterString}></CatalogNumberFilter>
       </div>
       : <div>DataSource not yet created</div>}
     </div>
@@ -158,6 +160,32 @@ function VerbatimNameFilter (props: {setFilterString: (filterString: string | nu
       </calcite-input-text>
       <calcite-tooltip reference-element="verbatim-name-tooltip">
           <span>filter data by Verbatim Scientific Name</span>
+        </calcite-tooltip>
+    </div>
+  )
+}
+
+function CatalogNumberFilter (props: {setFilterString: (filterString: string | null) => void}) {
+  const { setFilterString } = props
+
+  function onChangeHandler (evt:CustomEvent) {
+    const value = (evt.target as HTMLCalciteInputTextElement).value
+    if (value) {
+      setFilterString(`CatalogNumber = ${value}`)
+    } else {
+      setFilterString(null)
+    }
+  }
+
+  return(
+    <div style={{marginTop: '15px'}}>
+      <calcite-input-text scale='s'
+        id="catalog-number-tooltip" clearable
+        style={{width: '80%'}} label-text="Catalog Number"
+        oncalciteInputTextChange={onChangeHandler}>
+      </calcite-input-text>
+      <calcite-tooltip reference-element="catalog-number-tooltip">
+          <span>filter data by Catalog Number</span>
         </calcite-tooltip>
     </div>
   )

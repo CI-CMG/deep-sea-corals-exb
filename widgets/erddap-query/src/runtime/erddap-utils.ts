@@ -106,6 +106,9 @@ export function convertSqlToErddapParams (sql: string, searchParams: string[]) {
 
   found = clauses.find(elem => elem[0] === 'DatasetID')
   if (found) { searchParams.push(`DatasetID=${found[2]}`) }
+
+  found = clauses.find(elem => elem[0] === 'CatalogNumber')
+  if (found) { searchParams.push(`CatalogNumber=${found[2]}`) }
 }
 
 
