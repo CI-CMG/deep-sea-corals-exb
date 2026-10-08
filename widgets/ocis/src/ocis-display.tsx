@@ -1,71 +1,23 @@
 import { React, jsx } from 'jimu-core'
 import { useLoadJSON } from './useLoadJson'
+import { formatNumberValue } from '../src/utils'
 
-const fields = [
-  { index: 0, display: 'Hex Grid ID', name: 'grid_id' },
-  { index: 1, display: 'Area of Blue Carbon Habitat (sq. km)', name: 'b_carb_km2' },
-  { index: 2, display: 'Maxp (OBIS)', name: 'obis_maxp' },
-  { index: 3, display: 'Count of OBIS Records', name: 'obis_n' },
-  { index: 4, display: 'Shannon Biodiversity Index (OBIS)', name: 'obis_shannon' },
-  { index: 5, display: 'Species Richness (OBIS)', name: 'obis_sp' },
-  { index: 6, display: 'Count of Marine Protected Areas', name: 'mpa_count' },
-  { index: 7, display: 'Count of Marine Managed Areas', name: 'prosea_count' },
-  { index: 8, display: 'Weighted Level of Fishing Protection', name: 'prosea_lvl' },
-  // note the bathy_min, bathy_max labels are swapped due to the conversion to positive depth values
-  { index: 9, display: 'Minimum Depth (meters)', name: 'bathy_max' },
-  { index: 10, display: 'Maximum Depth (meters)', name: 'bathy_min' },
-  { index: 11, display: 'Mean of Depth (meters)', name: 'bathy_mean' },
-  { index: 12, display: 'Minimum Slope', name: 'slope_min' },
-  { index: 13, display: 'Maximum Slope', name: 'slope_max' },
-  { index: 14, display: 'Mean Slope', name: 'slope_mean' },
-  { index: 15, display: 'Predominant Seafloor Lithology Type', name: 'lithology' },
-  { index: 16, display: 'Count of Hydrographic Surveys', name: 'survey_count' },
-  { index: 17, display: 'Total Area of Hydrographic Surveys (sq. km)', name: 'survey_area_km' },
-  { index: 18, display: 'Count of Expedition Tracklines', name: 'oer_track_count' },
-  { index: 19, display: 'Total Length of Expedition Tracklines (km)', name: 'oer_track_km' },
-  { index: 20, display: 'Global Vessel Density', name: 'ship_global' },
-  { index: 21, display: 'Commercial Vessel Density', name: 'ship_comm' },
-  { index: 22, display: 'Fishing Vessel Density', name: 'ship_fish' },
-  { index: 23, display: 'Leisure Vessel Density', name: 'ship_leisure' },
-  { index: 24, display: 'Oil and Gas Vessel Density', name: 'ship_oil_gas' },
-  { index: 25, display: 'Passenger Vessel Density', name: 'ship_pass' },
-  { index: 26, display: 'Global Fishing Watch - Fishing Hours (2020)', name: 'gfw_fishhours' },
-  { index: 27, display: 'Global Fishing Watch - Hours (2020)', name: 'gfw_hours' },
-  { index: 28, display: 'Count of Oil and Gas Platforms', name: 'platform_count' },
-  { index: 29, display: 'Count of Submarine Cables', name: 'cable_count' }
-]
 
 function buildUrl (h3: string) {
   const ocisFeatureServiceUrl = 'https://services.arcgis.com/bDAhvQYMG4WL8O5o/ArcGIS/rest/services/ocis_sde_ocis_master_view_h4_view/FeatureServer/1/query'
   const searchParams = new URLSearchParams()
   searchParams.set('where', `grid_id='${h3}'`)
   searchParams.set('returnGeometry', 'false')
-  searchParams.set('outFields', fields.map(f => f.name).join(','))
+  searchParams.set('outFields', '*')
+  // searchParams.set('outFields', fields.map(f => f.name).join(','))
   searchParams.set('f', 'pjson')
   return (`${ocisFeatureServiceUrl}?${searchParams.toString()}`)
 }
 
-function formatFloatValue (str: string): string {
-  const num = parseFloat(str)
-  if (Number.isNaN(num)) {
-    return ''
-  }
-  // round *up* to 2 decimal places for display purposes. Always use positive values
-  return (Math.abs(Math.ceil(num * 100) / 100)).toLocaleString()
-}
-
-function formatIntValue (str: string): string {
-  const num = parseInt(str)
-  // if string cannot be parsed to a number, return empty string to avoid displaying "NaN"
-  if (Number.isNaN(num)) {
-    return ''
-  }
-  return num.toLocaleString()
-}
 
 export default function DataDisplay ({ h3 }: { h3: string }) {
   const url = buildUrl(h3)
-  console.log('OCIS query URL: ', url)
+  // console.log('OCIS query URL: ', url)
   const { data, loading, error } = useLoadJSON<any>(url)
 
   if (loading) {
@@ -76,52 +28,552 @@ export default function DataDisplay ({ h3 }: { h3: string }) {
     return <div>Error: {error.message}</div>
   }
 
-  console.log('data from OCIS query: ', data)
+  // console.log('data from OCIS query: ', data)
   if (data.features.length === 0) {
     return <div>OCIS data are not available for hexagon {h3}. The  OCIS only covers the United States EEZ.</div>
   }
 
   return (
     <div style={{ paddingLeft: '10px', overflowY: 'auto' }}>
-      <table>
-        <tbody>
-          <tr><td>{fields[0].display}</td><td>{data.features[0].attributes[fields[0].name]}</td></tr>
-          <tr><td colSpan={2} style={{ fontWeight: 'bold' }}>Biodiversity</td></tr>
-          <tr><td>{fields[1].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[1].name])}</td></tr>
-          <tr><td>{fields[2].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[2].name])}</td></tr>
-          <tr><td>{fields[3].display}</td><td>{formatIntValue(data.features[0].attributes[fields[3].name])}</td></tr>
-          <tr><td>{fields[4].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[4].name])}</td></tr>
-          <tr><td>{fields[5].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[5].name])}</td></tr>
-          <tr><td colSpan={2} style={{ fontWeight: 'bold' }}>Resource Management</td></tr>
-          <tr><td>{fields[6].display}</td><td>{formatIntValue(data.features[0].attributes[fields[6].name])}</td></tr>
-          <tr><td>{fields[7].display}</td><td>{formatIntValue(data.features[0].attributes[fields[7].name])}</td></tr>
-          <tr><td>{fields[8].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[8].name])}</td></tr>
-          <tr><td colSpan={2} style={{ fontWeight: 'bold' }}>Bathymetry & Seafloor</td></tr>
-          <tr><td>{fields[9].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[9].name])}</td></tr>
-          <tr><td>{fields[10].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[10].name])}</td></tr>
-          <tr><td>{fields[11].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[11].name])}</td></tr>
-          <tr><td>{fields[12].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[12].name])}</td></tr>
-          <tr><td>{fields[13].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[13].name])}</td></tr>
-          <tr><td>{fields[14].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[14].name])}</td></tr>
-          {/* <tr><td>{fields[15].display}</td><td>{formatIntValue(data.features[0].attributes[fields[15].name])}</td></tr> */}
-          <tr><td colSpan={2} style={{ fontWeight: 'bold' }}>Surveys & Exploration</td></tr>
-          <tr><td>{fields[16].display}</td><td>{formatIntValue(data.features[0].attributes[fields[16].name])}</td></tr>
-          <tr><td>{fields[17].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[17].name])}</td></tr>
-          <tr><td>{fields[18].display}</td><td>{formatIntValue(data.features[0].attributes[fields[18].name])}</td></tr>
-          <tr><td>{fields[19].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[19].name])}</td></tr>
-          <tr><td colSpan={2} style={{ fontWeight: 'bold' }}>Human Activity (Shipping, Fishing & Infrastructure)</td></tr>
-          <tr><td>{fields[20].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[20].name])}</td></tr>
-          <tr><td>{fields[21].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[21].name])}</td></tr>
-          <tr><td>{fields[22].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[22].name])}</td></tr>
-          <tr><td>{fields[23].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[23].name])}</td></tr>
-          <tr><td>{fields[24].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[24].name])}</td></tr>
-          <tr><td>{fields[25].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[25].name])}</td></tr>
-          <tr><td>{fields[26].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[26].name])}</td></tr>
-          <tr><td>{fields[27].display}</td><td>{formatFloatValue(data.features[0].attributes[fields[27].name])}</td></tr>
-          <tr><td>{fields[28].display}</td><td>{formatIntValue(data.features[0].attributes[fields[28].name])}</td></tr>
-          <tr><td>{fields[29].display}</td><td>{formatIntValue(data.features[0].attributes[fields[29].name])}</td></tr>
-      </tbody>
-      </table>
+      <p id='ocis-field-1' style={{ fontWeight: 'bold', fontSize: 'small' }}>{data.fields[1].alias}: {data.features[0].attributes[data.fields[1].name]}</p>
+      <calcite-tooltip reference-element='ocis-field-1'>
+      <span>{JSON.parse(data.fields[1].description).value}</span>
+      </calcite-tooltip>
+
+      <calcite-accordion>
+        <calcite-accordion-item heading="Physical Oceanography & Hydrography">
+          <calcite-accordion-item heading="Sea Surface Salinity">
+          {
+              [17,18,19].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+          <calcite-accordion-item heading="Salinity at 30m Depth">
+            {
+              [20,21,22].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+          <calcite-accordion-item heading="Salinity at 50m Depth">
+            {
+              [23,24,25].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+          <calcite-accordion-item heading="Salinity at 100m Depth">
+            {
+              [26,27,28].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+          <calcite-accordion-item heading="Salinity at 200m Depth">
+            {
+              [29,30,31].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+          <calcite-accordion-item heading="Salinity at 500m Depth">
+            {
+              [32,33,34].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+          <calcite-accordion-item heading="Bottom Salinity">
+            {
+              [35,36,37].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+          <calcite-accordion-item heading="Sea Surface Temperature">
+            {
+              [38,39,40].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+          <calcite-accordion-item heading="Temperature at 30m Depth">
+            {
+              [41,42,43].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+          <calcite-accordion-item heading="Temperature at 50m Depth">
+            {
+              [44,45,46].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+          <calcite-accordion-item heading="Temperature at 100m Depth">
+            {
+              [47,48,49].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+          <calcite-accordion-item heading="Temperature at 200m Depth">
+            {
+              [50,51,52].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+          <calcite-accordion-item heading="Temperature at 500m Depth">
+            {
+              [53,54,55].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+          <calcite-accordion-item heading="Bottom Temperature">
+            {
+              [56,57,58].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+        </calcite-accordion-item>
+        <calcite-accordion-item heading="Chemical Oceanography & Acidification">
+          <calcite-accordion-item heading="Aragonite Saturation State (10m)">
+            {
+              [2,3,4].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+          <calcite-accordion-item heading="Dissolved Inorganic Carbon">
+            {
+              [5,6,7].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+          <calcite-accordion-item heading="Dissolved Oxygen">
+            {
+              [8,9,10].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+          <calcite-accordion-item heading="Seawater pH">
+            {
+              [11,12,13].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+        </calcite-accordion-item>
+        <calcite-accordion-item heading="Marine Renewable Energy & Metocean Dynamics">
+            <calcite-accordion-item heading="Significant Wave Height">
+            {
+              [90,91,92,93,94,95,96,97,98,99,100,101,102].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+            </calcite-accordion-item>
+            <calcite-accordion-item heading="Wave Power Density">
+            {
+              [103,104,105,106,107,108,109,110,111,112,113,114,115].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+            </calcite-accordion-item>
+            <calcite-accordion-item heading="Wave Energy Period">
+            {
+              [116,117,118,119,120,121,122,123,124,125,126,127,128].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+            </calcite-accordion-item>
+            <calcite-accordion-item heading="Tidal Dynamics">
+            {
+              [129,130].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+            </calcite-accordion-item>
+            <calcite-accordion-item heading="Windspeed by Altitude">
+            {
+              [131,132,133,134,135,136,137,138,139].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+            </calcite-accordion-item>
+        </calcite-accordion-item>
+        <calcite-accordion-item heading="Bathymetry, Geomorphology & Substrate">
+            <calcite-accordion-item heading="Bathymetric Depth">
+            {
+              [67,68,69].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+            </calcite-accordion-item>
+            <calcite-accordion-item heading="Distance from Shore">
+            {
+              [71,72,73].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+            </calcite-accordion-item>
+            <calcite-accordion-item heading="Seafloor Slope">
+            {
+              [89,90,91].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+            </calcite-accordion-item>
+            <calcite-accordion-item heading="Seafloor Lithology">
+            {
+              [75].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+            </calcite-accordion-item>
+        </calcite-accordion-item>
+        <calcite-accordion-item heading="Biodiversity, Benthic Ecology & Blue Carbon">
+          <calcite-accordion-item heading="Blue Carbon Habitat">
+            {
+              [70].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+          <calcite-accordion-item heading="Deep Sea Corals">
+            {
+              [74,75].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+          <calcite-accordion-item heading="OBIS Species Diversity & Records">
+            {
+              [83,84,85,86].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+          <calcite-accordion-item heading="Primary Productivity">
+            {
+              [14,15,16].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+        </calcite-accordion-item>
+        <calcite-accordion-item heading="Maritime Human Activity & Ocean Infrastructure">
+          <calcite-accordion-item heading="AIS Vessel Density">
+            {
+              [59,60,61,62,63,64].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+          <calcite-accordion-item heading="Global Fishing Watch Activity">
+            {
+              [65,66].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+          <calcite-accordion-item heading="Offshore Infrastructure">
+            {
+              [79,92].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+        </calcite-accordion-item>
+        <calcite-accordion-item heading="Ocean Governance, Marine Protection & Grid Topography">
+          <calcite-accordion-item heading="Marine Protected & Managed Areas">
+            {
+              [79,87,88].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+          <calcite-accordion-item heading="Hydrographic Surveys">
+            {
+              [76,77].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+          <calcite-accordion-item heading="Ocean Exploration Tracklines">
+            {
+              [80,81].map(i => {
+                return (
+                  <div key={i}>
+                    <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                      <span>{JSON.parse(data.fields[i].description).value}</span>
+                    </calcite-tooltip>
+                  </div>
+                )
+              })
+            }
+          </calcite-accordion-item>
+        </calcite-accordion-item>
+      </calcite-accordion>
     </div>
   )
 }

@@ -24,8 +24,8 @@ import {
   type IMState,
   ReactRedux
 } from 'jimu-core'
-
-import { type IMConfig } from '../config'
+import 'calcite-components'
+import type { IMConfig } from '../config'
 import DataDisplay from '../ocis-display'
 
 export interface ExtraProps {
