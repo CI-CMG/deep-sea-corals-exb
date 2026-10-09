@@ -414,7 +414,7 @@ export default function DataDisplay ({ h3 }: { h3: string }) {
             </calcite-accordion-item>
             <calcite-accordion-item heading="Seafloor Lithology">
             {
-              [75].map(i => {
+              [78].map(i => {
                 return (
                   <div key={i}>
                     <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
@@ -516,7 +516,7 @@ export default function DataDisplay ({ h3 }: { h3: string }) {
           </calcite-accordion-item>
           <calcite-accordion-item heading="Offshore Infrastructure">
             {
-              [79,92].map(i => {
+              [82,92].map(i => {
                 return (
                   <div key={i}>
                     <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
