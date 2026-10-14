@@ -127,7 +127,7 @@ export default function HexbinInfo ({ h3, pointCount, whereClause = '1=1' }: Hex
   // should always have h3, pointCount. The hexbinSummary may have error or take a while to load, but we want to show the point count immediately since that's a quick query and important for users to know
   return (
     <>
-    <p style={{ paddingLeft: '10px' }}> Hexbin <span className='text-with-emphasis'>{h3}</span> has <span className='text-with-emphasis'>{pointCount.toLocaleString()}</span> {pointCount > 1 ? 'samples' : 'sample'}</p>
+    <p style={{ paddingLeft: '10px' }}> H3 Level 4 ID <span className='text-with-emphasis'>{h3}</span> has <span className='text-with-emphasis'>{pointCount.toLocaleString()}</span> {pointCount > 1 ? 'samples' : 'sample'}</p>
     {hexbinSummary
       ? <div style={{ paddingLeft: '10px' }}>
           <p style={{ fontSize: 'medium' }}>depths range from <span className='text-with-emphasis'>{hexbinSummary.minDepth}</span> to <span className='text-with-emphasis'>{hexbinSummary.maxDepth}</span> m</p>
