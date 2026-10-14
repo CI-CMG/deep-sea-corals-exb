@@ -48,7 +48,7 @@ export default function DataDisplay ({ h3 }: { h3: string }) {
                 return (
                   <div key={i}>
                     <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
-                    <calcite-tooltip reference-element={`ocis-field-${i}`} placement="left">
+                    <calcite-tooltip reference-element={`ocis-field-${i}`} placement="top">
                       <span>{JSON.parse(data.fields[i].description).value}</span>
                     </calcite-tooltip>
                   </div>
