@@ -34,8 +34,8 @@ export default function DataDisplay ({ h3 }: { h3: string }) {
   }
 
   return (
-    <div style={{ paddingLeft: '10px', overflowY: 'auto' }}>
-      <p id='ocis-field-1' style={{ fontWeight: 'bold', fontSize: 'small' }}>{data.fields[1].alias}: {data.features[0].attributes[data.fields[1].name]}</p>
+    <div style={{ paddingLeft: '10px', overflowY: 'auto','--calcite-tooltip-max-size-x': '250px' }}>
+      <p id='ocis-field-1' style={{ fontWeight: 'bold', fontSize: 'small' }}>H3 Level 4 ID: {data.features[0].attributes[data.fields[1].name]}</p>
       <calcite-tooltip reference-element='ocis-field-1'>
       <span>{JSON.parse(data.fields[1].description).value}</span>
       </calcite-tooltip>
@@ -48,7 +48,7 @@ export default function DataDisplay ({ h3 }: { h3: string }) {
                 return (
                   <div key={i}>
                     <p id={`ocis-field-${i}`} style={{ fontSize: 'x-small' }}>{data.fields[i].alias}: {formatNumberValue(data.features[0].attributes[data.fields[i].name])}</p>
-                    <calcite-tooltip reference-element={`ocis-field-${i}`}>
+                    <calcite-tooltip reference-element={`ocis-field-${i}`} placement="left">
                       <span>{JSON.parse(data.fields[i].description).value}</span>
                     </calcite-tooltip>
                   </div>

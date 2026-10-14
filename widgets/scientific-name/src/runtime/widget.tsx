@@ -12,10 +12,8 @@ import {
 import { useEffect, useState, useRef } from 'react'
 import type { IMConfig } from '../config'
 import type { TargetedEvent } from "@esri/calcite-components"
-import {
-  CalciteAutocomplete,
-  CalciteAutocompleteItem
-} from 'calcite-components'
+import 'calcite-components'
+
 
 const Widget = (props: AllWidgetProps<IMConfig>) => {
   // console.log('rendering widget with props: ', props)
@@ -58,7 +56,7 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
       return
     }
 
-    function buildQuery(selectedName:string):SqlQueryParams {
+    function buildQuery (selectedName:string):SqlQueryParams {
       if (selectedName) {
         return ({ where: `ScientificName = '${selectedName}'` })
       } else {
@@ -122,27 +120,27 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
 
   return (
     <div className="jimu-widget p-2">
-      <CalciteAutocomplete ref={autocompleteRef}
-        // style={{ "-calcite-autocomplete-menu-max-size-y": "300px" }}
+      <calcite-autocomplete ref={autocompleteRef}
+        style={{ "--calcite-autocomplete-menu-max-size-y": "250px" }}
         name="scientific-names"
         placeholder="Select a scientific name"
         autocomplete='off'
-        onCalciteAutocompleteChange={ handleAutocompleteChange }
-        onCalciteAutocompleteTextChange={(evt)=> { console.log(evt) }}
-        onCalciteAutocompleteTextInput={ handleAutocompleteTextInput }
-        onCalciteAutocompleteBeforeClose={(evt)=> { console.log(evt) }}
-        onCalciteAutocompleteBeforeOpen={(evt)=> { console.log(evt) }}
-        onCalciteAutocompleteClose={ handleAutocompleteClose }
-        onCalciteAutocompleteOpen={(evt)=> { console.log(evt) }}
+        oncalciteAutocompleteChange={ handleAutocompleteChange }
+        oncalciteAutocompleteTextChange={(evt)=> { console.log(evt) }}
+        oncalciteAutocompleteTextInput={ handleAutocompleteTextInput }
+        oncalciteAutocompleteBeforeClose={(evt)=> { console.log(evt) }}
+        oncalciteAutocompleteBeforeOpen={(evt)=> { console.log(evt) }}
+        oncalciteAutocompleteClose={ handleAutocompleteClose }
+        oncalciteAutocompleteOpen={(evt)=> { console.log(evt) }}
       >
         {filteredNames.map((name) => (
-          <CalciteAutocompleteItem
+          <calcite-autocomplete-item
             key={name}
             value={name}
             heading={name}
           />
         ))}
-    </CalciteAutocomplete>
+    </calcite-autocomplete>
     <DataSourceComponent useDataSource={props.useDataSources[0]} widgetId={props.id}
       onDataSourceCreated={handleDataSourceCreated}
       onCreateDataSourceFailed={handleDataSourceFailed}
