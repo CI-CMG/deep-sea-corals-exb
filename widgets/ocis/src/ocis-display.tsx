@@ -442,7 +442,7 @@ export default function DataDisplay ({ h3 }: { h3: string }) {
               })
             }
           </calcite-accordion-item>
-          <calcite-accordion-item heading="Deep Sea Corals">
+          {/* <calcite-accordion-item heading="Deep Sea Corals">
             {
               [74,75].map(i => {
                 return (
@@ -455,7 +455,7 @@ export default function DataDisplay ({ h3 }: { h3: string }) {
                 )
               })
             }
-          </calcite-accordion-item>
+          </calcite-accordion-item> */}
           <calcite-accordion-item heading="OBIS Species Diversity & Records">
             {
               [83,84,85,86].map(i => {
