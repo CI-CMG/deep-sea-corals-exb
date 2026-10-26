@@ -1787,7 +1787,7 @@
       "version": "1.21.0",
       "label": "Text",
       "config": {
-        "text": "<p style=\"text-align: center;\"><span style=\"color: rgb(255, 255, 255);\">Application Version 3.6.0</span></p>",
+        "text": "<p style=\"text-align: center;\"><span style=\"color: rgb(255, 255, 255);\">Application Version 4.0.0</span></p>",
         "style": {
           "verticalAlign": "start",
           "wrap": true
@@ -4538,7 +4538,7 @@
     },
     "backgroundColor": "#112e51"
   },
-  "timestamp": 1793042430523,
+  "timestamp": 1793042752639,
   "analytics": {
     "enable": true,
     "google": {
@@ -4549,5 +4549,5 @@
     "uid": "103311e0-dc42-11f0-bf14-359107a8b062"
   },
   "mainLocale": "en-us",
-  "publishTimestamp": 1793042435749
+  "publishTimestamp": 1793042759674
 }
