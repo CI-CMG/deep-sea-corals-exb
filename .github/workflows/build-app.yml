@@ -15,7 +15,7 @@ jobs:
       - name: Download Experience Builder
         # WARNING: this is not an officially supported method of downloading Experience Builder
         # taken from https://github.com/gavinr-maps/experience-builder-devops-example/blob/master/.github/workflows/build-app.yml
-        run: curl -o exb.zip "$(curl -s 'https://downloads.arcgis.com/dms/rest/download/secured/arcgis-experience-builder-1.19.zip?f=json&folder=software%2FExperienceBuilder%2F1.19' | jq -r '.url')"
+        run: curl -o exb.zip "$(curl -s 'https://downloads.arcgis.com/dms/rest/download/secured/arcgis-experience-builder-1.21.zip?f=json&folder=software%2FExperienceBuilder%2F1.21' | jq -r '.url')"
       - name: Create working directory
         run: mkdir ArcGISExperienceBuilder
       - name: Unzip Experience Builder
@@ -29,7 +29,7 @@ jobs:
         run: cp -r apps/* ArcGISExperienceBuilder/server/public/apps
       - uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
           # cache: 'npm'
           # cache-dependency-path: ArcGISExperienceBuilder/client/package-lock.json
       - name: node version
