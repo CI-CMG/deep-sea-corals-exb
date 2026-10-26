@@ -20,6 +20,5 @@ export default {
   omitInternalStyleTip: 'If there is only one clause in each filter, and it is asking for values (or displaying label), this option allows you to exclude the activation styles (along with the label and the icon), display the clause content directly, and auto-apply it.',
   wrapFilters: 'Wrap items',
   advancedTools: 'Advanced tools',
-  blankStatusMsg: 'Click the "New filter", "New group", or "New custom filter" button to add and configure filters.',
-  i18nFilterItemLabel: 'Item label'
+  blankStatusMsg: 'Click the "New filter", "New group", or "New custom filter" button to add and configure filters.'
 }

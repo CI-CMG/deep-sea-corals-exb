@@ -9,6 +9,7 @@ export default {
   gridRow: 'Grid row',
   gridCol: 'Grid column',
   iconSize: 'Icon size',
+  iconColor: 'Icon color',
   showIcon: 'Show icon',
   showText: 'Show text',
   vertical: 'Vertical',
@@ -20,6 +21,7 @@ export default {
   collapseAll: 'Collapse all',
   toggleAll: 'Toggle all',
   selectAll: 'Select all',
+  deselectAll: 'Deselect all',
   unSelectAll: 'Unselect all',
   space: 'Spacing',
   appearance: 'Appearance',
@@ -61,6 +63,8 @@ export default {
   additionalInformation: 'Additional information',
   noContent: 'No content',
   copy: 'Copy',
+  paste: 'Paste',
+  copyPaste: 'Copy and paste',
   location: 'Location',
   advance: 'Advanced',
   advancedOptions: 'Advanced options',
@@ -101,12 +105,61 @@ export default {
   transparency: 'Transparency',
   selectMapHint: 'Select a map for further configurations.',
   selectLayer: 'Select layer',
+  selectLayersToAdd: 'Select layers to add',
+  selectType: 'Select type',
   openInNewWindow: 'Open in a new window',
   behavior: 'Behavior',
   pagingStyle: 'Paging style',
   scroll: 'Scroll',
   multiPage: 'Multi-page',
   previewOnlyTip: 'This only works in Preview or published apps.',
+
+  // view/edit mode saving status
+  SaveMessageEditing: 'Editing',
+  SaveMessageSaved: 'Saved',
+  SaveMessageSaving: 'Saving',
+  SaveMessageEdited: 'Edited',
+  SaveMessageSaveFailed: 'Save failed',
+  SaveMessageViewing: 'Viewing',
+  SaveMessageAllChangesSaved: 'All changes saved',
+  SaveMessageLastSavedAt: 'Last saved at {time}',
+  SaveMessageUnsavedChanges: 'Unsaved changes',
+  SaveMessageSavingIn: 'Saving in {time}',
+  SaveMessageSavingToServer: 'Saving to server',
+  SaveMessageSessionExpired: 'Session expired',
+  SaveMessageSignInRetry: 'Click to sign in and retry',
+  SaveMessageNotSaving: 'Not saving',
+  SaveMessageViewModeNoSave: 'View mode — changes won\'t be saved',
+  SaveMessageSwitchToEditEnableSaving: 'Switch to Edit mode to enable saving',
+  SaveMessageViewModeTryEditsNoSave: 'View mode — You can explore and try edits, but changes will not be saved.',
+  SaveMessageSwitchToEdit: 'Switch to Edit',
+  SaveMessageSwitchToView: 'Switch to View',
+  SaveMessageDiscardDraftChanges: 'Discard draft changes',
+  SaveMessageUnpublish: 'Unpublish',
+  SaveMessageRecentlyEdited: 'This item was recently edited',
+  SaveMessageLastEditedByOnTime: 'Last edited by {user} on {time}. To avoid overwriting their changes, you can view the app without saving, or switch to edit mode.',
+  SaveMessageViewMode: 'View mode',
+  SaveMessageEditMode: 'Edit mode',
+  SaveMessageBrowseWithoutSaving: 'Browse and try edits without saving',
+  SaveMessageEditAndAutoSave: 'Edit and auto-save changes normally',
+  SaveMessageSwitchModesFromToolbar: 'You can switch between modes at any time from the toolbar.',
+  SaveMessageSwitchToEditQuestion: 'Switch to Edit mode?',
+  SaveMessageSwitchToEditWarning: 'Switching to Edit mode will enable auto-save. Any changes you make will be saved automatically and may overwrite changes made by others.',
+  SaveMessageLastEditedBy: 'Last edited by {user}',
+  SaveMessageDontAskAgainForItem: 'Don\'t ask again for this item',
+  SaveMessageDataAboutHoursAgo: '{data} (about {hour} hours ago)',
+  SaveMessageStayInView: 'Stay in View',
+  SaveMessageDiscardingDraftChangesWarning: 'Discarding draft changes will revert the application to the most recent published version or the initial state if not published. You will not be able to retrieve your draft changes. Are you sure you want to discard all draft changes?',
+  SaveMessageDiscard: 'Discard',
+  SaveMessageUnpublishItemQuestion: 'Unpublish item?',
+  SaveMessageUnpublishItemWarning: 'Are you sure you want to unpublish this item? It will no longer be accessible to others. You can always republish it later. This action will not affect the permissions of any maps or layers.',
+  SaveMessageYesUnpublish: 'Yes, unpublish',
+  SaveMessageNew: 'New',
+  // multi language
+  i18nLabelFor: 'Label for "{value}"',
+  i18nDescriptionFor: 'Description for "{value}"',
+  i18nNameFor: 'Name for "{value}"',
+  searchToolHint: 'Search hint',
   // chart
   guide: 'Guide',
   guides: 'Guides',
@@ -188,6 +241,7 @@ export default {
   both: 'Both',
   noDataMessage: 'No data message',
   tickSpacing: 'Tick spacing',
+  tables: 'Tables',
   // menu
   submenu: 'Submenu',
   menu: 'Menu',
@@ -279,6 +333,7 @@ export default {
   askForValues: 'Ask for values',
   chooseStyle: 'Choose input style',
   invalidStyleWarning: 'Too many values for this style. Please choose another one.',
+  showAllOption: 'Show "- All -" option',
   value: 'Value',
   values: 'Values',
   percentage: 'Percentage',
@@ -408,11 +463,11 @@ export default {
   isNotInTheNextForDisplaySQL: '{fieldAlias} is not in the next {value} (Amount) {endValue} (Unit)',
   amount: 'Amount',
   widgetIsNotAvailable: '{widgetName} is not available.',
-  i18nClauseDisplayLabel: 'Clause display label',
-  i18nClauseLabel: 'Clause label',
-  i18nClauseHint: 'Clause hint',
-  i18nClauseValue: 'Clause {index}',
-  i18nClauseValueInSet: 'Clause set {setIndex} / Clause {index}',
+  sqlClauseSet: 'Clause set {index}',
+  sqlDisplayLabelFor: 'Display label for clause {index}',
+  sqlLabelFor: 'Label for clause {index}',
+  sqlHintFor: 'Hint for clause {index}',
+  sqlLabelForPredefinedValue: 'Label for predefined value "{value}" in clause {index}',
 
   // advanced select
   showAll: 'Show all',
@@ -555,6 +610,7 @@ export default {
   views: 'Views',
   auto: 'Auto',
   custom: 'Custom',
+  customizeOption: 'Customize',
   viewsSelected: '{viewNumber} views selected',
 
   // expression-builder/expression-builder
@@ -601,6 +657,7 @@ export default {
   pageTop: 'Page top',
   printPreview: 'Print preview',
   printCurrentPage: 'Print current page',
+  printDatumTransformation: 'Datum transformation',
   cookieBanner: 'Cookie Banner',
 
   // proxy-setting
@@ -673,17 +730,21 @@ export default {
   updateDataStructure: 'Update data structure',
   updateDataStructureTip: 'You are updating the structure of the data:',
   updateDataStructureAffectedWidgets: 'This data is used in the following widgets, and making changes may cause them to stop working properly.',
-  updateDataStructureTip2: 'Select the widgets you want to delete along with the data structure update. These widgets will be removed from all device views. Unselected widgets will be preserved and can be reconfigured later.',
-  howToRemoveWidgetsTip: 'Select the widgets you want to delete alongside the data. Be aware they will be removed from all devices views. The unselected widgets will be kept and you can reconfigure them later.',
+  updateDataStructureTip2: 'Select the widgets you want to delete with the data structure update. These widgets will be removed from all device views. Unselected widgets will be preserved and can be reconfigured later.',
+  howToRemoveWidgetsTip: 'Select the widgets you want to delete with the data. Be aware they will be removed from all device views. The unselected widgets will be kept and you can reconfigure them later.',
   changeDataSource: 'Change data',
   changeDataAffectedWidgets: 'Changing this {dataType} may break the widgets configured with it.',
-  howToRemoveWidgetsTip2: 'Select the widgets you want to delete. Be aware they will be removed from all devices views. The unselected widgets will be kept and you can reconfigure them later.',
+  howToRemoveWidgetsTip2: 'Select the widgets you want to delete. Be aware they will be removed from all device views. The unselected widgets will be kept and you can reconfigure them later.',
   relatedWidgets: 'Related widgets',
   clickToHide: 'Click to hide',
   clickToShow: 'Click to show',
   selectADataView: 'Select or create data view',
   copyDataId: 'Copy data ID',
   dataIdCopied: 'Data ID copied!<div>{dataId}</div>',
+  removeArcadeField: 'Remove expression',
+  removeArcadeFieldWarningTip: 'You are removing expression:',
+  removeArcadeFieldAffectedWidgets: 'This expression is used in the following widgets and removing it may break them.',
+  arcadeFieldHowToRemoveWidgetsTip: 'Select the widgets you want to delete with the expression. Be aware they will be removed from all device views. The unselected widgets will be kept and you can reconfigure them later.',
 
   // data-source-selector/field-selector
   numberField: 'Number field',
@@ -716,6 +777,7 @@ export default {
   // data-source-selector/external-data-source-selector
   selectData: 'Select data',
   addData: 'Add data',
+  addLayer: 'Add layer',
   serviceType: 'Service type',
   url: 'URL',
   file: 'File',
@@ -751,6 +813,7 @@ export default {
   organizationDefault: 'Organization default',
   myContent: 'My content',
   myOrganization: 'My organization',
+  organizationContent: 'Organization content',
   myGroup: 'My groups',
   public: 'ArcGIS Online',
   livingAtlas: 'Living Atlas',
@@ -981,6 +1044,7 @@ export default {
 
   // jimu-map
   mapFailure: 'Creating map failed.',
+  mapNotAvailable: 'The connected map is not available.',
   mapCrash: "This map doesn't appear because the number of maps opened in the app has reached the maximum imposed for performance.",
   mapRecover: 'Reload',
   ZoomLabel: 'Zoom',
@@ -1033,6 +1097,8 @@ export default {
   selectingFeaturesTip: 'Selecting features now...Click to stop the selection progress.',
   noWebMapWebSceneTip: 'The selected Map widget does not contain a web map or web scene.',
   moreSelectionTools: 'More selection tools',
+  navigateOverviewMap: 'Current active map area. Use arrow keys to navigate.',
+  adjustMapToolLayout: 'Adjust map tool layout',
 
   // draw component
   drawToolPreview: 'Preview',
@@ -1117,6 +1183,9 @@ export default {
   unitsLabelHectares: 'Hectares',
   unitsNameSquareFeet: 'square feet',
   unitsLabelSquareFeet: 'Square feet',
+  unitsLabelSquareMillimeters: 'Square millimeters',
+  unitsLabelSquareCentimeters: 'Square centimeters',
+  unitsLabelSquareDecimeters: 'Square decimeters',
   unitsNameSquareMeters: 'square meters',
   unitsLabelSquareMeters: 'Square meters',
   unitsNameSquareYards: 'square yards',
@@ -1156,6 +1225,19 @@ export default {
   tipsForGeometryGuides: 'Show visual aids to help identify perpendicular and parallel lines when creating or updating a feature or graphic.',
   tipsForFeatureToFeature: 'Snap vertices of a graphic or feature that is currently being drawn or reshaped to that of an existing feature\'s vertex, edge, or end point.',
   tipsForGrid: 'Interact with a network of columns and rows used to divide the map view into equal-area squares. ',
+  // draw import/export
+  drawImport: 'Append from file',
+  drawExport: 'Export drawings',
+  // draw import exception handling
+  drawExportTitle: 'Export drawings',
+  drawExportErrorDes: 'Failed to export drawings. Please check your data and try again.',
+  // draw export exception handling
+  drawImportTitle: 'Append from file',
+  drawImportEmptyFileDes: 'The uploaded file {fileName} is empty.',
+  drawImportNotJsonDes: '{fileName} is not a valid ArcGIS JSON file. Please check the file format and try again.',
+  drawImportParseErrorDes: 'Unable to read {fileName}. Please check the file contents and try again.',
+  drawImportSuccessDes: 'Drawings from {fileName} were added successfully.',
+  drawImportSrErrorDes:'Drawings from {fileName} use a different spatial reference than the current map. The locations may not be accurate.',
 
   // sketch
   segmentLabel: 'Segment label',
@@ -1343,6 +1425,12 @@ export default {
   align: 'Align',
   print: 'Print',
 
+  //Print
+  includeElementOverride: 'Include {name}',
+  northArrow: 'North arrow',
+  includeNorthArrow: 'Include north arrow',
+  includeScaleBar: 'Include scale bar',
+
   enableSearchFilter: 'Enable filtering for layer source search',
 
   searchCountryCodeLabel: 'Search in specific countries or regions',
@@ -1370,6 +1458,7 @@ export default {
   serviceNotSupported: 'This utility service is not supported.',
   supportedServices: 'Supported utility service types include Printing, Routing, Geocoding, GeoEnrichment, Geometry and Geoprocessing services.',
   printTask: 'Printing',
+  asyncPrintTask: 'Custom Layout Printing',
   geometry: 'Geometry',
   geoenrichment: 'GeoEnrichment',
   route: 'Route',
@@ -1482,7 +1571,9 @@ export default {
   gridItems: 'Grid items',
   allowResize: 'Allow resize',
   allowExpansion: 'Allow expansion',
+  itemHeader: 'Item header',
   gridSettingOverrideTip: 'The expand option can be overridden in each widget\'s style settings.',
+  gridSettingOverrideHeaderTip: 'The header option can be overridden in each widget\'s style settings.',
   maximize: 'Maximize',
   restore: 'Restore',
   distributeSpaceH: 'Distribute space horizontally',
@@ -1609,8 +1700,37 @@ export default {
   optionalBannerDefaultText: 'We use cookies to improve your experience. You can customize your preferences for optional cookies.',
   largeScreenDevice: 'large screen device',
   syncPlaceholderTip: 'Select a large screen placeholder to sync',
+  cookieNotice: 'Cookie notice',
 
-  // dynamic style
+  // message-action-setting
+  addTrigger: 'Add a trigger',
+  selectTrigger: 'Select a trigger',
+  selectTarget: 'Select a target',
+  selectAction: 'Select an action',
+  actionBack: 'Back',
+  messageAction: 'Message action',
+  actionSet: 'Action settings',
+  actionDelete: 'Delete',
+  addAction: 'Add action',
+  targetWidgets: 'Widgets',
+  noMessage: 'No message',
+  noTargetWidgets: 'No widget',
+  noAction: 'No action',
+  chooseSearchTrigger: 'Select or search a trigger',
+  chooseSearchTarget: 'Select or search a target',
+  chooseSearchAction: 'Select or search an action',
+  actionDone: 'Done',
+  actionFramework: 'Data',
+  actionSettingLoading: 'Loading...',
+  noTriggerTip: 'Click the "{ButtonString}" button to add and configure actions.',
+  sectionDelete: 'Delete',
+  actionWidgetPending: 'This action is configured with a pending widget.',
+  actionWidgetInLarge: 'This action is configured in large screen device.',
+  actionWidgetInMedium: 'This action is configured in medium screen device.',
+  actionWidgetInSmall: 'This action is configured in small screen device.',
+  noAvailableActions: 'No available actions.',
+
+  // dynamic style & Arcade
   dynamicStyle: 'Dynamic style',
   condition: 'Condition',
   script: 'Script',
@@ -1642,6 +1762,13 @@ export default {
   unsupportedReturnType: 'Unsupported return type',
   closeArcadeEditorWarning: 'Are you sure you want to close the Arcade Editor?',
   loseUnsavedScript: 'You will lose the unsaved script.',
+  settingLabel: 'Setting',
+  fieldName: 'Field Name',
+  fieldAlias: 'Field Alias',
+  fieldType: 'Field Type',
+  unsupportedProfileVariables: 'Unsupported profile variables',
+  unsupportedFunctions: 'Unsupported functions',
+  mapExpressions: 'Map expressions',
 
   // map-layers batch option
   turnOnAllLayers: 'Turn on all layers',
@@ -1725,10 +1852,11 @@ export default {
   showRuntimeLayers: 'Show runtime layers in layer lists',
   defaultEnabled: 'Enable by default',
   arcade: 'Arcade',
-  arcadeTip:'Connect to data to use Arcade.',
+  arcadeTip: 'Connect to data to use Arcade.',
   editArcadeScript: 'Edit Arcade script',
   setDataExpression: 'Set data expression',
   a11y: 'Accessibility',
+  a11yLabel: 'Accessible label',
   pressTabToContinue: 'Press TAB to continue',
 
   downloadRemind: 'An error occurred, possibly due to network issues or interference from antivirus software.',
@@ -1750,6 +1878,7 @@ export default {
   warningPopUpTitle: 'Warning',
   categoriesNoteworthy: 'New and noteworthy',
   categoriesBusinessAnalyst: 'Business Analyst',
+  categoriesAccessibility: 'Accessibility',
   categoriesClimate: 'Weather and climate',
   categoriesDisaster: 'Disaster',
   categoriesData: 'Data',
@@ -1937,4 +2066,29 @@ export default {
   tertiaryButton: 'Text button',
   dangerButton: 'Danger button',
   linkButton: 'Link button',
+
+  invalidHexColor: 'Invalid hex color',
+
+  // devices
+  largeDevices: 'Large screen devices',
+  mediumDevices: 'Medium screen devices',
+  smallDevices: 'Small screen devices',
+
+  // directions widget
+  hintForAll: 'Hint applied to all search sources',
+  hintForLocator: 'Hint applied to the selected source: {name}',
+
+  //Message action
+  actionRemindMessage: 'To maintain performance, the {name} action will not run if the filtered results from the trigger data exceed 1,000 records.',
+
+  // default display placeholder
+  defaultDisplayPlaceholder: 'Double click to edit text',
+
+  templateUpdateRemind: 'Templates updated - {number} templates available.',
+  experiencesUpdateRemind: 'Experiences updated - {number} experiences available.',
+
+  // confirm
+  confirm: 'Confirm',
+
+  messageExtentChangeWarning: 'This option is disabled. Filtering {data} already triggers, either directly or indirectly, an action that changes {map}\'s extent. Enabling this option could create a runtime loop between extent changes and data filtering.'
 }

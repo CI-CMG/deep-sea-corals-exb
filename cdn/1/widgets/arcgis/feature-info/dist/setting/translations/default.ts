@@ -23,5 +23,6 @@ export default {
   showIndexInHeader: 'Show index',
   showCountInHeader: 'Show count',
   showCountTips: 'For large data, unchecking this option can reduce data index query and enhance data loading performance.',
-  addStandAlongDataStr: 'Select data'
+  addStandAlongDataStr: 'Select data',
+  dataLabelForML: 'Data label'
 }

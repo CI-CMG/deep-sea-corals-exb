@@ -2,8 +2,8 @@
   "name": "navigator",
   "label": "Views Navigation",
   "type": "widget",
-  "version": "1.19.0",
-  "exbVersion": "1.19.0",
+  "version": "1.21.0",
+  "exbVersion": "1.21.0",
   "author": "Esri R&D Center Beijing",
   "description": "This is the widget used in developer guide",
   "copyright": "",
@@ -21,6 +21,7 @@
   "properties": {
     "hasSettingPage": true,
     "coverLayoutBackground": true,
+    "handleA11yLabelInWidget": true,
     "hasBuilderSupportModule": true
   },
   "extensions": [

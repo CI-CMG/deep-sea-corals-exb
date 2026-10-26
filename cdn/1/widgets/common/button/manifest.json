@@ -2,8 +2,8 @@
   "name": "button",
   "label": "Button",
   "type": "widget",
-  "version": "1.19.0",
-  "exbVersion": "1.19.0",
+  "version": "1.21.0",
+  "exbVersion": "1.21.0",
   "author": "Esri R&D Center Beijing",
   "description": "This is a button widget, which is represented as a UI element, like an icon, text, or the composition.",
   "copyright": "",
@@ -14,6 +14,7 @@
     "canCrossLayoutBoundary": true,
     "coverLayoutBackground": true,
     "useOwnBorder": true,
+    "handleA11yLabelInWidget": true,
     "hasBuilderSupportModule": true
   },
   "extensions": [

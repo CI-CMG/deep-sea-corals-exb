@@ -2,8 +2,8 @@
   "name": "feature-info",
   "label": "Feature Info",
   "type": "widget",
-  "version": "1.19.0",
-  "exbVersion": "1.19.0",
+  "version": "1.21.0",
+  "exbVersion": "1.21.0",
   "author": "Esri R&D Center Beijing",
   "description": "This is the widget used in developer guide",
   "copyright": "",
@@ -31,8 +31,14 @@
       "name": "appConfigOperations",
       "point": "APP_CONFIG_OPERATIONS",
       "uri": "extensions/app-config-operations"
+    },
+    {
+      "name": "builderOperations",
+      "point": "BUILDER_OPERATIONS",
+      "uri": "extensions/builder-operations"
     }
   ],
+  "dependency": "jimu-arcgis",
   "translatedLocales": [
     "en",
     "ar",
