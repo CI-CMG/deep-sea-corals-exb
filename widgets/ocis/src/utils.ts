@@ -22,6 +22,7 @@ export function formatIntValue (str: string): string {
 
 export function formatNumberValue (str:string):string {
     // String.includes() not supported in IE11, so use regex to determine if the string is a float or an int
+  console.log('test: ', str.includes('.'))
   if (floatRegex.test(str)) {
     return formatFloatValue(str)
   } else if (intRegex.test(str)) {
