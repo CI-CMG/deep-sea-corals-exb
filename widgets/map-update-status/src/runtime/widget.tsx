@@ -3,7 +3,7 @@ import { type AllWidgetProps, jsx } from 'jimu-core'
 import { useState, useEffect, useRef } from 'react'
 import { type JimuMapView, JimuMapViewComponent } from 'jimu-arcgis'
 // import { defaultMessages as jimuUIMessages } from 'jimu-ui'
-import { type IMConfig } from '../config'
+import type { IMConfig } from '../config'
 
 export default function Widget (props: AllWidgetProps<IMConfig>) {
   const [view, setView] = useState<JimuMapView>(null)
